@@ -80,11 +80,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "ASMAN Prime Hub — Global Trade, Sourcing & Nigerian Exports" },
       { name: "description", content: "ASMAN Prime Hub coordinates international sourcing, procurement, freight, and Nigerian agricultural exports for global businesses." },
       { name: "author", content: "ASMAN Prime Hub" },
-      { property: "og:title", content: "ASMAN Prime Hub — Global Trade & Export Coordination" },
-      { property: "og:description", content: "Premium African trade and export coordination connecting global businesses with sourcing, freight and Nigerian agricultural opportunities." },
+      { property: "og:title", content: "ASMAN Prime Hub — Global Trade, Sourcing & Nigerian Exports" },
+      { property: "og:description", content: "ASMAN Prime Hub coordinates international sourcing, procurement, freight, and Nigerian agricultural exports for global businesses." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "ASMAN Prime Hub" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "ASMAN Prime Hub — Global Trade, Sourcing & Nigerian Exports" },
+      { name: "twitter:description", content: "ASMAN Prime Hub coordinates international sourcing, procurement, freight, and Nigerian agricultural exports for global businesses." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/gDLqZb7P3efggOFftEH7Qz8t5vJ3/social-images/social-1779698158645-1000165149.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/gDLqZb7P3efggOFftEH7Qz8t5vJ3/social-images/social-1779698158645-1000165149.webp" },
     ],
     links: [
       {
