@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { NAV, SITE } from "@/lib/site-data";
 import { openConsultation } from "./consultation-store";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,7 +28,10 @@ export function Header() {
     >
       <div className="container-x flex items-center justify-between h-20">
         <Link to="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="font-display text-[22px] font-medium tracking-tight text-white">
+          <span className="grid place-items-center h-10 w-10 bg-white p-1 shadow-sm">
+            <img src={logo} alt="ASMAN Prime Hub" className="h-full w-full object-contain" />
+          </span>
+          <span className="font-display text-[20px] md:text-[22px] font-medium tracking-tight text-white">
             ASMAN <span className="text-[var(--color-gold)]">Prime Hub</span>
           </span>
         </Link>
