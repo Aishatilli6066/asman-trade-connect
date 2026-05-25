@@ -14,7 +14,129 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      consultation_requests: {
+        Row: {
+          budget_range: string | null
+          company: string | null
+          country: string
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          notes: string | null
+          timeline: string | null
+          trade_interest: string
+          whatsapp: string
+        }
+        Insert: {
+          budget_range?: string | null
+          company?: string | null
+          country: string
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          notes?: string | null
+          timeline?: string | null
+          trade_interest: string
+          whatsapp: string
+        }
+        Update: {
+          budget_range?: string | null
+          company?: string | null
+          country?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          notes?: string | null
+          timeline?: string | null
+          trade_interest?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
+      export_inquiries: {
+        Row: {
+          commodity: string
+          company_name: string
+          country: string
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          quantity: string
+          requirements: string | null
+          shipping_destination: string
+          shipping_method: string | null
+          whatsapp: string
+        }
+        Insert: {
+          commodity: string
+          company_name: string
+          country: string
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          quantity: string
+          requirements?: string | null
+          shipping_destination: string
+          shipping_method?: string | null
+          whatsapp: string
+        }
+        Update: {
+          commodity?: string
+          company_name?: string
+          country?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          quantity?: string
+          requirements?: string | null
+          shipping_destination?: string
+          shipping_method?: string | null
+          whatsapp?: string
+        }
+        Relationships: []
+      }
+      trade_inquiries: {
+        Row: {
+          company_name: string
+          country: string
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          message: string
+          service_interest: string
+          whatsapp: string
+        }
+        Insert: {
+          company_name: string
+          country: string
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          message: string
+          service_interest: string
+          whatsapp: string
+        }
+        Update: {
+          company_name?: string
+          country?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          message?: string
+          service_interest?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
