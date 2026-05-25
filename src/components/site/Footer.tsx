@@ -1,14 +1,20 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MessageCircle, Linkedin, Instagram, Facebook, ArrowRight } from "lucide-react";
 import { NAV, SITE, COMMODITIES } from "@/lib/site-data";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
     <footer className="bg-[var(--color-ink)] text-white/70">
       <div className="container-x py-20 grid gap-14 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <div className="font-display text-2xl text-white">
-            ASMAN <span className="text-[var(--color-gold)]">Prime Hub</span>
+          <div className="flex items-center gap-3">
+            <span className="grid place-items-center h-12 w-12 bg-white p-1.5">
+              <img src={logo} alt="ASMAN Prime Hub" className="h-full w-full object-contain" />
+            </span>
+            <div className="font-display text-2xl text-white">
+              ASMAN <span className="text-[var(--color-gold)]">Prime Hub</span>
+            </div>
           </div>
           <p className="mt-5 text-sm leading-relaxed max-w-sm">
             ASMAN Prime Hub connects businesses to verified sourcing, logistics coordination, and
