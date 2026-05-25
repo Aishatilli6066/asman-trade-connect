@@ -8,7 +8,6 @@ import globe from "@/assets/globe.jpg";
 import { Eyebrow, GoldButton, SectionHeader, FadeIn } from "@/components/site/primitives";
 import { COMMODITIES, REGIONS, SERVICES, SITE } from "@/lib/site-data";
 import { openConsultation } from "@/components/site/consultation-store";
-import * as Assets from "@/assets/commodities-map";
 
 export const Route = createFileRoute("/")({
   head: () => ({
