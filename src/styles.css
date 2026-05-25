@@ -4,6 +4,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-burgundy: #7B1C2A;
+  --color-burgundy-deep: #5C141F;
+  --color-ink: #0D0D0D;
+  --color-ink-soft: #1A1A1A;
+  --color-gold: #E8D5A3;
+  --color-gold-soft: #F2E4C3;
+  --color-bone: #FAF8F3;
+  --color-line: #E6E2D8;
+  --color-mute: #A0A0A0;
+}
+
 /*
  * Design system definition.
  *
@@ -138,7 +153,25 @@
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: #FFFFFF;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .container-x { @apply mx-auto w-full max-w-[1280px] px-6 md:px-10; }
+  .eyebrow { @apply text-[11px] uppercase tracking-[0.3em] font-medium; }
+  .gold-rule { @apply h-px w-12 bg-[var(--color-gold)]; }
 }

@@ -9,6 +9,11 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
+import { ConsultationModal } from "@/components/site/ConsultationModal";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -72,19 +77,41 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "ASMAN Prime Hub — Global Trade, Sourcing & Nigerian Exports" },
+      { name: "description", content: "ASMAN Prime Hub coordinates international sourcing, procurement, freight, and Nigerian agricultural exports for global businesses." },
+      { name: "author", content: "ASMAN Prime Hub" },
+      { property: "og:title", content: "ASMAN Prime Hub — Global Trade & Export Coordination" },
+      { property: "og:description", content: "Premium African trade and export coordination connecting global businesses with sourcing, freight and Nigerian agricultural opportunities." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "ASMAN Prime Hub" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "ASMAN Prime Hub",
+          url: "https://asmanprimehub.com",
+          description:
+            "Premium African trade and export coordination — sourcing, procurement, freight, logistics and Nigerian agricultural exports.",
+          email: "aishau6066@gmail.com",
+          telephone: "+2347042322970",
+          address: { "@type": "PostalAddress", addressCountry: "NG" },
+        }),
       },
     ],
   }),
@@ -113,7 +140,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+      <WhatsAppFloat />
+      <ConsultationModal />
+      <Toaster position="top-center" />
     </QueryClientProvider>
   );
 }
