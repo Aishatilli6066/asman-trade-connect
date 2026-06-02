@@ -1,10 +1,10 @@
 export const SITE = {
   name: "ASMAN Prime Hub",
   domain: "asmanprimehub.com",
-  email: "aishau6066@gmail.com",
+  email: "contact@asmanprimehub.com",
   contactEmail: "contact@asmanprimehub.com",
-  whatsapp: "+2347042322970",
-  whatsappRaw: "2347042322970",
+  whatsapp: "+2347084443626",
+  whatsappRaw: "2347084443626",
   tagline: "Global Sourcing. Seamless Trade. Delivered.",
 };
 

@@ -30,7 +30,7 @@ function Page() {
           <h2 className="font-display text-2xl mt-10">Your Rights</h2>
           <p>You may contact us at any time to request a copy of, or deletion of, the information you have submitted.</p>
           <h2 className="font-display text-2xl mt-10">Contact</h2>
-          <p>For privacy-related inquiries, email us at <a className="text-[var(--color-burgundy)] underline" href="mailto:aishau6066@gmail.com">aishau6066@gmail.com</a>.</p>
+          <p>For privacy-related inquiries, email us at <a className="text-[var(--color-burgundy)] underline" href="mailto:contact@asmanprimehub.com">contact@asmanprimehub.com</a>.</p>
         </div>
       </div>
     </section>

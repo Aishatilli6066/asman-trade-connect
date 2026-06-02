@@ -114,8 +114,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           url: "https://asmanprimehub.com",
           description:
             "Premium African trade and export coordination — sourcing, procurement, freight, logistics and Nigerian agricultural exports.",
-          email: "aishau6066@gmail.com",
-          telephone: "+2347042322970",
+          email: "contact@asmanprimehub.com",
+          telephone: "+2347084443626",
           address: { "@type": "PostalAddress", addressCountry: "NG" },
         }),
       },
