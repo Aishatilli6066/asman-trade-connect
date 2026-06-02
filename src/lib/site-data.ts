@@ -14,7 +14,6 @@ export const NAV = [
   { label: "Services", to: "/services" },
   { label: "Agricultural Export", to: "/agricultural-export" },
   { label: "Why Us", to: "/why-choose-us" },
-  { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ] as const;
 
@@ -39,7 +38,6 @@ export const COMMODITIES = [
   { name: "Cashew Nuts", slug: "cashew", img: "c-cashew", desc: "Raw cashew nuts (RCN) with consistent KOR and outturn for global processors." },
   { name: "Groundnuts", slug: "groundnuts", img: "c-groundnut", desc: "Sorted, cleaned groundnuts in export-grade jute bags." },
   { name: "Shea Butter", slug: "shea", img: "c-shea", desc: "Refined and unrefined shea butter for cosmetics and food applications." },
-  { name: "Garlic", slug: "garlic", img: "c-garlic", desc: "Cured garlic bulbs in food-grade packaging for international markets." },
   { name: "Dried Pepper", slug: "pepper", img: "c-pepper", desc: "Dried red chili pepper, whole and ground, in export-ready volumes." },
   { name: "Arabic Gum", slug: "gum", img: "c-gum", desc: "Grade 1 and 2 gum arabic from northern Nigeria, ideal for food and pharma." },
 ];

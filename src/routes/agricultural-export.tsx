@@ -14,7 +14,7 @@ export const Route = createFileRoute("/agricultural-export")({
   head: () => ({
     meta: [
       { title: "Nigerian Agricultural Export — Commodities & Coordination | ASMAN Prime Hub" },
-      { name: "description", content: "Sesame, hibiscus, ginger, cashew, soybeans, shea butter, garlic, pepper and gum arabic — sourced, packaged and shipped from Nigeria to global buyers." },
+      { name: "description", content: "Sesame, hibiscus, ginger, cashew, soybeans, shea butter, pepper and gum arabic — sourced, packaged and shipped from Nigeria to global buyers." },
       { property: "og:title", content: "Nigerian Agricultural Export | ASMAN Prime Hub" },
       { property: "og:description", content: "Premium Nigerian agricultural commodities for international markets." },
       { property: "og:url", content: "/agricultural-export" },
