@@ -35,7 +35,6 @@ function Index() {
       <AgriHighlight />
       <WhyUs />
       <Standards />
-      <Testimonials />
       <ConsultationCTA />
       <ContactStrip />
     </>
@@ -326,36 +325,6 @@ function Standards() {
               <div className="font-display text-lg">{c.t}</div>
               <p className="mt-2 text-sm text-[var(--color-ink)]/65 leading-relaxed">{c.d}</p>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Testimonials() {
-  const tts = [
-    { q: "Their supplier verification work saved us from a costly mistake. The coordination was professional and the communication was consistently clear.", n: "Procurement Director", c: "European Importer" },
-    { q: "Freight coordination was handled end-to-end. Our shipments arrived on schedule with all documentation in order — every time.", n: "Operations Lead", c: "Middle East Trading Co." },
-    { q: "We received export-ready commodities with the quality and packaging that matched our brief. A reliable partner for Nigerian sourcing.", n: "Sourcing Manager", c: "Asia-Pacific Buyer" },
-  ];
-  return (
-    <section className="bg-[var(--color-ink)] text-white">
-      <div className="container-x py-24 md:py-32">
-        <SectionHeader eyebrow="In Their Words" dark title={<>Trusted by businesses <span className="italic text-[var(--color-gold)] font-normal">across continents.</span></>} />
-        <div className="mt-16 grid md:grid-cols-3 gap-px border border-white/10 bg-white/10">
-          {tts.map((t, i) => (
-            <figure key={i} className="bg-[var(--color-ink)] p-10">
-              <div className="font-display text-3xl text-[var(--color-gold)] leading-none">"</div>
-              <blockquote className="mt-4 font-display text-lg leading-snug text-white/90">
-                {t.q}
-              </blockquote>
-              <div className="mt-8 h-px w-10 bg-[var(--color-gold)]" />
-              <figcaption className="mt-4 text-sm">
-                <div className="text-white">{t.n}</div>
-                <div className="text-white/45 text-[12px] uppercase tracking-[0.2em] mt-1">{t.c}</div>
-              </figcaption>
-            </figure>
           ))}
         </div>
       </div>
