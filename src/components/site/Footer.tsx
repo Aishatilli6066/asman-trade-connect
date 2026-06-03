@@ -21,16 +21,33 @@ export function Footer() {
             agricultural export opportunities from Nigeria to global markets.
           </p>
           <div className="mt-7 flex items-center gap-3">
-            {[Linkedin, Instagram, Facebook].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                aria-label="Social"
-                className="grid place-items-center h-10 w-10 border border-white/15 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-colors"
-              >
-                <Icon size={15} />
-              </a>
-            ))}
+            <a
+              href="https://www.linkedin.com/company/asman-prime-hub/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="grid place-items-center h-10 w-10 border border-white/15 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-colors"
+            >
+              <Linkedin size={15} />
+            </a>
+            <a
+              href="https://www.instagram.com/asmanprimehub?igsh=MWZtb3pzdGg4ZW5weg=="
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="grid place-items-center h-10 w-10 border border-white/15 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-colors"
+            >
+              <Instagram size={15} />
+            </a>
+            <a
+              href="https://www.facebook.com/share/1AgH4Mnzpx/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="grid place-items-center h-10 w-10 border border-white/15 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-colors"
+            >
+              <Facebook size={15} />
+            </a>
           </div>
         </div>
 
