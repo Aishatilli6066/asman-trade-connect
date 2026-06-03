@@ -69,7 +69,7 @@ export const Select = React.forwardRef<HTMLSelectElement, React.SelectHTMLAttrib
       className={cn(
         baseInput,
         "appearance-none cursor-pointer",
-        dark ? "border-white/15 text-white bg-[var(--color-ink)]" : "border-[var(--color-line)] text-[var(--color-ink)] bg-white",
+        dark ? "border-white/15 text-white bg-[var(--color-burgundy)]" : "border-[var(--color-line)] text-[var(--color-ink)] bg-white",
         invalid && "border-red-500",
         className,
       )}

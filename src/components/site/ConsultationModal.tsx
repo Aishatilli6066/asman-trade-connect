@@ -27,7 +27,7 @@ export function ConsultationModal() {
     >
       <div className="min-h-full flex items-start justify-center p-4 md:p-10">
         <div
-          className="relative w-full max-w-3xl bg-[var(--color-ink)] border-t-2 border-[var(--color-gold)] animate-in fade-in zoom-in-95 duration-300"
+          className="relative w-full max-w-3xl bg-[var(--color-burgundy)] border-t-2 border-[var(--color-gold)] animate-in fade-in zoom-in-95 duration-300"
           onClick={(e) => e.stopPropagation()}
         >
           <button

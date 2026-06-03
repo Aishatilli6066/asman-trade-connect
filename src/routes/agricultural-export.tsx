@@ -28,9 +28,9 @@ export const Route = createFileRoute("/agricultural-export")({
 function AgriPage() {
   return (
     <>
-      <section className="relative bg-[var(--color-ink)] text-white min-h-[80svh] flex items-end overflow-hidden">
+      <section className="relative bg-[var(--color-burgundy)] text-white min-h-[80svh] flex items-end overflow-hidden">
         <img src={agriHero} alt="Nigerian agricultural commodities" className="absolute inset-0 h-full w-full object-cover opacity-50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)] via-[var(--color-ink)]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-burgundy)] via-[var(--color-burgundy)]/70 to-transparent" />
         <div className="container-x relative z-10 pt-40 pb-20">
           <Eyebrow dark>Agricultural Export</Eyebrow>
           <h1 className="mt-6 font-display text-4xl md:text-7xl leading-[1.02] max-w-4xl">
@@ -86,7 +86,7 @@ function AgriPage() {
         </div>
       </section>
 
-      <section className="bg-[var(--color-ink)] text-white">
+      <section className="bg-[var(--color-burgundy)] text-white">
         <div className="container-x py-24 md:py-32 grid lg:grid-cols-[1fr_2fr] gap-14">
           <div>
             <Eyebrow dark>Export Inquiry</Eyebrow>

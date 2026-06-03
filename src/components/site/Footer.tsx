@@ -5,7 +5,7 @@ import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--color-ink)] text-white/70">
+    <footer className="bg-[var(--color-burgundy)] text-white/70">
       <div className="container-x py-20 grid gap-14 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <div className="flex items-center gap-3">

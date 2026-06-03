@@ -43,7 +43,7 @@ function Index() {
 
 function Hero() {
   return (
-    <section className="relative min-h-[100svh] flex items-end overflow-hidden bg-[var(--color-ink)]">
+    <section className="relative min-h-[100svh] flex items-end overflow-hidden bg-[var(--color-burgundy)]">
       <img
         src={heroPort}
         alt="International cargo shipping port at golden hour"
@@ -51,8 +51,8 @@ function Hero() {
         width={1920}
         height={1080}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)] via-[var(--color-ink)]/70 to-[var(--color-ink)]/30" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-ink)]/80 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-burgundy)] via-[var(--color-burgundy)]/70 to-[var(--color-burgundy)]/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-burgundy)]/80 to-transparent" />
 
       <div className="container-x relative z-10 pb-20 pt-32 md:pb-28">
         <FadeIn>
@@ -121,10 +121,10 @@ function Metrics() {
     { kv: "Freight", v: "Operations", k: "Air & sea routing" },
   ];
   return (
-    <section className="bg-[var(--color-ink)] text-white">
+    <section className="bg-[var(--color-burgundy)] text-white">
       <div className="container-x py-20 md:py-28 grid gap-px md:grid-cols-4 border-y border-white/10">
         {items.map((m) => (
-          <div key={m.v} className="p-8 md:p-10 bg-[var(--color-ink)] md:border-r last:md:border-r-0 border-white/10">
+          <div key={m.v} className="p-8 md:p-10 bg-[var(--color-burgundy)] md:border-r last:md:border-r-0 border-white/10">
             <div className="font-display text-3xl md:text-5xl text-[var(--color-gold)] leading-none">
               {m.kv}
             </div>
@@ -197,7 +197,7 @@ function Process() {
         </div>
         <div className="mt-16 grid gap-px md:grid-cols-4 border border-[var(--color-line)] bg-[var(--color-line)]">
           {steps.map((s, i) => (
-            <div key={s.t} className="bg-white p-8 md:p-10 group hover:bg-[var(--color-ink)] hover:text-white transition-colors duration-500">
+            <div key={s.t} className="bg-white p-8 md:p-10 group hover:bg-[var(--color-burgundy)] hover:text-white transition-colors duration-500">
               <div className="font-display text-5xl text-[var(--color-gold)]">0{i + 1}</div>
               <div className="mt-6 font-display text-xl">{s.t}</div>
               <p className="mt-3 text-sm text-[var(--color-ink)]/70 group-hover:text-white/60">{s.d}</p>
@@ -212,14 +212,14 @@ function Process() {
 function Services() {
   const icons = [Boxes, ShieldCheck, Network, Globe2, Truck, Plane, Ship, Sprout];
   return (
-    <section className="bg-[var(--color-ink)] text-white">
+    <section className="bg-[var(--color-burgundy)] text-white">
       <div className="container-x py-24 md:py-32">
         <SectionHeader eyebrow="Services" dark title={<>Trade infrastructure, <span className="italic text-[var(--color-gold)] font-normal">end-to-end.</span></>} subtitle="From sourcing to shipping, every step coordinated through one trusted partner." />
         <div className="mt-16 grid gap-px sm:grid-cols-2 lg:grid-cols-4 border border-white/10 bg-white/10">
           {SERVICES.map((s, i) => {
             const Icon = icons[i] ?? Boxes;
             return (
-              <div key={s.title} className="bg-[var(--color-ink)] p-8 group hover:bg-[var(--color-ink-soft)] transition-colors">
+              <div key={s.title} className="bg-[var(--color-burgundy)] p-8 group hover:bg-[var(--color-burgundy-deep)] transition-colors">
                 <Icon size={26} strokeWidth={1.4} className="text-[var(--color-gold)]" />
                 <div className="mt-6 font-display text-xl">{s.title}</div>
                 <p className="mt-3 text-sm text-white/55 leading-relaxed">{s.desc}</p>
@@ -248,7 +248,7 @@ function AgriHighlight() {
   return (
     <section className="relative bg-[var(--color-burgundy-deep)] text-white overflow-hidden">
       <img src={agriHero} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" loading="lazy" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-burgundy-deep)]/80 via-[var(--color-burgundy-deep)]/95 to-[var(--color-ink)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-burgundy-deep)]/80 via-[var(--color-burgundy-deep)]/95 to-[var(--color-burgundy)]" />
       <div className="container-x relative z-10 py-24 md:py-32">
         <SectionHeader
           eyebrow="Agricultural Export"
@@ -258,7 +258,7 @@ function AgriHighlight() {
         />
         <div className="mt-16 grid gap-px sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border border-white/10 bg-white/10">
           {COMMODITIES.map((c) => (
-            <div key={c.slug} className="bg-[var(--color-ink)] group overflow-hidden">
+            <div key={c.slug} className="bg-[var(--color-burgundy)] group overflow-hidden">
               <div className="relative aspect-square overflow-hidden">
                 <img src={commodityImg(c.img)} alt={c.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
               </div>

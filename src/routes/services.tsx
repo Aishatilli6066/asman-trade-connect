@@ -34,7 +34,7 @@ const SERVICES = [
 function ServicesPage() {
   return (
     <>
-      <section className="relative bg-[var(--color-ink)] text-white pt-40 pb-24">
+      <section className="relative bg-[var(--color-burgundy)] text-white pt-40 pb-24">
         <div className="container-x">
           <Eyebrow dark>Services</Eyebrow>
           <h1 className="mt-6 font-display text-4xl md:text-7xl leading-[1.02] max-w-4xl">
@@ -76,7 +76,7 @@ function ServicesPage() {
       <section className="grid md:grid-cols-2">
         <div className="relative min-h-[360px]">
           <img src={air} alt="Air freight" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-          <div className="absolute inset-0 bg-[var(--color-ink)]/60" />
+          <div className="absolute inset-0 bg-[var(--color-burgundy)]/60" />
           <div className="relative p-10 md:p-14 text-white">
             <Eyebrow dark>Air Freight</Eyebrow>
             <h3 className="mt-4 font-display text-3xl md:text-4xl">Time-critical. Documented.</h3>
@@ -84,7 +84,7 @@ function ServicesPage() {
         </div>
         <div className="relative min-h-[360px]">
           <img src={sea} alt="Sea freight" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-          <div className="absolute inset-0 bg-[var(--color-ink)]/60" />
+          <div className="absolute inset-0 bg-[var(--color-burgundy)]/60" />
           <div className="relative p-10 md:p-14 text-white">
             <Eyebrow dark>Sea Freight</Eyebrow>
             <h3 className="mt-4 font-display text-3xl md:text-4xl">High-volume. Cost-efficient.</h3>

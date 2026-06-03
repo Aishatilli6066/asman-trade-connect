@@ -22,7 +22,7 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-40 transition-all duration-500",
         scrolled
-          ? "bg-[var(--color-ink)]/95 backdrop-blur-sm border-b border-white/5"
+          ? "bg-[var(--color-burgundy)]/95 backdrop-blur-sm border-b border-white/5"
           : "bg-transparent",
       )}
     >
@@ -69,7 +69,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-[var(--color-ink)] border-t border-white/10">
+        <div className="lg:hidden bg-[var(--color-burgundy)] border-t border-white/10">
           <div className="container-x py-6 flex flex-col gap-1">
             {NAV.map((n) => (
               <Link

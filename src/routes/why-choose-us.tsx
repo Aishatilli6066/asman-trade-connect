@@ -30,7 +30,7 @@ function WhyPage() {
   ];
   return (
     <>
-      <section className="relative bg-[var(--color-ink)] text-white pt-40 pb-24">
+      <section className="relative bg-[var(--color-burgundy)] text-white pt-40 pb-24">
         <div className="container-x">
           <Eyebrow dark>Why Choose Us</Eyebrow>
           <h1 className="mt-6 font-display text-4xl md:text-7xl leading-[1.02] max-w-4xl">
