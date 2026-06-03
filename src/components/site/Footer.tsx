@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MessageCircle, Linkedin, Instagram, Facebook, ArrowRight } from "lucide-react";
+import { Mail, MessageCircle, Linkedin, Instagram, Facebook } from "lucide-react";
 import { NAV, SITE, COMMODITIES } from "@/lib/site-data";
 import logo from "@/assets/logo.png";
 
@@ -81,20 +81,6 @@ export function Footer() {
               </a>
             </li>
           </ul>
-
-          <div className="mt-8">
-            <div className="eyebrow text-white/60">Newsletter</div>
-            <form className="mt-3 flex border border-white/15 focus-within:border-[var(--color-gold)] transition-colors" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 bg-transparent px-4 py-3 text-sm placeholder:text-white/30 outline-none"
-              />
-              <button className="px-4 bg-[var(--color-gold)] text-[var(--color-ink)]" aria-label="Subscribe">
-                <ArrowRight size={16} />
-              </button>
-            </form>
-          </div>
         </div>
       </div>
 
