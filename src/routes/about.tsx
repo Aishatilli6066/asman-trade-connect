@@ -32,7 +32,7 @@ function AboutPage() {
 
 function PageHero() {
   return (
-    <section className="relative bg-[var(--color-ink)] text-white pt-40 pb-24">
+    <section className="relative bg-[var(--color-burgundy)] text-white pt-40 pb-24">
       <div className="container-x">
         <Eyebrow dark>About Us</Eyebrow>
         <h1 className="mt-6 font-display text-4xl md:text-7xl leading-[1.02] max-w-4xl">
@@ -96,7 +96,7 @@ function Capabilities() {
 
 function Closing() {
   return (
-    <section className="bg-[var(--color-ink)] text-white">
+    <section className="bg-[var(--color-burgundy)] text-white">
       <div className="container-x py-24 md:py-32 grid lg:grid-cols-[2fr_1fr] gap-10 items-center">
         <h2 className="font-display text-3xl md:text-5xl max-w-2xl">
           Let's build the <span className="italic text-[var(--color-gold)] font-normal">trade route</span> your business needs.
