@@ -42,11 +42,33 @@ function ContactPage() {
           </div>
 
           <div className="mt-12 flex items-center gap-3">
-            {[Linkedin, Instagram, Facebook].map((Icon, i) => (
-              <a key={i} href="#" className="grid place-items-center h-10 w-10 border border-white/30 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-colors" aria-label="Social">
-                <Icon size={15} />
-              </a>
-            ))}
+            <a
+              href="https://www.linkedin.com/company/asman-prime-hub/"
+              target="_blank"
+              rel="noreferrer"
+              className="grid place-items-center h-10 w-10 border border-white/30 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={15} />
+            </a>
+            <a
+              href="https://www.instagram.com/asmanprimehub?igsh=MWZtb3pzdGg4ZW5weg=="
+              target="_blank"
+              rel="noreferrer"
+              className="grid place-items-center h-10 w-10 border border-white/30 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram size={15} />
+            </a>
+            <a
+              href="https://www.facebook.com/share/1AgH4Mnzpx/"
+              target="_blank"
+              rel="noreferrer"
+              className="grid place-items-center h-10 w-10 border border-white/30 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-colors"
+              aria-label="Facebook"
+            >
+              <Facebook size={15} />
+            </a>
           </div>
         </div>
 
