@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check, ShieldCheck, Truck, Plane, Ship, Globe2, Sprout, Boxes, FileCheck2, MessagesSquare, Network } from "lucide-react";
 import heroPort from "@/assets/hero-port.jpg";
 import agriHero from "@/assets/agri-hero.jpg";
-import warehouse from "@/assets/warehouse.jpg";
+import warehouseAsset from "@/assets/warehouse-port.jpg.asset.json";
 import globe from "@/assets/globe.jpg";
 import { Eyebrow, GoldButton, SectionHeader, FadeIn } from "@/components/site/primitives";
 import { COMMODITIES, REGIONS, SERVICES, SITE } from "@/lib/site-data";
@@ -142,7 +142,7 @@ function AboutPreview() {
     <section className="bg-white">
       <div className="container-x py-24 md:py-32 grid gap-14 lg:grid-cols-2 items-center">
         <div className="relative">
-          <img src={warehouse} alt="Modern warehouse" className="w-full h-[420px] md:h-[560px] object-cover" loading="lazy" />
+          <img src={warehouseAsset.url} alt="Global trade logistics — cargo ship, aircraft and port" className="w-full h-[420px] md:h-[560px] object-cover" loading="lazy" />
           <div className="absolute -bottom-6 -right-6 hidden md:block bg-[var(--color-burgundy)] text-white px-8 py-6 max-w-xs">
             <div className="font-display text-2xl leading-tight">Premium African gateway to global trade.</div>
           </div>
