@@ -347,7 +347,47 @@ function ConsultationCTA() {
         </h2>
         <div className="flex flex-wrap gap-3">
           <button onClick={openConsultation}><GoldButton variant="burgundy">Request Consultation</GoldButton></button>
-          <Link to="/agricultural-export"><GoldButton variant="outline-gold">Discuss Export</GoldButton></Link>
+          <Link to="/agricultural-export"><GoldButton>Discuss Export</GoldButton></Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Founder() {
+  return (
+    <section className="bg-[var(--color-bone)]">
+      <div className="container-x py-24 md:py-32 grid gap-14 lg:grid-cols-[auto_1fr] items-center">
+        <div className="relative mx-auto lg:mx-0">
+          <div className="absolute -inset-3 border border-[var(--color-gold)] hidden md:block" />
+          <img
+            src={founderAsset.url}
+            alt="Aisha Usman, Founder & CEO of ASMAN Prime Hub"
+            className="relative w-[280px] h-[340px] md:w-[360px] md:h-[440px] object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <Eyebrow>Meet the Founder</Eyebrow>
+          <h2 className="mt-5 font-display text-3xl md:text-5xl leading-[1.05]">
+            Aisha Usman <span className="italic font-normal text-[var(--color-burgundy)]">— Founder & CEO.</span>
+          </h2>
+          <div className="mt-4 text-[11px] uppercase tracking-[0.25em] text-[var(--color-ink)]/60">
+            International Trade Consultant · Sourcing Specialist · Export Strategist
+          </div>
+          <p className="mt-7 text-[var(--color-ink)]/75 text-base md:text-lg leading-relaxed max-w-2xl">
+            Aisha Usman is the Founder of ASMAN Prime Hub, an international trade consultancy
+            headquartered in Kano, Nigeria. With 4+ years of experience, she has served 68+ clients
+            across global markets — connecting Nigerian agro-commodity exporters with verified
+            buyers in China, UAE, Egypt, India, Turkey, and Europe, while sourcing quality
+            products from Asia for Nigerian importers.
+          </p>
+          <p className="mt-4 text-[var(--color-ink)]/70 leading-relaxed max-w-2xl">
+            She specializes in export structuring, supplier verification, trade documentation,
+            and landed cost analysis — bridging the gap between African producers and global
+            markets with precision and integrity.
+          </p>
+          <div className="mt-8 h-px w-16 bg-[var(--color-gold)]" />
         </div>
       </div>
     </section>
