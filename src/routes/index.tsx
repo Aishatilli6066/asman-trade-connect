@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check, ShieldCheck, Truck, Plane, Ship, Globe2, Sprout, Boxes, FileCheck2, MessagesSquare, Network } from "lucide-react";
 import heroPort from "@/assets/hero-port.jpg";
 import agriHero from "@/assets/agri-hero.jpg";
-import warehouseAsset from "@/assets/warehouse-port.jpg.asset.json";
+import warehouseAsset from "@/assets/logistics-ship.jpg.asset.json";
 import founderAsset from "@/assets/founder-aisha.jpg.asset.json";
 import warehouseBagsAsset from "@/assets/warehouse-bags.jpg.asset.json";
 import cacBadge from "@/assets/badge-cac.jpg.asset.json";
