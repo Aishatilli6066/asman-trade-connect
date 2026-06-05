@@ -5,6 +5,7 @@ import heroPort from "@/assets/hero-port.jpg";
 import agriHero from "@/assets/agri-hero.jpg";
 import warehouseAsset from "@/assets/warehouse-port.jpg.asset.json";
 import founderAsset from "@/assets/founder-aisha.jpg.asset.json";
+import warehouseBagsAsset from "@/assets/warehouse-bags.jpg.asset.json";
 import globe from "@/assets/globe.jpg";
 import { Eyebrow, GoldButton, SectionHeader, FadeIn } from "@/components/site/primitives";
 import { COMMODITIES, REGIONS, SERVICES, SITE } from "@/lib/site-data";
@@ -32,6 +33,7 @@ function Index() {
       <Metrics />
       <AboutPreview />
       <Founder />
+      <TrustBadges />
       <Process />
       <Services />
       <AgriHighlight />
@@ -40,6 +42,56 @@ function Index() {
       <ConsultationCTA />
       <ContactStrip />
     </>
+  );
+}
+
+function TrustBadges() {
+  const regs = [
+    { tag: "NEPC", label: "Nigerian Export Promotion Council", sub: "Registered Exporter" },
+    { tag: "CAC", label: "Corporate Affairs Commission", sub: "ASMAN Prime Hub Global Services Ltd." },
+  ];
+  const lines = ["Maersk", "MSC", "DHL", "FedEx", "CMA CGM"];
+  return (
+    <section className="bg-white border-y border-[var(--color-line)]">
+      <div className="container-x py-16 md:py-20">
+        <div className="text-center">
+          <Eyebrow>Registered & Trusted</Eyebrow>
+          <h3 className="mt-4 font-display text-2xl md:text-4xl leading-tight max-w-2xl mx-auto">
+            Officially registered. <span className="italic text-[var(--color-burgundy)] font-normal">Globally connected.</span>
+          </h3>
+        </div>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 max-w-3xl mx-auto">
+          {regs.map((r) => (
+            <div key={r.tag} className="flex items-center gap-5 border border-[var(--color-line)] p-5 bg-[var(--color-bone)]">
+              <div className="shrink-0 grid place-items-center h-16 w-16 bg-[var(--color-burgundy)] text-[var(--color-gold)] font-display text-xl tracking-wider">
+                {r.tag}
+              </div>
+              <div>
+                <div className="font-display text-base text-[var(--color-ink)] leading-tight">{r.label}</div>
+                <div className="mt-1 text-xs text-[var(--color-ink)]/60">{r.sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 pt-10 border-t border-[var(--color-line)]">
+          <div className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-ink)]/55 text-center">
+            Freight & Logistics Partners
+          </div>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
+            {lines.map((l) => (
+              <div
+                key={l}
+                className="font-display text-lg md:text-2xl text-[var(--color-ink)]/40 tracking-wide hover:text-[var(--color-burgundy)] transition-colors"
+              >
+                {l}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -252,7 +304,7 @@ function commodityImg(img: string) {
 function AgriHighlight() {
   return (
     <section className="relative bg-[var(--color-burgundy-deep)] text-white overflow-hidden">
-      <img src={agriHero} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" loading="lazy" />
+      <img src={warehouseBagsAsset.url} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" loading="lazy" />
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-burgundy-deep)]/80 via-[var(--color-burgundy-deep)]/95 to-[var(--color-burgundy)]" />
       <div className="container-x relative z-10 py-24 md:py-32">
         <SectionHeader
@@ -267,9 +319,9 @@ function AgriHighlight() {
               <div className="relative aspect-square overflow-hidden">
                 <img src={commodityImg(c.img)} alt={c.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
               </div>
-              <div className="p-5">
-                <div className="font-display text-lg">{c.name}</div>
-                <p className="mt-1 text-xs text-white/55 leading-relaxed line-clamp-2">{c.desc}</p>
+              <div className="p-6">
+                <div className="font-display text-xl">{c.name}</div>
+                <p className="mt-2 text-sm text-white/65 leading-relaxed">{c.desc}</p>
               </div>
             </div>
           ))}
