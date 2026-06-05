@@ -103,36 +103,60 @@ export type Database = {
       }
       trade_inquiries: {
         Row: {
-          company_name: string
+          budget_range: string | null
+          business_type: string | null
+          company_name: string | null
+          consent: boolean | null
           country: string
           created_at: string
           email: string
           full_name: string
           id: string
           message: string
+          product_required: string | null
+          quantity: string | null
           service_interest: string
+          shipping_method: string | null
+          target_market: string | null
+          timeline: string | null
           whatsapp: string
         }
         Insert: {
-          company_name: string
+          budget_range?: string | null
+          business_type?: string | null
+          company_name?: string | null
+          consent?: boolean | null
           country: string
           created_at?: string
           email: string
           full_name: string
           id?: string
           message: string
+          product_required?: string | null
+          quantity?: string | null
           service_interest: string
+          shipping_method?: string | null
+          target_market?: string | null
+          timeline?: string | null
           whatsapp: string
         }
         Update: {
-          company_name?: string
+          budget_range?: string | null
+          business_type?: string | null
+          company_name?: string | null
+          consent?: boolean | null
           country?: string
           created_at?: string
           email?: string
           full_name?: string
           id?: string
           message?: string
+          product_required?: string | null
+          quantity?: string | null
           service_interest?: string
+          shipping_method?: string | null
+          target_market?: string | null
+          timeline?: string | null
           whatsapp?: string
         }
         Relationships: []

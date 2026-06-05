@@ -4,12 +4,19 @@ import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
 const tradeSchema = z.object({
   full_name: z.string().trim().min(1).max(120),
-  company_name: z.string().trim().min(1).max(160),
   country: z.string().trim().min(1).max(80),
   email: z.string().trim().email().max(200),
   whatsapp: z.string().trim().min(5).max(40),
   service_interest: z.string().trim().min(1).max(120),
-  message: z.string().trim().min(30).max(2000),
+  business_type: z.string().trim().min(1).max(80),
+  product_required: z.string().trim().min(1).max(200),
+  quantity: z.string().trim().min(1).max(120),
+  budget_range: z.string().trim().min(1).max(80),
+  timeline: z.string().trim().min(1).max(80),
+  target_market: z.string().trim().min(1).max(160),
+  shipping_method: z.string().trim().min(1).max(80),
+  message: z.string().trim().min(10).max(2000),
+  consent: z.literal(true),
 });
 
 const consultationSchema = z.object({

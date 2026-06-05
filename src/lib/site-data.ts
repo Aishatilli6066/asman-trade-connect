@@ -43,13 +43,50 @@ export const COMMODITIES = [
 ];
 
 export const SERVICE_INTERESTS = [
-  "Global Product Sourcing",
-  "Supplier Verification",
+  "Product Sourcing",
+  "Import Consultation",
+  "Export Consultation",
   "Agricultural Commodity Export",
-  "Freight & Shipping Coordination",
-  "Procurement Solutions",
-  "Import & Export Operations",
-  "General Consultation",
+  "Supplier Verification",
+  "Procurement Support",
+  "Logistics & Freight",
+  "Business Consultation",
+  "Other",
+];
+
+export const BUSINESS_TYPES = [
+  "Importer",
+  "Exporter",
+  "Distributor",
+  "Manufacturer",
+  "Ecommerce Seller",
+  "Startup",
+  "Individual Buyer",
+  "Other",
+];
+
+export const BUDGET_RANGES_USD = [
+  "Under $1,000",
+  "$1,000 – $5,000",
+  "$5,001 – $10,000",
+  "$10,001 – $50,000",
+  "$50,001 – $100,000",
+  "Above $100,000",
+];
+
+export const DELIVERY_TIMELINES = [
+  "ASAP",
+  "Within 2 Weeks",
+  "Within 1 Month",
+  "Within 3 Months",
+  "Flexible",
+];
+
+export const SHIPPING_METHODS_FULL = [
+  "Air Freight",
+  "Sea Freight",
+  "Express Courier",
+  "Not Sure",
 ];
 
 export const TRADE_INTERESTS = [
