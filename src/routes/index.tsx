@@ -6,6 +6,12 @@ import agriHero from "@/assets/agri-hero.jpg";
 import warehouseAsset from "@/assets/warehouse-port.jpg.asset.json";
 import founderAsset from "@/assets/founder-aisha.jpg.asset.json";
 import warehouseBagsAsset from "@/assets/warehouse-bags.jpg.asset.json";
+import cacBadge from "@/assets/badge-cac.jpg.asset.json";
+import nepcBadge from "@/assets/badge-nepc.jpg.asset.json";
+import shipMaersk from "@/assets/ship-maersk.png.asset.json";
+import shipFedex from "@/assets/ship-fedex.png.asset.json";
+import shipUps from "@/assets/ship-ups.png.asset.json";
+import shipDhl from "@/assets/ship-dhl.png.asset.json";
 import globe from "@/assets/globe.jpg";
 import { Eyebrow, GoldButton, SectionHeader, FadeIn } from "@/components/site/primitives";
 import { COMMODITIES, REGIONS, SERVICES, SITE } from "@/lib/site-data";
@@ -47,10 +53,15 @@ function Index() {
 
 function TrustBadges() {
   const regs = [
-    { tag: "NEPC", label: "Nigerian Export Promotion Council", sub: "Registered Exporter" },
-    { tag: "CAC", label: "Corporate Affairs Commission", sub: "ASMAN Prime Hub Global Services Ltd." },
+    { img: nepcBadge.url, alt: "Nigerian Export Promotion Council (NEPC) logo", label: "Nigerian Export Promotion Council", sub: "Registered Exporter" },
+    { img: cacBadge.url, alt: "Corporate Affairs Commission (CAC) logo", label: "Corporate Affairs Commission", sub: "ASMAN Prime Hub Global Services Ltd." },
   ];
-  const lines = ["Maersk", "MSC", "DHL", "FedEx", "CMA CGM"];
+  const lines = [
+    { name: "DHL", img: shipDhl.url },
+    { name: "FedEx", img: shipFedex.url },
+    { name: "UPS", img: shipUps.url },
+    { name: "Maersk", img: shipMaersk.url },
+  ];
   return (
     <section className="bg-white border-y border-[var(--color-line)]">
       <div className="container-x py-16 md:py-20">
@@ -63,9 +74,9 @@ function TrustBadges() {
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 max-w-3xl mx-auto">
           {regs.map((r) => (
-            <div key={r.tag} className="flex items-center gap-5 border border-[var(--color-line)] p-5 bg-[var(--color-bone)]">
-              <div className="shrink-0 grid place-items-center h-16 w-16 bg-[var(--color-burgundy)] text-[var(--color-gold)] font-display text-xl tracking-wider">
-                {r.tag}
+            <div key={r.label} className="flex items-center gap-5 border border-[var(--color-line)] p-5 bg-white">
+              <div className="shrink-0 grid place-items-center h-20 w-20 bg-white">
+                <img src={r.img} alt={r.alt} className="max-h-16 max-w-16 object-contain" loading="lazy" />
               </div>
               <div>
                 <div className="font-display text-base text-[var(--color-ink)] leading-tight">{r.label}</div>
@@ -79,13 +90,10 @@ function TrustBadges() {
           <div className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-ink)]/55 text-center">
             Freight & Logistics Partners
           </div>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 items-center max-w-3xl mx-auto">
             {lines.map((l) => (
-              <div
-                key={l}
-                className="font-display text-lg md:text-2xl text-[var(--color-ink)]/40 tracking-wide hover:text-[var(--color-burgundy)] transition-colors"
-              >
-                {l}
+              <div key={l.name} className="flex items-center justify-center h-16 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition">
+                <img src={l.img} alt={`${l.name} logo`} className="max-h-12 max-w-[140px] object-contain" loading="lazy" />
               </div>
             ))}
           </div>
