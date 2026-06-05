@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { NAV, SITE } from "@/lib/site-data";
 import { openConsultation } from "./consultation-store";
 import { cn } from "@/lib/utils";
@@ -51,12 +52,22 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <button
+          <div className="flex items-center gap-5">
+            <a
+              href={`https://wa.me/${SITE.whatsappRaw}`}
+              target="_blank"
+              rel="noopener"
+              className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-white/70 hover:text-[var(--color-gold)] transition-colors"
+            >
+              <MessageCircle size={14} /> WhatsApp
+            </a>
+            <button
             onClick={openConsultation}
             className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] font-semibold bg-[var(--color-gold)] text-[var(--color-ink)] hover:bg-white transition-colors"
-          >
-            Book Consultation
-          </button>
+            >
+              Book Consultation
+            </button>
+          </div>
         </div>
 
         <button

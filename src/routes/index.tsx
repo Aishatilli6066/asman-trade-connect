@@ -304,7 +304,7 @@ function commodityImg(img: string) {
 function AgriHighlight() {
   return (
     <section className="relative bg-[var(--color-burgundy-deep)] text-white overflow-hidden">
-      <img src={agriHero} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" loading="lazy" />
+      <img src={warehouseBagsAsset.url} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" loading="lazy" />
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-burgundy-deep)]/80 via-[var(--color-burgundy-deep)]/95 to-[var(--color-burgundy)]" />
       <div className="container-x relative z-10 py-24 md:py-32">
         <SectionHeader
