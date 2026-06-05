@@ -27,7 +27,7 @@ const schema = z.object({
   target_market: z.string().min(1, "Required"),
   shipping_method: z.string().min(1, "Required"),
   message: z.string().min(10, "Please share at least 10 characters"),
-  consent: z.literal(true, { errorMap: () => ({ message: "You must agree to be contacted" }) }),
+  consent: z.literal(true, { message: "You must agree to be contacted" }),
 });
 type FormValues = z.infer<typeof schema>;
 
