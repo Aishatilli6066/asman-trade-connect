@@ -1,6 +1,57 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
+import { sendGmail, renderFieldsTable, escapeHtml } from "./gmail.server";
+
+const NOTIFY_TO = "contact@asmanprimehub.com";
+const BRAND = "ASMAN Prime Hub";
+
+function confirmationHtml(name: string, formLabel: string) {
+  return `
+  <div style="font-family:Arial,sans-serif;color:#111;line-height:1.6;max-width:600px;">
+    <h2 style="color:#7a1f2b;margin:0 0 12px;">Thank you, ${escapeHtml(name)}.</h2>
+    <p>We've received your <strong>${escapeHtml(formLabel)}</strong> and our coordination team will reach out within <strong>24 hours</strong> with next steps.</p>
+    <p>If your inquiry is urgent, reply to this email or message us on WhatsApp.</p>
+    <p style="margin-top:24px;">Warm regards,<br/><strong>${BRAND} Coordination Team</strong></p>
+    <hr style="border:none;border-top:1px solid #e5e7eb;margin:24px 0;"/>
+    <p style="font-size:12px;color:#666;">This is an automated confirmation. Please do not modify the subject line if replying.</p>
+  </div>`;
+}
+
+function notifyHtml(title: string, data: Record<string, unknown>) {
+  return `
+  <div style="font-family:Arial,sans-serif;color:#111;max-width:680px;">
+    <h2 style="color:#7a1f2b;margin:0 0 16px;">New ${escapeHtml(title)}</h2>
+    ${renderFieldsTable(data)}
+    <p style="margin-top:16px;font-size:12px;color:#666;">Submitted via asmanprimehub.com</p>
+  </div>`;
+}
+
+async function dispatchEmails(args: {
+  formLabel: string;
+  submitterName: string;
+  submitterEmail: string;
+  data: Record<string, unknown>;
+}) {
+  try {
+    await Promise.all([
+      sendGmail({
+        to: NOTIFY_TO,
+        subject: `New ${args.formLabel} — ${args.submitterName}`,
+        html: notifyHtml(args.formLabel, args.data),
+        replyTo: args.submitterEmail,
+      }),
+      sendGmail({
+        to: args.submitterEmail,
+        subject: `We've received your ${args.formLabel} — ${BRAND}`,
+        html: confirmationHtml(args.submitterName, args.formLabel),
+        replyTo: NOTIFY_TO,
+      }),
+    ]);
+  } catch (e) {
+    console.error("dispatchEmails error", e);
+  }
+}
 
 const tradeSchema = z.object({
   full_name: z.string().trim().min(1).max(120),
@@ -49,6 +100,12 @@ export const submitTradeInquiry = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { error } = await supabaseAdmin.from("trade_inquiries").insert(data);
     if (error) throw new Error(error.message);
+    await dispatchEmails({
+      formLabel: "Trade Inquiry",
+      submitterName: data.full_name,
+      submitterEmail: data.email,
+      data,
+    });
     return { ok: true };
   });
 
@@ -57,6 +114,12 @@ export const submitConsultation = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { error } = await supabaseAdmin.from("consultation_requests").insert(data);
     if (error) throw new Error(error.message);
+    await dispatchEmails({
+      formLabel: "Consultation Request",
+      submitterName: data.full_name,
+      submitterEmail: data.email,
+      data,
+    });
     return { ok: true };
   });
 
@@ -65,5 +128,11 @@ export const submitExportInquiry = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { error } = await supabaseAdmin.from("export_inquiries").insert(data);
     if (error) throw new Error(error.message);
+    await dispatchEmails({
+      formLabel: "Export Inquiry",
+      submitterName: data.full_name,
+      submitterEmail: data.email,
+      data,
+    });
     return { ok: true };
   });
