@@ -39,36 +39,6 @@ export async function sendEmail(opts: {
   }
 }
 
-/**
- * WhatsApp fallback via CallMeBot (https://www.callmebot.com/blog/free-api-whatsapp-messages/).
- * One-time setup:
- *   1. Save +34 644 72 15 39 as a WhatsApp contact.
- *   2. Send "I allow callmebot to send me messages" to that contact.
- *   3. CallMeBot replies with your API key — store it as CALLMEBOT_API_KEY.
- *   4. Store the receiving phone number (digits only, no +) as WHATSAPP_NOTIFY_PHONE.
- */
-export async function sendWhatsAppFallback(message: string) {
-  const phone = process.env.WHATSAPP_NOTIFY_PHONE;
-  const apiKey = process.env.CALLMEBOT_API_KEY;
-  if (!phone || !apiKey) {
-    console.warn("WhatsApp fallback skipped: WHATSAPP_NOTIFY_PHONE or CALLMEBOT_API_KEY not set");
-    return;
-  }
-  try {
-    const url =
-      `https://api.callmebot.com/whatsapp.php` +
-      `?phone=${encodeURIComponent(phone)}` +
-      `&text=${encodeURIComponent(message)}` +
-      `&apikey=${encodeURIComponent(apiKey)}`;
-    const res = await fetch(url);
-    if (!res.ok) {
-      console.error("WhatsApp fallback failed", res.status, await res.text());
-    }
-  } catch (err) {
-    console.error("WhatsApp fallback error", err);
-  }
-}
-
 export function escapeHtml(s: string) {
   return String(s ?? "")
     .replace(/&/g, "&amp;")
