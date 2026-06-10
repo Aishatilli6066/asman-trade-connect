@@ -1,7 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { supabaseAdmin } from "@/integrations/supabase/client.server";
-import { sendGmail, renderFieldsTable, escapeHtml } from "./gmail.server";
+import { sendEmail, renderFieldsTable, escapeHtml } from "./email.server";
 
 const NOTIFY_TO = "contact@asmanprimehub.com";
 const BRAND = "ASMAN Prime Hub";
@@ -35,13 +34,13 @@ async function dispatchEmails(args: {
 }) {
   try {
     await Promise.all([
-      sendGmail({
+      sendEmail({
         to: NOTIFY_TO,
         subject: `New ${args.formLabel} — ${args.submitterName}`,
         html: notifyHtml(args.formLabel, args.data),
         replyTo: args.submitterEmail,
       }),
-      sendGmail({
+      sendEmail({
         to: args.submitterEmail,
         subject: `We've received your ${args.formLabel} — ${BRAND}`,
         html: confirmationHtml(args.submitterName, args.formLabel),
@@ -98,8 +97,6 @@ const exportSchema = z.object({
 export const submitTradeInquiry = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => tradeSchema.parse(input))
   .handler(async ({ data }) => {
-    const { error } = await supabaseAdmin.from("trade_inquiries").insert(data);
-    if (error) throw new Error(error.message);
     await dispatchEmails({
       formLabel: "Trade Inquiry",
       submitterName: data.full_name,
@@ -112,8 +109,6 @@ export const submitTradeInquiry = createServerFn({ method: "POST" })
 export const submitConsultation = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => consultationSchema.parse(input))
   .handler(async ({ data }) => {
-    const { error } = await supabaseAdmin.from("consultation_requests").insert(data);
-    if (error) throw new Error(error.message);
     await dispatchEmails({
       formLabel: "Consultation Request",
       submitterName: data.full_name,
@@ -126,8 +121,6 @@ export const submitConsultation = createServerFn({ method: "POST" })
 export const submitExportInquiry = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => exportSchema.parse(input))
   .handler(async ({ data }) => {
-    const { error } = await supabaseAdmin.from("export_inquiries").insert(data);
-    if (error) throw new Error(error.message);
     await dispatchEmails({
       formLabel: "Export Inquiry",
       submitterName: data.full_name,
