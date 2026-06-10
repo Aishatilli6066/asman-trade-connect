@@ -1,6 +1,21 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
-const FROM_ADDRESS = "ASMAN Prime Hub <noreply@asmanprimehub.com>";
+const SMTP_HOST = "mail.privateemail.com";
+const SMTP_PORT = 465;
+
+function createTransport() {
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  if (!user || !pass) {
+    throw new Error("sendEmail: SMTP_USER or SMTP_PASS is not set");
+  }
+  return nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: SMTP_PORT,
+    secure: true,
+    auth: { user, pass },
+  });
+}
 
 export async function sendEmail(opts: {
   to: string;
@@ -8,27 +23,20 @@ export async function sendEmail(opts: {
   html: string;
   replyTo?: string;
 }) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.error("sendEmail skipped: RESEND_API_KEY is not set");
-    return { ok: false, error: "missing_credentials" };
+  try {
+    const transport = createTransport();
+    await transport.sendMail({
+      from: `"ASMAN Prime Hub" <${process.env.SMTP_USER}>`,
+      to: opts.to,
+      subject: opts.subject,
+      html: opts.html,
+      replyTo: opts.replyTo,
+    });
+    return { ok: true };
+  } catch (err) {
+    console.error("sendEmail failed", err);
+    return { ok: false, error: String(err) };
   }
-
-  const resend = new Resend(apiKey);
-  const { error } = await resend.emails.send({
-    from: FROM_ADDRESS,
-    to: opts.to,
-    subject: opts.subject,
-    html: opts.html,
-    replyTo: opts.replyTo,
-  });
-
-  if (error) {
-    console.error("sendEmail failed", error);
-    return { ok: false, error: error.message };
-  }
-
-  return { ok: true };
 }
 
 export function escapeHtml(s: string) {
