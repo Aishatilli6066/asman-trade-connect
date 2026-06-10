@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { sendEmail, renderFieldsTable, escapeHtml } from "./email.server";
+import { sendEmail, sendWhatsAppFallback, renderFieldsTable, escapeHtml } from "./email.server";
 
 const NOTIFY_TO = "contact@asmanprimehub.com";
 const BRAND = "ASMAN Prime Hub";
@@ -26,30 +26,55 @@ function notifyHtml(title: string, data: Record<string, unknown>) {
   </div>`;
 }
 
+function whatsappFallbackText(
+  formLabel: string,
+  name: string,
+  email: string,
+  whatsapp: string
+) {
+  return (
+    `⚠️ EMAIL FAILED — New ${formLabel} on asmanprimehub.com\n` +
+    `Name: ${name}\n` +
+    `Email: ${email}\n` +
+    `WhatsApp: ${whatsapp}\n` +
+    `Action: Check server logs for full submission details.`
+  );
+}
+
 async function dispatchEmails(args: {
   formLabel: string;
   submitterName: string;
   submitterEmail: string;
+  submitterWhatsApp: string;
   data: Record<string, unknown>;
 }) {
-  try {
-    await Promise.all([
-      sendEmail({
-        to: NOTIFY_TO,
-        subject: `New ${args.formLabel} — ${args.submitterName}`,
-        html: notifyHtml(args.formLabel, args.data),
-        replyTo: args.submitterEmail,
-      }),
-      sendEmail({
-        to: args.submitterEmail,
-        subject: `We've received your ${args.formLabel} — ${BRAND}`,
-        html: confirmationHtml(args.submitterName, args.formLabel),
-        replyTo: NOTIFY_TO,
-      }),
-    ]);
-  } catch (e) {
-    console.error("dispatchEmails error", e);
+  // Notification to ASMAN — if this fails, fire WhatsApp fallback
+  const notifyResult = await sendEmail({
+    to: NOTIFY_TO,
+    subject: `New ${args.formLabel} — ${args.submitterName}`,
+    html: notifyHtml(args.formLabel, args.data),
+    replyTo: args.submitterEmail,
+  });
+
+  if (!notifyResult.ok) {
+    await sendWhatsAppFallback(
+      whatsappFallbackText(
+        args.formLabel,
+        args.submitterName,
+        args.submitterEmail,
+        args.submitterWhatsApp
+      )
+    );
   }
+
+  // Confirmation to submitter — runs independently so its failure never
+  // blocks the notification above or the server function response
+  sendEmail({
+    to: args.submitterEmail,
+    subject: `We've received your ${args.formLabel} — ${BRAND}`,
+    html: confirmationHtml(args.submitterName, args.formLabel),
+    replyTo: NOTIFY_TO,
+  }).catch((e) => console.error("Confirmation email error", e));
 }
 
 const tradeSchema = z.object({
@@ -101,6 +126,7 @@ export const submitTradeInquiry = createServerFn({ method: "POST" })
       formLabel: "Trade Inquiry",
       submitterName: data.full_name,
       submitterEmail: data.email,
+      submitterWhatsApp: data.whatsapp,
       data,
     });
     return { ok: true };
@@ -113,6 +139,7 @@ export const submitConsultation = createServerFn({ method: "POST" })
       formLabel: "Consultation Request",
       submitterName: data.full_name,
       submitterEmail: data.email,
+      submitterWhatsApp: data.whatsapp,
       data,
     });
     return { ok: true };
@@ -125,6 +152,7 @@ export const submitExportInquiry = createServerFn({ method: "POST" })
       formLabel: "Export Inquiry",
       submitterName: data.full_name,
       submitterEmail: data.email,
+      submitterWhatsApp: data.whatsapp,
       data,
     });
     return { ok: true };
