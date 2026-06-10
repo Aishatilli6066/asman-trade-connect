@@ -40,5 +40,5 @@ externalPort = 3000
 
 [deployment]
 deploymentTarget = "autoscale"
-run = ["bun", "run", "preview"]
+run = ["bunx", "wrangler", "dev", "--port", "5000"]
 build = ["bun", "run", "build"]
