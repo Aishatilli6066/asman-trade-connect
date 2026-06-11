@@ -1,0 +1,71 @@
+I want to migrate this project safely from Replit to GitHub and Vercel while preserving everything that is already working.
+
+Current status:
+- SMTP via Namecheap Private Email is working
+- contact@asmanprimehub.com is working
+- All inquiry forms are sending notifications successfully
+- Confirmation emails are working
+- Environment variables are already configured
+- The build passes successfully
+
+Your tasks:
+
+1. Create a complete backup of the current project.
+
+2. Initialize and connect a GitHub repository.
+
+3. Push the entire codebase to GitHub.
+
+4. Verify that all source files, assets, configurations, and environment variable requirements are documented.
+
+5. Analyze the project and identify every change required for Vercel deployment.
+
+6. Remove any Cloudflare-specific deployment configuration only if necessary.
+
+7. Configure the project properly for Vercel deployment.
+
+8. Create all required files including vercel.json if needed.
+
+9. Ensure TanStack Start SSR works correctly on Vercel.
+
+10. Preserve all existing email functionality.
+
+11. Configure SMTP to continue using:
+   SMTP Host: mail.privateemail.com
+   Port: 465
+   Secure SSL: true
+
+12. Verify that Nodemailer works correctly on Vercel's Node.js runtime.
+
+13. Create a deployment checklist.
+
+14. Generate a complete list of Vercel environment variables I will need to add.
+
+15. Build and test the project for Vercel compatibility.
+
+16. Identify and fix any issues before deployment.
+
+17. Provide step-by-step instructions for:
+    - Connecting GitHub to Vercel
+    - Adding environment variables
+    - Deploying the site
+    - Connecting asmanprimehub.com
+    - Connecting www.asmanprimehub.com
+
+18. Do not remove or break:
+    - Trade Inquiry form
+    - Consultation Request form
+    - Export Inquiry form
+    - Email notifications
+    - Confirmation emails
+
+19. Before making changes, explain what modifications are required and why.
+
+20. After completing the migration preparation, provide a final verification report showing:
+    - GitHub repository status
+    - Build status
+    - SMTP status
+    - Vercel readiness status
+    - Domain connection steps
+
+Proceed carefully and prioritize preserving existing functionality over optimization.

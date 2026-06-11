@@ -16,7 +16,10 @@ dist-ssr
 .nitro
 *.local
 
-# Wrangler / Cloudflare
+# Vercel build output (generated, not source)
+.vercel/
+
+# Wrangler / Cloudflare (kept for reference, wrangler.jsonc removed)
 .wrangler/
 .dev.vars
 
