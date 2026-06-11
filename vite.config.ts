@@ -1,21 +1,18 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { tanstackStart } from "@tanstack/react-start/plugin/vite";
-import tailwindcss from "@tailwindcss/vite";
-import tsconfigPaths from "vite-tsconfig-paths";
+// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
+// or the app will break with duplicate plugins:
+//   - tanstackStart, viteReact, tailwindcss, tsConfigPaths,
+//     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
+//     error logger plugins, and sandbox detection (port/host/strictPort).
+// Cloudflare-specific config removed. This project targets Vercel via Nitro preset.
+import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  plugins: [
-    tanstackStart({
-      react: { babel: {} },
-    }),
-    react(),
-    tailwindcss(),
-    tsconfigPaths(),
-  ],
-  server: {
-    host: "0.0.0.0",
-    port: 5000,
-    allowedHosts: true,
+  nitro: {
+    preset: "vercel",
+  },
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
   },
 });
