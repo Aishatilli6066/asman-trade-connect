@@ -123,7 +123,7 @@ function Hero() {
         </FadeIn>
         <FadeIn delay={120}>
           <h1 className="mt-7 font-display text-[40px] sm:text-6xl md:text-[78px] leading-[1.02] text-white max-w-4xl">
-            Nigeria's Trusted Export <span className="text-[var(--color-gold)] italic font-normal">& Sourcing</span> Partner.
+            Global Trade <span className="text-[var(--color-gold)] italic font-normal">& Sourcing</span> Partner.
           </h1>
         </FadeIn>
         <FadeIn delay={240}>
