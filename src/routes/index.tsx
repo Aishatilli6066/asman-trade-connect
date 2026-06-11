@@ -3,15 +3,15 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check, ShieldCheck, Truck, Plane, Ship, Globe2, Sprout, Boxes, FileCheck2, MessagesSquare, Network } from "lucide-react";
 import heroPort from "@/assets/hero-port.jpg";
 import agriHero from "@/assets/agri-hero.jpg";
-import warehouseAsset from "@/assets/logistics-ship.jpg.asset.json";
-import founderAsset from "@/assets/founder-aisha.jpg.asset.json";
-import warehouseBagsAsset from "@/assets/warehouse-bags.jpg.asset.json";
-import cacBadge from "@/assets/badge-cac.jpg.asset.json";
-import nepcBadge from "@/assets/badge-nepc.jpg.asset.json";
-import shipMaersk from "@/assets/ship-maersk.png.asset.json";
-import shipFedex from "@/assets/ship-fedex.png.asset.json";
-import shipUps from "@/assets/ship-ups.png.asset.json";
-import shipDhl from "@/assets/ship-dhl.png.asset.json";
+import logisticsShip from "@/assets/logistics-ship.jpg";
+import founderAisha from "@/assets/founder-aisha.jpg";
+import warehouseBags from "@/assets/warehouse-bags.jpg";
+import badgeCac from "@/assets/badge-cac.jpg";
+import badgeNepc from "@/assets/badge-nepc.jpg";
+import shipMaerskSvg from "@/assets/ship-maersk.svg";
+import shipFedexSvg from "@/assets/ship-fedex.svg";
+import shipUpsSvg from "@/assets/ship-ups.svg";
+import shipDhlSvg from "@/assets/ship-dhl.svg";
 import globe from "@/assets/globe.jpg";
 import { Eyebrow, GoldButton, SectionHeader, FadeIn } from "@/components/site/primitives";
 import { COMMODITIES, REGIONS, SERVICES, SITE } from "@/lib/site-data";
@@ -53,14 +53,14 @@ function Index() {
 
 function TrustBadges() {
   const regs = [
-    { img: nepcBadge.url, alt: "Nigerian Export Promotion Council (NEPC) logo", label: "Nigerian Export Promotion Council", sub: "Registered Exporter" },
-    { img: cacBadge.url, alt: "Corporate Affairs Commission (CAC) logo", label: "Corporate Affairs Commission", sub: "ASMAN Prime Hub Global Services Ltd." },
+    { img: badgeNepc, alt: "Nigerian Export Promotion Council (NEPC) logo", label: "Nigerian Export Promotion Council", sub: "Registered Exporter" },
+    { img: badgeCac, alt: "Corporate Affairs Commission (CAC) logo", label: "Corporate Affairs Commission", sub: "ASMAN Prime Hub Global Services Ltd." },
   ];
   const lines = [
-    { name: "DHL", img: shipDhl.url },
-    { name: "FedEx", img: shipFedex.url },
-    { name: "UPS", img: shipUps.url },
-    { name: "Maersk", img: shipMaersk.url },
+    { name: "DHL", img: shipDhlSvg },
+    { name: "FedEx", img: shipFedexSvg },
+    { name: "UPS", img: shipUpsSvg },
+    { name: "Maersk", img: shipMaerskSvg },
   ];
   return (
     <section className="bg-white border-y border-[var(--color-line)]">
@@ -207,7 +207,7 @@ function AboutPreview() {
     <section className="bg-white">
       <div className="container-x py-24 md:py-32 grid gap-14 lg:grid-cols-2 items-center">
         <div className="relative">
-          <img src={warehouseAsset.url} alt="Global trade logistics — cargo ship, aircraft and port" className="w-full h-[420px] md:h-[560px] object-cover" loading="lazy" />
+          <img src={logisticsShip} alt="Global trade logistics — cargo ship, aircraft and port" className="w-full h-[420px] md:h-[560px] object-cover" loading="lazy" />
           <div className="absolute -bottom-6 -right-6 hidden md:block bg-[var(--color-burgundy)] text-white px-8 py-6 max-w-xs">
             <div className="font-display text-2xl leading-tight">Premium African gateway to global trade.</div>
           </div>
@@ -312,7 +312,7 @@ function commodityImg(img: string) {
 function AgriHighlight() {
   return (
     <section className="relative bg-[var(--color-burgundy-deep)] text-white overflow-hidden">
-      <img src={warehouseBagsAsset.url} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" loading="lazy" />
+      <img src={warehouseBags} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" loading="lazy" />
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-burgundy-deep)]/80 via-[var(--color-burgundy-deep)]/95 to-[var(--color-burgundy)]" />
       <div className="container-x relative z-10 py-24 md:py-32">
         <SectionHeader
@@ -421,7 +421,7 @@ function Founder() {
         <div className="relative mx-auto lg:mx-0">
           <div className="absolute -inset-3 border border-[var(--color-gold)] hidden md:block" />
           <img
-            src={founderAsset.url}
+            src={founderAisha}
             alt="Aisha Usman, Founder & CEO of ASMAN Prime Hub"
             className="relative w-[280px] h-[340px] md:w-[360px] md:h-[440px] object-cover"
             loading="lazy"

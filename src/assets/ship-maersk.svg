@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" width="260" height="80">
+  <text x="10" y="58" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="44" fill="#00243D" letter-spacing="1">MAERSK</text>
+  <polygon points="240,8 248,30 270,30 253,43 259,65 240,52 221,65 227,43 210,30 232,30" fill="#0073A8" transform="scale(0.55) translate(210,-5)"/>
+</svg>
