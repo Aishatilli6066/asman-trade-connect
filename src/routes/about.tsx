@@ -11,7 +11,7 @@ export const Route = createFileRoute("/about")({
       { title: "About ASMAN Prime Hub — Nigerian Trade & Export Coordination" },
       { name: "description", content: "ASMAN Prime Hub coordinates global sourcing, freight, and Nigerian agricultural export for international businesses. Learn about our approach and capabilities." },
       { property: "og:title", content: "About ASMAN Prime Hub" },
-      { property: "og:description", content: "Nigeria's premium gateway to global trade and export coordination." },
+      { property: "og:description", content: "Your Strategic Partner for Global Trade, Sourcing & Procurement" },
       { property: "og:url", content: "/about" },
     ],
     links: [{ rel: "canonical", href: "/about" }],

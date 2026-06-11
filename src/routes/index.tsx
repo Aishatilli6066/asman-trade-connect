@@ -215,12 +215,13 @@ function AboutPreview() {
         <div>
           <Eyebrow>About ASMAN Prime Hub</Eyebrow>
           <h2 className="mt-5 font-display text-3xl md:text-5xl leading-[1.05]">
-            Nigeria's premium gateway to global trade and export coordination.
+            Your Strategic Partner for Global Trade, Sourcing & Procurement
           </h2>
           <p className="mt-6 text-[var(--color-ink)]/70 text-base md:text-lg leading-relaxed">
-            We coordinate the full trade lifecycle — from supplier verification and procurement to
-            freight management and Nigerian agricultural export. Our clients gain a single,
-            accountable partner across continents.
+            We coordinate the full trade lifecycle—from supplier verification and procurement to
+            freight management, sourcing, and international trade operations. Our clients gain a
+            single accountable partner for sourcing, logistics coordination, export support, and
+            global market access across multiple regions.
           </p>
           <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
             {[
