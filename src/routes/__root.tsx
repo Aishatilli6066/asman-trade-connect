@@ -136,6 +136,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           },
           sameAs: [
             "https://asmanprimehub.com",
+            "https://www.linkedin.com/company/asman-prime-hub/",
+            "https://www.instagram.com/asmanprimehub/",
+            "https://www.facebook.com/share/1AgH4Mnzpx/",
           ],
         }),
       },
