@@ -9,13 +9,34 @@ import { openConsultation } from "@/components/site/consultation-store";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Sourcing, Freight & Export | ASMAN Prime Hub" },
-      { name: "description", content: "Global sourcing, supplier verification, procurement, import/export, air and sea freight, and Nigerian agricultural export — coordinated end-to-end." },
-      { property: "og:title", content: "Services | ASMAN Prime Hub" },
-      { property: "og:description", content: "End-to-end international trade coordination services." },
-      { property: "og:url", content: "/services" },
+      { title: "Services | Sourcing, Freight & Export Coordination — ASMAN Prime Hub" },
+      { name: "description", content: "Global sourcing, supplier verification, procurement, import/export coordination, air and sea freight, and Nigerian agricultural export — all coordinated end-to-end by ASMAN Prime Hub." },
+      { property: "og:title", content: "Services | Sourcing, Freight & Export Coordination — ASMAN Prime Hub" },
+      { property: "og:description", content: "Global sourcing, supplier verification, procurement, import/export coordination, air and sea freight, and Nigerian agricultural export — all coordinated end-to-end." },
+      { property: "og:url", content: "https://asmanprimehub.com/services" },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "ASMAN Prime Hub" },
+      { property: "og:image", content: "https://asmanprimehub.com/logo.png" },
+      { property: "og:locale", content: "en_US" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Services | Sourcing, Freight & Export Coordination — ASMAN Prime Hub" },
+      { name: "twitter:description", content: "Global sourcing, supplier verification, procurement, import/export coordination, air and sea freight, and Nigerian agricultural export — all coordinated end-to-end." },
+      { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
     ],
-    links: [{ rel: "canonical", href: "/services" }],
+    links: [{ rel: "canonical", href: "https://asmanprimehub.com/services" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://asmanprimehub.com/" },
+            { "@type": "ListItem", position: 2, name: "Services", item: "https://asmanprimehub.com/services" },
+          ],
+        }),
+      },
+    ],
   }),
   component: ServicesPage,
 });

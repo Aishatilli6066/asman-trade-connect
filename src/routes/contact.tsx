@@ -7,13 +7,34 @@ import { SITE } from "@/lib/site-data";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact ASMAN Prime Hub — Trade Inquiries & Consultations" },
-      { name: "description", content: "Get in touch with ASMAN Prime Hub for global sourcing, freight coordination, and Nigerian agricultural export inquiries. We respond within 24 hours." },
-      { property: "og:title", content: "Contact ASMAN Prime Hub" },
-      { property: "og:description", content: "Trade inquiries and consultations." },
-      { property: "og:url", content: "/contact" },
+      { title: "Contact ASMAN Prime Hub | Trade Inquiries & Consultations" },
+      { name: "description", content: "Get in touch with ASMAN Prime Hub for global sourcing, procurement, freight coordination, and export inquiries. We respond within 24 hours." },
+      { property: "og:title", content: "Contact ASMAN Prime Hub | Trade Inquiries & Consultations" },
+      { property: "og:description", content: "Get in touch with ASMAN Prime Hub for global sourcing, procurement, freight coordination, and export inquiries. We respond within 24 hours." },
+      { property: "og:url", content: "https://asmanprimehub.com/contact" },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "ASMAN Prime Hub" },
+      { property: "og:image", content: "https://asmanprimehub.com/logo.png" },
+      { property: "og:locale", content: "en_US" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Contact ASMAN Prime Hub | Trade Inquiries & Consultations" },
+      { name: "twitter:description", content: "Get in touch with ASMAN Prime Hub for global sourcing, procurement, freight coordination, and export inquiries. We respond within 24 hours." },
+      { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "https://asmanprimehub.com/contact" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://asmanprimehub.com/" },
+            { "@type": "ListItem", position: 2, name: "Contact", item: "https://asmanprimehub.com/contact" },
+          ],
+        }),
+      },
+    ],
   }),
   component: ContactPage,
 });

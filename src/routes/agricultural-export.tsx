@@ -13,14 +13,34 @@ function commodityImg(img: string) {
 export const Route = createFileRoute("/agricultural-export")({
   head: () => ({
     meta: [
-      { title: "Nigerian Agricultural Export — Commodities & Coordination | ASMAN Prime Hub" },
-      { name: "description", content: "Sesame, hibiscus, ginger, cashew, soybeans, shea butter, pepper and gum arabic — sourced, packaged and shipped from Nigeria to global buyers." },
-      { property: "og:title", content: "Nigerian Agricultural Export | ASMAN Prime Hub" },
-      { property: "og:description", content: "Premium Nigerian agricultural commodities for international markets." },
-      { property: "og:url", content: "/agricultural-export" },
-      { property: "og:image", content: agriHero },
+      { title: "Nigerian Agricultural Export | Commodities & Coordination — ASMAN Prime Hub" },
+      { name: "description", content: "Sesame, hibiscus, ginger, cashew, soybeans, shea butter, pepper and gum arabic — sourced, packaged and shipped from Nigeria to global buyers by ASMAN Prime Hub." },
+      { property: "og:title", content: "Nigerian Agricultural Export | Commodities & Coordination — ASMAN Prime Hub" },
+      { property: "og:description", content: "Sesame, hibiscus, ginger, cashew, soybeans, shea butter, pepper and gum arabic — sourced, packaged and shipped from Nigeria to global buyers." },
+      { property: "og:url", content: "https://asmanprimehub.com/agricultural-export" },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "ASMAN Prime Hub" },
+      { property: "og:image", content: "https://asmanprimehub.com/logo.png" },
+      { property: "og:locale", content: "en_US" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Nigerian Agricultural Export | Commodities & Coordination — ASMAN Prime Hub" },
+      { name: "twitter:description", content: "Sesame, hibiscus, ginger, cashew, soybeans, shea butter, pepper and gum arabic — sourced, packaged and shipped from Nigeria to global buyers." },
+      { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
     ],
-    links: [{ rel: "canonical", href: "/agricultural-export" }],
+    links: [{ rel: "canonical", href: "https://asmanprimehub.com/agricultural-export" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://asmanprimehub.com/" },
+            { "@type": "ListItem", position: 2, name: "Agricultural Export", item: "https://asmanprimehub.com/agricultural-export" },
+          ],
+        }),
+      },
+    ],
   }),
   component: AgriPage,
 });

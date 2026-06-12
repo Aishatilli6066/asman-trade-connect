@@ -20,13 +20,42 @@ import { openConsultation } from "@/components/site/consultation-store";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ASMAN Prime Hub — Global Sourcing & Nigerian Export Coordination" },
-      { name: "description", content: "Global sourcing, freight coordination, and Nigerian agricultural exports — ASMAN Prime Hub connects businesses to verified suppliers and trade infrastructure." },
-      { property: "og:title", content: "ASMAN Prime Hub — Global Sourcing & Export" },
-      { property: "og:description", content: "Premium African trade coordination — sourcing, procurement, freight and agricultural export." },
-      { property: "og:url", content: "/" },
+      { title: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
+      { name: "description", content: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions." },
+      { property: "og:title", content: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
+      { property: "og:description", content: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions." },
+      { property: "og:url", content: "https://asmanprimehub.com/" },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "ASMAN Prime Hub" },
+      { property: "og:image", content: "https://asmanprimehub.com/logo.png" },
+      { property: "og:locale", content: "en_US" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
+      { name: "twitter:description", content: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions." },
+      { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://asmanprimehub.com/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": "https://asmanprimehub.com/#webpage",
+          url: "https://asmanprimehub.com/",
+          name: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions",
+          description: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions.",
+          isPartOf: { "@id": "https://asmanprimehub.com/#website" },
+          about: { "@id": "https://asmanprimehub.com/#organization" },
+          breadcrumb: {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://asmanprimehub.com/" },
+            ],
+          },
+        }),
+      },
+    ],
   }),
   component: Index,
 });

@@ -6,9 +6,13 @@ export const Route = createFileRoute("/privacy-policy")({
     meta: [
       { title: "Privacy Policy — ASMAN Prime Hub" },
       { name: "description", content: "How ASMAN Prime Hub collects, uses and protects your information." },
-      { property: "og:url", content: "/privacy-policy" },
+      { name: "robots", content: "noindex, nofollow" },
+      { property: "og:title", content: "Privacy Policy — ASMAN Prime Hub" },
+      { property: "og:description", content: "How ASMAN Prime Hub collects, uses and protects your information." },
+      { property: "og:url", content: "https://asmanprimehub.com/privacy-policy" },
+      { property: "og:site_name", content: "ASMAN Prime Hub" },
     ],
-    links: [{ rel: "canonical", href: "/privacy-policy" }],
+    links: [{ rel: "canonical", href: "https://asmanprimehub.com/privacy-policy" }],
   }),
   component: Page,
 });

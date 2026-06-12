@@ -6,9 +6,13 @@ export const Route = createFileRoute("/terms")({
     meta: [
       { title: "Terms & Conditions — ASMAN Prime Hub" },
       { name: "description", content: "Terms governing the use of the ASMAN Prime Hub website and services." },
-      { property: "og:url", content: "/terms" },
+      { name: "robots", content: "noindex, nofollow" },
+      { property: "og:title", content: "Terms & Conditions — ASMAN Prime Hub" },
+      { property: "og:description", content: "Terms governing the use of the ASMAN Prime Hub website and services." },
+      { property: "og:url", content: "https://asmanprimehub.com/terms" },
+      { property: "og:site_name", content: "ASMAN Prime Hub" },
     ],
-    links: [{ rel: "canonical", href: "/terms" }],
+    links: [{ rel: "canonical", href: "https://asmanprimehub.com/terms" }],
   }),
   component: Page,
 });

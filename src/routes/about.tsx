@@ -8,13 +8,34 @@ import { openConsultation } from "@/components/site/consultation-store";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About ASMAN Prime Hub — Nigerian Trade & Export Coordination" },
-      { name: "description", content: "ASMAN Prime Hub coordinates global sourcing, freight, and Nigerian agricultural export for international businesses. Learn about our approach and capabilities." },
-      { property: "og:title", content: "About ASMAN Prime Hub" },
-      { property: "og:description", content: "Your Strategic Partner for Global Trade, Sourcing & Procurement" },
-      { property: "og:url", content: "/about" },
+      { title: "About ASMAN Prime Hub | Global Trade & Sourcing Partner" },
+      { name: "description", content: "Learn how ASMAN Prime Hub coordinates global sourcing, procurement, freight and export for international businesses. Your strategic partner for global trade." },
+      { property: "og:title", content: "About ASMAN Prime Hub | Global Trade & Sourcing Partner" },
+      { property: "og:description", content: "Learn how ASMAN Prime Hub coordinates global sourcing, procurement, freight and export for international businesses." },
+      { property: "og:url", content: "https://asmanprimehub.com/about" },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "ASMAN Prime Hub" },
+      { property: "og:image", content: "https://asmanprimehub.com/logo.png" },
+      { property: "og:locale", content: "en_US" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "About ASMAN Prime Hub | Global Trade & Sourcing Partner" },
+      { name: "twitter:description", content: "Learn how ASMAN Prime Hub coordinates global sourcing, procurement, freight and export for international businesses." },
+      { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: "https://asmanprimehub.com/about" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://asmanprimehub.com/" },
+            { "@type": "ListItem", position: 2, name: "About", item: "https://asmanprimehub.com/about" },
+          ],
+        }),
+      },
+    ],
   }),
   component: AboutPage,
 });

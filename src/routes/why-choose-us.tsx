@@ -6,13 +6,34 @@ import { openConsultation } from "@/components/site/consultation-store";
 export const Route = createFileRoute("/why-choose-us")({
   head: () => ({
     meta: [
-      { title: "Why Choose ASMAN Prime Hub — Verified Trade Coordination" },
-      { name: "description", content: "Verified suppliers, transparent communication, export readiness and freight expertise — the operational reasons businesses choose ASMAN Prime Hub." },
-      { property: "og:title", content: "Why Choose ASMAN Prime Hub" },
-      { property: "og:description", content: "Operational depth, verified network and accountable coordination." },
-      { property: "og:url", content: "/why-choose-us" },
+      { title: "Why Choose ASMAN Prime Hub | Verified Trade & Sourcing Coordination" },
+      { name: "description", content: "Verified suppliers, transparent communication, export readiness and freight expertise — the operational reasons global businesses choose ASMAN Prime Hub as their trade partner." },
+      { property: "og:title", content: "Why Choose ASMAN Prime Hub | Verified Trade & Sourcing Coordination" },
+      { property: "og:description", content: "Verified suppliers, transparent communication, export readiness and freight expertise — the operational reasons global businesses choose ASMAN Prime Hub." },
+      { property: "og:url", content: "https://asmanprimehub.com/why-choose-us" },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "ASMAN Prime Hub" },
+      { property: "og:image", content: "https://asmanprimehub.com/logo.png" },
+      { property: "og:locale", content: "en_US" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Why Choose ASMAN Prime Hub | Verified Trade & Sourcing Coordination" },
+      { name: "twitter:description", content: "Verified suppliers, transparent communication, export readiness and freight expertise — the operational reasons global businesses choose ASMAN Prime Hub." },
+      { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
     ],
-    links: [{ rel: "canonical", href: "/why-choose-us" }],
+    links: [{ rel: "canonical", href: "https://asmanprimehub.com/why-choose-us" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://asmanprimehub.com/" },
+            { "@type": "ListItem", position: 2, name: "Why Choose Us", item: "https://asmanprimehub.com/why-choose-us" },
+          ],
+        }),
+      },
+    ],
   }),
   component: WhyPage,
 });
