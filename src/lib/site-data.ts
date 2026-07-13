@@ -90,27 +90,30 @@ export const SHIPPING_METHODS_FULL = [
 ];
 
 export const TRADE_INTERESTS = [
-  "I want to source products globally",
-  "I want to export Nigerian commodities",
-  "I need freight coordination",
-  "I need supplier verification",
-  "I need procurement support",
-  "Other",
+  "Global Product Sourcing",
+  "Agricultural & Commodity Export (Nigeria)",
+  "Freight & Logistics Coordination",
+  "Supplier Verification & Due Diligence",
+  "Procurement & Supply Chain Support",
+  "Import / Export Consultation",
+  "Other / Multiple Services",
 ];
 
 export const BUDGET_RANGES = [
   "Under $5,000",
   "$5,000 – $20,000",
-  "$20,000 – $50,000",
-  "$50,000+",
-  "Prefer not to say",
+  "$20,001 – $50,000",
+  "$50,001 – $100,000",
+  "Above $100,000",
+  "To Be Determined",
 ];
 
 export const TIMELINES = [
-  "Immediately",
-  "Within 1 month",
-  "Within 3 months",
-  "Just exploring",
+  "Immediately (Urgent)",
+  "Within 1 Month",
+  "Within 3 Months",
+  "Within 6 Months",
+  "Flexible / No Fixed Timeline",
 ];
 
 export const COMMODITY_OPTIONS = [

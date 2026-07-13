@@ -9,7 +9,7 @@ import { BUDGET_RANGES, TIMELINES, TRADE_INTERESTS } from "@/lib/site-data";
 
 const schema = z.object({
   full_name: z.string().min(1, "Required"),
-  email: z.string().email("Invalid email"),
+  email: z.string().email("Invalid email address"),
   whatsapp: z.string().min(5, "Required"),
   company: z.string().optional(),
   country: z.string().min(1, "Required"),
@@ -33,40 +33,40 @@ export function ConsultationForm({ dark = true }: { dark?: boolean }) {
     <form
       onSubmit={handleSubmit(async (values) => {
         try { await fn({ data: values }); setDone(true); }
-        catch { alert("Something went wrong. Please try again or email us directly."); }
+        catch { alert("Something went wrong. Please try again or contact us directly."); }
       })}
       className="grid gap-5"
     >
       <div className="grid md:grid-cols-2 gap-5">
         <Field label="Full Name" required dark={dark} error={errors.full_name?.message}>
-          <TextInput dark={dark} invalid={!!errors.full_name} {...register("full_name")} />
+          <TextInput dark={dark} placeholder="e.g. John Adeyemi" invalid={!!errors.full_name} {...register("full_name")} />
         </Field>
         <Field label="Email Address" required dark={dark} error={errors.email?.message}>
-          <TextInput dark={dark} type="email" inputMode="email" invalid={!!errors.email} {...register("email")} />
+          <TextInput dark={dark} type="email" inputMode="email" placeholder="e.g. john@company.com" invalid={!!errors.email} {...register("email")} />
         </Field>
-        <Field label="WhatsApp Number" required dark={dark} error={errors.whatsapp?.message}>
-          <TextInput dark={dark} type="tel" inputMode="tel" placeholder="+234 ..." invalid={!!errors.whatsapp} {...register("whatsapp")} />
+        <Field label="WhatsApp Number (with Country Code)" required dark={dark} error={errors.whatsapp?.message}>
+          <TextInput dark={dark} type="tel" inputMode="tel" placeholder="e.g. +1 555 000 0000 or +44 20 0000 0000" invalid={!!errors.whatsapp} {...register("whatsapp")} />
         </Field>
-        <Field label="Company / Organization" dark={dark}>
-          <TextInput dark={dark} {...register("company")} />
+        <Field label="Company / Organisation" dark={dark}>
+          <TextInput dark={dark} placeholder="e.g. Global Trade Ltd" {...register("company")} />
         </Field>
-        <Field label="Country" required dark={dark} error={errors.country?.message}>
-          <TextInput dark={dark} invalid={!!errors.country} {...register("country")} />
+        <Field label="Country of Residence / Operation" required dark={dark} error={errors.country?.message}>
+          <TextInput dark={dark} placeholder="e.g. United Kingdom" invalid={!!errors.country} {...register("country")} />
         </Field>
-        <Field label="Trade Interest" required dark={dark} error={errors.trade_interest?.message}>
+        <Field label="Primary Trade Interest" required dark={dark} error={errors.trade_interest?.message}>
           <Select dark={dark} options={TRADE_INTERESTS} invalid={!!errors.trade_interest} {...register("trade_interest")} />
         </Field>
-        <Field label="Budget Range" dark={dark}>
+        <Field label="Estimated Budget Range (USD)" dark={dark}>
           <Select dark={dark} options={BUDGET_RANGES} {...register("budget_range")} />
         </Field>
-        <Field label="Preferred Timeline" dark={dark}>
+        <Field label="Preferred Engagement Timeline" dark={dark}>
           <Select dark={dark} options={TIMELINES} {...register("timeline")} />
         </Field>
       </div>
-      <Field label="Additional Notes" dark={dark}>
-        <TextArea dark={dark} {...register("notes")} />
+      <Field label="Additional Notes or Requirements" dark={dark}>
+        <TextArea dark={dark} placeholder="Share any relevant details about your trade goals, products of interest, or specific requirements…" {...register("notes")} />
       </Field>
-      <SubmitButton loading={isSubmitting}>Request My Consultation</SubmitButton>
+      <SubmitButton loading={isSubmitting}>Submit Consultation Request</SubmitButton>
     </form>
   );
 }
