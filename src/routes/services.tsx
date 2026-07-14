@@ -119,7 +119,7 @@ function ServicesPage() {
             Talk to us about your <span className="italic text-[var(--color-gold)] font-normal">trade requirement.</span>
           </h2>
           <div className="flex flex-wrap gap-3">
-            <button onClick={openConsultation}><GoldButton>Book Consultation <ArrowRight size={14} /></GoldButton></button>
+            <GoldButton onClick={openConsultation}>Book Consultation <ArrowRight size={14} /></GoldButton>
             <Link to="/contact"><GoldButton variant="outline-light">Contact Us</GoldButton></Link>
           </div>
         </div>

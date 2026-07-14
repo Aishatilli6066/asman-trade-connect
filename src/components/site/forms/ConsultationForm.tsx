@@ -39,19 +39,19 @@ export function ConsultationForm({ dark = true }: { dark?: boolean }) {
     >
       <div className="grid md:grid-cols-2 gap-5">
         <Field label="Full Name" required dark={dark} error={errors.full_name?.message}>
-          <TextInput dark={dark} placeholder="e.g. John Adeyemi" invalid={!!errors.full_name} {...register("full_name")} />
+          <TextInput dark={dark} invalid={!!errors.full_name} {...register("full_name")} />
         </Field>
         <Field label="Email Address" required dark={dark} error={errors.email?.message}>
-          <TextInput dark={dark} type="email" inputMode="email" placeholder="e.g. john@company.com" invalid={!!errors.email} {...register("email")} />
+          <TextInput dark={dark} type="email" inputMode="email" invalid={!!errors.email} {...register("email")} />
         </Field>
         <Field label="WhatsApp Number (with Country Code)" required dark={dark} error={errors.whatsapp?.message}>
-          <TextInput dark={dark} type="tel" inputMode="tel" placeholder="e.g. +1 555 000 0000 or +44 20 0000 0000" invalid={!!errors.whatsapp} {...register("whatsapp")} />
+          <TextInput dark={dark} type="tel" inputMode="tel" placeholder="+1 555 000 0000" invalid={!!errors.whatsapp} {...register("whatsapp")} />
         </Field>
         <Field label="Company / Organisation" dark={dark}>
-          <TextInput dark={dark} placeholder="e.g. Global Trade Ltd" {...register("company")} />
+          <TextInput dark={dark} {...register("company")} />
         </Field>
         <Field label="Country of Business" required dark={dark} error={errors.country?.message}>
-          <TextInput dark={dark} placeholder="e.g. United Kingdom" invalid={!!errors.country} {...register("country")} />
+          <TextInput dark={dark} invalid={!!errors.country} {...register("country")} />
         </Field>
         <Field label="Service Required" required dark={dark} error={errors.trade_interest?.message}>
           <Select dark={dark} options={TRADE_INTERESTS} invalid={!!errors.trade_interest} {...register("trade_interest")} />

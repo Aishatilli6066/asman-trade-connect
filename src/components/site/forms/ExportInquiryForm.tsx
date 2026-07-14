@@ -58,7 +58,7 @@ export function ExportInquiryForm() {
           <Select dark options={COMMODITY_OPTIONS} invalid={!!errors.commodity} {...register("commodity")} />
         </Field>
         <Field label="Estimated Quantity / Volume" required dark error={errors.quantity?.message}>
-          <TextInput dark placeholder="e.g. 10 MT, 1 x 20ft container" invalid={!!errors.quantity} {...register("quantity")} />
+          <TextInput dark placeholder="10 MT, 1 x 20ft container" invalid={!!errors.quantity} {...register("quantity")} />
         </Field>
         <Field label="Shipping Destination" required dark error={errors.shipping_destination?.message}>
           <TextInput dark invalid={!!errors.shipping_destination} {...register("shipping_destination")} />

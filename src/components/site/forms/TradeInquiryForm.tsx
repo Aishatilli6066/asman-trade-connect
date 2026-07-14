@@ -56,7 +56,7 @@ export function TradeInquiryForm({ dark = false }: { dark?: boolean }) {
           <TextInput dark={dark} type="email" inputMode="email" invalid={!!errors.email} {...register("email")} />
         </Field>
         <Field label="WhatsApp Number" required dark={dark} error={errors.whatsapp?.message}>
-          <TextInput dark={dark} type="tel" inputMode="tel" placeholder="+234 ..." invalid={!!errors.whatsapp} {...register("whatsapp")} />
+          <TextInput dark={dark} type="tel" inputMode="tel" placeholder="+1 555 000 0000" invalid={!!errors.whatsapp} {...register("whatsapp")} />
         </Field>
         <Field label="Country" required dark={dark} error={errors.country?.message}>
           <TextInput dark={dark} invalid={!!errors.country} {...register("country")} />
@@ -71,7 +71,7 @@ export function TradeInquiryForm({ dark = false }: { dark?: boolean }) {
           <TextInput dark={dark} invalid={!!errors.product_required} {...register("product_required")} />
         </Field>
         <Field label="Required Quantity" required dark={dark} error={errors.quantity?.message}>
-          <TextInput dark={dark} invalid={!!errors.quantity} placeholder="e.g. 20 MT, 500 cartons" {...register("quantity")} />
+          <TextInput dark={dark} invalid={!!errors.quantity} placeholder="20 MT, 500 cartons" {...register("quantity")} />
         </Field>
         <Field label="Budget Range (USD)" required dark={dark} error={errors.budget_range?.message}>
           <Select dark={dark} options={BUDGET_RANGES_USD} invalid={!!errors.budget_range} {...register("budget_range")} />

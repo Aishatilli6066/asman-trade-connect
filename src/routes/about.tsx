@@ -123,7 +123,7 @@ function Closing() {
           Let's build the <span className="italic text-[var(--color-gold)] font-normal">trade route</span> your business needs.
         </h2>
         <div className="flex flex-wrap gap-3">
-          <button onClick={openConsultation}><GoldButton>Book Consultation <ArrowRight size={14} /></GoldButton></button>
+          <GoldButton onClick={openConsultation}>Book Consultation <ArrowRight size={14} /></GoldButton>
           <Link to="/services"><GoldButton variant="outline-light">View Services</GoldButton></Link>
         </div>
       </div>

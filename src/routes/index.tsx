@@ -366,9 +366,7 @@ function AgriHighlight() {
         </div>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <Link to="/agricultural-export"><GoldButton>Explore Commodities <ArrowRight size={14} /></GoldButton></Link>
-          <button onClick={openConsultation}>
-            <GoldButton variant="outline-gold">Discuss Export Opportunities</GoldButton>
-          </button>
+          <GoldButton variant="outline-gold" onClick={openConsultation}>Discuss Export Opportunities</GoldButton>
         </div>
       </div>
     </section>
@@ -436,7 +434,7 @@ function ConsultationCTA() {
           Ready to move your trade <span className="italic text-[var(--color-burgundy)] font-normal">forward?</span>
         </h2>
         <div className="flex flex-wrap gap-3">
-          <button onClick={openConsultation}><GoldButton variant="burgundy">Request Consultation</GoldButton></button>
+          <GoldButton variant="burgundy" onClick={openConsultation}>Request Consultation</GoldButton>
           <Link to="/agricultural-export"><GoldButton>Discuss Export</GoldButton></Link>
         </div>
       </div>
