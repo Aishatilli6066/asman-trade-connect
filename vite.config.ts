@@ -11,6 +11,9 @@ export default defineConfig({
     preset: "vercel",
   },
   vite: {
+    optimizeDeps: {
+      exclude: ["@tanstack/start-server-core"],
+    },
     server: {
       allowedHosts: true,
       watch: {

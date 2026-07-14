@@ -1,7 +1,6 @@
 "use server";
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { getCookie, setCookie, deleteCookie } from "@tanstack/start-server-core";
 import { createHmac } from "crypto";
 import { dbQuery } from "./db.server";
 
@@ -22,7 +21,56 @@ export interface Post {
   updated_at: string;
 }
 
+// ── Cookie utilities ─────────────────────────────────────────────
+// We access the H3 event directly via TanStack Start's global AsyncLocalStorage
+// symbol — same mechanism as @tanstack/start-server-core internally, but without
+// importing that package (it has virtual-module deps that break Vite dev).
+
+type H3EventLike = {
+  req: { headers: Headers };
+  res: { headers: Headers };
+};
+
+function getH3Event(): H3EventLike {
+  const sym = Symbol.for("tanstack-start:event-storage");
+  const storage = (globalThis as Record<symbol, { getStore(): { h3Event: H3EventLike } | undefined } | undefined>)[sym];
+  if (!storage) throw new Error("Event storage not initialised — call within a server function.");
+  const store = storage.getStore();
+  if (!store) throw new Error("No active request event.");
+  return store.h3Event;
+}
+
+function rawGetCookie(name: string): string | undefined {
+  const header = getH3Event().req.headers.get("cookie") ?? "";
+  for (const part of header.split(";")) {
+    const idx = part.indexOf("=");
+    if (idx < 0) continue;
+    const k = part.slice(0, idx).trim();
+    const v = part.slice(idx + 1).trim();
+    if (k === name) {
+      try { return decodeURIComponent(v); } catch { return v; }
+    }
+  }
+  return undefined;
+}
+
+function rawSetCookie(
+  name: string,
+  value: string,
+  opts: { maxAge?: number; httpOnly?: boolean; secure?: boolean; path?: string; sameSite?: string } = {}
+) {
+  let c = `${name}=${encodeURIComponent(value)}`;
+  if (opts.path !== undefined) c += `; Path=${opts.path}`;
+  if (opts.maxAge !== undefined) c += `; Max-Age=${opts.maxAge}`;
+  if (opts.httpOnly) c += "; HttpOnly";
+  if (opts.secure) c += "; Secure";
+  if (opts.sameSite) c += `; SameSite=${opts.sameSite}`;
+  getH3Event().res.headers.append("set-cookie", c);
+}
+
 // ── Auth helpers ────────────────────────────────────────────────
+
+const SESSION_COOKIE = "asman_admin_session";
 
 function makeToken(): string {
   const secret = process.env.SESSION_SECRET ?? "fallback-secret";
@@ -31,7 +79,7 @@ function makeToken(): string {
 
 export function isAdmin(): boolean {
   try {
-    const cookie = getCookie("asman_admin_session");
+    const cookie = rawGetCookie(SESSION_COOKIE);
     return !!cookie && cookie === makeToken();
   } catch {
     return false;
@@ -69,18 +117,18 @@ export const adminLogin = createServerFn({ method: "POST" })
     const pwd = process.env.ADMIN_PASSWORD;
     if (!pwd) throw new Error("ADMIN_PASSWORD is not configured.");
     if (data.password !== pwd) throw new Error("Incorrect password.");
-    setCookie("asman_admin_session", makeToken(), {
+    rawSetCookie(SESSION_COOKIE, makeToken(), {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       maxAge: 60 * 60 * 24 * 7,
       path: "/",
-      sameSite: "lax",
+      sameSite: "Lax",
     });
     return { ok: true };
   });
 
 export const adminLogout = createServerFn({ method: "POST" }).handler(async () => {
-  setCookie("asman_admin_session", "", { maxAge: 0, path: "/" });
+  rawSetCookie(SESSION_COOKIE, "", { maxAge: 0, path: "/" });
   return { ok: true };
 });
 
