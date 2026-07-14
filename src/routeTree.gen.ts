@@ -17,6 +17,13 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AgriculturalExportRouteImport } from './routes/agricultural-export'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InsightsIndexRouteImport } from './routes/insights/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as InsightsSlugRouteImport } from './routes/insights/$slug'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminInsightsIndexRouteImport } from './routes/admin/insights/index'
+import { Route as AdminInsightsNewRouteImport } from './routes/admin/insights/new'
+import { Route as AdminInsightsIdEditRouteImport } from './routes/admin/insights/$id/edit'
 
 const WhyChooseUsRoute = WhyChooseUsRouteImport.update({
   id: '/why-choose-us',
@@ -58,6 +65,41 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsIndexRoute = InsightsIndexRouteImport.update({
+  id: '/insights/',
+  path: '/insights/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsSlugRoute = InsightsSlugRouteImport.update({
+  id: '/insights/$slug',
+  path: '/insights/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminInsightsIndexRoute = AdminInsightsIndexRouteImport.update({
+  id: '/admin/insights/',
+  path: '/admin/insights/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminInsightsNewRoute = AdminInsightsNewRouteImport.update({
+  id: '/admin/insights/new',
+  path: '/admin/insights/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminInsightsIdEditRoute = AdminInsightsIdEditRouteImport.update({
+  id: '/admin/insights/$id/edit',
+  path: '/admin/insights/$id/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +110,13 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/insights/$slug': typeof InsightsSlugRoute
+  '/admin/': typeof AdminIndexRoute
+  '/insights/': typeof InsightsIndexRoute
+  '/admin/insights/new': typeof AdminInsightsNewRoute
+  '/admin/insights/': typeof AdminInsightsIndexRoute
+  '/admin/insights/$id/edit': typeof AdminInsightsIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +127,13 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/insights/$slug': typeof InsightsSlugRoute
+  '/admin': typeof AdminIndexRoute
+  '/insights': typeof InsightsIndexRoute
+  '/admin/insights/new': typeof AdminInsightsNewRoute
+  '/admin/insights': typeof AdminInsightsIndexRoute
+  '/admin/insights/$id/edit': typeof AdminInsightsIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +145,13 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/insights/$slug': typeof InsightsSlugRoute
+  '/admin/': typeof AdminIndexRoute
+  '/insights/': typeof InsightsIndexRoute
+  '/admin/insights/new': typeof AdminInsightsNewRoute
+  '/admin/insights/': typeof AdminInsightsIndexRoute
+  '/admin/insights/$id/edit': typeof AdminInsightsIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +164,13 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms'
     | '/why-choose-us'
+    | '/admin/login'
+    | '/insights/$slug'
+    | '/admin/'
+    | '/insights/'
+    | '/admin/insights/new'
+    | '/admin/insights/'
+    | '/admin/insights/$id/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +181,13 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms'
     | '/why-choose-us'
+    | '/admin/login'
+    | '/insights/$slug'
+    | '/admin'
+    | '/insights'
+    | '/admin/insights/new'
+    | '/admin/insights'
+    | '/admin/insights/$id/edit'
   id:
     | '__root__'
     | '/'
@@ -121,6 +198,13 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms'
     | '/why-choose-us'
+    | '/admin/login'
+    | '/insights/$slug'
+    | '/admin/'
+    | '/insights/'
+    | '/admin/insights/new'
+    | '/admin/insights/'
+    | '/admin/insights/$id/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +216,13 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   WhyChooseUsRoute: typeof WhyChooseUsRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  InsightsSlugRoute: typeof InsightsSlugRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  InsightsIndexRoute: typeof InsightsIndexRoute
+  AdminInsightsNewRoute: typeof AdminInsightsNewRoute
+  AdminInsightsIndexRoute: typeof AdminInsightsIndexRoute
+  AdminInsightsIdEditRoute: typeof AdminInsightsIdEditRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +283,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights/': {
+      id: '/insights/'
+      path: '/insights'
+      fullPath: '/insights/'
+      preLoaderRoute: typeof InsightsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/$slug': {
+      id: '/insights/$slug'
+      path: '/insights/$slug'
+      fullPath: '/insights/$slug'
+      preLoaderRoute: typeof InsightsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/insights/': {
+      id: '/admin/insights/'
+      path: '/admin/insights'
+      fullPath: '/admin/insights/'
+      preLoaderRoute: typeof AdminInsightsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/insights/new': {
+      id: '/admin/insights/new'
+      path: '/admin/insights/new'
+      fullPath: '/admin/insights/new'
+      preLoaderRoute: typeof AdminInsightsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/insights/$id/edit': {
+      id: '/admin/insights/$id/edit'
+      path: '/admin/insights/$id/edit'
+      fullPath: '/admin/insights/$id/edit'
+      preLoaderRoute: typeof AdminInsightsIdEditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,6 +344,13 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   WhyChooseUsRoute: WhyChooseUsRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  InsightsSlugRoute: InsightsSlugRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  InsightsIndexRoute: InsightsIndexRoute,
+  AdminInsightsNewRoute: AdminInsightsNewRoute,
+  AdminInsightsIndexRoute: AdminInsightsIndexRoute,
+  AdminInsightsIdEditRoute: AdminInsightsIdEditRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
