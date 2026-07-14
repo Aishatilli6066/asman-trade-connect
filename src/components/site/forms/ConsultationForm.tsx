@@ -50,20 +50,20 @@ export function ConsultationForm({ dark = true }: { dark?: boolean }) {
         <Field label="Company / Organisation" dark={dark}>
           <TextInput dark={dark} placeholder="e.g. Global Trade Ltd" {...register("company")} />
         </Field>
-        <Field label="Country of Residence / Operation" required dark={dark} error={errors.country?.message}>
+        <Field label="Country of Business" required dark={dark} error={errors.country?.message}>
           <TextInput dark={dark} placeholder="e.g. United Kingdom" invalid={!!errors.country} {...register("country")} />
         </Field>
-        <Field label="Primary Trade Interest" required dark={dark} error={errors.trade_interest?.message}>
+        <Field label="Service Required" required dark={dark} error={errors.trade_interest?.message}>
           <Select dark={dark} options={TRADE_INTERESTS} invalid={!!errors.trade_interest} {...register("trade_interest")} />
         </Field>
-        <Field label="Estimated Budget Range (USD)" dark={dark}>
+        <Field label="Estimated Budget (USD)" dark={dark}>
           <Select dark={dark} options={BUDGET_RANGES} {...register("budget_range")} />
         </Field>
         <Field label="Preferred Engagement Timeline" dark={dark}>
           <Select dark={dark} options={TIMELINES} {...register("timeline")} />
         </Field>
       </div>
-      <Field label="Additional Notes or Requirements" dark={dark}>
+      <Field label="Tell Us About Your Business Needs" dark={dark}>
         <TextArea dark={dark} placeholder="Share any relevant details about your trade goals, products of interest, or specific requirements…" {...register("notes")} />
       </Field>
       <SubmitButton loading={isSubmitting}>Submit Consultation Request</SubmitButton>

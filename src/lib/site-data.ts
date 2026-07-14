@@ -90,12 +90,12 @@ export const SHIPPING_METHODS_FULL = [
 ];
 
 export const TRADE_INTERESTS = [
-  "Global Product Sourcing",
-  "Agricultural & Commodity Export (Nigeria)",
+  "Global Sourcing & Procurement",
+  "Nigerian Agricultural Export",
   "Freight & Logistics Coordination",
   "Supplier Verification & Due Diligence",
-  "Procurement & Supply Chain Support",
-  "Import / Export Consultation",
+  "Procurement Support",
+  "Import / Export Documentation",
   "Other / Multiple Services",
 ];
 
@@ -105,7 +105,7 @@ export const BUDGET_RANGES = [
   "$20,001 – $50,000",
   "$50,001 – $100,000",
   "Above $100,000",
-  "To Be Determined",
+  "To Be Discussed",
 ];
 
 export const TIMELINES = [
