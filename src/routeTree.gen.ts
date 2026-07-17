@@ -13,10 +13,18 @@ import { Route as WhyChooseUsRouteImport } from './routes/why-choose-us'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AgriculturalExportRouteImport } from './routes/agricultural-export'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
+import { Route as AuthenticatedAdminInsightsRouteImport } from './routes/_authenticated/admin.insights'
+import { Route as AuthenticatedAdminInsightsNewRouteImport } from './routes/_authenticated/admin.insights.new'
+import { Route as ApiPublicInsightsMediaSplatRouteImport } from './routes/api/public/insights/media.$'
+import { Route as AuthenticatedAdminInsightsIdEditRouteImport } from './routes/_authenticated/admin.insights.$id.edit'
 
 const WhyChooseUsRoute = WhyChooseUsRouteImport.update({
   id: '/why-choose-us',
@@ -38,9 +46,19 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AgriculturalExportRoute = AgriculturalExportRouteImport.update({
@@ -53,42 +71,97 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsSlugRoute = InsightsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => InsightsRoute,
+} as any)
+const AuthenticatedAdminInsightsRoute =
+  AuthenticatedAdminInsightsRouteImport.update({
+    id: '/admin/insights',
+    path: '/admin/insights',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminInsightsNewRoute =
+  AuthenticatedAdminInsightsNewRouteImport.update({
+    id: '/new',
+    path: '/new',
+    getParentRoute: () => AuthenticatedAdminInsightsRoute,
+  } as any)
+const ApiPublicInsightsMediaSplatRoute =
+  ApiPublicInsightsMediaSplatRouteImport.update({
+    id: '/api/public/insights/media/$',
+    path: '/api/public/insights/media/$',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AuthenticatedAdminInsightsIdEditRoute =
+  AuthenticatedAdminInsightsIdEditRouteImport.update({
+    id: '/$id/edit',
+    path: '/$id/edit',
+    getParentRoute: () => AuthenticatedAdminInsightsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/agricultural-export': typeof AgriculturalExportRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
+  '/insights/$slug': typeof InsightsSlugRoute
+  '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
+  '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
+  '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
+  '/api/public/insights/media/$': typeof ApiPublicInsightsMediaSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/agricultural-export': typeof AgriculturalExportRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
+  '/insights/$slug': typeof InsightsSlugRoute
+  '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
+  '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
+  '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
+  '/api/public/insights/media/$': typeof ApiPublicInsightsMediaSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/agricultural-export': typeof AgriculturalExportRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
+  '/insights/$slug': typeof InsightsSlugRoute
+  '/_authenticated/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
+  '/_authenticated/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
+  '/_authenticated/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
+  '/api/public/insights/media/$': typeof ApiPublicInsightsMediaSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -96,42 +169,68 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/agricultural-export'
+    | '/auth'
     | '/contact'
+    | '/insights'
     | '/privacy-policy'
     | '/services'
     | '/terms'
     | '/why-choose-us'
+    | '/insights/$slug'
+    | '/admin/insights'
+    | '/admin/insights/new'
+    | '/admin/insights/$id/edit'
+    | '/api/public/insights/media/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/agricultural-export'
+    | '/auth'
     | '/contact'
+    | '/insights'
     | '/privacy-policy'
     | '/services'
     | '/terms'
     | '/why-choose-us'
+    | '/insights/$slug'
+    | '/admin/insights'
+    | '/admin/insights/new'
+    | '/admin/insights/$id/edit'
+    | '/api/public/insights/media/$'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
     | '/agricultural-export'
+    | '/auth'
     | '/contact'
+    | '/insights'
     | '/privacy-policy'
     | '/services'
     | '/terms'
     | '/why-choose-us'
+    | '/insights/$slug'
+    | '/_authenticated/admin/insights'
+    | '/_authenticated/admin/insights/new'
+    | '/_authenticated/admin/insights/$id/edit'
+    | '/api/public/insights/media/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   AgriculturalExportRoute: typeof AgriculturalExportRoute
+  AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
+  InsightsRoute: typeof InsightsRouteWithChildren
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   WhyChooseUsRoute: typeof WhyChooseUsRoute
+  ApiPublicInsightsMediaSplatRoute: typeof ApiPublicInsightsMediaSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -164,11 +263,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/agricultural-export': {
@@ -185,6 +298,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -192,18 +312,97 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights/$slug': {
+      id: '/insights/$slug'
+      path: '/$slug'
+      fullPath: '/insights/$slug'
+      preLoaderRoute: typeof InsightsSlugRouteImport
+      parentRoute: typeof InsightsRoute
+    }
+    '/_authenticated/admin/insights': {
+      id: '/_authenticated/admin/insights'
+      path: '/admin/insights'
+      fullPath: '/admin/insights'
+      preLoaderRoute: typeof AuthenticatedAdminInsightsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/insights/new': {
+      id: '/_authenticated/admin/insights/new'
+      path: '/new'
+      fullPath: '/admin/insights/new'
+      preLoaderRoute: typeof AuthenticatedAdminInsightsNewRouteImport
+      parentRoute: typeof AuthenticatedAdminInsightsRoute
+    }
+    '/api/public/insights/media/$': {
+      id: '/api/public/insights/media/$'
+      path: '/api/public/insights/media/$'
+      fullPath: '/api/public/insights/media/$'
+      preLoaderRoute: typeof ApiPublicInsightsMediaSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin/insights/$id/edit': {
+      id: '/_authenticated/admin/insights/$id/edit'
+      path: '/$id/edit'
+      fullPath: '/admin/insights/$id/edit'
+      preLoaderRoute: typeof AuthenticatedAdminInsightsIdEditRouteImport
+      parentRoute: typeof AuthenticatedAdminInsightsRoute
+    }
   }
 }
 
+interface AuthenticatedAdminInsightsRouteChildren {
+  AuthenticatedAdminInsightsNewRoute: typeof AuthenticatedAdminInsightsNewRoute
+  AuthenticatedAdminInsightsIdEditRoute: typeof AuthenticatedAdminInsightsIdEditRoute
+}
+
+const AuthenticatedAdminInsightsRouteChildren: AuthenticatedAdminInsightsRouteChildren =
+  {
+    AuthenticatedAdminInsightsNewRoute: AuthenticatedAdminInsightsNewRoute,
+    AuthenticatedAdminInsightsIdEditRoute:
+      AuthenticatedAdminInsightsIdEditRoute,
+  }
+
+const AuthenticatedAdminInsightsRouteWithChildren =
+  AuthenticatedAdminInsightsRoute._addFileChildren(
+    AuthenticatedAdminInsightsRouteChildren,
+  )
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminInsightsRoute: typeof AuthenticatedAdminInsightsRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminInsightsRoute: AuthenticatedAdminInsightsRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
+interface InsightsRouteChildren {
+  InsightsSlugRoute: typeof InsightsSlugRoute
+}
+
+const InsightsRouteChildren: InsightsRouteChildren = {
+  InsightsSlugRoute: InsightsSlugRoute,
+}
+
+const InsightsRouteWithChildren = InsightsRoute._addFileChildren(
+  InsightsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   AgriculturalExportRoute: AgriculturalExportRoute,
+  AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
+  InsightsRoute: InsightsRouteWithChildren,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   WhyChooseUsRoute: WhyChooseUsRoute,
+  ApiPublicInsightsMediaSplatRoute: ApiPublicInsightsMediaSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
