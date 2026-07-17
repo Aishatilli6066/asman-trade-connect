@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { sendEmail, renderFieldsTable, escapeHtml } from "./email.server";
+import { sendGmail, renderFieldsTable, escapeHtml } from "./gmail.server";
 
 const NOTIFY_TO = "contact@asmanprimehub.com";
 const BRAND = "ASMAN Prime Hub";
