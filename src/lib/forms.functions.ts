@@ -34,13 +34,13 @@ async function dispatchEmails(args: {
 }) {
   try {
     await Promise.all([
-      sendEmail({
+      sendGmail({
         to: NOTIFY_TO,
         subject: `New ${args.formLabel} — ${args.submitterName}`,
         html: notifyHtml(args.formLabel, args.data),
         replyTo: args.submitterEmail,
       }),
-      sendEmail({
+      sendGmail({
         to: args.submitterEmail,
         subject: `We've received your ${args.formLabel} — ${BRAND}`,
         html: confirmationHtml(args.submitterName, args.formLabel),
