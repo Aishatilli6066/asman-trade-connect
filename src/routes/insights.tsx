@@ -50,7 +50,7 @@ function InsightsList() {
             <p className="text-neutral-600">No posts yet. Check back soon.</p>
           ) : (
             <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => (
+              {posts.map((post: any) => (
                 <article key={post.id} className="bg-white shadow-sm flex flex-col overflow-hidden">
                   <div className="aspect-[16/10] bg-neutral-100 overflow-hidden">
                     {imgUrl(post.featured_image_path) ? (
