@@ -69,7 +69,7 @@ export const claimAdmin = createServerFn({ method: "POST" })
 export const adminListPosts = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    await assertAdmin(context);
+    await assertAdmin(context.supabase, context.userId);
     const { data, error } = await context.supabase
       .from("insights_posts")
       .select("id, slug, title, published, published_at, updated_at, featured_image_path")
@@ -82,7 +82,7 @@ export const adminGetPost = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
-    await assertAdmin(context);
+    await assertAdmin(context.supabase, context.userId);
     const { data: post, error } = await context.supabase
       .from("insights_posts")
       .select("*")
@@ -110,7 +110,7 @@ export const adminCreatePost = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => PostInput.parse(d))
   .handler(async ({ data, context }) => {
-    await assertAdmin(context);
+    await assertAdmin(context.supabase, context.userId);
     const row = {
       ...data,
       author_id: context.userId,
@@ -131,7 +131,7 @@ export const adminUpdatePost = createServerFn({ method: "POST" })
     z.object({ id: z.string().uuid() }).and(PostInput).parse(d),
   )
   .handler(async ({ data, context }) => {
-    await assertAdmin(context);
+    await assertAdmin(context.supabase, context.userId);
     const { id, ...rest } = data;
 
     // Preserve published_at if it was already set; set it now if newly publishing.
@@ -157,7 +157,7 @@ export const adminDeletePost = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: { id: string }) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
-    await assertAdmin(context);
+    await assertAdmin(context.supabase, context.userId);
     const { error } = await context.supabase
       .from("insights_posts")
       .delete()
@@ -177,7 +177,7 @@ export const adminUploadImage = createServerFn({ method: "POST" })
     }).parse(d),
   )
   .handler(async ({ data, context }) => {
-    await assertAdmin(context);
+    await assertAdmin(context.supabase, context.userId);
     const bytes = Uint8Array.from(atob(data.base64), (c) => c.charCodeAt(0));
     const ext = (data.filename.split(".").pop() || "bin").toLowerCase().replace(/[^a-z0-9]/g, "");
     const key = `${new Date().toISOString().slice(0, 10)}/${crypto.randomUUID()}.${ext || "bin"}`;
