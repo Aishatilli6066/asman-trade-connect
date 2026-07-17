@@ -101,6 +101,60 @@ export type Database = {
         }
         Relationships: []
       }
+      insights_posts: {
+        Row: {
+          author_id: string | null
+          body_markdown: string
+          canonical_url: string | null
+          created_at: string
+          excerpt: string
+          featured_image_path: string | null
+          id: string
+          meta_description: string | null
+          og_image_url: string | null
+          published: boolean
+          published_at: string | null
+          seo_title: string | null
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_id?: string | null
+          body_markdown?: string
+          canonical_url?: string | null
+          created_at?: string
+          excerpt?: string
+          featured_image_path?: string | null
+          id?: string
+          meta_description?: string | null
+          og_image_url?: string | null
+          published?: boolean
+          published_at?: string | null
+          seo_title?: string | null
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string | null
+          body_markdown?: string
+          canonical_url?: string | null
+          created_at?: string
+          excerpt?: string
+          featured_image_path?: string | null
+          id?: string
+          meta_description?: string | null
+          og_image_url?: string | null
+          published?: boolean
+          published_at?: string | null
+          seo_title?: string | null
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       trade_inquiries: {
         Row: {
           budget_range: string | null
@@ -187,6 +241,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      claim_admin_if_owner: { Args: never; Returns: boolean }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
