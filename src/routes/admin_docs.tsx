@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { GoldButton } from "@/components/site/primitives";
 
-export const Route = createFileRoute("/admin/docs")({});
+export const Route = createFileRoute("/admin_docs")({});
 
 function AdminDocsPage() {
   return (

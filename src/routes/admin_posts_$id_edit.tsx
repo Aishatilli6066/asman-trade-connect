@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import PostEditor from "@/components/admin/PostEditor";
 
-export const Route = createFileRoute("/admin/posts/$id/edit")({
+export const Route = createFileRoute("/admin_posts_$id_edit")({
   params: {
     parse: (params) => ({ id: parseInt(params.id) }),
     stringify: (params) => ({ id: String(params.id) }),
