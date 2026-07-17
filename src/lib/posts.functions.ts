@@ -20,9 +20,9 @@ function serverPublicClient() {
   });
 }
 
-async function assertAdmin(ctx: { supabase: Awaited<ReturnType<typeof requireSupabaseAuth>>; userId: string } | any) {
-  const { data, error } = await ctx.supabase.rpc("has_role", {
-    _user_id: ctx.userId,
+async function assertAdmin(supabase: any, userId: string) {
+  const { data, error } = await supabase.rpc("has_role", {
+    _user_id: userId,
     _role: "admin",
   });
   if (error) throw new Error(error.message);
