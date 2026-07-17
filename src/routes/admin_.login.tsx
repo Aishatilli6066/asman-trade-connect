@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/admin/login")({});
+export const Route = createFileRoute("/admin_/login")({});
 
 function LoginPage() {
   const navigate = useNavigate();

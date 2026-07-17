@@ -6,7 +6,7 @@ import { Plus, Edit2, Trash2, LogOut } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/admin/dashboard")({
+export const Route = createFileRoute("/admin_dashboard")({
   head: () => ({
     meta: [{ title: "Admin Dashboard | ASMAN Prime Hub" }],
   }),

@@ -6,7 +6,7 @@ import { formatDate } from "@/lib/utils";
 import { openConsultation } from "@/components/site/consultation-store";
 import { Eyebrow, GoldButton } from "@/components/site/primitives";
 
-export const Route = createFileRoute("/insights/$slug")({
+export const Route = createFileRoute("/insights_$slug")({
   params: {
     parse: (params) => ({ slug: params.slug }),
   },
