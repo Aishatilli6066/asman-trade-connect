@@ -21,10 +21,12 @@ function serverPublicClient() {
 }
 
 async function assertAdmin(supabase: any, userId: string) {
-  const { data, error } = await supabase.rpc("has_role", {
-    _user_id: userId,
-    _role: "admin",
-  });
+  const { data, error } = await supabase
+    .from("user_roles")
+    .select("role")
+    .eq("user_id", userId)
+    .eq("role", "admin")
+    .maybeSingle();
   if (error) throw new Error(error.message);
   if (!data) throw new Error("Forbidden");
 }
@@ -61,9 +63,15 @@ export const getPublishedPost = createServerFn({ method: "GET" })
 export const claimAdmin = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    const { data, error } = await context.supabase.rpc("claim_admin_if_owner");
+    const email = String((context.claims as { email?: unknown })?.email ?? "").toLowerCase();
+    if (email !== "aishau6066@gmail.com") return { granted: false };
+
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin
+      .from("user_roles")
+      .upsert({ user_id: context.userId, role: "admin" }, { onConflict: "user_id,role" });
     if (error) throw new Error(error.message);
-    return { granted: !!data };
+    return { granted: true };
   });
 
 export const adminListPosts = createServerFn({ method: "GET" })
