@@ -14,6 +14,7 @@ export const NAV = [
   { label: "Services", to: "/services" },
   { label: "Agricultural Export", to: "/agricultural-export" },
   { label: "Why Us", to: "/why-choose-us" },
+  { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
 ] as const;
 
