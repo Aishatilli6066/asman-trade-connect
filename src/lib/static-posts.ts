@@ -194,6 +194,210 @@ Whether you are sourcing Nigerian agricultural commodities or exploring new inte
 
 ASMAN Prime Hub provides professional sourcing, supplier verification, procurement coordination, and international trade support to help businesses navigate global markets with confidence.`,
   },
+  {
+    id: "static-landed-cost-imports",
+    slug: "how-to-calculate-the-true-landed-cost-of-imported-goods",
+    title: "How to Calculate the True Landed Cost of Imported Goods",
+    excerpt:
+      "Focusing only on a supplier's price can seriously distort your actual import cost. Learn what landed cost includes, why it matters, and how to calculate it accurately before placing your next order.",
+    seo_title:
+      "How to Calculate the True Landed Cost of Imported Goods | ASMAN Prime Hub",
+    meta_description:
+      "Discover the full components of landed cost for imported goods, from freight and insurance to customs duties, inland transport, and banking fees. Calculate the real cost before you import.",
+    og_image_url: coverLandedCost,
+    canonical_url:
+      "https://asman-trade-connect.lovable.app/insights/how-to-calculate-the-true-landed-cost-of-imported-goods",
+    featured_image_url: coverLandedCost,
+    published_at: "2026-07-18T00:00:00Z",
+    body_markdown: `One of the most common mistakes businesses make when importing products is focusing only on the supplier's quotation.
+
+A product may appear inexpensive at first glance, but by the time it arrives at your warehouse, the actual cost can be significantly higher than expected.
+
+This is where understanding landed cost becomes essential.
+
+Landed cost is the total amount required to bring imported goods from the supplier's location to your final destination. It includes far more than the purchase price and plays a critical role in determining whether an import transaction is truly profitable.
+
+Businesses that calculate landed cost before placing an order make better purchasing decisions, protect their profit margins, and avoid costly surprises.
+
+## What Is Landed Cost?
+
+Landed cost is the complete cost of acquiring imported goods, including every expense incurred from purchase to final delivery.
+
+Instead of asking:
+
+"How much does the supplier charge?"
+
+Successful importers ask:
+
+"What will this product actually cost when it reaches my business?"
+
+That difference often determines whether an import project succeeds or fails.
+
+## Why Landed Cost Matters
+
+Imagine two suppliers offering the same product.
+
+- Supplier A offers the product at a lower price.
+- Supplier B charges slightly more.
+
+At first glance, Supplier A appears to be the better option.
+
+However, after calculating freight charges, inland transportation, customs duties, insurance, banking fees, and destination charges, Supplier B may actually provide the lower overall cost.
+
+Without calculating landed cost, businesses often make purchasing decisions based on incomplete information.
+
+## The Main Components of Landed Cost
+
+Every shipment is different, but a complete landed cost calculation generally includes the following:
+
+### Product Cost
+
+This is the price quoted by the supplier for the goods themselves.
+
+Although it forms the foundation of the calculation, it is only one part of the total investment.
+
+### Freight Charges
+
+International freight represents the cost of transporting goods between countries.
+
+Depending on the shipment, this may involve:
+
+- Sea freight
+- Air freight
+- Rail freight
+- Multimodal transportation
+
+Freight costs vary depending on cargo volume, weight, destination, shipping season, and carrier availability.
+
+### Marine Insurance
+
+Marine insurance protects goods while they are in transit.
+
+Although some buyers overlook insurance to reduce costs, the financial consequences of damaged or lost cargo can be far greater than the insurance premium itself.
+
+### Customs Duties and Taxes
+
+Every destination country applies its own customs regulations.
+
+Import duties, VAT, GST, or other taxes may significantly increase the total cost of imported goods.
+
+Understanding these charges before shipment allows businesses to budget accurately.
+
+### Port and Terminal Charges
+
+Once cargo reaches the destination port, additional handling costs may apply.
+
+These can include:
+
+- Terminal handling
+- Port storage
+- Documentation fees
+- Container handling
+- Port administration charges
+
+These expenses are often overlooked by first-time importers.
+
+### Customs Clearance
+
+Professional customs clearance ensures imported goods comply with local regulations.
+
+Clearance costs may include:
+
+- Customs brokerage
+- Inspection fees
+- Processing charges
+- Regulatory compliance costs
+
+Efficient clearance reduces delays and prevents unnecessary storage charges.
+
+### Inland Transportation
+
+After customs clearance, goods still need to reach their final destination.
+
+Local transportation costs vary depending on:
+
+- Distance
+- Road conditions
+- Vehicle availability
+- Cargo size
+- Fuel costs
+
+These expenses should always be included in the overall calculation.
+
+### Banking and Payment Costs
+
+International trade frequently involves additional financial charges, including:
+
+- Bank transfer fees
+- Letter of Credit charges
+- Currency conversion costs
+- Payment processing fees
+
+While individually small, these costs can become significant across multiple transactions.
+
+## Factors That Influence Landed Cost
+
+Several external factors can change the final cost of imported goods, including:
+
+- Exchange rate fluctuations
+- Fuel prices
+- Seasonal freight demand
+- Port congestion
+- Changes in customs regulations
+- Shipping delays
+- Container availability
+
+Businesses that regularly monitor these factors can make more informed purchasing decisions.
+
+## Common Mistakes Businesses Make
+
+Many importers unintentionally underestimate their actual costs by making avoidable mistakes.
+
+These include:
+
+- Comparing suppliers using only product price
+- Ignoring destination charges
+- Forgetting customs duties
+- Excluding inland transport
+- Underestimating documentation costs
+- Failing to account for currency fluctuations
+
+Each of these oversights can reduce profitability and affect pricing decisions.
+
+## How Accurate Landed Cost Improves Business Decisions
+
+A complete landed cost analysis helps businesses:
+
+- Compare suppliers fairly
+- Set competitive selling prices
+- Protect profit margins
+- Improve budgeting
+- Reduce financial surprises
+- Make informed purchasing decisions
+- Plan future imports more effectively
+
+Rather than reacting to unexpected costs after shipment, businesses can plan with confidence before placing an order.
+
+## Landed Cost Is More Than a Calculation
+
+Successful importing is not simply about buying products at the lowest possible price.
+
+It is about understanding the total financial commitment involved in bringing those products to market.
+
+Businesses that consistently calculate landed cost are better positioned to negotiate effectively, manage risks, and build sustainable import operations.
+
+A well-informed purchasing decision today often prevents expensive problems tomorrow.
+
+## How ASMAN Prime Hub Can Help
+
+At **ASMAN Prime Hub**, we support businesses throughout the sourcing and import process by helping clients evaluate the true cost of importing before purchasing decisions are made.
+
+From supplier sourcing and procurement coordination to logistics planning and landed cost analysis, our objective is to help businesses make informed, commercially sound decisions that support long-term growth.
+
+Understanding landed cost is not simply about reducing expenses—it is about making smarter business decisions with confidence.
+
+If you're planning your next import project, calculating the true landed cost before placing an order may be one of the most valuable investments you make.`,
+  },
 ];
 
 export function getStaticPostBySlug(slug: string): StaticPost | undefined {
