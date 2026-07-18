@@ -20,6 +20,7 @@ import { Route as AgriculturalExportRouteImport } from './routes/agricultural-ex
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InsightsIndexRouteImport } from './routes/insights.index'
 import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as AuthenticatedAdminInsightsRouteImport } from './routes/_authenticated/admin.insights'
 import { Route as AuthenticatedAdminInsightsNewRouteImport } from './routes/_authenticated/admin.insights.new'
@@ -80,6 +81,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsIndexRoute = InsightsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => InsightsRoute,
+} as any)
 const InsightsSlugRoute = InsightsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -122,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/insights/': typeof InsightsIndexRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -133,12 +140,12 @@ export interface FileRoutesByTo {
   '/agricultural-export': typeof AgriculturalExportRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
-  '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/insights': typeof InsightsIndexRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -158,6 +165,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/insights/': typeof InsightsIndexRoute
   '/_authenticated/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/_authenticated/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/_authenticated/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -177,6 +185,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-choose-us'
     | '/insights/$slug'
+    | '/insights/'
     | '/admin/insights'
     | '/admin/insights/new'
     | '/admin/insights/$id/edit'
@@ -188,12 +197,12 @@ export interface FileRouteTypes {
     | '/agricultural-export'
     | '/auth'
     | '/contact'
-    | '/insights'
     | '/privacy-policy'
     | '/services'
     | '/terms'
     | '/why-choose-us'
     | '/insights/$slug'
+    | '/insights'
     | '/admin/insights'
     | '/admin/insights/new'
     | '/admin/insights/$id/edit'
@@ -212,6 +221,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-choose-us'
     | '/insights/$slug'
+    | '/insights/'
     | '/_authenticated/admin/insights'
     | '/_authenticated/admin/insights/new'
     | '/_authenticated/admin/insights/$id/edit'
@@ -312,6 +322,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights/': {
+      id: '/insights/'
+      path: '/'
+      fullPath: '/insights/'
+      preLoaderRoute: typeof InsightsIndexRouteImport
+      parentRoute: typeof InsightsRoute
+    }
     '/insights/$slug': {
       id: '/insights/$slug'
       path: '/$slug'
@@ -380,10 +397,12 @@ const AuthenticatedRouteRouteWithChildren =
 
 interface InsightsRouteChildren {
   InsightsSlugRoute: typeof InsightsSlugRoute
+  InsightsIndexRoute: typeof InsightsIndexRoute
 }
 
 const InsightsRouteChildren: InsightsRouteChildren = {
   InsightsSlugRoute: InsightsSlugRoute,
+  InsightsIndexRoute: InsightsIndexRoute,
 }
 
 const InsightsRouteWithChildren = InsightsRoute._addFileChildren(
