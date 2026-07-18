@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { Loader2, CheckCircle2, Mail, MessageCircle } from "lucide-react";
 
 const baseInput =
   "w-full bg-transparent border px-4 py-3.5 text-sm outline-none transition-colors placeholder:text-[var(--color-mute)] focus:border-[var(--color-gold)]";
@@ -90,19 +91,75 @@ export function SubmitButton({ children, loading }: { children: React.ReactNode;
     <button
       type="submit"
       disabled={loading}
-      className="w-full py-4 text-[12px] uppercase tracking-[0.22em] font-semibold transition-colors disabled:opacity-60 bg-[var(--color-gold)] text-[var(--color-ink)] hover:bg-[var(--color-gold-soft)]"
+      aria-busy={loading}
+      className="w-full py-4 text-[12px] uppercase tracking-[0.22em] font-semibold transition-colors disabled:opacity-70 disabled:cursor-not-allowed bg-[var(--color-gold)] text-[var(--color-ink)] hover:bg-[var(--color-gold-soft)] inline-flex items-center justify-center gap-3"
     >
-      {loading ? "Submitting…" : children}
+      {loading ? (
+        <>
+          <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+          <span>Submitting…</span>
+        </>
+      ) : (
+        children
+      )}
     </button>
   );
 }
 
-export function SuccessState({ children }: { children?: React.ReactNode }) {
+export function SuccessState({
+  title = "Request received",
+  message = "Thank you. A member of our team will respond within 24 hours.",
+  dark = false,
+}: {
+  title?: string;
+  message?: string;
+  dark?: boolean;
+}) {
   return (
-    <div className="border border-[var(--color-gold)] bg-[var(--color-gold)]/10 p-8 text-center">
-      <div className="mx-auto grid place-items-center h-12 w-12 border border-[var(--color-gold)] text-[var(--color-gold)] text-xl">✓</div>
-      <div className="mt-4 font-display text-xl text-[var(--color-ink)] dark:text-white">
-        {children ?? "Thank you. We will respond within 24 hours."}
+    <div
+      role="status"
+      aria-live="polite"
+      className={cn(
+        "border p-8 md:p-10 text-center",
+        dark
+          ? "border-[var(--color-gold)]/60 bg-white/5"
+          : "border-[var(--color-gold)] bg-[var(--color-gold)]/10",
+      )}
+    >
+      <div className="mx-auto grid place-items-center h-14 w-14 rounded-full bg-[var(--color-gold)] text-[var(--color-burgundy)]">
+        <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
+      </div>
+      <div className={cn("mt-5 font-display text-2xl md:text-3xl", dark ? "text-white" : "text-[var(--color-ink)]")}>
+        {title}
+      </div>
+      <p className={cn("mt-3 text-sm md:text-base leading-relaxed max-w-md mx-auto", dark ? "text-white/75" : "text-[var(--color-ink)]/70")}>
+        {message}
+      </p>
+      <div className="mt-6 flex flex-wrap justify-center gap-3 text-[11px] uppercase tracking-[0.22em]">
+        <a
+          href="mailto:contact@asmanprimehub.com"
+          className={cn(
+            "inline-flex items-center gap-2 px-4 py-2.5 border transition-colors",
+            dark
+              ? "border-white/25 text-white hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+              : "border-[var(--color-ink)]/15 text-[var(--color-ink)] hover:border-[var(--color-burgundy)] hover:text-[var(--color-burgundy)]",
+          )}
+        >
+          <Mail className="h-3.5 w-3.5" /> Email us
+        </a>
+        <a
+          href="https://wa.me/2347084443626"
+          target="_blank"
+          rel="noreferrer"
+          className={cn(
+            "inline-flex items-center gap-2 px-4 py-2.5 border transition-colors",
+            dark
+              ? "border-white/25 text-white hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+              : "border-[var(--color-ink)]/15 text-[var(--color-ink)] hover:border-[var(--color-burgundy)] hover:text-[var(--color-burgundy)]",
+          )}
+        >
+          <MessageCircle className="h-3.5 w-3.5" /> WhatsApp
+        </a>
       </div>
     </div>
   );
