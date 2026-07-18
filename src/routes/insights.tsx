@@ -1,8 +1,34 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { listPublishedPosts } from "@/lib/posts.functions";
+import { STATIC_POSTS } from "@/lib/static-posts";
 
 export const Route = createFileRoute("/insights")({
-  loader: () => listPublishedPosts(),
+  loader: async () => {
+    let dbPosts: any[] = [];
+    try {
+      dbPosts = (await listPublishedPosts()) as any[];
+    } catch {
+      dbPosts = [];
+    }
+    const staticAsListItems = STATIC_POSTS.map((p) => ({
+      id: p.id,
+      slug: p.slug,
+      title: p.title,
+      excerpt: p.excerpt,
+      featured_image_path: null,
+      featured_image_url: p.featured_image_url,
+      published_at: p.published_at,
+    }));
+    const seen = new Set(staticAsListItems.map((p) => p.slug));
+    const merged = [
+      ...staticAsListItems,
+      ...dbPosts.filter((p: any) => !seen.has(p.slug)),
+    ];
+    merged.sort(
+      (a, b) => new Date(b.published_at ?? 0).getTime() - new Date(a.published_at ?? 0).getTime(),
+    );
+    return merged;
+  },
   head: () => ({
     meta: [
       { title: "Insights — ASMAN Prime Hub" },
@@ -24,9 +50,10 @@ function formatDate(d: string | null) {
   return new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
 }
 
-function imgUrl(path: string | null) {
-  if (!path) return null;
-  return `/api/public/insights/media/${path}`;
+function imgUrl(post: any): string | null {
+  if (post.featured_image_url) return post.featured_image_url;
+  if (post.featured_image_path) return `/api/public/insights/media/${post.featured_image_path}`;
+  return null;
 }
 
 function InsightsList() {
@@ -53,9 +80,9 @@ function InsightsList() {
               {posts.map((post: any) => (
                 <article key={post.id} className="bg-white shadow-sm flex flex-col overflow-hidden">
                   <div className="aspect-[16/10] bg-neutral-100 overflow-hidden">
-                    {imgUrl(post.featured_image_path) ? (
+                    {imgUrl(post) ? (
                       <img
-                        src={imgUrl(post.featured_image_path)!}
+                        src={imgUrl(post)!}
                         alt={post.title}
                         className="w-full h-full object-cover"
                         loading="lazy"
