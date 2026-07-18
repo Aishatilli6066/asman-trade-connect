@@ -1,4 +1,5 @@
 import coverBuyers from "@/assets/insight-buyers-nigerian-agri.jpg";
+import coverLandedCost from "@/assets/insight-landed-cost-imports.jpg";
 
 export type StaticPost = {
   id: string;
