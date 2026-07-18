@@ -16,6 +16,7 @@ export const NAV = [
   { label: "Why Us", to: "/why-choose-us" },
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
+  { label: "Get a Quote", to: "/quote" },
 ] as const;
 
 export const REGIONS = ["Middle East", "Europe", "Asia", "North America", "Africa"];
