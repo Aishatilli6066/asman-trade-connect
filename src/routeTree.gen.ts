@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyChooseUsRouteImport } from './routes/why-choose-us'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -40,6 +41,11 @@ const TermsRoute = TermsRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuoteRoute = QuoteRouteImport.update({
+  id: '/quote',
+  path: '/quote',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -124,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
@@ -141,6 +148,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
@@ -161,6 +169,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
@@ -181,6 +190,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/insights'
     | '/privacy-policy'
+    | '/quote'
     | '/services'
     | '/terms'
     | '/why-choose-us'
@@ -198,6 +208,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/privacy-policy'
+    | '/quote'
     | '/services'
     | '/terms'
     | '/why-choose-us'
@@ -217,6 +228,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/insights'
     | '/privacy-policy'
+    | '/quote'
     | '/services'
     | '/terms'
     | '/why-choose-us'
@@ -237,6 +249,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   InsightsRoute: typeof InsightsRouteWithChildren
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  QuoteRoute: typeof QuoteRoute
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   WhyChooseUsRoute: typeof WhyChooseUsRoute
@@ -264,6 +277,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quote': {
+      id: '/quote'
+      path: '/quote'
+      fullPath: '/quote'
+      preLoaderRoute: typeof QuoteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -418,6 +438,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   InsightsRoute: InsightsRouteWithChildren,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  QuoteRoute: QuoteRoute,
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   WhyChooseUsRoute: WhyChooseUsRoute,
