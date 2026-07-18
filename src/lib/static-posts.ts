@@ -1,4 +1,4 @@
-import coverBuyers from "@/assets/insight-buyers-nigerian-agri.jpg.asset.json";
+import coverBuyers from "@/assets/insight-buyers-nigerian-agri.jpg";
 
 export type StaticPost = {
   id: string;
@@ -25,10 +25,10 @@ export const STATIC_POSTS: StaticPost[] = [
       "What Global Buyers Look For in Nigerian Agricultural Exports | ASMAN Prime Hub",
     meta_description:
       "Quality, capacity, documentation, communication, logistics. What international buyers of Nigerian sesame, hibiscus, ginger, cashew and gum arabic evaluate before ordering.",
-    og_image_url: coverBuyers.url,
+    og_image_url: coverBuyers,
     canonical_url:
       "https://asman-trade-connect.lovable.app/insights/what-buyers-are-looking-for-in-nigerian-agricultural-exports",
-    featured_image_url: coverBuyers.url,
+    featured_image_url: coverBuyers,
     published_at: "2026-07-18T00:00:00Z",
     body_markdown: `Nigeria is one of Africa's leading producers of agricultural commodities, supplying products such as sesame seeds, hibiscus flowers, ginger, cashew, soybeans, gum arabic, and other raw materials to international markets.
 
