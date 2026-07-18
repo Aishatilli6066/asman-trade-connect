@@ -1,13 +1,33 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { getPublishedPost } from "@/lib/posts.functions";
+import { getStaticPostBySlug } from "@/lib/static-posts";
 
 const SITE_URL = "https://asman-trade-connect.lovable.app";
 
 export const Route = createFileRoute("/insights/$slug")({
   loader: async ({ params }) => {
-    const post = await getPublishedPost({ data: { slug: params.slug } });
-    if (!post) throw notFound();
-    return post;
+    const staticPost = getStaticPostBySlug(params.slug);
+    if (staticPost) {
+      return {
+        title: staticPost.title,
+        excerpt: staticPost.excerpt,
+        body_markdown: staticPost.body_markdown,
+        featured_image_path: null,
+        featured_image_url: staticPost.featured_image_url,
+        seo_title: staticPost.seo_title,
+        meta_description: staticPost.meta_description,
+        og_image_url: staticPost.og_image_url,
+        canonical_url: staticPost.canonical_url,
+        published_at: staticPost.published_at,
+      };
+    }
+    try {
+      const post = await getPublishedPost({ data: { slug: params.slug } });
+      if (!post) throw notFound();
+      return { ...post, featured_image_url: null };
+    } catch (e) {
+      throw notFound();
+    }
   },
   head: ({ params, loaderData }) => {
     if (!loaderData) {
@@ -18,9 +38,13 @@ export const Route = createFileRoute("/insights/$slug")({
     const desc = loaderData.meta_description || loaderData.excerpt || "";
     const ogImage =
       loaderData.og_image_url ||
-      (loaderData.featured_image_path
-        ? `${SITE_URL}/api/public/insights/media/${loaderData.featured_image_path}`
-        : undefined);
+      (loaderData.featured_image_url
+        ? (loaderData.featured_image_url.startsWith("http")
+            ? loaderData.featured_image_url
+            : `${SITE_URL}${loaderData.featured_image_url}`)
+        : loaderData.featured_image_path
+          ? `${SITE_URL}/api/public/insights/media/${loaderData.featured_image_path}`
+          : undefined);
     const meta: Array<Record<string, string>> = [
       { title },
       { name: "description", content: desc },
@@ -119,9 +143,9 @@ function formatDate(d: string | null) {
 
 function PostView() {
   const post = Route.useLoaderData();
-  const heroImg = post.featured_image_path
-    ? `/api/public/insights/media/${post.featured_image_path}`
-    : null;
+  const heroImg =
+    (post as any).featured_image_url ||
+    (post.featured_image_path ? `/api/public/insights/media/${post.featured_image_path}` : null);
 
   return (
     <main className="bg-white min-h-screen">
