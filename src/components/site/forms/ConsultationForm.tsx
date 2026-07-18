@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useServerFn } from "@tanstack/react-start";
+import { toast } from "sonner";
 import { Field, TextInput, TextArea, Select, SubmitButton, SuccessState } from "../form-fields";
 import { submitConsultation } from "@/lib/forms.functions";
 import { BUDGET_RANGES, TIMELINES, TRADE_INTERESTS } from "@/lib/site-data";
@@ -27,13 +28,18 @@ export function ConsultationForm({ dark = true }: { dark?: boolean }) {
     resolver: zodResolver(schema),
   });
 
-  if (done) return <SuccessState />;
+  if (done) return <SuccessState dark={dark} title="Consultation booked" message="Thanks — your consultation request is in. We'll reach out within 24 hours to confirm a time." />;
 
   return (
     <form
       onSubmit={handleSubmit(async (values) => {
-        try { await fn({ data: values }); setDone(true); }
-        catch { alert("Something went wrong. Please try again or contact us directly."); }
+        try {
+          await fn({ data: values });
+          setDone(true);
+          toast.success("Consultation request sent");
+        } catch {
+          toast.error("Submission failed", { description: "Please try again or email contact@asmanprimehub.com." });
+        }
       })}
       className="grid gap-5"
     >
