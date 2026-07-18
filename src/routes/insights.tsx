@@ -78,13 +78,18 @@ function InsightsList() {
           ) : (
             <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post: any) => (
-                <article key={post.id} className="bg-white shadow-sm flex flex-col overflow-hidden">
+                <Link
+                  key={post.id}
+                  to="/insights/$slug"
+                  params={{ slug: post.slug }}
+                  className="group bg-white shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-shadow"
+                >
                   <div className="aspect-[16/10] bg-neutral-100 overflow-hidden">
                     {imgUrl(post) ? (
                       <img
                         src={imgUrl(post)!}
                         alt={post.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
                     ) : (
@@ -99,15 +104,11 @@ function InsightsList() {
                       {post.title}
                     </h2>
                     <p className="mt-3 text-sm text-neutral-700 leading-relaxed flex-1">{post.excerpt}</p>
-                    <Link
-                      to="/insights/$slug"
-                      params={{ slug: post.slug }}
-                      className="mt-5 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-semibold text-[var(--color-burgundy)] hover:text-[var(--color-ink)]"
-                    >
+                    <span className="mt-5 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-semibold text-[var(--color-burgundy)] group-hover:text-[var(--color-ink)]">
                       Read more →
-                    </Link>
+                    </span>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           )}
