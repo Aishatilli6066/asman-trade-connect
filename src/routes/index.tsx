@@ -146,7 +146,7 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-burgundy)] via-[var(--color-burgundy)]/85 to-[var(--color-burgundy)]/50" />
       <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-burgundy)]/90 to-transparent" />
 
-      <div className="container-x relative z-10 pb-20 pt-32 md:pb-28">
+      <div className="container-x relative z-10 pb-20 pt-40 sm:pt-36 md:pb-28 md:pt-32">
         <FadeIn>
           <Eyebrow dark>Global Trade · Sourcing · Logistics</Eyebrow>
         </FadeIn>
