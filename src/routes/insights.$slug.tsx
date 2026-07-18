@@ -176,7 +176,7 @@ function PostView() {
             </p>
           )}
           <div
-            className="post-content"
+            className="post-body"
             dangerouslySetInnerHTML={{ __html: renderMarkdown(post.body_markdown || "") }}
           />
         </div>
