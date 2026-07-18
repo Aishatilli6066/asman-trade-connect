@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useServerFn } from "@tanstack/react-start";
+import { toast } from "sonner";
 import { Field, TextInput, TextArea, Select, SubmitButton, SuccessState } from "../form-fields";
 import { submitExportInquiry } from "@/lib/forms.functions";
 import { COMMODITY_OPTIONS, SHIPPING_METHODS } from "@/lib/site-data";
@@ -28,13 +29,18 @@ export function ExportInquiryForm() {
     resolver: zodResolver(schema),
   });
 
-  if (done) return <SuccessState />;
+  if (done) return <SuccessState dark title="Export inquiry received" message="Thanks — we've received your inquiry. Our export desk will follow up with pricing and next steps within 24 hours." />;
 
   return (
     <form
       onSubmit={handleSubmit(async (values) => {
-        try { await fn({ data: values }); setDone(true); }
-        catch { alert("Something went wrong. Please try again or email us directly."); }
+        try {
+          await fn({ data: values });
+          setDone(true);
+          toast.success("Inquiry submitted");
+        } catch {
+          toast.error("Submission failed", { description: "Please try again or email contact@asmanprimehub.com." });
+        }
       })}
       className="grid gap-5"
     >

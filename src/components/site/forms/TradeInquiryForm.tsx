@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useServerFn } from "@tanstack/react-start";
+import { toast } from "sonner";
 import { Field, TextInput, TextArea, Select, SubmitButton, SuccessState } from "../form-fields";
 import { submitTradeInquiry } from "@/lib/forms.functions";
 import {
@@ -38,13 +39,18 @@ export function TradeInquiryForm({ dark = false }: { dark?: boolean }) {
     resolver: zodResolver(schema),
   });
 
-  if (done) return <SuccessState />;
+  if (done) return <SuccessState dark={dark} title="Request received" message="Thanks — your service request is in. Our team will review it and respond within 24 hours." />;
 
   return (
     <form
       onSubmit={handleSubmit(async (values) => {
-        try { await fn({ data: values }); setDone(true); }
-        catch { alert("Something went wrong. Please try again or email us directly."); }
+        try {
+          await fn({ data: values });
+          setDone(true);
+          toast.success("Request submitted");
+        } catch {
+          toast.error("Submission failed", { description: "Please try again or email contact@asmanprimehub.com." });
+        }
       })}
       className="grid gap-5"
     >
