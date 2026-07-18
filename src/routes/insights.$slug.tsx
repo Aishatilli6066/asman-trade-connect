@@ -171,12 +171,12 @@ function PostView() {
 
         <div className="container-x max-w-3xl pb-24">
           {post.excerpt && (
-            <p className="text-lg text-neutral-700 leading-relaxed font-display italic border-l-4 border-[var(--color-gold)] pl-4 mb-8">
+            <p className="text-lg md:text-xl text-neutral-700 leading-[1.9] font-display italic border-l-4 border-[var(--color-gold)] pl-5 my-10">
               {post.excerpt}
             </p>
           )}
           <div
-            className="prose prose-neutral max-w-none prose-headings:font-display prose-headings:text-[var(--color-ink)] prose-a:text-[var(--color-burgundy)]"
+            className="post-body"
             dangerouslySetInnerHTML={{ __html: renderMarkdown(post.body_markdown || "") }}
           />
         </div>
