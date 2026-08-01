@@ -8,26 +8,29 @@ import { Field, TextInput, TextArea, Select, SubmitButton, SuccessState } from "
 import { submitTradeInquiry } from "@/lib/forms.functions";
 import {
   SERVICE_INTERESTS,
-  BUSINESS_TYPES,
   BUDGET_RANGES_USD,
   DELIVERY_TIMELINES,
-  SHIPPING_METHODS_FULL,
+  INCOTERMS,
+  PAYMENT_METHODS,
+  INQUIRY_NOTE,
 } from "@/lib/site-data";
 
 const schema = z.object({
   full_name: z.string().min(1, "Required"),
+  company_name: z.string().min(1, "Required"),
   email: z.string().email("Invalid email"),
   whatsapp: z.string().min(5, "Required"),
   country: z.string().min(1, "Required"),
   service_interest: z.string().min(1, "Required"),
-  business_type: z.string().min(1, "Required"),
   product_required: z.string().min(1, "Required"),
+  specifications: z.string().min(1, "Required"),
   quantity: z.string().min(1, "Required"),
-  budget_range: z.string().min(1, "Required"),
+  destination: z.string().min(1, "Required"),
+  incoterm: z.string().min(1, "Required"),
+  payment_method: z.string().min(1, "Required"),
   timeline: z.string().min(1, "Required"),
-  target_market: z.string().min(1, "Required"),
-  shipping_method: z.string().min(1, "Required"),
-  message: z.string().min(10, "Please share at least 10 characters"),
+  budget_range: z.string().optional(),
+  message: z.string().optional(),
   consent: z.literal(true, { message: "You must agree to be contacted" }),
 });
 type FormValues = z.infer<typeof schema>;
@@ -58,10 +61,13 @@ export function TradeInquiryForm({ dark = false }: { dark?: boolean }) {
         <Field label="Full Name" required dark={dark} error={errors.full_name?.message}>
           <TextInput dark={dark} invalid={!!errors.full_name} {...register("full_name")} />
         </Field>
-        <Field label="Email Address" required dark={dark} error={errors.email?.message}>
+        <Field label="Company Name" required dark={dark} error={errors.company_name?.message}>
+          <TextInput dark={dark} invalid={!!errors.company_name} {...register("company_name")} />
+        </Field>
+        <Field label="Business Email" required dark={dark} error={errors.email?.message}>
           <TextInput dark={dark} type="email" inputMode="email" invalid={!!errors.email} {...register("email")} />
         </Field>
-        <Field label="WhatsApp Number" required dark={dark} error={errors.whatsapp?.message}>
+        <Field label="WhatsApp / Phone" required dark={dark} error={errors.whatsapp?.message}>
           <TextInput dark={dark} type="tel" inputMode="tel" placeholder="+1 555 000 0000" invalid={!!errors.whatsapp} {...register("whatsapp")} />
         </Field>
         <Field label="Country" required dark={dark} error={errors.country?.message}>
@@ -70,30 +76,33 @@ export function TradeInquiryForm({ dark = false }: { dark?: boolean }) {
         <Field label="Service Required" required dark={dark} error={errors.service_interest?.message}>
           <Select dark={dark} options={SERVICE_INTERESTS} invalid={!!errors.service_interest} {...register("service_interest")} />
         </Field>
-        <Field label="Business Type" required dark={dark} error={errors.business_type?.message}>
-          <Select dark={dark} options={BUSINESS_TYPES} invalid={!!errors.business_type} {...register("business_type")} />
-        </Field>
-        <Field label="Product / Commodity Required" required dark={dark} error={errors.product_required?.message}>
+        <Field label="Product / Commodity" required dark={dark} error={errors.product_required?.message}>
           <TextInput dark={dark} invalid={!!errors.product_required} {...register("product_required")} />
         </Field>
-        <Field label="Required Quantity" required dark={dark} error={errors.quantity?.message}>
+        <Field label="Quantity" required dark={dark} error={errors.quantity?.message}>
           <TextInput dark={dark} invalid={!!errors.quantity} placeholder="20 MT, 500 cartons" {...register("quantity")} />
         </Field>
-        <Field label="Budget Range (USD)" required dark={dark} error={errors.budget_range?.message}>
-          <Select dark={dark} options={BUDGET_RANGES_USD} invalid={!!errors.budget_range} {...register("budget_range")} />
+        <Field label="Destination Country & Port" required dark={dark} error={errors.destination?.message}>
+          <TextInput dark={dark} placeholder="UAE — Jebel Ali" invalid={!!errors.destination} {...register("destination")} />
         </Field>
-        <Field label="Expected Delivery Timeline" required dark={dark} error={errors.timeline?.message}>
+        <Field label="Preferred Incoterm" required dark={dark} error={errors.incoterm?.message}>
+          <Select dark={dark} options={INCOTERMS} invalid={!!errors.incoterm} {...register("incoterm")} />
+        </Field>
+        <Field label="Preferred Payment Method" required dark={dark} error={errors.payment_method?.message}>
+          <Select dark={dark} options={PAYMENT_METHODS} invalid={!!errors.payment_method} {...register("payment_method")} />
+        </Field>
+        <Field label="Target Delivery Period" required dark={dark} error={errors.timeline?.message}>
           <Select dark={dark} options={DELIVERY_TIMELINES} invalid={!!errors.timeline} {...register("timeline")} />
         </Field>
-        <Field label="Target Market / Country" required dark={dark} error={errors.target_market?.message}>
-          <TextInput dark={dark} invalid={!!errors.target_market} {...register("target_market")} />
-        </Field>
-        <Field label="Shipping Method" required dark={dark} error={errors.shipping_method?.message}>
-          <Select dark={dark} options={SHIPPING_METHODS_FULL} invalid={!!errors.shipping_method} {...register("shipping_method")} />
+        <Field label="Budget / Target Price (optional)" dark={dark} error={errors.budget_range?.message}>
+          <Select dark={dark} options={BUDGET_RANGES_USD} placeholder="Select if known" invalid={!!errors.budget_range} {...register("budget_range")} />
         </Field>
       </div>
-      <Field label="Message / Project Details" required dark={dark} error={errors.message?.message}>
-        <TextArea dark={dark} rows={6} placeholder="Tell us about your sourcing, trade or export needs…" invalid={!!errors.message} {...register("message")} />
+      <Field label="Required Specifications" required dark={dark} error={errors.specifications?.message}>
+        <TextArea dark={dark} rows={3} placeholder="Grade, purity, moisture, packaging, certification, dimensions…" invalid={!!errors.specifications} {...register("specifications")} />
+      </Field>
+      <Field label="Additional Information (optional)" dark={dark} error={errors.message?.message}>
+        <TextArea dark={dark} rows={5} placeholder="Anything else we should know about your requirement…" invalid={!!errors.message} {...register("message")} />
       </Field>
       <label className="flex items-start gap-3 text-sm leading-relaxed cursor-pointer">
         <input
@@ -106,7 +115,10 @@ export function TradeInquiryForm({ dark = false }: { dark?: boolean }) {
         </span>
       </label>
       {errors.consent && <div className="text-[11px] text-red-500 -mt-3">{errors.consent.message}</div>}
-      <SubmitButton loading={isSubmitting}>Submit Request</SubmitButton>
+      <SubmitButton loading={isSubmitting}>Submit a Trade Inquiry</SubmitButton>
+      <p className={dark ? "text-xs leading-relaxed text-white/55" : "text-xs leading-relaxed text-[var(--color-ink)]/55"}>
+        {INQUIRY_NOTE}
+      </p>
     </form>
   );
 }
