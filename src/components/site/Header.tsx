@@ -62,11 +62,17 @@ export function Header() {
               <MessageCircle size={14} /> WhatsApp
             </a>
             <button
-            onClick={openConsultation}
-            className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] font-semibold bg-[var(--color-gold)] text-[var(--color-ink)] hover:bg-white transition-colors"
+              onClick={openConsultation}
+              className="text-[11px] uppercase tracking-[0.2em] text-white/70 hover:text-[var(--color-gold)] transition-colors"
             >
-              Book Consultation
+              Book a Consultation
             </button>
+            <Link
+              to="/quote"
+              className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] font-semibold bg-[var(--color-gold)] text-[var(--color-ink)] hover:bg-white transition-colors"
+            >
+              Submit a Trade Inquiry
+            </Link>
           </div>
         </div>
 
@@ -92,11 +98,18 @@ export function Header() {
                 {n.label}
               </Link>
             ))}
+            <Link
+              to="/quote"
+              onClick={() => setOpen(false)}
+              className="mt-4 px-5 py-3.5 text-center text-[11px] uppercase tracking-[0.22em] font-semibold bg-[var(--color-gold)] text-[var(--color-ink)]"
+            >
+              Submit a Trade Inquiry
+            </Link>
             <button
               onClick={() => { setOpen(false); openConsultation(); }}
-              className="mt-4 px-5 py-3.5 text-[11px] uppercase tracking-[0.22em] font-semibold bg-[var(--color-gold)] text-[var(--color-ink)]"
+              className="mt-2 px-5 py-3.5 text-[11px] uppercase tracking-[0.22em] font-semibold border border-white/25 text-white"
             >
-              Book Consultation
+              Book a Consultation
             </button>
             <a
               href={`mailto:${SITE.email}`}
