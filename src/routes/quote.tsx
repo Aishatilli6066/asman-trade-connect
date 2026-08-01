@@ -43,7 +43,7 @@ const INCLUDED = [
 
 function QuotePage() {
   return (
-    <section className="min-h-screen grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] pt-20">
+    <section className="min-h-screen bg-[var(--color-burgundy)] grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] pt-20">
       <div className="bg-[var(--color-burgundy)] text-white p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col justify-between gap-12">
         <div>
           <Eyebrow dark>Trade Inquiry</Eyebrow>
