@@ -40,14 +40,14 @@ export const Route = createFileRoute("/why-choose-us")({
 
 function WhyPage() {
   const items = [
-    { i: ShieldCheck, t: "Verified Suppliers", d: "Every supplier is vetted for credentials, capacity, sample quality and commercial standing before any introduction." },
-    { i: MessagesSquare, t: "Transparent Communication", d: "Clear updates, documented decisions, named coordination contacts, and defined response windows." },
-    { i: FileCheck2, t: "Export Readiness", d: "Documentation, packaging, labelling and compliance coordinated correctly the first time." },
-    { i: Globe2, t: "Global Coordination", d: "Active corridors across Asia, Europe, Middle East, North America and Africa." },
-    { i: Truck, t: "Freight Expertise", d: "Forwarder coordination, routing decisions and transit follow-up handled by experienced operators." },
-    { i: Settings2, t: "Reliable Operations", d: "Documented workflows, repeatable processes and accountable delivery." },
-    { i: Network, t: "Trade Management Systems", d: "Single point of accountability across sourcing, procurement, freight and documentation." },
-    { i: Sparkles, t: "Premium Service Standards", d: "Editorial-grade communication, structured reporting and a quality bar built into every engagement." },
+    { i: ShieldCheck, t: "Structured supplier assessment", d: "Suppliers are reviewed for credentials, capacity and sample quality before any introduction is made." },
+    { i: MessagesSquare, t: "Documented communication", d: "Written updates, recorded decisions, named coordination contacts and defined response windows." },
+    { i: FileCheck2, t: "Export documentation support", d: "Documentation, packaging guidance, labelling and compliance coordinated with your counterparties." },
+    { i: Globe2, t: "International working practice", d: "Transactions structured around standard Incoterms, documentation and payment methods." },
+    { i: Truck, t: "Freight coordination", d: "Forwarder selection, routing options and transit follow-up against agreed milestones." },
+    { i: Settings2, t: "Repeatable operations", d: "Documented workflows applied consistently across engagements." },
+    { i: Network, t: "Single point of coordination", d: "One accountable contact across sourcing, procurement, freight and documentation." },
+    { i: Sparkles, t: "Defined service standards", d: "Scope, responsibilities and reporting agreed in writing before work begins." },
   ];
   return (
     <>
@@ -80,8 +80,8 @@ function WhyPage() {
             See how we'd coordinate <span className="italic text-[var(--color-gold)] font-normal">your trade.</span>
           </h2>
           <div className="flex flex-wrap gap-3">
-            <GoldButton onClick={openConsultation}>Book Consultation <ArrowRight size={14} /></GoldButton>
-            <Link to="/services"><GoldButton variant="outline-light">View Services</GoldButton></Link>
+            <Link to="/quote"><GoldButton>Submit a Trade Inquiry <ArrowRight size={14} /></GoldButton></Link>
+            <GoldButton variant="outline-light" onClick={openConsultation}>Book a Consultation</GoldButton>
           </div>
         </div>
       </section>
