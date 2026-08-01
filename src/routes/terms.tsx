@@ -24,15 +24,17 @@ function Page() {
         <Eyebrow>Legal</Eyebrow>
         <h1 className="mt-5 font-display text-4xl md:text-6xl">Terms & Conditions</h1>
         <div className="mt-10 text-[var(--color-ink)]/75 leading-relaxed space-y-6 text-base">
-          <p>By accessing the ASMAN Prime Hub website ("Site"), you agree to be bound by these Terms & Conditions.</p>
+          <p>By accessing the ASMAN Prime Hub website ("Site"), operated by ASMAN Prime Hub Global Services Limited, you agree to be bound by these Terms &amp; Conditions.</p>
           <h2 className="font-display text-2xl mt-10">Use of the Site</h2>
           <p>Content on this Site is provided for informational purposes about our trade, sourcing, freight and Nigerian agricultural export coordination services.</p>
           <h2 className="font-display text-2xl mt-10">Inquiries & Engagements</h2>
-          <p>Submitting an inquiry does not constitute a binding commercial agreement. All engagements are subject to a separate written scope of work agreed between ASMAN Prime Hub and the client.</p>
+          <p>Submitting an inquiry does not constitute acceptance of an order or a binding quotation. Commercial terms are confirmed only through an official quotation, proforma invoice or sales contract. All engagements are subject to a separate written scope of work agreed between ASMAN Prime Hub Global Services Limited and the client.</p>
+          <h2 className="font-display text-2xl mt-10">Changing Conditions</h2>
+          <p>Pricing, supplier availability, freight rates, exchange rates, regulations and shipment timelines are subject to change. Information on this Site is indicative and does not constitute an offer capable of acceptance.</p>
           <h2 className="font-display text-2xl mt-10">Intellectual Property</h2>
-          <p>All content, brand elements and layout of this Site are the property of ASMAN Prime Hub and may not be reproduced without permission.</p>
+          <p>All content, brand elements and layout of this Site are the property of ASMAN Prime Hub Global Services Limited and may not be reproduced without permission.</p>
           <h2 className="font-display text-2xl mt-10">Limitation of Liability</h2>
-          <p>The Site is provided on an "as is" basis. ASMAN Prime Hub makes no warranties as to availability or uninterrupted access.</p>
+          <p>The Site is provided on an "as is" basis. ASMAN Prime Hub Global Services Limited makes no warranties as to availability or uninterrupted access.</p>
           <h2 className="font-display text-2xl mt-10">Governing Law</h2>
           <p>These Terms are governed by the laws of the Federal Republic of Nigeria.</p>
         </div>

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MessageCircle, Linkedin, Instagram, Facebook } from "lucide-react";
-import { NAV, SITE, COMMODITIES } from "@/lib/site-data";
+import { NAV, SITE, COMMODITIES, DISCLAIMER } from "@/lib/site-data";
 import logo from "@/assets/logo.png";
 
 export function Footer() {
@@ -17,9 +17,15 @@ export function Footer() {
             </div>
           </div>
           <p className="mt-5 text-sm leading-relaxed max-w-sm">
-            ASMAN Prime Hub connects businesses to verified sourcing, logistics coordination, and
-            agricultural export opportunities from Nigeria to global markets.
+            {SITE.legalName} — a Nigeria-based international trade and export coordination company
+            providing sourcing, procurement, agricultural export and freight coordination for
+            businesses in global markets.
           </p>
+          <div className="mt-4 text-sm">
+            <a href={`https://${SITE.domain}`} className="hover:text-[var(--color-gold)] transition-colors">
+              {SITE.domain}
+            </a>
+          </div>
           <div className="mt-7 flex items-center gap-3">
             <a
               href="https://www.linkedin.com/company/asman-prime-hub/"
@@ -102,8 +108,14 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
+        <div className="container-x py-6 text-[11px] leading-relaxed text-white/45 max-w-none">
+          {DISCLAIMER}
+        </div>
+      </div>
+
+      <div className="border-t border-white/10">
         <div className="container-x py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] uppercase tracking-[0.2em] text-white/40">
-          <div>© {new Date().getFullYear()} ASMAN Prime Hub. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} {SITE.legalName}. All rights reserved.</div>
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="hover:text-[var(--color-gold)]">Privacy</Link>
             <Link to="/terms" className="hover:text-[var(--color-gold)]">Terms</Link>

@@ -92,8 +92,8 @@ function ContactPage() {
             Let's discuss your <span className="italic text-[var(--color-gold)] font-normal">trade.</span>
           </h1>
           <p className="mt-6 max-w-md text-white/80 leading-relaxed">
-            Send us a trade inquiry or consultation request and our coordination team will respond within
-            24 hours with next steps.
+            Send a trade inquiry or request a consultation. Our coordination team aims to respond
+            within one business day with next steps.
           </p>
 
           <div className="mt-12 space-y-5">
@@ -138,9 +138,11 @@ function ContactPage() {
 
         <div className="border-t border-white/20 pt-8">
           <div className="font-display text-xl leading-snug">
-            "We treat every inquiry as the start of a long-term trade relationship."
+            Every inquiry is reviewed against a defined qualification process before we respond.
           </div>
-          <div className="mt-3 text-[11px] uppercase tracking-[0.25em] text-white/60">— ASMAN Prime Hub Coordination Team</div>
+          <div className="mt-3 text-[11px] uppercase tracking-[0.25em] text-white/60">
+            ASMAN Prime Hub Global Services Limited
+          </div>
         </div>
       </div>
 

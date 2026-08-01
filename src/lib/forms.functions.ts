@@ -54,18 +54,20 @@ async function dispatchEmails(args: {
 
 const tradeSchema = z.object({
   full_name: z.string().trim().min(1).max(120),
+  company_name: z.string().trim().min(1).max(160),
   country: z.string().trim().min(1).max(80),
   email: z.string().trim().email().max(200),
   whatsapp: z.string().trim().min(5).max(40),
   service_interest: z.string().trim().min(1).max(120),
-  business_type: z.string().trim().min(1).max(80),
   product_required: z.string().trim().min(1).max(200),
+  specifications: z.string().trim().min(1).max(1000),
   quantity: z.string().trim().min(1).max(120),
-  budget_range: z.string().trim().min(1).max(80),
+  destination: z.string().trim().min(1).max(160),
+  incoterm: z.string().trim().min(1).max(40),
+  payment_method: z.string().trim().min(1).max(80),
   timeline: z.string().trim().min(1).max(80),
-  target_market: z.string().trim().min(1).max(160),
-  shipping_method: z.string().trim().min(1).max(80),
-  message: z.string().trim().min(10).max(2000),
+  budget_range: z.string().trim().max(80).optional().or(z.literal("")),
+  message: z.string().trim().max(2000).optional().or(z.literal("")),
   consent: z.literal(true),
 });
 

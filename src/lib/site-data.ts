@@ -1,5 +1,6 @@
 export const SITE = {
   name: "ASMAN Prime Hub",
+  legalName: "ASMAN Prime Hub Global Services Limited",
   domain: "asmanprimehub.com",
   email: "contact@asmanprimehub.com",
   contactEmail: "contact@asmanprimehub.com",
@@ -7,6 +8,78 @@ export const SITE = {
   whatsappRaw: "2347084443626",
   tagline: "Global Sourcing. Seamless Trade. Delivered.",
 };
+
+export const COMMODITY_NOTE =
+  "Product availability, specifications, pricing, minimum order quantities and shipment schedules are confirmed against each formal inquiry.";
+
+export const INQUIRY_NOTE =
+  "Submitting this form does not constitute acceptance of an order or a binding quotation. Commercial terms are confirmed only through an official quotation, proforma invoice or sales contract.";
+
+export const DISCLAIMER =
+  "Pricing, supplier availability, freight rates, exchange rates, regulations and shipment timelines are subject to change. Final obligations arise only from signed commercial documents issued by ASMAN Prime Hub Global Services Limited.";
+
+export const INCOTERMS = ["EXW", "FOB", "CFR", "CIF", "To be advised"];
+
+export const PAYMENT_METHODS = [
+  "Telegraphic Transfer (TT)",
+  "Letter of Credit (LC)",
+  "Documentary Collection",
+  "Escrow",
+  "To be discussed",
+];
+
+export const SERVICE_CATEGORIES = [
+  {
+    title: "Global Product Sourcing & Supplier Verification",
+    receive:
+      "A shortlist of assessed suppliers matched to your specification, with company checks, capacity review, sample coordination and quotation comparison.",
+    audience: "Importers, distributors and brands sourcing from Asia, the Middle East or Europe.",
+    next: "Submit a trade inquiry with your specification and target quantity.",
+  },
+  {
+    title: "Procurement & Buyer Representation",
+    receive:
+      "Order coordination on your behalf — negotiation support, production follow-up, inspection scheduling and documentation review.",
+    audience: "Buyers who need representation at origin without opening a local office.",
+    next: "Share your procurement scope and preferred Incoterm.",
+  },
+  {
+    title: "Nigerian Agricultural Export Coordination",
+    receive:
+      "Origin sourcing, specification confirmation, packaging guidance, quality-control coordination and export documentation support.",
+    audience: "International buyers of Nigerian agricultural commodities.",
+    next: "Send your commodity, specification, quantity and destination port.",
+  },
+  {
+    title: "Freight & Logistics Coordination",
+    receive:
+      "Forwarder selection, routing options across air and sea, booking coordination and shipment follow-up against agreed milestones.",
+    audience: "Shippers who want one coordinated point of contact across carriers and forwarders.",
+    next: "Provide cargo details, origin and destination for routing options.",
+  },
+  {
+    title: "Trade Advisory & Market Intelligence",
+    receive:
+      "Structured briefings on landed cost, documentation requirements, Incoterm selection and market entry considerations for your corridor.",
+    audience: "Businesses evaluating a new sourcing or export corridor.",
+    next: "Book a consultation to define the scope of the review.",
+  },
+  {
+    title: "OEM / ODM & Custom Manufacturing Support",
+    receive:
+      "Factory identification for custom or private-label production, sample and tooling coordination, and specification control through production.",
+    audience: "Brands developing own-label or customised products.",
+    next: "Submit a trade inquiry with your product brief and target specification.",
+  },
+];
+
+export const HOW_WE_WORK = [
+  { t: "Inquiry & requirement review", d: "We review your specification, quantity, destination and timeline, and confirm what is workable." },
+  { t: "Feasibility & supplier assessment", d: "Structured supplier and product assessment against your requirement, with samples where relevant." },
+  { t: "Commercial proposal & agreed scope", d: "A written proposal setting out scope, responsibilities, Incoterm and indicative commercial terms." },
+  { t: "Verification, documentation & quality coordination", d: "Specification confirmation, inspection arrangements and coordination of trade documentation." },
+  { t: "Logistics, shipment & transaction follow-through", d: "Freight coordination, shipment tracking against milestones and documented handover." },
+];
 
 export const NAV = [
   { label: "Home", to: "/" },
@@ -16,7 +89,6 @@ export const NAV = [
   { label: "Why Us", to: "/why-choose-us" },
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
-  { label: "Get a Quote", to: "/quote" },
 ] as const;
 
 export const REGIONS = ["Middle East", "Europe", "Asia", "North America", "Africa"];
@@ -45,14 +117,12 @@ export const COMMODITIES = [
 ];
 
 export const SERVICE_INTERESTS = [
-  "Product Sourcing",
-  "Import Consultation",
-  "Export Consultation",
-  "Agricultural Commodity Export",
-  "Supplier Verification",
-  "Procurement Support",
-  "Logistics & Freight",
-  "Business Consultation",
+  "Global Product Sourcing & Supplier Verification",
+  "Procurement & Buyer Representation",
+  "Nigerian Agricultural Export Coordination",
+  "Freight & Logistics Coordination",
+  "Trade Advisory & Market Intelligence",
+  "OEM / ODM & Custom Manufacturing Support",
   "Other",
 ];
 

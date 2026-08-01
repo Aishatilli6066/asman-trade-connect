@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Check, ShieldCheck, Truck, Plane, Ship, Globe2, Sprout, Boxes, FileCheck2, MessagesSquare, Network } from "lucide-react";
+import { ArrowRight, Check, ShieldCheck, Truck, Globe2, Sprout, Boxes, FileCheck2, MessagesSquare, Network } from "lucide-react";
 import heroPort from "@/assets/hero-port.jpg";
 import agriHero from "@/assets/agri-hero.jpg";
 import logisticsShip from "@/assets/logistics-ship.jpg";
@@ -14,16 +14,16 @@ import shipUpsSvg from "@/assets/ship-ups.png";
 import shipDhlSvg from "@/assets/ship-dhl.png";
 import globe from "@/assets/globe.jpg";
 import { Eyebrow, GoldButton, SectionHeader, FadeIn } from "@/components/site/primitives";
-import { COMMODITIES, REGIONS, SERVICES, SITE } from "@/lib/site-data";
+import { COMMODITIES, REGIONS, SERVICE_CATEGORIES, HOW_WE_WORK, COMMODITY_NOTE, SITE } from "@/lib/site-data";
 import { openConsultation } from "@/components/site/consultation-store";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
-      { name: "description", content: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions." },
+      { name: "description", content: "Nigeria-based international trade, sourcing, procurement, agricultural export and freight-coordination company working with businesses across global markets." },
       { property: "og:title", content: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
-      { property: "og:description", content: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions." },
+      { property: "og:description", content: "Nigeria-based international trade, sourcing, procurement, agricultural export and freight-coordination company working with businesses across global markets." },
       { property: "og:url", content: "https://asmanprimehub.com/" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "ASMAN Prime Hub" },
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/")({
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
-      { name: "twitter:description", content: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions." },
+      { name: "twitter:description", content: "Nigeria-based international trade, sourcing, procurement, agricultural export and freight-coordination company working with businesses across global markets." },
       { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
     ],
     links: [{ rel: "canonical", href: "https://asmanprimehub.com/" }],
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
           "@id": "https://asmanprimehub.com/#webpage",
           url: "https://asmanprimehub.com/",
           name: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions",
-          description: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions.",
+          description: "Nigeria-based international trade, sourcing, procurement, agricultural export and freight-coordination company working with businesses across global markets.",
           isPartOf: { "@id": "https://asmanprimehub.com/#website" },
           about: { "@id": "https://asmanprimehub.com/#organization" },
           breadcrumb: {
@@ -65,7 +65,7 @@ function Index() {
     <>
       <Hero />
       <CoverageStrip />
-      <Metrics />
+      <ProofStrip />
       <AboutPreview />
       <Founder />
       <TrustBadges />
@@ -157,18 +157,17 @@ function Hero() {
         </FadeIn>
         <FadeIn delay={240}>
           <p className="mt-8 text-white/75 max-w-xl text-base md:text-lg leading-relaxed">
-            ASMAN Prime Hub helps businesses source products globally, manage procurement,
-            coordinate shipping, and connect with international trade opportunities.
+            ASMAN Prime Hub is a Nigeria-based international trade, sourcing, procurement,
+            agricultural export and freight-coordination company working with businesses
+            across global markets.
           </p>
         </FadeIn>
         <FadeIn delay={360}>
           <div className="mt-10 flex flex-wrap gap-3">
-            <GoldButton onClick={openConsultation}>
-              Book Consultation <ArrowRight size={14} />
-            </GoldButton>
-            <Link to="/services">
-              <GoldButton variant="outline-light">Explore Services</GoldButton>
+            <Link to="/quote">
+              <GoldButton>Submit a Trade Inquiry <ArrowRight size={14} /></GoldButton>
             </Link>
+            <GoldButton variant="outline-light" onClick={openConsultation}>Book a Consultation</GoldButton>
           </div>
         </FadeIn>
         <FadeIn delay={480}>
@@ -207,22 +206,20 @@ function CoverageStrip() {
   );
 }
 
-function Metrics() {
+function ProofStrip() {
   const items = [
-    { kv: "4+", v: "Years", k: "In international trade & sourcing" },
-    { kv: "68+", v: "Clients", k: "Served across global markets" },
-    { kv: "200+", v: "Suppliers", k: "Verified manufacturers & partners" },
-    { kv: "10+", v: "Countries", k: "Asia, Africa, Middle East & Europe" },
+    { v: "Structured supplier assessment", k: "Company checks, capacity review and sample coordination before any introduction." },
+    { v: "Specification & quotation review", k: "Requirements documented and quotations compared line by line before commitment." },
+    { v: "Transaction documentation support", k: "Coordination of export, shipping and compliance paperwork across the transaction." },
+    { v: "Quality & shipment coordination", k: "Inspection arrangements and freight follow-up against agreed milestones." },
   ];
   return (
     <section className="bg-[var(--color-burgundy)] text-white">
       <div className="container-x py-20 md:py-28 grid gap-px md:grid-cols-4 border-y border-white/10">
         {items.map((m) => (
           <div key={m.v} className="p-8 md:p-10 bg-[var(--color-burgundy)] md:border-r last:md:border-r-0 border-white/10">
-            <div className="font-display text-5xl md:text-7xl text-[var(--color-gold)] leading-none">
-              {m.kv}
-            </div>
-            <div className="mt-2 font-display text-xl md:text-2xl text-white">{m.v}</div>
+            <div className="h-px w-10 bg-[var(--color-gold)]" />
+            <div className="mt-6 font-display text-xl md:text-2xl text-white leading-snug">{m.v}</div>
             <p className="mt-4 text-sm text-white/55">{m.k}</p>
           </div>
         ))}
@@ -247,10 +244,10 @@ function AboutPreview() {
             Your Strategic Partner for Global Trade, Sourcing & Procurement
           </h2>
           <p className="mt-6 text-[var(--color-ink)]/70 text-base md:text-lg leading-relaxed">
-            We coordinate the full trade lifecycle—from supplier verification and procurement to
-            freight management, sourcing, and international trade operations. Our clients gain a
-            single accountable partner for sourcing, logistics coordination, export support, and
-            global market access across multiple regions.
+            We coordinate the trade lifecycle — from supplier assessment and procurement to
+            freight coordination and export documentation. Clients work with one accountable
+            coordination partner rather than managing suppliers, forwarders and paperwork
+            separately.
           </p>
           <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
             {[
@@ -278,23 +275,18 @@ function AboutPreview() {
 }
 
 function Process() {
-  const steps = [
-    { t: "Consultation", d: "We start by understanding your sourcing or export brief, market, volumes and timeline." },
-    { t: "Supplier Verification", d: "Due diligence on factories, credentials, capacity and commercial reliability." },
-    { t: "Procurement & Coordination", d: "Negotiation, sampling, quality control and order coordination on your behalf." },
-    { t: "Shipping & Delivery Support", d: "Freight routing, documentation, customs liaison and delivery follow-through." },
-  ];
+  const steps = HOW_WE_WORK;
   return (
     <section className="bg-[var(--color-bone)]">
       <div className="container-x py-24 md:py-32">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <SectionHeader eyebrow="How We Work" title={<>Four steps. <span className="italic font-normal text-[var(--color-burgundy)]">One accountable partner.</span></>} />
+          <SectionHeader eyebrow="How We Work" title={<>Five stages. <span className="italic font-normal text-[var(--color-burgundy)]">One accountable partner.</span></>} />
         </div>
-        <div className="mt-16 grid gap-px md:grid-cols-4 border border-[var(--color-line)] bg-[var(--color-line)]">
+        <div className="mt-16 grid gap-px sm:grid-cols-2 lg:grid-cols-5 border border-[var(--color-line)] bg-[var(--color-line)]">
           {steps.map((s, i) => (
-            <div key={s.t} className="bg-white p-8 md:p-10 group hover:bg-[var(--color-burgundy)] hover:text-white transition-colors duration-500">
+            <div key={s.t} className="bg-white p-8 group hover:bg-[var(--color-burgundy)] hover:text-white transition-colors duration-500">
               <div className="font-display text-5xl text-[var(--color-gold)]">0{i + 1}</div>
-              <div className="mt-6 font-display text-xl">{s.t}</div>
+              <div className="mt-6 font-display text-lg leading-snug">{s.t}</div>
               <p className="mt-3 text-sm text-[var(--color-ink)]/70 group-hover:text-white/60">{s.d}</p>
             </div>
           ))}
@@ -305,19 +297,19 @@ function Process() {
 }
 
 function Services() {
-  const icons = [Boxes, ShieldCheck, Network, Globe2, Truck, Plane, Ship, Sprout];
+  const icons = [Boxes, Network, Sprout, Truck, Globe2, ShieldCheck];
   return (
     <section className="bg-white text-[var(--color-ink)]">
       <div className="container-x py-24 md:py-32">
-        <SectionHeader eyebrow="Services" title={<>Trade infrastructure, <span className="italic text-[var(--color-burgundy)] font-normal">end-to-end.</span></>} subtitle="From sourcing to shipping, every step coordinated through one trusted partner." />
-        <div className="mt-16 grid gap-px sm:grid-cols-2 lg:grid-cols-4 border border-[var(--color-line)] bg-[var(--color-line)]">
-          {SERVICES.map((s, i) => {
+        <SectionHeader eyebrow="Services" title={<>Six service categories, <span className="italic text-[var(--color-burgundy)] font-normal">clearly defined.</span></>} subtitle="Each engagement is scoped in writing before work begins." />
+        <div className="mt-16 grid gap-px sm:grid-cols-2 lg:grid-cols-3 border border-[var(--color-line)] bg-[var(--color-line)]">
+          {SERVICE_CATEGORIES.map((s, i) => {
             const Icon = icons[i] ?? Boxes;
             return (
               <div key={s.title} className="bg-white p-8 group hover:bg-[var(--color-bone)] transition-colors">
                 <Icon size={26} strokeWidth={1.4} className="text-[var(--color-burgundy)]" />
-                <div className="mt-6 font-display text-xl">{s.title}</div>
-                <p className="mt-3 text-sm text-[var(--color-ink)]/65 leading-relaxed">{s.desc}</p>
+                <div className="mt-6 font-display text-xl leading-snug">{s.title}</div>
+                <p className="mt-3 text-sm text-[var(--color-ink)]/65 leading-relaxed">{s.receive}</p>
                 <div className="mt-6 h-px w-8 bg-[var(--color-gold)] group-hover:w-16 transition-all" />
               </div>
             );
@@ -349,7 +341,7 @@ function AgriHighlight() {
           eyebrow="Agricultural Export"
           dark
           title={<>Nigerian agricultural commodities <span className="italic text-[var(--color-gold)] font-normal">for global markets.</span></>}
-          subtitle="Premium-grade commodities, export-ready packaging, and end-to-end coordination for international buyers."
+          subtitle="Nigerian agricultural commodities coordinated for international buyers — from origin sourcing to shipment documentation."
         />
         <div className="mt-16 grid gap-px sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border border-white/10 bg-white/10">
           {COMMODITIES.map((c) => (
@@ -365,9 +357,10 @@ function AgriHighlight() {
           ))}
         </div>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <Link to="/agricultural-export"><GoldButton>Explore Commodities <ArrowRight size={14} /></GoldButton></Link>
-          <GoldButton variant="outline-gold" onClick={openConsultation}>Discuss Export Opportunities</GoldButton>
+          <Link to="/quote"><GoldButton>Submit a Trade Inquiry <ArrowRight size={14} /></GoldButton></Link>
+          <Link to="/agricultural-export"><GoldButton variant="outline-gold">View Commodities</GoldButton></Link>
         </div>
+        <p className="mt-8 text-center text-xs md:text-sm text-white/60 max-w-3xl mx-auto leading-relaxed">{COMMODITY_NOTE}</p>
       </div>
     </section>
   );
@@ -375,12 +368,12 @@ function AgriHighlight() {
 
 function WhyUs() {
   const items = [
-    { i: ShieldCheck, t: "Verified Supplier Network", d: "Every partner vetted for capacity, credentials, and reliability." },
-    { i: Network, t: "End-to-End Trade Management", d: "One coordinated workflow from inquiry to delivery." },
-    { i: MessagesSquare, t: "Transparent Communication", d: "Clear updates, documented decisions, no surprises." },
-    { i: Globe2, t: "Global Market Connectivity", d: "Active corridors across Asia, Europe, Middle East and the Americas." },
-    { i: FileCheck2, t: "Export Compliance Support", d: "Documentation and regulatory coordination handled correctly." },
-    { i: Truck, t: "Reliable Logistics Coordination", d: "Vetted forwarders, transparent routing and proactive follow-up." },
+    { i: ShieldCheck, t: "Structured supplier assessment", d: "Suppliers are reviewed for credentials, capacity and sample quality before introduction." },
+    { i: Network, t: "Single coordination point", d: "One documented workflow across sourcing, procurement, freight and paperwork." },
+    { i: MessagesSquare, t: "Documented communication", d: "Written updates, recorded decisions and defined response windows." },
+    { i: Globe2, t: "International working practice", d: "Trade conducted in standard Incoterms, documentation and payment structures." },
+    { i: FileCheck2, t: "Documentation support", d: "Coordination of export, shipping and compliance documents with your counterparties." },
+    { i: Truck, t: "Freight coordination", d: "Forwarder selection, routing options and shipment follow-up against agreed milestones." },
   ];
   return (
     <section className="bg-white">
@@ -411,7 +404,7 @@ function Standards() {
   return (
     <section className="bg-[var(--color-bone)]">
       <div className="container-x py-24 md:py-32 grid lg:grid-cols-[1fr_2fr] gap-14">
-        <SectionHeader eyebrow="Operational Standards" title={<>The credibility of how <span className="italic font-normal text-[var(--color-burgundy)]">we operate.</span></>} subtitle="Built into every workflow — so your trade moves forward without friction." />
+        <SectionHeader eyebrow="Operational Standards" title={<>The credibility of how <span className="italic font-normal text-[var(--color-burgundy)]">we operate.</span></>} subtitle="Process-based standards applied to every engagement." />
         <div className="grid sm:grid-cols-2 gap-px bg-[var(--color-line)] border border-[var(--color-line)]">
           {cols.map((c) => (
             <div key={c.t} className="bg-white p-7">
@@ -434,8 +427,8 @@ function ConsultationCTA() {
           Ready to move your trade <span className="italic text-[var(--color-burgundy)] font-normal">forward?</span>
         </h2>
         <div className="flex flex-wrap gap-3">
-          <GoldButton variant="burgundy" onClick={openConsultation}>Request Consultation</GoldButton>
-          <Link to="/agricultural-export"><GoldButton>Discuss Export</GoldButton></Link>
+          <Link to="/quote"><GoldButton variant="burgundy">Submit a Trade Inquiry</GoldButton></Link>
+          <GoldButton onClick={openConsultation}>Book a Consultation</GoldButton>
         </div>
       </div>
     </section>
@@ -450,7 +443,7 @@ function Founder() {
           <div className="absolute -inset-3 border border-[var(--color-gold)] hidden md:block" />
           <img
             src={founderAisha}
-            alt="Aisha Usman, Founder & CEO of ASMAN Prime Hub"
+            alt="Aisha Usman, Founder and Trade & Business Strategist at ASMAN Prime Hub"
             className="relative w-[280px] h-[340px] md:w-[360px] md:h-[440px] object-cover"
             loading="lazy"
           />
@@ -458,22 +451,21 @@ function Founder() {
         <div>
           <Eyebrow>Meet the Founder</Eyebrow>
           <h2 className="mt-5 font-display text-3xl md:text-5xl leading-[1.05]">
-            Aisha Usman <span className="italic font-normal text-[var(--color-burgundy)]">— Founder & CEO.</span>
+            Aisha Usman <span className="italic font-normal text-[var(--color-burgundy)]">— Founder.</span>
           </h2>
           <div className="mt-4 text-[11px] uppercase tracking-[0.25em] text-[var(--color-ink)]/60">
-            International Trade Consultant · Sourcing Specialist · Export Strategist
+            Trade &amp; Business Strategist
           </div>
           <p className="mt-7 text-[var(--color-ink)]/75 text-base md:text-lg leading-relaxed max-w-2xl">
-            Aisha Usman is the Founder of ASMAN Prime Hub, an international trade consultancy
-            headquartered in Kano, Nigeria. With 4+ years of experience, she has served 68+ clients
-            across global markets — connecting Nigerian agro-commodity exporters with verified
-            buyers in China, UAE, Egypt, India, Turkey, and Europe, while sourcing quality
-            products from Asia for Nigerian importers.
+            Aisha Usman is the Founder and Trade &amp; Business Strategist behind ASMAN Prime Hub,
+            a Nigeria-based international trade and export coordination company headquartered in
+            Kano, Nigeria. Her focus is the systems the company runs on: how requirements are
+            qualified, how suppliers are assessed, and how transactions are documented.
           </p>
           <p className="mt-4 text-[var(--color-ink)]/70 leading-relaxed max-w-2xl">
-            She specializes in export structuring, supplier verification, trade documentation,
-            and landed cost analysis — bridging the gap between African producers and global
-            markets with precision and integrity.
+            Her areas of practice include export structuring, supplier assessment, trade
+            documentation and landed-cost analysis — applied through the company&rsquo;s
+            coordination process rather than on an ad-hoc basis.
           </p>
           <div className="mt-8 h-px w-16 bg-[var(--color-gold)]" />
         </div>
@@ -487,14 +479,14 @@ function ContactStrip() {
     <section className="bg-white border-t border-[var(--color-line)]">
       <div className="container-x py-12 grid md:grid-cols-[1fr_auto] gap-6 items-center">
         <div>
-          <div className="font-display text-xl md:text-2xl">We respond to trade inquiries within 24 hours.</div>
+          <div className="font-display text-xl md:text-2xl">We aim to respond to trade inquiries within one business day.</div>
           <div className="mt-2 text-sm text-[var(--color-ink)]/60">
             <a className="hover:text-[var(--color-burgundy)]" href={`mailto:${SITE.email}`}>{SITE.email}</a>
             <span className="mx-3">·</span>
             <a className="hover:text-[var(--color-burgundy)]" href={`https://wa.me/${SITE.whatsappRaw}`}>{SITE.whatsapp}</a>
           </div>
         </div>
-        <Link to="/contact"><GoldButton variant="burgundy">Open Contact <ArrowRight size={14} /></GoldButton></Link>
+        <Link to="/contact"><GoldButton variant="burgundy">Contact Us <ArrowRight size={14} /></GoldButton></Link>
       </div>
     </section>
   );

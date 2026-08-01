@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import agriHero from "@/assets/agri-hero.jpg";
 import { Eyebrow, SectionHeader } from "@/components/site/primitives";
-import { COMMODITIES } from "@/lib/site-data";
+import { COMMODITIES, COMMODITY_NOTE } from "@/lib/site-data";
 import { ExportInquiryForm } from "@/components/site/forms/ExportInquiryForm";
 
 const commodityImages = import.meta.glob<{ default: string }>("/src/assets/c-*.jpg", { eager: true });
@@ -57,15 +57,16 @@ function AgriPage() {
             Nigerian commodities for <span className="italic text-[var(--color-gold)] font-normal">global markets.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-white/75 text-lg leading-relaxed">
-            Premium-grade Nigerian agricultural commodities — sourced, inspected, packaged and shipped to
-            international buyers with end-to-end coordination from origin to destination.
+            Nigerian agricultural commodities coordinated for international buyers — origin sourcing,
+            specification confirmation, quality-control coordination and export documentation support.
           </p>
         </div>
       </section>
 
       <section className="bg-white">
         <div className="container-x py-24 md:py-32">
-          <SectionHeader eyebrow="Our Commodities" title={<>Export-ready, <span className="italic font-normal text-[var(--color-burgundy)]">origin-traceable.</span></>} />
+          <SectionHeader eyebrow="Commodities We Coordinate" title={<>Sourced at origin, <span className="italic font-normal text-[var(--color-burgundy)]">confirmed per inquiry.</span></>} />
+          <p className="mt-6 max-w-3xl text-sm md:text-base text-[var(--color-ink)]/65 leading-relaxed">{COMMODITY_NOTE}</p>
           <div className="mt-16 grid gap-px sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 border border-[var(--color-line)] bg-[var(--color-line)]">
             {COMMODITIES.map((c) => (
               <article key={c.slug} className="bg-white group overflow-hidden">
@@ -75,7 +76,7 @@ function AgriPage() {
                 <div className="p-5">
                   <div className="font-display text-lg">{c.name}</div>
                   <p className="mt-2 text-xs text-[var(--color-ink)]/60 leading-relaxed">{c.desc}</p>
-                  <div className="mt-4 text-[10px] uppercase tracking-[0.25em] text-[var(--color-burgundy)]">Available · Export-ready</div>
+                  <div className="mt-4 text-[10px] uppercase tracking-[0.25em] text-[var(--color-burgundy)]">Confirmed per inquiry</div>
                 </div>
               </article>
             ))}
@@ -90,8 +91,8 @@ function AgriPage() {
             {[
               { t: "Export Documentation", d: "CoO, phytosanitary, commercial invoices, packing lists, BL." },
               { t: "Supplier Sourcing", d: "Origin-verified commodity sourcing across Nigerian growing regions." },
-              { t: "Buyer Connections", d: "Active commercial corridors with international commodity buyers." },
-              { t: "Freight Coordination", d: "Air and sea freight routing optimized for commodity type and volume." },
+              { t: "Buyer Representation", d: "Coordination with counterparties on your behalf, within an agreed written scope." },
+              { t: "Freight Coordination", d: "Air and sea routing options matched to commodity type and volume." },
               { t: "Packaging Guidance", d: "Export-grade packaging matched to commodity and destination market." },
               { t: "Quality Control", d: "Pre-shipment inspection arrangements and sample verification." },
               { t: "Compliance Assistance", d: "Regulatory coordination for export and destination market entry." },
@@ -114,7 +115,8 @@ function AgriPage() {
               Inquire About Our Export Commodities
             </h2>
             <p className="mt-5 text-white/65 leading-relaxed">
-              Tell us what you need and our export coordination team will respond within 24 hours.
+              Share your commodity, specification, quantity and destination port. Our coordination
+              team aims to respond within one business day.
             </p>
           </div>
           <div>
