@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Check, ShieldCheck, Truck, Plane, Ship, Globe2, Sprout, Boxes, FileCheck2, MessagesSquare, Network } from "lucide-react";
+import { ArrowRight, Check, ShieldCheck, Truck, Globe2, Sprout, Boxes, FileCheck2, MessagesSquare, Network } from "lucide-react";
 import heroPort from "@/assets/hero-port.jpg";
 import agriHero from "@/assets/agri-hero.jpg";
 import logisticsShip from "@/assets/logistics-ship.jpg";
