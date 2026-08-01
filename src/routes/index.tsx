@@ -21,9 +21,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
-      { name: "description", content: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions." },
+      { name: "description", content: "Nigeria-based international trade, sourcing, procurement, agricultural export and freight-coordination company working with businesses across global markets." },
       { property: "og:title", content: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
-      { property: "og:description", content: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions." },
+      { property: "og:description", content: "Nigeria-based international trade, sourcing, procurement, agricultural export and freight-coordination company working with businesses across global markets." },
       { property: "og:url", content: "https://asmanprimehub.com/" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "ASMAN Prime Hub" },
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/")({
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
-      { name: "twitter:description", content: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions." },
+      { name: "twitter:description", content: "Nigeria-based international trade, sourcing, procurement, agricultural export and freight-coordination company working with businesses across global markets." },
       { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
     ],
     links: [{ rel: "canonical", href: "https://asmanprimehub.com/" }],
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
           "@id": "https://asmanprimehub.com/#webpage",
           url: "https://asmanprimehub.com/",
           name: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions",
-          description: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions.",
+          description: "Nigeria-based international trade, sourcing, procurement, agricultural export and freight-coordination company working with businesses across global markets.",
           isPartOf: { "@id": "https://asmanprimehub.com/#website" },
           about: { "@id": "https://asmanprimehub.com/#organization" },
           breadcrumb: {
