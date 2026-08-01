@@ -42,10 +42,11 @@ export function ConsultationModal() {
               Consultation Request
             </div>
             <h3 className="mt-3 font-display text-3xl md:text-4xl text-white">
-              Let's discuss your trade ambitions.
+              Let&rsquo;s discuss your trade requirement.
             </h3>
             <p className="mt-3 text-white/60 text-sm max-w-xl">
-              Share a few details and our coordination team will respond within 24 hours.
+              Share a few details and our coordination team will respond, usually within one
+              business day.
             </p>
             <div className="mt-8">
               <ConsultationForm dark />

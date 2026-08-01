@@ -29,7 +29,7 @@ export function ExportInquiryForm() {
     resolver: zodResolver(schema),
   });
 
-  if (done) return <SuccessState dark title="Export inquiry received" message="Thanks — we've received your inquiry. Our export desk will follow up with pricing and next steps within 24 hours." />;
+  if (done) return <SuccessState dark title="Export inquiry received" message="Thank you — your inquiry has been received. Our export desk will review it and follow up with next steps, usually within one business day." />;
 
   return (
     <form
@@ -77,6 +77,7 @@ export function ExportInquiryForm() {
         <TextArea dark {...register("requirements")} />
       </Field>
       <SubmitButton loading={isSubmitting}>Submit Export Inquiry</SubmitButton>
+      <p className="text-xs leading-relaxed text-white/55">{INQUIRY_NOTE}</p>
     </form>
   );
 }
