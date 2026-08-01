@@ -24,7 +24,7 @@ function Page() {
         <Eyebrow>Legal</Eyebrow>
         <h1 className="mt-5 font-display text-4xl md:text-6xl">Privacy Policy</h1>
         <div className="mt-10 prose-text text-[var(--color-ink)]/75 leading-relaxed space-y-6 text-base">
-          <p>ASMAN Prime Hub ("we", "us", "our") respects your privacy. This policy describes how we collect, use, and safeguard the information you share when interacting with our website and services.</p>
+          <p>ASMAN Prime Hub Global Services Limited, trading as ASMAN Prime Hub ("we", "us", "our"), respects your privacy. This policy describes how we collect, use and safeguard the information you share when interacting with our website and services.</p>
           <h2 className="font-display text-2xl mt-10">Information We Collect</h2>
           <p>We collect information you voluntarily provide through our inquiry forms — including name, company, country, email, WhatsApp number, and the details of your trade or export inquiry.</p>
           <h2 className="font-display text-2xl mt-10">How We Use Your Information</h2>
