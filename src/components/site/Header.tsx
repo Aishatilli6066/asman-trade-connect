@@ -37,12 +37,12 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-5 xl:gap-8">
+        <nav className="hidden xl:flex items-center gap-4 2xl:gap-7">
           {NAV.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-[11px] xl:text-[12px] uppercase tracking-[0.16em] xl:tracking-[0.2em] whitespace-nowrap text-white/75 hover:text-[var(--color-gold)] transition-colors"
+              className="text-[10px] 2xl:text-[11px] uppercase tracking-[0.14em] 2xl:tracking-[0.18em] whitespace-nowrap text-white/75 hover:text-[var(--color-gold)] transition-colors"
               activeProps={{ className: "text-[var(--color-gold)]" }}
               activeOptions={{ exact: n.to === "/" }}
             >
@@ -51,20 +51,20 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block shrink-0">
+        <div className="hidden xl:block shrink-0">
           <div className="flex items-center gap-4">
             <a
               href={`https://wa.me/${SITE.whatsappRaw}`}
               target="_blank"
               rel="noopener"
               aria-label="WhatsApp"
-              className="hidden xl:flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-white/70 hover:text-[var(--color-gold)] transition-colors"
+              className="hidden 2xl:flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-white/70 hover:text-[var(--color-gold)] transition-colors"
             >
               <MessageCircle size={14} /> WhatsApp
             </a>
             <button
               onClick={openConsultation}
-              className="text-[10px] xl:text-[11px] uppercase tracking-[0.16em] whitespace-nowrap text-white/70 hover:text-[var(--color-gold)] transition-colors"
+              className="hidden 2xl:inline text-[10px] uppercase tracking-[0.16em] whitespace-nowrap text-white/70 hover:text-[var(--color-gold)] transition-colors"
             >
               Consultation
             </button>
@@ -78,7 +78,7 @@ export function Header() {
         </div>
 
         <button
-          className="lg:hidden text-white p-2"
+          className="xl:hidden text-white p-2"
           onClick={() => setOpen((o) => !o)}
           aria-label="Menu"
         >
@@ -87,7 +87,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-[var(--color-burgundy)] border-t border-white/10">
+        <div className="xl:hidden bg-[var(--color-burgundy)] border-t border-white/10">
           <div className="container-x py-6 flex flex-col gap-1">
             {NAV.map((n) => (
               <Link
