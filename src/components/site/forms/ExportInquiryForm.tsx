@@ -6,7 +6,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { Field, TextInput, TextArea, Select, SubmitButton, SuccessState } from "../form-fields";
 import { submitExportInquiry } from "@/lib/forms.functions";
-import { COMMODITY_OPTIONS, SHIPPING_METHODS } from "@/lib/site-data";
+import { COMMODITY_OPTIONS, SHIPPING_METHODS, INQUIRY_NOTE } from "@/lib/site-data";
 
 const schema = z.object({
   full_name: z.string().min(1, "Required"),
