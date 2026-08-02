@@ -42,7 +42,7 @@ export function TradeInquiryForm({ dark = false }: { dark?: boolean }) {
     resolver: zodResolver(schema),
   });
 
-  if (done) return <SuccessState dark={dark} title="Request received" message="Thanks — your service request is in. Our team will review it and respond within 24 hours." />;
+  if (done) return <SuccessState dark={dark} title="Request received" message="Thanks — your service request is in. Our team will review it and respond within one business day." />;
 
   return (
     <form

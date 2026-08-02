@@ -108,7 +108,7 @@ export function SubmitButton({ children, loading }: { children: React.ReactNode;
 
 export function SuccessState({
   title = "Request received",
-  message = "Thank you. A member of our team will respond within 24 hours.",
+  message = "Thank you. A member of our team will respond within one business day.",
   dark = false,
 }: {
   title?: string;

@@ -6,7 +6,7 @@ export const SITE = {
   contactEmail: "contact@asmanprimehub.com",
   whatsapp: "+2347084443626",
   whatsappRaw: "2347084443626",
-  tagline: "Global Sourcing. Seamless Trade. Delivered.",
+  tagline: "Global Sourcing. Coordinated Trade. Delivered.",
 };
 
 export const COMMODITY_NOTE =

@@ -8,9 +8,9 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact ASMAN Prime Hub | Trade Inquiries & Consultations" },
-      { name: "description", content: "Get in touch with ASMAN Prime Hub for global sourcing, procurement, freight coordination, and export inquiries. We respond within 24 hours." },
+      { name: "description", content: "Get in touch with ASMAN Prime Hub for global sourcing, procurement, freight coordination, and export inquiries. Inquiries are typically answered within one business day." },
       { property: "og:title", content: "Contact ASMAN Prime Hub | Trade Inquiries & Consultations" },
-      { property: "og:description", content: "Get in touch with ASMAN Prime Hub for global sourcing, procurement, freight coordination, and export inquiries. We respond within 24 hours." },
+      { property: "og:description", content: "Get in touch with ASMAN Prime Hub for global sourcing, procurement, freight coordination, and export inquiries. Inquiries are typically answered within one business day." },
       { property: "og:url", content: "https://asmanprimehub.com/contact" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "ASMAN Prime Hub" },
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Contact ASMAN Prime Hub | Trade Inquiries & Consultations" },
-      { name: "twitter:description", content: "Get in touch with ASMAN Prime Hub for global sourcing, procurement, freight coordination, and export inquiries. We respond within 24 hours." },
+      { name: "twitter:description", content: "Get in touch with ASMAN Prime Hub for global sourcing, procurement, freight coordination, and export inquiries. Inquiries are typically answered within one business day." },
       { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
     ],
     links: [{ rel: "canonical", href: "https://asmanprimehub.com/contact" }],
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/contact")({
           "@id": "https://asmanprimehub.com/contact#contactpage",
           url: "https://asmanprimehub.com/contact",
           name: "Contact ASMAN Prime Hub",
-          description: "Get in touch with ASMAN Prime Hub for global sourcing, procurement, freight coordination, and export inquiries. We respond within 24 hours.",
+          description: "Get in touch with ASMAN Prime Hub for global sourcing, procurement, freight coordination, and export inquiries. Inquiries are typically answered within one business day.",
           isPartOf: { "@id": "https://asmanprimehub.com/#website" },
           about: { "@id": "https://asmanprimehub.com/#organization" },
           mainEntity: {
