@@ -17,6 +17,13 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = prev; };
+  }, [open]);
+
   return (
     <header
       className={cn(
@@ -77,9 +84,11 @@ export function Header() {
         </div>
 
         <button
-          className="xl:hidden text-white p-2"
+          className="xl:hidden text-white p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
           onClick={() => setOpen((o) => !o)}
-          aria-label="Menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
