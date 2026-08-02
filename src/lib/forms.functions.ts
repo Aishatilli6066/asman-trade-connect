@@ -9,7 +9,7 @@ function confirmationHtml(name: string, formLabel: string) {
   return `
   <div style="font-family:Arial,sans-serif;color:#111;line-height:1.6;max-width:600px;">
     <h2 style="color:#7a1f2b;margin:0 0 12px;">Thank you, ${escapeHtml(name)}.</h2>
-    <p>We've received your <strong>${escapeHtml(formLabel)}</strong> and our coordination team will reach out within <strong>24 hours</strong> with next steps.</p>
+    <p>We've received your <strong>${escapeHtml(formLabel)}</strong> and our coordination team will reach out within <strong>one business day</strong> with next steps.</p>
     <p>If your inquiry is urgent, reply to this email or message us on WhatsApp.</p>
     <p style="margin-top:24px;">Warm regards,<br/><strong>${BRAND} Coordination Team</strong></p>
     <hr style="border:none;border-top:1px solid #e5e7eb;margin:24px 0;"/>
