@@ -28,7 +28,7 @@ export function ConsultationForm({ dark = true }: { dark?: boolean }) {
     resolver: zodResolver(schema),
   });
 
-  if (done) return <SuccessState dark={dark} title="Consultation booked" message="Thanks — your consultation request is in. We'll reach out within 24 hours to confirm a time." />;
+  if (done) return <SuccessState dark={dark} title="Consultation booked" message="Thanks — your consultation request is in. We&rsquo;ll reach out within one business day to confirm a time." />;
 
   return (
     <form
