@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
-import { MessageCircle } from "lucide-react";
+import { Menu, X, Mail, MessageCircle } from "lucide-react";
 import { NAV, SITE } from "@/lib/site-data";
 import { openConsultation } from "./consultation-store";
 import { cn } from "@/lib/utils";
@@ -87,37 +86,59 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="xl:hidden bg-[var(--color-burgundy)] border-t border-white/10">
-          <div className="container-x py-6 flex flex-col gap-1">
-            {NAV.map((n) => (
+        <div
+          id="mobile-menu"
+          className="xl:hidden fixed inset-x-0 top-20 bottom-0 z-40 bg-[var(--color-burgundy)] border-t border-white/10 overflow-y-auto overscroll-contain"
+        >
+          <div className="container-x min-h-full flex flex-col py-8">
+            <nav className="flex flex-col">
+              {NAV.map((n) => (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="py-4 text-sm uppercase tracking-[0.2em] text-white/85 border-b border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
+                  activeProps={{ className: "text-[var(--color-gold)]" }}
+                  activeOptions={{ exact: n.to === "/" }}
+                >
+                  {n.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="mt-auto pt-10 flex flex-col gap-3">
               <Link
-                key={n.to}
-                to={n.to}
+                to="/quote"
                 onClick={() => setOpen(false)}
-                className="py-3 text-sm uppercase tracking-[0.2em] text-white/85 border-b border-white/5"
+                className="px-5 py-4 text-center text-[11px] uppercase tracking-[0.22em] font-semibold bg-[var(--color-gold)] text-[var(--color-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                {n.label}
+                Submit a Trade Inquiry
               </Link>
-            ))}
-            <Link
-              to="/quote"
-              onClick={() => setOpen(false)}
-              className="mt-4 px-5 py-3.5 text-center text-[11px] uppercase tracking-[0.22em] font-semibold bg-[var(--color-gold)] text-[var(--color-ink)]"
-            >
-              Submit a Trade Inquiry
-            </Link>
-            <button
-              onClick={() => { setOpen(false); openConsultation(); }}
-              className="mt-2 px-5 py-3.5 text-[11px] uppercase tracking-[0.22em] font-semibold border border-white/25 text-white"
-            >
-              Book a Consultation
-            </button>
-            <a
-              href={`mailto:${SITE.email}`}
-              className="mt-2 py-2 text-xs text-white/60"
-            >
-              {SITE.email}
-            </a>
+              <button
+                onClick={() => { setOpen(false); openConsultation(); }}
+                className="px-5 py-4 text-[11px] uppercase tracking-[0.22em] font-semibold border border-white/30 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
+              >
+                Book a Consultation
+              </button>
+              <div className="mt-4 grid grid-cols-1 gap-3 border-t border-white/10 pt-6 text-sm">
+                <a
+                  href={`https://wa.me/${SITE.whatsappRaw}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-3 text-white/75 hover:text-[var(--color-gold)]"
+                >
+                  <MessageCircle size={16} /> {SITE.whatsapp}
+                </a>
+                <a
+                  href={`mailto:${SITE.email}`}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-3 text-white/75 hover:text-[var(--color-gold)] break-all"
+                >
+                  <Mail size={16} /> {SITE.email}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       )}
