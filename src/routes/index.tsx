@@ -8,30 +8,26 @@ import founderAisha from "@/assets/founder-aisha.jpg";
 import warehouseBags from "@/assets/warehouse-bags.jpg";
 import badgeCac from "@/assets/badge-cac.jpg";
 import badgeNepc from "@/assets/badge-nepc.jpg";
-import shipMaerskSvg from "@/assets/ship-maersk.png";
-import shipFedexSvg from "@/assets/ship-fedex.png";
-import shipUpsSvg from "@/assets/ship-ups.png";
-import shipDhlSvg from "@/assets/ship-dhl.png";
 import globe from "@/assets/globe.jpg";
 import { Eyebrow, GoldButton, SectionHeader, FadeIn } from "@/components/site/primitives";
-import { COMMODITIES, REGIONS, SERVICE_CATEGORIES, HOW_WE_WORK, COMMODITY_NOTE, SITE } from "@/lib/site-data";
+import { COMMODITIES, REGIONS, SERVICE_CATEGORIES, HOW_WE_WORK, COMMODITY_NOTE, SITE, PATHWAYS } from "@/lib/site-data";
 import { openConsultation } from "@/components/site/consultation-store";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
-      { name: "description", content: "Nigeria-based international trade, sourcing, procurement, agricultural export and freight-coordination company working with businesses across global markets." },
-      { property: "og:title", content: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
-      { property: "og:description", content: "Nigeria-based international trade, sourcing, procurement, agricultural export and freight-coordination company working with businesses across global markets." },
+      { title: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination" },
+      { name: "description", content: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers." },
+      { property: "og:title", content: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination" },
+      { property: "og:description", content: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers." },
       { property: "og:url", content: "https://asmanprimehub.com/" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "ASMAN Prime Hub" },
       { property: "og:image", content: "https://asmanprimehub.com/logo.png" },
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
-      { name: "twitter:description", content: "Nigeria-based international trade, sourcing, procurement, agricultural export and freight-coordination company working with businesses across global markets." },
+      { name: "twitter:title", content: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination" },
+      { name: "twitter:description", content: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers." },
       { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
     ],
     links: [{ rel: "canonical", href: "https://asmanprimehub.com/" }],
@@ -43,8 +39,8 @@ export const Route = createFileRoute("/")({
           "@type": "WebPage",
           "@id": "https://asmanprimehub.com/#webpage",
           url: "https://asmanprimehub.com/",
-          name: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions",
-          description: "Nigeria-based international trade, sourcing, procurement, agricultural export and freight-coordination company working with businesses across global markets.",
+          name: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination",
+          description: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers.",
           isPartOf: { "@id": "https://asmanprimehub.com/#website" },
           about: { "@id": "https://asmanprimehub.com/#organization" },
           breadcrumb: {
@@ -64,6 +60,7 @@ function Index() {
   return (
     <>
       <Hero />
+      <Pathways />
       <CoverageStrip />
       <ProofStrip />
       <AboutPreview />
@@ -84,12 +81,6 @@ function TrustBadges() {
   const regs = [
     { img: badgeNepc, alt: "Nigerian Export Promotion Council (NEPC) logo", label: "Nigerian Export Promotion Council", sub: "Registered Exporter" },
     { img: badgeCac, alt: "Corporate Affairs Commission (CAC) logo", label: "Corporate Affairs Commission", sub: "ASMAN Prime Hub Global Services Ltd." },
-  ];
-  const lines = [
-    { name: "DHL", img: shipDhlSvg },
-    { name: "FedEx", img: shipFedexSvg },
-    { name: "UPS", img: shipUpsSvg },
-    { name: "Maersk", img: shipMaerskSvg },
   ];
   return (
     <section className="bg-white border-y border-[var(--color-line)]">
@@ -115,17 +106,38 @@ function TrustBadges() {
           ))}
         </div>
 
-        <div className="mt-12 pt-10 border-t border-[var(--color-line)]">
-          <div className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-ink)]/55 text-center">
-            Freight & Logistics Partners
-          </div>
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 items-center max-w-3xl mx-auto">
-            {lines.map((l) => (
-              <div key={l.name} className="flex items-center justify-center h-16 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition">
-                <img src={l.img} alt={`${l.name} logo`} className="max-h-12 max-w-[140px] object-contain" loading="lazy" />
+      </div>
+    </section>
+  );
+}
+
+function Pathways() {
+  return (
+    <section className="bg-white border-b border-[var(--color-line)]">
+      <div className="container-x py-20 md:py-28">
+        <SectionHeader
+          eyebrow="Where do you start?"
+          title={<>Two ways we work <span className="italic text-[var(--color-burgundy)] font-normal">with businesses.</span></>}
+        />
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          {PATHWAYS.map((p) => (
+            <Link
+              key={p.to}
+              to={p.to}
+              className="group flex flex-col justify-between border border-[var(--color-line)] p-8 md:p-10 transition-colors hover:border-[var(--color-burgundy)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
+            >
+              <div>
+                <div className="h-px w-10 bg-[var(--color-gold)]" />
+                <h3 className="mt-6 font-display text-2xl md:text-[28px] leading-snug text-[var(--color-ink)]">
+                  {p.title}
+                </h3>
+                <p className="mt-4 text-sm md:text-base leading-relaxed text-[var(--color-ink)]/70">{p.desc}</p>
               </div>
-            ))}
-          </div>
+              <span className="mt-8 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-semibold text-[var(--color-burgundy)]">
+                {p.cta} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
     </section>
@@ -151,21 +163,22 @@ function Hero() {
           <Eyebrow dark>Global Trade · Sourcing · Logistics</Eyebrow>
         </FadeIn>
         <FadeIn delay={120}>
-          <h1 className="mt-7 font-display text-[40px] sm:text-6xl md:text-[78px] leading-[1.02] text-white max-w-4xl">
-            Global Trade <span className="text-[var(--color-gold)] italic font-normal">& Sourcing</span> Partner.
+          <h1 className="mt-7 font-display text-[36px] sm:text-5xl md:text-[68px] leading-[1.05] text-white max-w-4xl">
+            Global sourcing and Nigerian export coordination,{" "}
+            <span className="text-[var(--color-gold)] italic font-normal">professionally managed.</span>
           </h1>
         </FadeIn>
         <FadeIn delay={240}>
           <p className="mt-8 text-white/75 max-w-xl text-base md:text-lg leading-relaxed">
-            ASMAN Prime Hub is a Nigeria-based international trade, sourcing, procurement,
-            agricultural export and freight-coordination company working with businesses
-            across global markets.
+            ASMAN Prime Hub helps businesses source products, machinery and raw materials
+            globally while supporting international buyers with Nigerian agricultural
+            commodity sourcing and export execution coordination.
           </p>
         </FadeIn>
         <FadeIn delay={360}>
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link to="/quote">
-              <GoldButton>Submit a Trade Inquiry <ArrowRight size={14} /></GoldButton>
+            <Link to="/request-a-quote">
+              <GoldButton>Request a Quote <ArrowRight size={14} /></GoldButton>
             </Link>
             <GoldButton variant="outline-light" onClick={openConsultation}>Book a Consultation</GoldButton>
           </div>
