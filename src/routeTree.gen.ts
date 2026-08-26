@@ -13,6 +13,7 @@ import { Route as WhyChooseUsRouteImport } from './routes/why-choose-us'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RequestAQuoteRouteImport } from './routes/request-a-quote'
+import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as NigerianCommoditySourcingRouteImport } from './routes/nigerian-commodity-sourcing'
 import { Route as InsightsRouteImport } from './routes/insights'
@@ -48,6 +49,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const RequestAQuoteRoute = RequestAQuoteRouteImport.update({
   id: '/request-a-quote',
   path: '/request-a-quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuoteRoute = QuoteRouteImport.update({
+  id: '/quote',
+  path: '/quote',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -145,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/insights': typeof InsightsRouteWithChildren
   '/nigerian-commodity-sourcing': typeof NigerianCommoditySourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/quote': typeof QuoteRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/services': typeof ServicesRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
@@ -165,6 +172,7 @@ export interface FileRoutesByTo {
   '/global-sourcing': typeof GlobalSourcingRoute
   '/nigerian-commodity-sourcing': typeof NigerianCommoditySourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/quote': typeof QuoteRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/services': typeof ServicesRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
@@ -188,6 +196,7 @@ export interface FileRoutesById {
   '/insights': typeof InsightsRouteWithChildren
   '/nigerian-commodity-sourcing': typeof NigerianCommoditySourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/quote': typeof QuoteRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/services': typeof ServicesRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
@@ -211,6 +220,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/nigerian-commodity-sourcing'
     | '/privacy-policy'
+    | '/quote'
     | '/request-a-quote'
     | '/services'
     | '/terms-and-conditions'
@@ -231,6 +241,7 @@ export interface FileRouteTypes {
     | '/global-sourcing'
     | '/nigerian-commodity-sourcing'
     | '/privacy-policy'
+    | '/quote'
     | '/request-a-quote'
     | '/services'
     | '/terms-and-conditions'
@@ -253,6 +264,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/nigerian-commodity-sourcing'
     | '/privacy-policy'
+    | '/quote'
     | '/request-a-quote'
     | '/services'
     | '/terms-and-conditions'
@@ -276,6 +288,7 @@ export interface RootRouteChildren {
   InsightsRoute: typeof InsightsRouteWithChildren
   NigerianCommoditySourcingRoute: typeof NigerianCommoditySourcingRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  QuoteRoute: typeof QuoteRoute
   RequestAQuoteRoute: typeof RequestAQuoteRoute
   ServicesRoute: typeof ServicesRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
@@ -311,6 +324,13 @@ declare module '@tanstack/react-router' {
       path: '/request-a-quote'
       fullPath: '/request-a-quote'
       preLoaderRoute: typeof RequestAQuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quote': {
+      id: '/quote'
+      path: '/quote'
+      fullPath: '/quote'
+      preLoaderRoute: typeof QuoteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -481,6 +501,7 @@ const rootRouteChildren: RootRouteChildren = {
   InsightsRoute: InsightsRouteWithChildren,
   NigerianCommoditySourcingRoute: NigerianCommoditySourcingRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  QuoteRoute: QuoteRoute,
   RequestAQuoteRoute: RequestAQuoteRoute,
   ServicesRoute: ServicesRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
