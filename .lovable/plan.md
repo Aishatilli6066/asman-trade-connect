@@ -1,94 +1,108 @@
-# ASMAN Prime Hub — Audit & Update Plan
+# ASMAN Prime Hub — Pre-Paid-Traffic Audit
 
-Audit only; no files changed. Findings below are based on the current codebase (routes in `src/routes/`, shared copy in `src/lib/site-data.ts`, forms in `src/components/site/forms/`).
+Read-only audit. Every item below is evidenced from the current code.
 
-## Current state (verified)
+## CRITICAL — fix before any ad spend
 
-- Pages: Home, About, Services, Agricultural Export, Why Us, Insights (list + posts), Quote, Contact, Privacy, Terms, Auth + admin.
-- WhatsApp is already correct everywhere (`+2347084443626`, single source in `site-data.ts`) — the old number is gone.
-- CAC and NEPC are shown as badges; no SCUML claim exists anywhere. No testimonials section exists.
-- No Academy or programme offer exists anywhere on the site.
-- Three forms exist (Trade Inquiry, Consultation modal, Export Inquiry); submissions go to `contact@asmanprimehub.com`.
+1. **Form submissions can fail silently.**
+   `src/lib/forms.functions.ts:50-52` wraps the Gmail send in `try/catch` and only
+   `console.error`s. `src/lib/gmail.server.ts:31-34,44-48` returns `{ok:false}` on missing
+   credentials or a non-2xx Gmail response instead of throwing. The server fn always returns
+   `{ok:true}`, so all three forms show "Request submitted" even when nothing was delivered.
+   There is also **no database write** — email is the only copy of a lead.
+   Fix: persist every submission to Cloud first, then attempt email; throw on send failure so the
+   UI shows a real error with a WhatsApp fallback.
 
-## 1. Urgent fixes
+2. **Canonical URLs point to a domain that is not connected.**
+   Nine routes canonicalise to `https://asmanprimehub.com/...` (`index.tsx:37`, `about.tsx:25`,
+   `services.tsx:26`, `agricultural-export.tsx:30`, `why-choose-us.tsx:23`, `contact.tsx:24`,
+   `terms.tsx:15`, `privacy-policy.tsx:15`, `quote.tsx`), and all OG/JSON-LD URLs match — but the
+   project has no custom domain; the live site is `asman-trade-connect.lovable.app`.
+   Meanwhile `public/sitemap.xml` and `insights.index.tsx:41` use the `.lovable.app` host.
+   Result: self-conflicting signals, and ad landing pages canonicalising off-site.
+   Fix: pick one live host, drive it from a single `SITE_URL` constant used by canonical, OG,
+   JSON-LD and sitemap. If `asmanprimehub.com` is the target, connect it first.
 
-1. **Missing revenue offers.** Neither the Export Academy nor the 12-week Implementation Programme exists on the site. This is the biggest gap.
-2. **Positioning drift.** Home/About read as a trading/logistics operator. Reframe as a *trade consultancy and execution-coordination company*.
-3. **"Registered & Trusted" eyebrow** (`index.tsx:98`) plus badge sub-labels imply broader accreditation than CAC + NEPC. Retitle to "Registered Business" and state exactly: CAC registered, NEPC registered exporter, SCUML application in progress — never "fully compliant".
-4. **Founder/brand overlap.** Add one explicit line separating ASMAN Prime Hub (company services) from AishaUsman.com (personal brand/mentorship), with a single outbound link, so the two don't cannibalise.
-5. **Lead qualification.** Trade Inquiry is 14 required fields — too heavy as the only entry point. Add a short qualifying route for early-stage enquirers (see §5).
-6. **Claim sweep.** Audit every card, stat, caption and Insights post for volumes, client/supplier counts, "seamless", "guaranteed", "always in stock". Replace with process language ("coordinated", "subject to confirmation").
+3. **Broken robots meta values.** `terms.tsx` and `privacy-policy.tsx` emit
+   `content: "n, nofollow"`; `auth.tsx`, `insights.$slug.tsx` (not-found) and the three admin
+   routes emit `content: "n"`. `"n"` is not a valid directive — these pages are effectively
+   indexable. Should be `noindex, nofollow`.
 
-## 2. Structural / copy updates
+4. **Implied carrier partnerships.** `index.tsx` renders DHL, FedEx, UPS and Maersk logos under
+   the heading **"Freight & Logistics Partners"**. Unless there are signed agreements, this is an
+   unverifiable claim and a trademark/Meta ad-review risk.
+   Fix: remove the logos, or relabel to "We coordinate shipments via major carriers" with no marks.
 
-- **Home:** new hierarchy (§4), Academy + Programme band, credentials strip corrected, remove operator-style implications.
-- **About:** consultancy story, founder credibility without unverifiable numbers, explicit AishaUsman.com boundary, registration status block.
-- **Services:** restate as nine advisory/coordination services — sourcing, supplier verification, OEM/ODM & private label, landed-cost & freight coordination, end-to-end importation support, Nigerian agri sourcing/export coordination, documentation & compliance guidance, buyer outreach & representation, business planning. Each: what you get / who it's for / next step.
-- **Agricultural Export:** keep commodity grid; strengthen the availability disclaimer above the grid, not only below.
-- **Why Us:** convert to process-and-accountability proof points; drop anything numeric that isn't documented.
-- **Insights:** keep; add internal links to Academy and Services from post footers.
-- **Legal:** Privacy — name the form data collected, storage, retention, contact for deletion. Terms — non-binding enquiry, no guarantee of supply/price/timeline, education products are non-refundable after access is issued (or state the actual refund rule).
+5. **No analytics or conversion tracking anywhere.** No `gtag`, `dataLayer`, `fbq` or Meta Pixel
+   exists in the codebase. Two Meta campaigns cannot be optimised or measured.
+   Fix: Meta Pixel + GA4 in `__root.tsx`, with events on `Lead` (each form success), `Contact`
+   (WhatsApp click) and `ViewContent` (landing pages), plus a consent line in the privacy policy.
 
-## 3. Suggested page architecture
+## HIGH
 
-```text
-/                        Home
-/about                   About + founder + brand boundary
-/services                Services overview (9 services, anchored)
-/agricultural-export     Commodities + export coordination
-/export-academy          NEW — 2-week WhatsApp training, ₦15,000 / US$15
-/implementation-programme NEW — 12-week, application + assessment
-/why-choose-us           Process & accountability
-/insights                Articles
-/quote                   Full trade inquiry
-/start                   NEW — short qualifier that routes to the right path
-/contact                 Contact + WhatsApp
-/privacy-policy, /terms
-```
+6. **No dedicated ad landing pages.** Only `/quote` exists. Both campaigns would land on generic
+   pages. Build two focused, nav-light pages: `/import-sourcing` (Nigerian companies importing) and
+   `/export-buyers` (international buyers of Nigerian commodities), each with one offer, one form,
+   one WhatsApp CTA, and matching ad copy.
 
-Nav: Home · About · Services · Agricultural Export · Academy · Insights · Contact, plus gold "Trade Inquiry" CTA. Programme lives under Academy page and Services, not in top nav.
+7. **Trade Inquiry form is 14 required fields** (`TradeInquiryForm.tsx`). Far too heavy for
+   cold paid traffic. Use a 5-field first step (name, email, WhatsApp, country, need) and collect
+   the rest after the lead is captured.
 
-## 4. Exact homepage message hierarchy
+8. **"Registered & Trusted" / "Officially registered. Globally connected."**
+   (`index.tsx:98,101`) overstates what is documented. CAC and NEPC are supported; SCUML is
+   pending. State exactly that and never use "fully compliant".
 
-1. **Eyebrow:** Nigerian International Trade Consultancy
-2. **H1:** Sourcing, Importation and Export — Coordinated End to End
-3. **Sub:** We advise and coordinate on behalf of companies, importers, exporters and commodity buyers: supplier verification, OEM/ODM, landed cost, freight, documentation and Nigerian agricultural export.
-4. **CTAs:** *Submit a Trade Inquiry* (primary, gold) · *Join the Export Academy* (secondary outline)
-5. **Credentials strip:** CAC Registered · NEPC Registered Exporter · SCUML application in progress
-6. **Who we work with** — 4 audience tiles
-7. **Services** — 9 cards
-8. **How we work** — 5-step process
-9. **Agricultural export** — commodity band + availability note
-10. **Learn & implement** — two cards: Export Academy (₦15,000 / US$15, next cohort) and 12-Week Implementation Programme (application only)
-11. **Founder** — Aisha Usman, with AishaUsman.com boundary line
-12. **Insights** — 3 latest
-13. **Final CTA** — Trade Inquiry + WhatsApp
+9. **Overlap with Aisha Usman's personal site.** The founder block on the homepage has no
+   statement separating the company from her personal authority brand. Add one explicit boundary
+   line and a single outbound link so the two don't compete on brand queries.
 
-## 5. Inquiry forms & workflows
+10. **WhatsApp number is correct** — `+2347084443626` is the single source in
+    `src/lib/site-data.ts:7-8` and every link derives from it (Header, Footer, Contact, float).
+    No stale number remains. **No action required.** Add `tel:` alongside `wa.me` for desktop.
 
-**A. Quick Qualifier (`/start`, 6 fields):** name, email, WhatsApp, country, "What do you need?" (Import sourcing / Agricultural export / Freight & landed cost / Academy / Programme / Other), stage (exploring, ready to buy, already trading). Routes to the right full form or offer page.
+11. **Social links are unstable.** Instagram uses a share-tracking `?igsh=` param and Facebook
+    uses a `share/1AgH4Mnzpx/` short link (`Footer.tsx:40,49`). Replace with canonical profile URLs
+    and mirror them in `sameAs` on the Organization schema.
 
-**B. Trade Inquiry (existing, keep 14 fields but re-tier):** required — name, company, email, WhatsApp, country, service, product, quantity, destination; optional/progressive — incoterm, payment method, timeline, budget, specifications. Keeps the non-binding note.
+## MEDIUM
 
-**C. Export Academy registration:** name, WhatsApp (required — delivery channel), email, country, currency-aware fee shown (₦15,000 / US$15), experience level, consent. Success copy states: WhatsApp group link sent after payment confirmation, daily 2 PM WAT Q&A, Saturday 9 AM–12 PM revision.
+12. **Sitemap is hand-maintained and already drifting** — hardcoded `lastmod` dates and no
+    `/insights` post automation. Generate it from the route tree + posts.
+13. **Hero copy is generic.** "Global Trade & Sourcing Partner." does not name the audience or the
+    outcome. Neither campaign's message matches it. Sharpen to a two-audience value proposition.
+14. **Proof is thin.** No case studies, no anonymised outcomes, no process transparency beyond the
+    5-step block. Add Challenge / Scope / Approach / Current Status entries only where real.
+15. **Legal pages** don't yet name the exact form data collected, retention, or the pixel/analytics
+    use — required before running Meta traffic in the EU/UK.
+16. **Schema gaps.** No `Organization`-level `ProfessionalService`, no `contactPoint` with the
+    WhatsApp number, no `FAQPage`. Add these once the domain question is settled.
 
-**D. Implementation Programme application:** business name, role, WhatsApp, email, sector/product, current trade activity, capital readiness band, target market, timeline, what they want to achieve. Success copy: reviewed and shortlisted applicants invited to an assessment call — no instant purchase.
+## LOW
 
-All four: store in Cloud, notify `contact@asmanprimehub.com`, surface real submit failures instead of a silent success.
+17. Hero image is 1920×1080 and eager — serve responsive sizes and preload only the LCP image.
+18. Gold-on-white micro-copy (`text-[10px] tracking-[0.3em]` at `opacity/55-60`) fails WCAG AA in
+    several places; switch to burgundy text on light backgrounds.
+19. Add visible focus rings on gold buttons and `aria-live` on form submit results.
+20. Grayscale carrier-logo hover has no keyboard equivalent (moot if item 4 removes it).
 
-## 6. Technical / SEO / accessibility
+## Implementation order
 
-- Unique title, description, OG/Twitter and canonical for the three new routes; add them to the sitemap.
-- JSON-LD: `Organization` + `ProfessionalService` (Nigeria, WhatsApp contact point) sitewide; `Course` on the Academy page; `FAQPage` for an Academy FAQ.
-- Add an Academy FAQ block (fee, duration, platform, times, certificate, refunds) — strong long-tail search fit.
-- Make every phone/WhatsApp string come from `SITE` (already true) and add `tel:` alongside `wa.me` where a call is plausible.
-- Mobile: verify the new Academy/Programme bands don't overflow at 360px; keep tap targets ≥44px; check gold-on-white contrast for small text (currently borderline in places) and swap to burgundy text on light backgrounds.
-- Accessibility: labelled form controls, visible focus rings on gold buttons, `aria-live` on submit results, alt text on badge and commodity images.
-- Performance: lazy-load below-fold imagery; confirm hero image is the only eager one.
+1. Persist + hard-fail form submissions (item 1)
+2. Decide the canonical host, unify SITE_URL across canonical/OG/JSON-LD/sitemap (2, 12)
+3. Fix robots meta values (3)
+4. Remove or relabel carrier logos; correct registration wording (4, 8)
+5. Install Meta Pixel + GA4 with Lead/Contact events; update privacy copy (5, 15)
+6. Build the two campaign landing pages with the short-form lead capture (6, 7)
+7. Brand boundary line, stable social URLs, schema `sameAs`/`contactPoint` (9, 11, 16)
+8. Hero and proof rewrite (13, 14)
+9. Accessibility and performance pass (17-20)
 
-## Needs owner input before writing copy
+Items 1-5 are the gate: do not spend on Meta until they are done.
 
-- Next Academy cohort start date and payment method/link.
-- Programme fee (or "disclosed at assessment") and intake dates.
-- Whether refunds are offered for the Academy.
-- Any client work that may be described anonymously as Challenge / Scope / Approach / Current Status.
+## Owner input needed
+
+- Is `asmanprimehub.com` being connected, or does the `.lovable.app` URL stay canonical?
+- Are there any signed carrier or forwarder agreements behind the DHL/FedEx/UPS/Maersk logos?
+- Meta Pixel ID and GA4 measurement ID.
+- Any real engagements that may be described anonymously as proof.
