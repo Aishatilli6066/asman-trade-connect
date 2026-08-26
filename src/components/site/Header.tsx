@@ -75,7 +75,7 @@ export function Header() {
               Consultation
             </button>
             <Link
-              to="/quote"
+              to="/request-a-quote"
               className="px-4 py-3 text-[10px] xl:text-[11px] uppercase tracking-[0.18em] font-semibold whitespace-nowrap bg-[var(--color-gold)] text-[var(--color-ink)] hover:bg-white transition-colors"
             >
               Trade Inquiry
@@ -117,7 +117,7 @@ export function Header() {
 
             <div className="mt-auto pt-10 flex flex-col gap-3">
               <Link
-                to="/quote"
+                to="/request-a-quote"
                 onClick={() => setOpen(false)}
                 className="px-5 py-4 text-center text-[11px] uppercase tracking-[0.22em] font-semibold bg-[var(--color-gold)] text-[var(--color-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >

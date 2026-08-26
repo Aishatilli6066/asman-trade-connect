@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { getPublishedPost } from "@/lib/posts.functions";
 import { getStaticPostBySlug } from "@/lib/static-posts";
 
-const SITE_URL = "https://asman-trade-connect.lovable.app";
+const SITE_URL = "https://asmanprimehub.com";
 
 export const Route = createFileRoute("/insights/$slug")({
   loader: async ({ params }) => {

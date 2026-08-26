@@ -370,7 +370,7 @@ function AgriHighlight() {
           ))}
         </div>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <Link to="/quote"><GoldButton>Submit a Trade Inquiry <ArrowRight size={14} /></GoldButton></Link>
+          <Link to="/request-a-quote"><GoldButton>Submit a Trade Inquiry <ArrowRight size={14} /></GoldButton></Link>
           <Link to="/agricultural-export"><GoldButton variant="outline-gold">View Commodities</GoldButton></Link>
         </div>
         <p className="mt-8 text-center text-xs md:text-sm text-white/60 max-w-3xl mx-auto leading-relaxed">{COMMODITY_NOTE}</p>
@@ -440,7 +440,7 @@ function ConsultationCTA() {
           Ready to move your trade <span className="italic text-[var(--color-burgundy)] font-normal">forward?</span>
         </h2>
         <div className="flex flex-wrap gap-3">
-          <Link to="/quote"><GoldButton variant="burgundy">Submit a Trade Inquiry</GoldButton></Link>
+          <Link to="/request-a-quote"><GoldButton variant="burgundy">Submit a Trade Inquiry</GoldButton></Link>
           <GoldButton onClick={openConsultation}>Book a Consultation</GoldButton>
         </div>
       </div>

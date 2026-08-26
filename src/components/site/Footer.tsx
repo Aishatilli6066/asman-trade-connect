@@ -118,7 +118,7 @@ export function Footer() {
           <div>© {new Date().getFullYear()} {SITE.legalName}. All rights reserved.</div>
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="hover:text-[var(--color-gold)]">Privacy</Link>
-            <Link to="/terms" className="hover:text-[var(--color-gold)]">Terms</Link>
+            <Link to="/terms-and-conditions" className="hover:text-[var(--color-gold)]">Terms</Link>
           </div>
         </div>
       </div>

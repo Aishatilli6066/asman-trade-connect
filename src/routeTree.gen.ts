@@ -10,9 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyChooseUsRouteImport } from './routes/why-choose-us'
-import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as ServicesRouteImport } from './routes/services'
-import { Route as QuoteRouteImport } from './routes/quote'
+import { Route as RequestAQuoteRouteImport } from './routes/request-a-quote'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as NigerianCommoditySourcingRouteImport } from './routes/nigerian-commodity-sourcing'
 import { Route as InsightsRouteImport } from './routes/insights'
@@ -35,9 +35,9 @@ const WhyChooseUsRoute = WhyChooseUsRouteImport.update({
   path: '/why-choose-us',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
+const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -45,9 +45,9 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
-const QuoteRoute = QuoteRouteImport.update({
-  id: '/quote',
-  path: '/quote',
+const RequestAQuoteRoute = RequestAQuoteRouteImport.update({
+  id: '/request-a-quote',
+  path: '/request-a-quote',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -145,9 +145,9 @@ export interface FileRoutesByFullPath {
   '/insights': typeof InsightsRouteWithChildren
   '/nigerian-commodity-sourcing': typeof NigerianCommoditySourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/quote': typeof QuoteRoute
+  '/request-a-quote': typeof RequestAQuoteRoute
   '/services': typeof ServicesRoute
-  '/terms': typeof TermsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/insights/': typeof InsightsIndexRoute
@@ -165,9 +165,9 @@ export interface FileRoutesByTo {
   '/global-sourcing': typeof GlobalSourcingRoute
   '/nigerian-commodity-sourcing': typeof NigerianCommoditySourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/quote': typeof QuoteRoute
+  '/request-a-quote': typeof RequestAQuoteRoute
   '/services': typeof ServicesRoute
-  '/terms': typeof TermsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/insights': typeof InsightsIndexRoute
@@ -188,9 +188,9 @@ export interface FileRoutesById {
   '/insights': typeof InsightsRouteWithChildren
   '/nigerian-commodity-sourcing': typeof NigerianCommoditySourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/quote': typeof QuoteRoute
+  '/request-a-quote': typeof RequestAQuoteRoute
   '/services': typeof ServicesRoute
-  '/terms': typeof TermsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/insights/': typeof InsightsIndexRoute
@@ -211,9 +211,9 @@ export interface FileRouteTypes {
     | '/insights'
     | '/nigerian-commodity-sourcing'
     | '/privacy-policy'
-    | '/quote'
+    | '/request-a-quote'
     | '/services'
-    | '/terms'
+    | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
     | '/insights/'
@@ -231,9 +231,9 @@ export interface FileRouteTypes {
     | '/global-sourcing'
     | '/nigerian-commodity-sourcing'
     | '/privacy-policy'
-    | '/quote'
+    | '/request-a-quote'
     | '/services'
-    | '/terms'
+    | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
     | '/insights'
@@ -253,9 +253,9 @@ export interface FileRouteTypes {
     | '/insights'
     | '/nigerian-commodity-sourcing'
     | '/privacy-policy'
-    | '/quote'
+    | '/request-a-quote'
     | '/services'
-    | '/terms'
+    | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
     | '/insights/'
@@ -276,9 +276,9 @@ export interface RootRouteChildren {
   InsightsRoute: typeof InsightsRouteWithChildren
   NigerianCommoditySourcingRoute: typeof NigerianCommoditySourcingRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
-  QuoteRoute: typeof QuoteRoute
+  RequestAQuoteRoute: typeof RequestAQuoteRoute
   ServicesRoute: typeof ServicesRoute
-  TermsRoute: typeof TermsRoute
+  TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   WhyChooseUsRoute: typeof WhyChooseUsRoute
   ApiPublicInsightsMediaSplatRoute: typeof ApiPublicInsightsMediaSplatRoute
 }
@@ -292,11 +292,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhyChooseUsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -306,11 +306,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/quote': {
-      id: '/quote'
-      path: '/quote'
-      fullPath: '/quote'
-      preLoaderRoute: typeof QuoteRouteImport
+    '/request-a-quote': {
+      id: '/request-a-quote'
+      path: '/request-a-quote'
+      fullPath: '/request-a-quote'
+      preLoaderRoute: typeof RequestAQuoteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -481,9 +481,9 @@ const rootRouteChildren: RootRouteChildren = {
   InsightsRoute: InsightsRouteWithChildren,
   NigerianCommoditySourcingRoute: NigerianCommoditySourcingRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
-  QuoteRoute: QuoteRoute,
+  RequestAQuoteRoute: RequestAQuoteRoute,
   ServicesRoute: ServicesRoute,
-  TermsRoute: TermsRoute,
+  TermsAndConditionsRoute: TermsAndConditionsRoute,
   WhyChooseUsRoute: WhyChooseUsRoute,
   ApiPublicInsightsMediaSplatRoute: ApiPublicInsightsMediaSplatRoute,
 }

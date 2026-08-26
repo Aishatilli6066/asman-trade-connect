@@ -1,18 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Eyebrow } from "@/components/site/primitives";
 
-export const Route = createFileRoute("/terms")({
+export const Route = createFileRoute("/terms-and-conditions")({
   head: () => ({
     meta: [
       { title: "Terms & Conditions — ASMAN Prime Hub" },
       { name: "description", content: "Terms governing the use of the ASMAN Prime Hub website and services." },
-      { name: "robots", content: "noindex, nofollow" },
       { property: "og:title", content: "Terms & Conditions — ASMAN Prime Hub" },
       { property: "og:description", content: "Terms governing the use of the ASMAN Prime Hub website and services." },
-      { property: "og:url", content: "https://asmanprimehub.com/terms" },
+      { property: "og:url", content: "https://asmanprimehub.com/terms-and-conditions" },
       { property: "og:site_name", content: "ASMAN Prime Hub" },
     ],
-    links: [{ rel: "canonical", href: "https://asmanprimehub.com/terms" }],
+    links: [{ rel: "canonical", href: "https://asmanprimehub.com/terms-and-conditions" }],
   }),
   component: Page,
 });

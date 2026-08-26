@@ -4,12 +4,12 @@ import { Eyebrow } from "@/components/site/primitives";
 import { TradeInquiryForm } from "@/components/site/forms/TradeInquiryForm";
 import { SITE } from "@/lib/site-data";
 
-const CANONICAL = "https://asmanprimehub.com/quote";
-const TITLE = "Submit a Trade Inquiry | ASMAN Prime Hub";
+const CANONICAL = "https://asmanprimehub.com/request-a-quote";
+const TITLE = "Request a Quote | ASMAN Prime Hub";
 const DESC =
-  "Submit a trade inquiry for global sourcing, procurement, freight coordination or Nigerian agricultural export. Reviewed by a coordinator within one business day.";
+  "Request a quote for global sourcing, procurement, freight coordination or Nigerian agricultural export. Reviewed by a coordinator within one business day.";
 
-export const Route = createFileRoute("/quote")({
+export const Route = createFileRoute("/request-a-quote")({
   head: () => ({
     meta: [
       { title: TITLE },

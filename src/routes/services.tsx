@@ -86,7 +86,7 @@ function ServicesPage() {
                     <dt className="text-[11px] uppercase tracking-[0.25em] text-[var(--color-ink)]/50">Next step</dt>
                     <dd className="mt-2 flex flex-wrap items-center gap-3 text-[var(--color-ink)]/70">
                       <span>{s.next}</span>
-                      <Link to="/quote" className="text-[var(--color-burgundy)] underline underline-offset-4 hover:text-[var(--color-ink)]">
+                      <Link to="/request-a-quote" className="text-[var(--color-burgundy)] underline underline-offset-4 hover:text-[var(--color-ink)]">
                         Submit a Trade Inquiry
                       </Link>
                     </dd>
@@ -123,7 +123,7 @@ function ServicesPage() {
             Talk to us about your <span className="italic text-[var(--color-gold)] font-normal">trade requirement.</span>
           </h2>
           <div className="flex flex-wrap gap-3">
-            <Link to="/quote"><GoldButton>Submit a Trade Inquiry <ArrowRight size={14} /></GoldButton></Link>
+            <Link to="/request-a-quote"><GoldButton>Submit a Trade Inquiry <ArrowRight size={14} /></GoldButton></Link>
             <GoldButton variant="outline-light" onClick={openConsultation}>Book a Consultation</GoldButton>
           </div>
         </div>
