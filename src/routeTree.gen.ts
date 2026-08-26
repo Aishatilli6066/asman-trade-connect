@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyChooseUsRouteImport } from './routes/why-choose-us'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RequestAQuoteRouteImport } from './routes/request-a-quote'
 import { Route as QuoteRouteImport } from './routes/quote'
@@ -39,6 +40,11 @@ const WhyChooseUsRoute = WhyChooseUsRouteImport.update({
 const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   id: '/terms-and-conditions',
   path: '/terms-and-conditions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -154,6 +160,7 @@ export interface FileRoutesByFullPath {
   '/quote': typeof QuoteRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
@@ -175,6 +182,7 @@ export interface FileRoutesByTo {
   '/quote': typeof QuoteRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
@@ -199,6 +207,7 @@ export interface FileRoutesById {
   '/quote': typeof QuoteRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
@@ -223,6 +232,7 @@ export interface FileRouteTypes {
     | '/quote'
     | '/request-a-quote'
     | '/services'
+    | '/terms'
     | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
@@ -244,6 +254,7 @@ export interface FileRouteTypes {
     | '/quote'
     | '/request-a-quote'
     | '/services'
+    | '/terms'
     | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
@@ -267,6 +278,7 @@ export interface FileRouteTypes {
     | '/quote'
     | '/request-a-quote'
     | '/services'
+    | '/terms'
     | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
@@ -291,6 +303,7 @@ export interface RootRouteChildren {
   QuoteRoute: typeof QuoteRoute
   RequestAQuoteRoute: typeof RequestAQuoteRoute
   ServicesRoute: typeof ServicesRoute
+  TermsRoute: typeof TermsRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   WhyChooseUsRoute: typeof WhyChooseUsRoute
   ApiPublicInsightsMediaSplatRoute: typeof ApiPublicInsightsMediaSplatRoute
@@ -310,6 +323,13 @@ declare module '@tanstack/react-router' {
       path: '/terms-and-conditions'
       fullPath: '/terms-and-conditions'
       preLoaderRoute: typeof TermsAndConditionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -504,6 +524,7 @@ const rootRouteChildren: RootRouteChildren = {
   QuoteRoute: QuoteRoute,
   RequestAQuoteRoute: RequestAQuoteRoute,
   ServicesRoute: ServicesRoute,
+  TermsRoute: TermsRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   WhyChooseUsRoute: WhyChooseUsRoute,
   ApiPublicInsightsMediaSplatRoute: ApiPublicInsightsMediaSplatRoute,
