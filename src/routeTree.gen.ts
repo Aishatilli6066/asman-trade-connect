@@ -15,6 +15,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as GlobalSourcingRouteImport } from './routes/global-sourcing'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AgriculturalExportRouteImport } from './routes/agricultural-export'
@@ -56,6 +57,11 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
 const InsightsRoute = InsightsRouteImport.update({
   id: '/insights',
   path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GlobalSourcingRoute = GlobalSourcingRouteImport.update({
+  id: '/global-sourcing',
+  path: '/global-sourcing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -128,6 +134,7 @@ export interface FileRoutesByFullPath {
   '/agricultural-export': typeof AgriculturalExportRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/global-sourcing': typeof GlobalSourcingRoute
   '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
@@ -147,6 +154,7 @@ export interface FileRoutesByTo {
   '/agricultural-export': typeof AgriculturalExportRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/global-sourcing': typeof GlobalSourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
@@ -167,6 +175,7 @@ export interface FileRoutesById {
   '/agricultural-export': typeof AgriculturalExportRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/global-sourcing': typeof GlobalSourcingRoute
   '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
@@ -188,6 +197,7 @@ export interface FileRouteTypes {
     | '/agricultural-export'
     | '/auth'
     | '/contact'
+    | '/global-sourcing'
     | '/insights'
     | '/privacy-policy'
     | '/quote'
@@ -207,6 +217,7 @@ export interface FileRouteTypes {
     | '/agricultural-export'
     | '/auth'
     | '/contact'
+    | '/global-sourcing'
     | '/privacy-policy'
     | '/quote'
     | '/services'
@@ -226,6 +237,7 @@ export interface FileRouteTypes {
     | '/agricultural-export'
     | '/auth'
     | '/contact'
+    | '/global-sourcing'
     | '/insights'
     | '/privacy-policy'
     | '/quote'
@@ -247,6 +259,7 @@ export interface RootRouteChildren {
   AgriculturalExportRoute: typeof AgriculturalExportRoute
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
+  GlobalSourcingRoute: typeof GlobalSourcingRoute
   InsightsRoute: typeof InsightsRouteWithChildren
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   QuoteRoute: typeof QuoteRoute
@@ -298,6 +311,13 @@ declare module '@tanstack/react-router' {
       path: '/insights'
       fullPath: '/insights'
       preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/global-sourcing': {
+      id: '/global-sourcing'
+      path: '/global-sourcing'
+      fullPath: '/global-sourcing'
+      preLoaderRoute: typeof GlobalSourcingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -436,6 +456,7 @@ const rootRouteChildren: RootRouteChildren = {
   AgriculturalExportRoute: AgriculturalExportRoute,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
+  GlobalSourcingRoute: GlobalSourcingRoute,
   InsightsRoute: InsightsRouteWithChildren,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   QuoteRoute: QuoteRoute,
