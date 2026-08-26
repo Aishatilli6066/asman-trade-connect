@@ -196,3 +196,101 @@ export const COMMODITY_OPTIONS = [
 ];
 
 export const SHIPPING_METHODS = ["Sea Freight", "Air Freight", "Not Sure Yet"];
+/** Shown before submission on every enquiry form. */
+export const FEE_NOTICE =
+  "Professional sourcing, advisory and coordination fees apply. Scope and fees are confirmed in writing before any execution work begins.";
+
+/** Shown only after a submission has been accepted by the server. */
+export const SUBMISSION_CONFIRMATION =
+  "Thank you. Your requirement has been received and will be reviewed by ASMAN Prime Hub. Professional sourcing, advisory and coordination fees may apply before execution begins.";
+
+export const CONSENT_LABEL =
+  "I consent to ASMAN Prime Hub storing and using these details to respond to my enquiry, as described in the Privacy Policy.";
+
+export const PATHWAYS = [
+  {
+    title: "I need products, machinery or raw materials sourced globally.",
+    desc: "Supplier identification and verification, OEM/ODM and private-label coordination, landed-cost analysis and import coordination.",
+    to: "/global-sourcing",
+    cta: "Global Sourcing",
+  },
+  {
+    title: "I need Nigerian agricultural commodities sourced and coordinated for export.",
+    desc: "Origin sourcing, supply-capacity assessment, quality and inspection coordination, documentation and freight coordination.",
+    to: "/nigerian-commodity-sourcing",
+    cta: "Nigerian Commodity Sourcing",
+  },
+] as const;
+
+export const ENGAGEMENT_PROCESS = [
+  { t: "Requirement review", d: "We review your specification, quantity, destination and timeline and confirm what is workable." },
+  { t: "Scope & professional fee confirmation", d: "Scope, responsibilities and professional fees are agreed in writing before work begins." },
+  { t: "Research, sourcing or supply assessment", d: "Supplier identification and verification, or origin supply-capacity assessment against your requirement." },
+  { t: "Commercial & execution planning", d: "Quotation comparison, Incoterm and payment structure, landed-cost view and an execution plan." },
+  { t: "Coordination & progress reporting", d: "Inspection, packaging, documentation and freight coordination with written progress reporting." },
+  { t: "Completion & documentation handover", d: "Shipment follow-through and handover of the transaction documentation set." },
+];
+
+export const GLOBAL_SOURCING_SCOPE = [
+  "Products, machinery, equipment and raw-material sourcing",
+  "Supplier identification and verification",
+  "Procurement and buyer representation",
+  "OEM, ODM and private-label coordination",
+  "Samples and quotation comparison",
+  "Negotiation support",
+  "Production follow-up",
+  "Quality-control and inspection coordination",
+  "Landed-cost analysis",
+  "Freight and import coordination",
+];
+
+export const COMMODITY_SCOPE = [
+  "Origin and supplier sourcing",
+  "Supply-capacity assessment",
+  "Specification and quality confirmation",
+  "Sample and laboratory-testing coordination",
+  "Commercial-term negotiation",
+  "Cleaning, grading and packaging coordination",
+  "Inspection and export-documentation coordination",
+  "Inland transportation, port and freight coordination",
+  "Transaction monitoring and progress reporting",
+];
+
+export const PREFERRED_ORIGINS = [
+  "China",
+  "India",
+  "Turkey",
+  "United Arab Emirates",
+  "European Union",
+  "United States",
+  "Other / No preference",
+];
+
+export const PACKAGING_OPTIONS = [
+  "50kg jute bags",
+  "50kg PP bags",
+  "Bulk / loose",
+  "Vacuum-packed cartons",
+  "Buyer-specified packaging",
+  "To be advised",
+];
+
+export const PAYMENT_TERMS = [
+  "Telegraphic Transfer (TT)",
+  "Letter of Credit (LC) at sight",
+  "Documentary Collection (CAD/DP)",
+  "Part payment / balance against documents",
+  "To be discussed",
+];
+
+export const BRANDING_NEEDS = [
+  "No branding required",
+  "Private label / own brand",
+  "OEM — custom product to our specification",
+  "ODM — supplier design, our branding",
+  "Not sure yet",
+];
+
+/** WhatsApp deep link with a page-specific prefilled message. */
+export const waLink = (message: string) =>
+  `https://wa.me/${SITE.whatsappRaw}?text=${encodeURIComponent(message)}`;
