@@ -30,8 +30,11 @@ function Page() {
           <p>Submitted information is used solely to respond to your inquiry, coordinate trade and export discussions, and provide quotations. We do not sell or share your information with third parties for marketing purposes.</p>
           <h2 className="font-display text-2xl mt-10">Data Security</h2>
           <p>Inquiry data is stored on secure infrastructure with industry-standard access controls. Communication takes place via standard email and messaging channels.</p>
+          <h2 className="font-display text-2xl mt-10">Analytics & Advertising Technologies</h2>
+          <p>Where enabled, we use privacy-standard website analytics and advertising measurement tools (such as Google Analytics and the Meta pixel) to understand how visitors use the site and to measure the performance of our advertising. These tools may set cookies or similar identifiers and record events such as page views, enquiry submissions, WhatsApp clicks and email clicks. They are not used to collect the content of your enquiry. You can block cookies through your browser settings without losing access to the site.</p>
           <h2 className="font-display text-2xl mt-10">Your Rights</h2>
           <p>You may contact us at any time to request a copy of, or deletion of, the information you have submitted.</p>
+
           <h2 className="font-display text-2xl mt-10">Contact</h2>
           <p>For privacy-related inquiries, email us at <a className="text-[var(--color-burgundy)] underline" href="mailto:contact@asmanprimehub.com">contact@asmanprimehub.com</a>.</p>
         </div>
