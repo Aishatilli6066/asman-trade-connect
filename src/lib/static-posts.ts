@@ -28,7 +28,7 @@ export const STATIC_POSTS: StaticPost[] = [
       "Discover what international buyers evaluate when sourcing Nigerian agricultural exports: quality, supply capacity, documentation, compliance, transparency, logistics, credibility and long-term partnerships.",
     og_image_url: coverBuyers,
     canonical_url:
-      "https://asman-trade-connect.lovable.app/insights/what-buyers-are-looking-for-in-nigerian-agricultural-exports",
+      "https://asmanprimehub.com/insights/what-buyers-are-looking-for-in-nigerian-agricultural-exports",
     featured_image_url: coverBuyers,
     published_at: "2026-07-18T00:00:00Z",
     body_markdown: `Nigeria is one of Africa's leading agricultural producers, supplying commodities such as sesame seeds, hibiscus flowers, ginger, cashew nuts, gum arabic, soybeans, shea products, and many other raw materials to international markets.
@@ -206,7 +206,7 @@ ASMAN Prime Hub provides professional sourcing, supplier verification, procureme
       "Discover the full components of landed cost for imported goods, from freight and insurance to customs duties, inland transport, and banking fees. Calculate the real cost before you import.",
     og_image_url: coverLandedCost,
     canonical_url:
-      "https://asman-trade-connect.lovable.app/insights/how-to-calculate-the-true-landed-cost-of-imported-goods",
+      "https://asmanprimehub.com/insights/how-to-calculate-the-true-landed-cost-of-imported-goods",
     featured_image_url: coverLandedCost,
     published_at: "2026-07-18T00:00:00Z",
     body_markdown: `One of the most common mistakes businesses make when importing products is focusing only on the supplier's quotation.

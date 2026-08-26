@@ -1,48 +1,47 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { useServerFn } from "@tanstack/react-start";
-import { toast } from "sonner";
 import { Field, TextInput, TextArea, Select, SubmitButton, SuccessState } from "../form-fields";
+import { ConsentBlock, ErrorNotice, FeeNotice, Honeypot } from "./shared";
+import { consultationSchema, type ConsultationValues } from "@/lib/forms-schemas";
+import { trackLead } from "@/lib/analytics";
+import { SUBMISSION_CONFIRMATION } from "@/lib/site-data";
+
 import { submitConsultation } from "@/lib/forms.functions";
 import { BUDGET_RANGES, TIMELINES, TRADE_INTERESTS } from "@/lib/site-data";
 
-const schema = z.object({
-  full_name: z.string().min(1, "Required"),
-  email: z.string().email("Invalid email address"),
-  whatsapp: z.string().min(5, "Required"),
-  company: z.string().optional(),
-  country: z.string().min(1, "Required"),
-  trade_interest: z.string().min(1, "Required"),
-  budget_range: z.string().optional(),
-  timeline: z.string().optional(),
-  notes: z.string().optional(),
-});
-type FormValues = z.infer<typeof schema>;
 
-export function ConsultationForm({ dark = true }: { dark?: boolean }) {
+
+export function ConsultationForm({ dark = true, source = "consultation-modal" }: { dark?: boolean; source?: string }) {
   const fn = useServerFn(submitConsultation);
   const [done, setDone] = useState(false);
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormValues>({
-    resolver: zodResolver(schema),
+  const [failed, setFailed] = useState<string | null>(null);
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ConsultationValues>({
+    resolver: zodResolver(consultationSchema),
+    defaultValues: { source_page: source, website: "" },
   });
 
-  if (done) return <SuccessState dark={dark} title="Consultation request received" message="Thanks — your consultation request is in. We’ll reach out within one business day to confirm a time." />;
+  if (done) return <SuccessState dark={dark} title="Consultation request received" message={SUBMISSION_CONFIRMATION} />;
 
   return (
     <form
+      noValidate
       onSubmit={handleSubmit(async (values) => {
+        setFailed(null);
         try {
           await fn({ data: values });
+          trackLead("consultation");
           setDone(true);
-          toast.success("Consultation request sent");
-        } catch {
-          toast.error("Submission failed", { description: "Please try again or email contact@asmanprimehub.com." });
+        } catch (e) {
+          setFailed(e instanceof Error && e.message ? e.message : "Your enquiry could not be sent. Please email contact@asmanprimehub.com or message us on WhatsApp.");
         }
       })}
-      className="grid gap-5"
+      className="relative grid gap-5"
     >
+      <Honeypot register={register("website")} />
+      <input type="hidden" {...register("source_page")} />
+      {failed && <ErrorNotice message={failed} dark={dark} />}
       <div className="grid md:grid-cols-2 gap-5">
         <Field label="Full Name" required dark={dark} error={errors.full_name?.message}>
           <TextInput dark={dark} invalid={!!errors.full_name} {...register("full_name")} />
@@ -72,6 +71,8 @@ export function ConsultationForm({ dark = true }: { dark?: boolean }) {
       <Field label="Tell Us About Your Business Needs" dark={dark}>
         <TextArea dark={dark} placeholder="Share any relevant details about your trade goals, products of interest, or specific requirements…" {...register("notes")} />
       </Field>
+      <FeeNotice dark={dark} />
+      <ConsentBlock register={register("consent")} error={errors.consent?.message} dark={dark} />
       <SubmitButton loading={isSubmitting}>Submit Consultation Request</SubmitButton>
     </form>
   );

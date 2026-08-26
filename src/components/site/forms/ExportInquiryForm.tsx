@@ -1,49 +1,47 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { useServerFn } from "@tanstack/react-start";
-import { toast } from "sonner";
 import { Field, TextInput, TextArea, Select, SubmitButton, SuccessState } from "../form-fields";
+import { ConsentBlock, ErrorNotice, FeeNotice, Honeypot } from "./shared";
+import { exportSchema, type ExportValues } from "@/lib/forms-schemas";
+import { trackLead } from "@/lib/analytics";
+import { SUBMISSION_CONFIRMATION } from "@/lib/site-data";
+
 import { submitExportInquiry } from "@/lib/forms.functions";
 import { COMMODITY_OPTIONS, SHIPPING_METHODS, INQUIRY_NOTE } from "@/lib/site-data";
 
-const schema = z.object({
-  full_name: z.string().min(1, "Required"),
-  company_name: z.string().min(1, "Required"),
-  country: z.string().min(1, "Required"),
-  email: z.string().email("Invalid email"),
-  whatsapp: z.string().min(5, "Required"),
-  commodity: z.string().min(1, "Required"),
-  quantity: z.string().min(1, "Required"),
-  shipping_destination: z.string().min(1, "Required"),
-  shipping_method: z.string().optional(),
-  requirements: z.string().optional(),
-});
-type FormValues = z.infer<typeof schema>;
 
-export function ExportInquiryForm() {
+
+export function ExportInquiryForm({ source = "agricultural-export" }: { source?: string } = {}) {
   const fn = useServerFn(submitExportInquiry);
   const [done, setDone] = useState(false);
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormValues>({
-    resolver: zodResolver(schema),
+  const [failed, setFailed] = useState<string | null>(null);
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ExportValues>({
+    resolver: zodResolver(exportSchema),
+    defaultValues: { source_page: source, website: "" },
   });
 
-  if (done) return <SuccessState dark title="Export inquiry received" message="Thank you — your inquiry has been received. Our export desk will review it and follow up with next steps, usually within one business day." />;
+  if (done) return <SuccessState dark title="Export inquiry received" message={SUBMISSION_CONFIRMATION} />;
 
   return (
     <form
+      noValidate
       onSubmit={handleSubmit(async (values) => {
+        setFailed(null);
         try {
           await fn({ data: values });
+          trackLead("export_inquiry");
           setDone(true);
-          toast.success("Inquiry submitted");
-        } catch {
-          toast.error("Submission failed", { description: "Please try again or email contact@asmanprimehub.com." });
+        } catch (e) {
+          setFailed(e instanceof Error && e.message ? e.message : "Your enquiry could not be sent. Please email contact@asmanprimehub.com or message us on WhatsApp.");
         }
       })}
-      className="grid gap-5"
+      className="relative grid gap-5"
     >
+      <Honeypot register={register("website")} />
+      <input type="hidden" {...register("source_page")} />
+      {failed && <ErrorNotice message={failed} dark />}
       <div className="grid md:grid-cols-2 gap-5">
         <Field label="Full Name" required dark error={errors.full_name?.message}>
           <TextInput dark invalid={!!errors.full_name} {...register("full_name")} />
@@ -76,6 +74,8 @@ export function ExportInquiryForm() {
       <Field label="Additional Requirements" dark>
         <TextArea dark {...register("requirements")} />
       </Field>
+      <FeeNotice dark />
+      <ConsentBlock register={register("consent")} error={errors.consent?.message} dark />
       <SubmitButton loading={isSubmitting}>Submit Export Inquiry</SubmitButton>
       <p className="text-xs leading-relaxed text-white/55">{INQUIRY_NOTE}</p>
     </form>

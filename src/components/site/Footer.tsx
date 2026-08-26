@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MessageCircle, Linkedin, Instagram, Facebook } from "lucide-react";
-import { NAV, SITE, COMMODITIES, DISCLAIMER } from "@/lib/site-data";
+import { NAV, SITE, COMMODITIES, DISCLAIMER, waLink } from "@/lib/site-data";
+import { trackContact } from "@/lib/analytics";
 import logo from "@/assets/logo.png";
 
 export function Footer() {
@@ -17,9 +18,10 @@ export function Footer() {
             </div>
           </div>
           <p className="mt-5 text-sm leading-relaxed max-w-sm">
-            {SITE.legalName} — a Nigeria-based international trade and export coordination company
-            providing sourcing, procurement, agricultural export and freight coordination for
-            businesses in global markets.
+            {SITE.legalName}
+            <span className="mt-2 block text-white/55">
+              Global Sourcing | Procurement | Nigerian Commodity Sourcing | Trade Coordination
+            </span>
           </p>
           <div className="mt-4 text-sm">
             <a href={`https://${SITE.domain}`} className="hover:text-[var(--color-gold)] transition-colors">
@@ -76,7 +78,7 @@ export function Footer() {
             {COMMODITIES.map((c) => (
               <li key={c.slug}>
                 <Link
-                  to="/agricultural-export"
+                  to="/nigerian-commodity-sourcing"
                   className="hover:text-[var(--color-gold)] transition-colors"
                 >
                   {c.name}
@@ -90,14 +92,15 @@ export function Footer() {
           <div className="eyebrow text-[var(--color-gold)]">Get In Touch</div>
           <ul className="mt-5 space-y-3 text-sm">
             <li>
-              <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 hover:text-[var(--color-gold)]">
+              <a href={`mailto:${SITE.email}`} onClick={() => trackContact("email", "footer")} className="flex items-center gap-2 hover:text-[var(--color-gold)]">
                 <Mail size={14} /> {SITE.email}
               </a>
             </li>
             <li>
               <a
-                href={`https://wa.me/${SITE.whatsappRaw}`}
+                href={waLink("Hello ASMAN Prime Hub, I would like to make an enquiry.")}
                 target="_blank" rel="noreferrer"
+                onClick={() => trackContact("whatsapp", "footer")}
                 className="flex items-center gap-2 hover:text-[var(--color-gold)]"
               >
                 <MessageCircle size={14} /> {SITE.whatsapp}
@@ -118,7 +121,7 @@ export function Footer() {
           <div>© {new Date().getFullYear()} {SITE.legalName}. All rights reserved.</div>
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="hover:text-[var(--color-gold)]">Privacy</Link>
-            <Link to="/terms" className="hover:text-[var(--color-gold)]">Terms</Link>
+            <Link to="/terms-and-conditions" className="hover:text-[var(--color-gold)]">Terms</Link>
           </div>
         </div>
       </div>

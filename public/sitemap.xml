@@ -1,74 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://asman-trade-connect.lovable.app/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <loc>https://asmanprimehub.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://asman-trade-connect.lovable.app/about</loc>
-    <lastmod>2026-07-17</lastmod>
+    <loc>https://asmanprimehub.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://asman-trade-connect.lovable.app/services</loc>
-    <lastmod>2026-07-17</lastmod>
+    <loc>https://asmanprimehub.com/services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://asman-trade-connect.lovable.app/agricultural-export</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://asman-trade-connect.lovable.app/why-choose-us</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://asman-trade-connect.lovable.app/quote</loc>
-    <lastmod>2026-07-18</lastmod>
+    <loc>https://asmanprimehub.com/global-sourcing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://asman-trade-connect.lovable.app/insights</loc>
-    <lastmod>2026-07-17</lastmod>
+    <loc>https://asmanprimehub.com/nigerian-commodity-sourcing</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://asmanprimehub.com/agricultural-export</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://asmanprimehub.com/why-choose-us</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://asmanprimehub.com/request-a-quote</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://asmanprimehub.com/insights</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://asman-trade-connect.lovable.app/insights/what-buyers-are-looking-for-in-nigerian-agricultural-exports</loc>
-    <lastmod>2026-07-18</lastmod>
+    <loc>https://asmanprimehub.com/insights/what-buyers-are-looking-for-in-nigerian-agricultural-exports</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://asman-trade-connect.lovable.app/insights/how-to-calculate-the-true-landed-cost-of-imported-goods</loc>
-    <lastmod>2026-07-18</lastmod>
+    <loc>https://asmanprimehub.com/insights/how-to-calculate-the-true-landed-cost-of-imported-goods</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://asman-trade-connect.lovable.app/contact</loc>
-    <lastmod>2026-07-17</lastmod>
+    <loc>https://asmanprimehub.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://asman-trade-connect.lovable.app/privacy-policy</loc>
-    <lastmod>2026-07-17</lastmod>
+    <loc>https://asmanprimehub.com/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://asman-trade-connect.lovable.app/terms</loc>
-    <lastmod>2026-07-17</lastmod>
+    <loc>https://asmanprimehub.com/terms-and-conditions</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

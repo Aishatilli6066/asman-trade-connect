@@ -10,11 +10,15 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyChooseUsRouteImport } from './routes/why-choose-us'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as RequestAQuoteRouteImport } from './routes/request-a-quote'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as NigerianCommoditySourcingRouteImport } from './routes/nigerian-commodity-sourcing'
 import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as GlobalSourcingRouteImport } from './routes/global-sourcing'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AgriculturalExportRouteImport } from './routes/agricultural-export'
@@ -33,6 +37,11 @@ const WhyChooseUsRoute = WhyChooseUsRouteImport.update({
   path: '/why-choose-us',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -41,6 +50,11 @@ const TermsRoute = TermsRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestAQuoteRoute = RequestAQuoteRouteImport.update({
+  id: '/request-a-quote',
+  path: '/request-a-quote',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QuoteRoute = QuoteRouteImport.update({
@@ -53,9 +67,20 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NigerianCommoditySourcingRoute =
+  NigerianCommoditySourcingRouteImport.update({
+    id: '/nigerian-commodity-sourcing',
+    path: '/nigerian-commodity-sourcing',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const InsightsRoute = InsightsRouteImport.update({
   id: '/insights',
   path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GlobalSourcingRoute = GlobalSourcingRouteImport.update({
+  id: '/global-sourcing',
+  path: '/global-sourcing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -128,11 +153,15 @@ export interface FileRoutesByFullPath {
   '/agricultural-export': typeof AgriculturalExportRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/global-sourcing': typeof GlobalSourcingRoute
   '/insights': typeof InsightsRouteWithChildren
+  '/nigerian-commodity-sourcing': typeof NigerianCommoditySourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
+  '/request-a-quote': typeof RequestAQuoteRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/insights/': typeof InsightsIndexRoute
@@ -147,10 +176,14 @@ export interface FileRoutesByTo {
   '/agricultural-export': typeof AgriculturalExportRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/global-sourcing': typeof GlobalSourcingRoute
+  '/nigerian-commodity-sourcing': typeof NigerianCommoditySourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
+  '/request-a-quote': typeof RequestAQuoteRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/insights': typeof InsightsIndexRoute
@@ -167,11 +200,15 @@ export interface FileRoutesById {
   '/agricultural-export': typeof AgriculturalExportRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/global-sourcing': typeof GlobalSourcingRoute
   '/insights': typeof InsightsRouteWithChildren
+  '/nigerian-commodity-sourcing': typeof NigerianCommoditySourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
+  '/request-a-quote': typeof RequestAQuoteRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/insights/': typeof InsightsIndexRoute
@@ -188,11 +225,15 @@ export interface FileRouteTypes {
     | '/agricultural-export'
     | '/auth'
     | '/contact'
+    | '/global-sourcing'
     | '/insights'
+    | '/nigerian-commodity-sourcing'
     | '/privacy-policy'
     | '/quote'
+    | '/request-a-quote'
     | '/services'
     | '/terms'
+    | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
     | '/insights/'
@@ -207,10 +248,14 @@ export interface FileRouteTypes {
     | '/agricultural-export'
     | '/auth'
     | '/contact'
+    | '/global-sourcing'
+    | '/nigerian-commodity-sourcing'
     | '/privacy-policy'
     | '/quote'
+    | '/request-a-quote'
     | '/services'
     | '/terms'
+    | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
     | '/insights'
@@ -226,11 +271,15 @@ export interface FileRouteTypes {
     | '/agricultural-export'
     | '/auth'
     | '/contact'
+    | '/global-sourcing'
     | '/insights'
+    | '/nigerian-commodity-sourcing'
     | '/privacy-policy'
     | '/quote'
+    | '/request-a-quote'
     | '/services'
     | '/terms'
+    | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
     | '/insights/'
@@ -247,11 +296,15 @@ export interface RootRouteChildren {
   AgriculturalExportRoute: typeof AgriculturalExportRoute
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
+  GlobalSourcingRoute: typeof GlobalSourcingRoute
   InsightsRoute: typeof InsightsRouteWithChildren
+  NigerianCommoditySourcingRoute: typeof NigerianCommoditySourcingRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   QuoteRoute: typeof QuoteRoute
+  RequestAQuoteRoute: typeof RequestAQuoteRoute
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
+  TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   WhyChooseUsRoute: typeof WhyChooseUsRoute
   ApiPublicInsightsMediaSplatRoute: typeof ApiPublicInsightsMediaSplatRoute
 }
@@ -263,6 +316,13 @@ declare module '@tanstack/react-router' {
       path: '/why-choose-us'
       fullPath: '/why-choose-us'
       preLoaderRoute: typeof WhyChooseUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -279,6 +339,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/request-a-quote': {
+      id: '/request-a-quote'
+      path: '/request-a-quote'
+      fullPath: '/request-a-quote'
+      preLoaderRoute: typeof RequestAQuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quote': {
       id: '/quote'
       path: '/quote'
@@ -293,11 +360,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/nigerian-commodity-sourcing': {
+      id: '/nigerian-commodity-sourcing'
+      path: '/nigerian-commodity-sourcing'
+      fullPath: '/nigerian-commodity-sourcing'
+      preLoaderRoute: typeof NigerianCommoditySourcingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/insights': {
       id: '/insights'
       path: '/insights'
       fullPath: '/insights'
       preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/global-sourcing': {
+      id: '/global-sourcing'
+      path: '/global-sourcing'
+      fullPath: '/global-sourcing'
+      preLoaderRoute: typeof GlobalSourcingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -436,11 +517,15 @@ const rootRouteChildren: RootRouteChildren = {
   AgriculturalExportRoute: AgriculturalExportRoute,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
+  GlobalSourcingRoute: GlobalSourcingRoute,
   InsightsRoute: InsightsRouteWithChildren,
+  NigerianCommoditySourcingRoute: NigerianCommoditySourcingRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   QuoteRoute: QuoteRoute,
+  RequestAQuoteRoute: RequestAQuoteRoute,
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
+  TermsAndConditionsRoute: TermsAndConditionsRoute,
   WhyChooseUsRoute: WhyChooseUsRoute,
   ApiPublicInsightsMediaSplatRoute: ApiPublicInsightsMediaSplatRoute,
 }

@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
 Crawl-delay: 1
 
-Sitemap: https://asman-trade-connect.lovable.app/sitemap.xml
+Sitemap: https://asmanprimehub.com/sitemap.xml

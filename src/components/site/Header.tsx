@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, Mail, MessageCircle } from "lucide-react";
-import { NAV, SITE } from "@/lib/site-data";
+import { NAV, SITE, waLink } from "@/lib/site-data";
+import { trackContact, trackQuoteClick } from "@/lib/analytics";
 import { openConsultation } from "./consultation-store";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
@@ -60,7 +61,7 @@ export function Header() {
         <div className="hidden xl:block shrink-0">
           <div className="flex items-center gap-4">
             <a
-              href={`https://wa.me/${SITE.whatsappRaw}`}
+              href={waLink("Hello ASMAN Prime Hub, I would like to discuss a sourcing or export requirement.")}
               target="_blank"
               rel="noopener"
               aria-label="WhatsApp"
@@ -75,7 +76,8 @@ export function Header() {
               Consultation
             </button>
             <Link
-              to="/quote"
+              to="/request-a-quote"
+              onClick={() => trackQuoteClick("header")}
               className="px-4 py-3 text-[10px] xl:text-[11px] uppercase tracking-[0.18em] font-semibold whitespace-nowrap bg-[var(--color-gold)] text-[var(--color-ink)] hover:bg-white transition-colors"
             >
               Trade Inquiry
@@ -117,11 +119,11 @@ export function Header() {
 
             <div className="mt-auto pt-10 flex flex-col gap-3">
               <Link
-                to="/quote"
-                onClick={() => setOpen(false)}
+                to="/request-a-quote"
+                onClick={() => { setOpen(false); trackQuoteClick("mobile-menu"); }}
                 className="px-5 py-4 text-center text-[11px] uppercase tracking-[0.22em] font-semibold bg-[var(--color-gold)] text-[var(--color-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                Submit a Trade Inquiry
+                Request a Quote
               </Link>
               <button
                 onClick={() => { setOpen(false); openConsultation(); }}
@@ -131,17 +133,17 @@ export function Header() {
               </button>
               <div className="mt-4 grid grid-cols-1 gap-3 border-t border-white/10 pt-6 text-sm">
                 <a
-                  href={`https://wa.me/${SITE.whatsappRaw}`}
+                  href={waLink("Hello ASMAN Prime Hub, I would like to discuss a sourcing or export requirement.")}
                   target="_blank"
                   rel="noreferrer"
-                  onClick={() => setOpen(false)}
+                  onClick={() => { setOpen(false); trackContact("whatsapp", "mobile-menu"); }}
                   className="flex items-center gap-3 text-white/75 hover:text-[var(--color-gold)]"
                 >
                   <MessageCircle size={16} /> {SITE.whatsapp}
                 </a>
                 <a
                   href={`mailto:${SITE.email}`}
-                  onClick={() => setOpen(false)}
+                  onClick={() => { setOpen(false); trackContact("email", "mobile-menu"); }}
                   className="flex items-center gap-3 text-white/75 hover:text-[var(--color-gold)] break-all"
                 >
                   <Mail size={16} /> {SITE.email}

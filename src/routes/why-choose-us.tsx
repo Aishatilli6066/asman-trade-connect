@@ -80,7 +80,7 @@ function WhyPage() {
             See how we'd coordinate <span className="italic text-[var(--color-gold)] font-normal">your trade.</span>
           </h2>
           <div className="flex flex-wrap gap-3">
-            <Link to="/quote"><GoldButton>Submit a Trade Inquiry <ArrowRight size={14} /></GoldButton></Link>
+            <Link to="/request-a-quote"><GoldButton>Submit a Trade Inquiry <ArrowRight size={14} /></GoldButton></Link>
             <GoldButton variant="outline-light" onClick={openConsultation}>Book a Consultation</GoldButton>
           </div>
         </div>
