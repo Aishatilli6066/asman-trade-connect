@@ -14,6 +14,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as NigerianCommoditySourcingRouteImport } from './routes/nigerian-commodity-sourcing'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as GlobalSourcingRouteImport } from './routes/global-sourcing'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -54,6 +55,12 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NigerianCommoditySourcingRoute =
+  NigerianCommoditySourcingRouteImport.update({
+    id: '/nigerian-commodity-sourcing',
+    path: '/nigerian-commodity-sourcing',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const InsightsRoute = InsightsRouteImport.update({
   id: '/insights',
   path: '/insights',
@@ -136,6 +143,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/global-sourcing': typeof GlobalSourcingRoute
   '/insights': typeof InsightsRouteWithChildren
+  '/nigerian-commodity-sourcing': typeof NigerianCommoditySourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
@@ -155,6 +163,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/global-sourcing': typeof GlobalSourcingRoute
+  '/nigerian-commodity-sourcing': typeof NigerianCommoditySourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
@@ -177,6 +186,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/global-sourcing': typeof GlobalSourcingRoute
   '/insights': typeof InsightsRouteWithChildren
+  '/nigerian-commodity-sourcing': typeof NigerianCommoditySourcingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
@@ -199,6 +209,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/global-sourcing'
     | '/insights'
+    | '/nigerian-commodity-sourcing'
     | '/privacy-policy'
     | '/quote'
     | '/services'
@@ -218,6 +229,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/global-sourcing'
+    | '/nigerian-commodity-sourcing'
     | '/privacy-policy'
     | '/quote'
     | '/services'
@@ -239,6 +251,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/global-sourcing'
     | '/insights'
+    | '/nigerian-commodity-sourcing'
     | '/privacy-policy'
     | '/quote'
     | '/services'
@@ -261,6 +274,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GlobalSourcingRoute: typeof GlobalSourcingRoute
   InsightsRoute: typeof InsightsRouteWithChildren
+  NigerianCommoditySourcingRoute: typeof NigerianCommoditySourcingRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   QuoteRoute: typeof QuoteRoute
   ServicesRoute: typeof ServicesRoute
@@ -304,6 +318,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy-policy'
       fullPath: '/privacy-policy'
       preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nigerian-commodity-sourcing': {
+      id: '/nigerian-commodity-sourcing'
+      path: '/nigerian-commodity-sourcing'
+      fullPath: '/nigerian-commodity-sourcing'
+      preLoaderRoute: typeof NigerianCommoditySourcingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/insights': {
@@ -458,6 +479,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GlobalSourcingRoute: GlobalSourcingRoute,
   InsightsRoute: InsightsRouteWithChildren,
+  NigerianCommoditySourcingRoute: NigerianCommoditySourcingRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   QuoteRoute: QuoteRoute,
   ServicesRoute: ServicesRoute,
