@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { useServerFn } from "@tanstack/react-start";
-import { toast } from "sonner";
 import { Field, TextInput, TextArea, Select, SubmitButton, SuccessState } from "../form-fields";
+import { ConsentBlock, ErrorNotice, FeeNotice, Honeypot } from "./shared";
+import { tradeSchema, type TradeValues } from "@/lib/forms-schemas";
+import { trackLead } from "@/lib/analytics";
+import { SUBMISSION_CONFIRMATION } from "@/lib/site-data";
+
 import { submitTradeInquiry } from "@/lib/forms.functions";
 import {
   SERVICE_INTERESTS,
@@ -15,48 +18,37 @@ import {
   INQUIRY_NOTE,
 } from "@/lib/site-data";
 
-const schema = z.object({
-  full_name: z.string().min(1, "Required"),
-  company_name: z.string().min(1, "Required"),
-  email: z.string().email("Invalid email"),
-  whatsapp: z.string().min(5, "Required"),
-  country: z.string().min(1, "Required"),
-  service_interest: z.string().min(1, "Required"),
-  product_required: z.string().min(1, "Required"),
-  specifications: z.string().min(1, "Required"),
-  quantity: z.string().min(1, "Required"),
-  destination: z.string().min(1, "Required"),
-  incoterm: z.string().min(1, "Required"),
-  payment_method: z.string().min(1, "Required"),
-  timeline: z.string().min(1, "Required"),
-  budget_range: z.string().optional(),
-  message: z.string().optional(),
-  consent: z.literal(true, { message: "You must agree to be contacted" }),
-});
-type FormValues = z.infer<typeof schema>;
 
-export function TradeInquiryForm({ dark = false }: { dark?: boolean }) {
+
+export function TradeInquiryForm({ dark = false, source = "request-a-quote" }: { dark?: boolean; source?: string }) {
   const fn = useServerFn(submitTradeInquiry);
   const [done, setDone] = useState(false);
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormValues>({
-    resolver: zodResolver(schema),
+  const [failed, setFailed] = useState<string | null>(null);
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<TradeValues>({
+    resolver: zodResolver(tradeSchema),
+    defaultValues: { source_page: source, website: "" },
   });
 
-  if (done) return <SuccessState dark={dark} title="Request received" message="Thanks — your service request is in. Our team will review it and respond within one business day." />;
+  if (done) return <SuccessState dark={dark} title="Requirement received" message={SUBMISSION_CONFIRMATION} />;
 
   return (
     <form
+      noValidate
       onSubmit={handleSubmit(async (values) => {
+        setFailed(null);
         try {
           await fn({ data: values });
+          trackLead("trade_inquiry");
           setDone(true);
-          toast.success("Request submitted");
-        } catch {
-          toast.error("Submission failed", { description: "Please try again or email contact@asmanprimehub.com." });
+        } catch (e) {
+          setFailed(e instanceof Error && e.message ? e.message : "Your enquiry could not be sent. Please email contact@asmanprimehub.com or message us on WhatsApp.");
         }
       })}
-      className="grid gap-5"
+      className="relative grid gap-5"
     >
+      <Honeypot register={register("website")} />
+      <input type="hidden" {...register("source_page")} />
+      {failed && <ErrorNotice message={failed} dark={dark} />}
       <div className="grid md:grid-cols-2 gap-5">
         <Field label="Full Name" required dark={dark} error={errors.full_name?.message}>
           <TextInput dark={dark} invalid={!!errors.full_name} {...register("full_name")} />
@@ -104,17 +96,8 @@ export function TradeInquiryForm({ dark = false }: { dark?: boolean }) {
       <Field label="Additional Information (optional)" dark={dark} error={errors.message?.message}>
         <TextArea dark={dark} rows={5} placeholder="Anything else we should know about your requirement…" invalid={!!errors.message} {...register("message")} />
       </Field>
-      <label className="flex items-start gap-3 text-sm leading-relaxed cursor-pointer">
-        <input
-          type="checkbox"
-          className="mt-1 h-4 w-4 accent-[var(--color-burgundy)] shrink-0"
-          {...register("consent")}
-        />
-        <span className={dark ? "text-white/80" : "text-[var(--color-ink)]/75"}>
-          I agree to be contacted by ASMAN Prime Hub regarding my inquiry.
-        </span>
-      </label>
-      {errors.consent && <div className="text-[11px] text-red-500 -mt-3">{errors.consent.message}</div>}
+      <FeeNotice dark={dark} />
+      <ConsentBlock register={register("consent")} error={errors.consent?.message} dark={dark} />
       <SubmitButton loading={isSubmitting}>Submit a Trade Inquiry</SubmitButton>
       <p className={dark ? "text-xs leading-relaxed text-white/55" : "text-xs leading-relaxed text-[var(--color-ink)]/55"}>
         {INQUIRY_NOTE}
