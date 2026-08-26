@@ -83,10 +83,11 @@ export const HOW_WE_WORK = [
 
 export const NAV = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
+  { label: "About Us", to: "/about" },
   { label: "Services", to: "/services" },
-  { label: "Agricultural Export", to: "/agricultural-export" },
-  { label: "Why Us", to: "/why-choose-us" },
+  { label: "Global Sourcing", to: "/global-sourcing" },
+  { label: "Commodity Sourcing", to: "/nigerian-commodity-sourcing" },
+  { label: "Trade Advisory", to: "/why-choose-us" },
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
 ] as const;
@@ -113,7 +114,7 @@ export const COMMODITIES = [
   { name: "Groundnuts", slug: "groundnuts", img: "c-groundnut", desc: "Sorted, cleaned groundnuts in export-grade jute bags." },
   { name: "Shea Butter", slug: "shea", img: "c-shea", desc: "Refined and unrefined shea butter for cosmetics and food applications." },
   { name: "Dried Pepper", slug: "pepper", img: "c-pepper", desc: "Dried red chili pepper, whole and ground, in export-ready volumes." },
-  { name: "Arabic Gum", slug: "gum", img: "c-gum", desc: "Grade 1 and 2 gum arabic from northern Nigeria, ideal for food and pharma." },
+  { name: "Gum Arabic", slug: "gum", img: "c-gum", desc: "Grade 1 and Grade 2 Gum Arabic from northern Nigeria, for food and pharmaceutical use." },
 ];
 
 export const SERVICE_INTERESTS = [
