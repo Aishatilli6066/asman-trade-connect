@@ -14,22 +14,32 @@ import { Footer } from "@/components/site/Footer";
 import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
 import { ConsultationModal } from "@/components/site/ConsultationModal";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@/components/site/Analytics";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="flex min-h-screen items-center justify-center bg-[var(--color-burgundy)] px-6 py-24 text-white">
+      <div className="max-w-lg text-center">
+        <div className="font-display text-6xl md:text-8xl text-[var(--color-gold)]">404</div>
+        <h1 className="mt-6 font-display text-3xl md:text-4xl leading-tight">
+          This page could not be found.
+        </h1>
+        <p className="mt-4 text-white/70 leading-relaxed">
+          The page may have moved. Use the links below to continue, or contact us directly and we
+          will point you to the right place.
         </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
+        <div className="mt-10 flex flex-wrap justify-center gap-3 text-[11px] uppercase tracking-[0.22em] font-semibold">
+          <Link to="/" className="px-6 py-3.5 bg-[var(--color-gold)] text-[var(--color-ink)] hover:bg-white transition-colors">
+            Home
+          </Link>
+          <Link to="/global-sourcing" className="px-6 py-3.5 border border-white/35 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-colors">
+            Global Sourcing
+          </Link>
+          <Link to="/nigerian-commodity-sourcing" className="px-6 py-3.5 border border-white/35 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-colors">
+            Commodity Sourcing
+          </Link>
+          <Link to="/contact" className="px-6 py-3.5 border border-white/35 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-colors">
+            Contact
           </Link>
         </div>
       </div>
@@ -77,12 +87,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
-      { name: "description", content: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions." },
+      { title: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination" },
+      { name: "description", content: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers." },
       { name: "author", content: "ASMAN Prime Hub" },
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" },
-      { property: "og:title", content: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
-      { property: "og:description", content: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions." },
+      { property: "og:title", content: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination" },
+      { property: "og:description", content: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "ASMAN Prime Hub" },
       { property: "og:locale", content: "en_US" },
@@ -91,8 +101,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image:height", content: "1024" },
       { property: "og:image:alt", content: "ASMAN Prime Hub logo" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "ASMAN Prime Hub | Global Trade, Sourcing & Export Solutions" },
-      { name: "twitter:description", content: "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions." },
+      { name: "twitter:title", content: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination" },
+      { name: "twitter:description", content: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers." },
       { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
       { name: "twitter:image:alt", content: "ASMAN Prime Hub logo" },
     ],
@@ -127,7 +137,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             height: 1024,
           },
           description:
-            "ASMAN Prime Hub helps businesses worldwide with sourcing, procurement, supplier verification, import/export coordination and logistics solutions.",
+            "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers.",
           email: "contact@asmanprimehub.com",
           telephone: "+2347084443626",
           address: {
@@ -196,6 +206,7 @@ function RootComponent() {
       <Footer />
       <WhatsAppFloat />
       <ConsultationModal />
+      <Analytics />
       <Toaster position="top-center" />
     </QueryClientProvider>
   );
