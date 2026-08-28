@@ -13,21 +13,25 @@ import { Eyebrow, GoldButton, SectionHeader, FadeIn } from "@/components/site/pr
 import { COMMODITIES, REGIONS, SERVICE_CATEGORIES, HOW_WE_WORK, COMMODITY_NOTE, SITE, PATHWAYS } from "@/lib/site-data";
 import { openConsultation } from "@/components/site/consultation-store";
 
+const HOME_TITLE = "Global Sourcing, Import Coordination & Export Consultancy | ASMAN Prime Hub";
+const HOME_DESC =
+  "ASMAN Prime Hub provides global sourcing, supplier verification, procurement coordination, import support, agro commodity sourcing, export documentation and international trade advisory for businesses across global markets.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination" },
-      { name: "description", content: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers." },
-      { property: "og:title", content: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination" },
-      { property: "og:description", content: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers." },
+      { title: HOME_TITLE },
+      { name: "description", content: HOME_DESC },
+      { property: "og:title", content: HOME_TITLE },
+      { property: "og:description", content: HOME_DESC },
       { property: "og:url", content: "https://asmanprimehub.com/" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "ASMAN Prime Hub" },
       { property: "og:image", content: "https://asmanprimehub.com/logo.png" },
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination" },
-      { name: "twitter:description", content: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers." },
+      { name: "twitter:title", content: HOME_TITLE },
+      { name: "twitter:description", content: HOME_DESC },
       { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
     ],
     links: [{ rel: "canonical", href: "https://asmanprimehub.com/" }],
@@ -39,8 +43,8 @@ export const Route = createFileRoute("/")({
           "@type": "WebPage",
           "@id": "https://asmanprimehub.com/#webpage",
           url: "https://asmanprimehub.com/",
-          name: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination",
-          description: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers.",
+          name: HOME_TITLE,
+          description: HOME_DESC,
           isPartOf: { "@id": "https://asmanprimehub.com/#website" },
           about: { "@id": "https://asmanprimehub.com/#organization" },
           breadcrumb: {
@@ -49,6 +53,19 @@ export const Route = createFileRoute("/")({
               { "@type": "ListItem", position: 1, name: "Home", item: "https://asmanprimehub.com/" },
             ],
           },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://asmanprimehub.com/#faq",
+          mainEntity: FAQS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
         }),
       },
     ],
@@ -71,11 +88,13 @@ function Index() {
       <AgriHighlight />
       <WhyUs />
       <Standards />
+      <Faq />
       <ConsultationCTA />
       <ContactStrip />
     </>
   );
 }
+
 
 function TrustBadges() {
   const regs = [
