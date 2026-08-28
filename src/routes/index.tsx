@@ -10,24 +10,28 @@ import badgeCac from "@/assets/badge-cac.jpg";
 import badgeNepc from "@/assets/badge-nepc.jpg";
 import globe from "@/assets/globe.jpg";
 import { Eyebrow, GoldButton, SectionHeader, FadeIn } from "@/components/site/primitives";
-import { COMMODITIES, REGIONS, SERVICE_CATEGORIES, HOW_WE_WORK, COMMODITY_NOTE, SITE, PATHWAYS } from "@/lib/site-data";
+import { COMMODITIES, REGIONS, SERVICE_BLOCKS, HOW_WE_WORK, COMMODITY_NOTE, SITE, PATHWAYS, FAQS, ADDITIONAL_COMMODITIES } from "@/lib/site-data";
 import { openConsultation } from "@/components/site/consultation-store";
+
+const HOME_TITLE = "Global Sourcing, Import Coordination & Export Consultancy | ASMAN Prime Hub";
+const HOME_DESC =
+  "ASMAN Prime Hub provides global sourcing, supplier verification, procurement coordination, import support, agro commodity sourcing, export documentation and international trade advisory for businesses across global markets.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination" },
-      { name: "description", content: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers." },
-      { property: "og:title", content: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination" },
-      { property: "og:description", content: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers." },
+      { title: HOME_TITLE },
+      { name: "description", content: HOME_DESC },
+      { property: "og:title", content: HOME_TITLE },
+      { property: "og:description", content: HOME_DESC },
       { property: "og:url", content: "https://asmanprimehub.com/" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "ASMAN Prime Hub" },
       { property: "og:image", content: "https://asmanprimehub.com/logo.png" },
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination" },
-      { name: "twitter:description", content: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers." },
+      { name: "twitter:title", content: HOME_TITLE },
+      { name: "twitter:description", content: HOME_DESC },
       { name: "twitter:image", content: "https://asmanprimehub.com/logo.png" },
     ],
     links: [{ rel: "canonical", href: "https://asmanprimehub.com/" }],
@@ -39,8 +43,8 @@ export const Route = createFileRoute("/")({
           "@type": "WebPage",
           "@id": "https://asmanprimehub.com/#webpage",
           url: "https://asmanprimehub.com/",
-          name: "ASMAN Prime Hub | Global Sourcing and Nigerian Export Coordination",
-          description: "Professional global sourcing, supplier verification, procurement, import coordination and Nigerian agricultural commodity export support for businesses and international buyers.",
+          name: HOME_TITLE,
+          description: HOME_DESC,
           isPartOf: { "@id": "https://asmanprimehub.com/#website" },
           about: { "@id": "https://asmanprimehub.com/#organization" },
           breadcrumb: {
@@ -49,6 +53,19 @@ export const Route = createFileRoute("/")({
               { "@type": "ListItem", position: 1, name: "Home", item: "https://asmanprimehub.com/" },
             ],
           },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://asmanprimehub.com/#faq",
+          mainEntity: FAQS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
         }),
       },
     ],
@@ -71,11 +88,13 @@ function Index() {
       <AgriHighlight />
       <WhyUs />
       <Standards />
+      <Faq />
       <ConsultationCTA />
       <ContactStrip />
     </>
   );
 }
+
 
 function TrustBadges() {
   const regs = [
@@ -149,7 +168,7 @@ function Hero() {
     <section className="relative min-h-[100svh] flex items-end overflow-hidden bg-[var(--color-burgundy)]">
       <img
         src={heroPort}
-        alt="International cargo shipping port at golden hour"
+        alt="International shipping port used for global sourcing and import coordination"
         className="absolute inset-0 h-full w-full object-cover opacity-40 md:opacity-55"
         width={1920}
         height={1080}
@@ -160,27 +179,27 @@ function Hero() {
 
       <div className="container-x relative z-10 pb-20 pt-40 sm:pt-36 md:pb-28 md:pt-32">
         <FadeIn>
-          <Eyebrow dark>Global Trade · Sourcing · Logistics</Eyebrow>
+          <Eyebrow dark>Global Sourcing · Procurement · Import &amp; Export</Eyebrow>
         </FadeIn>
         <FadeIn delay={120}>
           <h1 className="mt-7 font-display text-[36px] sm:text-5xl md:text-[68px] leading-[1.05] text-white max-w-4xl">
-            Global sourcing and Nigerian export coordination,{" "}
-            <span className="text-[var(--color-gold)] italic font-normal">professionally managed.</span>
+            Global Sourcing, Import Coordination &amp; Export Support{" "}
+            <span className="text-[var(--color-gold)] italic font-normal">for Businesses</span>
           </h1>
         </FadeIn>
         <FadeIn delay={240}>
           <p className="mt-8 text-white/75 max-w-xl text-base md:text-lg leading-relaxed">
-            ASMAN Prime Hub helps businesses source products, machinery and raw materials
-            globally while supporting international buyers with Nigerian agricultural
-            commodity sourcing and export execution coordination.
+            ASMAN Prime Hub helps businesses source products, verify suppliers, coordinate
+            procurement, manage import and export processes, and access international trade
+            opportunities with structure, transparency and commercial discipline.
           </p>
         </FadeIn>
         <FadeIn delay={360}>
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link to="/request-a-quote">
-              <GoldButton>Request a Quote <ArrowRight size={14} /></GoldButton>
+            <GoldButton onClick={openConsultation}>Book Consultation <ArrowRight size={14} /></GoldButton>
+            <Link to="/services">
+              <GoldButton variant="outline-light">Explore Services</GoldButton>
             </Link>
-            <GoldButton variant="outline-light" onClick={openConsultation}>Book a Consultation</GoldButton>
           </div>
         </FadeIn>
         <FadeIn delay={480}>
@@ -246,7 +265,7 @@ function AboutPreview() {
     <section className="bg-white">
       <div className="container-x py-24 md:py-32 grid gap-14 lg:grid-cols-2 items-center">
         <div className="relative">
-          <img src={logisticsShip} alt="Global trade logistics — cargo ship, aircraft and port" className="w-full h-[420px] md:h-[560px] object-cover" loading="lazy" />
+          <img src={logisticsShip} alt="Global trade logistics coordination — container ship, air freight and port operations" className="w-full h-[420px] md:h-[560px] object-cover" loading="lazy" />
           <div className="absolute -bottom-6 -right-6 hidden md:block bg-[var(--color-burgundy)] text-white px-8 py-6 max-w-xs">
             <div className="font-display text-2xl leading-tight">Premium African gateway to global trade.</div>
           </div>
@@ -254,13 +273,19 @@ function AboutPreview() {
         <div>
           <Eyebrow>About ASMAN Prime Hub</Eyebrow>
           <h2 className="mt-5 font-display text-3xl md:text-5xl leading-[1.05]">
-            Your Strategic Partner for Global Trade, Sourcing & Procurement
+            A Strategic Trade Partner for Global Sourcing, Procurement and Export Execution
           </h2>
           <p className="mt-6 text-[var(--color-ink)]/70 text-base md:text-lg leading-relaxed">
-            We coordinate the trade lifecycle — from supplier assessment and procurement to
-            freight coordination and export documentation. Clients work with one accountable
-            coordination partner rather than managing suppliers, forwarders and paperwork
-            separately.
+            ASMAN Prime Hub is a global trade, sourcing and procurement coordination company
+            helping businesses make better import, export and sourcing decisions. From supplier
+            verification and product sourcing to agro commodity sourcing, landed cost analysis,
+            documentation support and logistics coordination, we help clients approach
+            international trade with structure, clarity and risk control.
+          </p>
+          <p className="mt-4 text-[var(--color-ink)]/65 leading-relaxed">
+            The company is based in Nigeria and works across global trade routes, connecting
+            importers, exporters, manufacturers, distributors, agribusinesses, procurement teams
+            and SMEs with verified suppliers, buyers, products and commodities.
           </p>
           <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
             {[
@@ -310,19 +335,19 @@ function Process() {
 }
 
 function Services() {
-  const icons = [Boxes, Network, Sprout, Truck, Globe2, ShieldCheck];
+  const icons = [Boxes, ShieldCheck, Truck, Network, Sprout, FileCheck2, Globe2];
   return (
     <section className="bg-white text-[var(--color-ink)]">
       <div className="container-x py-24 md:py-32">
-        <SectionHeader eyebrow="Services" title={<>Six service categories, <span className="italic text-[var(--color-burgundy)] font-normal">clearly defined.</span></>} subtitle="Each engagement is scoped in writing before work begins." />
+        <SectionHeader eyebrow="Services" title={<>Seven service areas, <span className="italic text-[var(--color-burgundy)] font-normal">clearly defined.</span></>} subtitle="Global sourcing, supplier verification, import coordination, procurement, agro commodity sourcing, export documentation and trade advisory — each scoped in writing before work begins." />
         <div className="mt-16 grid gap-px sm:grid-cols-2 lg:grid-cols-3 border border-[var(--color-line)] bg-[var(--color-line)]">
-          {SERVICE_CATEGORIES.map((s, i) => {
+          {SERVICE_BLOCKS.map((s, i) => {
             const Icon = icons[i] ?? Boxes;
             return (
               <div key={s.title} className="bg-white p-8 group hover:bg-[var(--color-bone)] transition-colors">
                 <Icon size={26} strokeWidth={1.4} className="text-[var(--color-burgundy)]" />
-                <div className="mt-6 font-display text-xl leading-snug">{s.title}</div>
-                <p className="mt-3 text-sm text-[var(--color-ink)]/65 leading-relaxed">{s.receive}</p>
+                <h3 className="mt-6 font-display text-xl leading-snug">{s.title}</h3>
+                <p className="mt-3 text-sm text-[var(--color-ink)]/65 leading-relaxed">{s.desc}</p>
                 <div className="mt-6 h-px w-8 bg-[var(--color-gold)] group-hover:w-16 transition-all" />
               </div>
             );
@@ -363,7 +388,7 @@ function AgriHighlight() {
                 <img src={commodityImg(c.img)} alt={c.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
               </div>
               <div className="p-6">
-                <div className="font-display text-xl">{c.name}</div>
+                <h3 className="font-display text-xl">{c.name}</h3>
                 <p className="mt-2 text-sm text-white/65 leading-relaxed">{c.desc}</p>
               </div>
             </div>
@@ -373,7 +398,10 @@ function AgriHighlight() {
           <Link to="/request-a-quote"><GoldButton>Submit a Trade Inquiry <ArrowRight size={14} /></GoldButton></Link>
           <Link to="/agricultural-export"><GoldButton variant="outline-gold">View Commodities</GoldButton></Link>
         </div>
-        <p className="mt-8 text-center text-xs md:text-sm text-white/60 max-w-3xl mx-auto leading-relaxed">{COMMODITY_NOTE}</p>
+        <p className="mt-10 text-center text-sm text-white/70 max-w-3xl mx-auto leading-relaxed">
+          Also coordinated on request: {ADDITIONAL_COMMODITIES.join(" · ")}.
+        </p>
+        <p className="mt-4 text-center text-xs md:text-sm text-white/60 max-w-3xl mx-auto leading-relaxed">{COMMODITY_NOTE}</p>
       </div>
     </section>
   );
@@ -396,7 +424,7 @@ function WhyUs() {
           {items.map((it) => (
             <div key={it.t} className="bg-white p-8 md:p-10">
               <it.i size={24} strokeWidth={1.4} className="text-[var(--color-burgundy)]" />
-              <div className="mt-5 font-display text-xl">{it.t}</div>
+              <h3 className="mt-5 font-display text-xl">{it.t}</h3>
               <p className="mt-3 text-sm text-[var(--color-ink)]/65 leading-relaxed">{it.d}</p>
             </div>
           ))}
@@ -421,7 +449,7 @@ function Standards() {
         <div className="grid sm:grid-cols-2 gap-px bg-[var(--color-line)] border border-[var(--color-line)]">
           {cols.map((c) => (
             <div key={c.t} className="bg-white p-7">
-              <div className="font-display text-lg">{c.t}</div>
+              <h3 className="font-display text-lg">{c.t}</h3>
               <p className="mt-2 text-sm text-[var(--color-ink)]/65 leading-relaxed">{c.d}</p>
             </div>
           ))}
@@ -500,6 +528,33 @@ function ContactStrip() {
           </div>
         </div>
         <Link to="/contact"><GoldButton variant="burgundy">Contact Us <ArrowRight size={14} /></GoldButton></Link>
+      </div>
+    </section>
+  );
+}
+
+function Faq() {
+  return (
+    <section className="bg-white border-t border-[var(--color-line)]">
+      <div className="container-x py-24 md:py-32">
+        <SectionHeader
+          eyebrow="Frequently Asked Questions"
+          title={<>Global sourcing and export support, <span className="italic font-normal text-[var(--color-burgundy)]">answered.</span></>}
+        />
+        <div className="mt-14 grid gap-px md:grid-cols-2 bg-[var(--color-line)] border border-[var(--color-line)]">
+          {FAQS.map((f) => (
+            <div key={f.q} className="bg-white p-8">
+              <h3 className="font-display text-xl leading-snug">{f.q}</h3>
+              <p className="mt-3 text-sm text-[var(--color-ink)]/70 leading-relaxed">{f.a}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-12 flex flex-wrap gap-3">
+          <Link to="/services"><GoldButton variant="burgundy">Explore Services <ArrowRight size={14} /></GoldButton></Link>
+          <Link to="/agricultural-export"><GoldButton variant="outline-gold">Agro Commodity Sourcing</GoldButton></Link>
+          <Link to="/why-choose-us"><GoldButton variant="outline-gold">Why Choose Us</GoldButton></Link>
+          <Link to="/contact"><GoldButton variant="outline-gold">Contact</GoldButton></Link>
+        </div>
       </div>
     </section>
   );
