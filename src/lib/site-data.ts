@@ -294,3 +294,107 @@ export const BRANDING_NEEDS = [
 /** WhatsApp deep link with a page-specific prefilled message. */
 export const waLink = (message: string) =>
   `https://wa.me/${SITE.whatsappRaw}?text=${encodeURIComponent(message)}`;
+
+/** Seven client-facing service blocks used on the homepage and /services. */
+export const SERVICE_BLOCKS = [
+  {
+    title: "Global Product Sourcing",
+    desc: "We support businesses sourcing products, machinery, equipment, raw materials, packaging materials, private-label products and commercial goods from international markets.",
+    audience: "Importers, distributors, manufacturers and brands buying from Asia, the Middle East, Europe and North America.",
+    next: "Send your product specification, target quantity and destination market.",
+  },
+  {
+    title: "Supplier Verification",
+    desc: "We assist clients with supplier background checks, business legitimacy review, production capacity checks, quotation review, communication support and risk reduction before payment.",
+    audience: "Buyers who need independent assurance before releasing funds to a new supplier.",
+    next: "Share the supplier details and quotation you want reviewed.",
+  },
+  {
+    title: "Import Coordination",
+    desc: "We support importers with product specification, supplier communication, landed cost analysis, freight coordination, documentation guidance and shipment follow-up.",
+    audience: "Importers who want one coordinated point of contact from order to arrival.",
+    next: "Provide your product, quantity, origin and destination port.",
+  },
+  {
+    title: "Procurement Coordination",
+    desc: "We coordinate structured purchasing for businesses that need reliable sourcing, quotation comparison, negotiation support and supply-chain execution.",
+    audience: "Procurement teams, SMEs and companies buying repeatedly across borders.",
+    next: "Share your procurement scope and preferred commercial terms.",
+  },
+  {
+    title: "Nigerian Agro Commodity Sourcing",
+    desc: "We support buyers and exporters sourcing Nigerian agro commodities such as hibiscus, sesame, ginger, shea products, cashew, charcoal and soybeans, based on buyer specification.",
+    audience: "International buyers, processors and traders sourcing from Nigeria and West Africa.",
+    next: "Send your commodity, specification, quantity and destination port.",
+  },
+  {
+    title: "Export Documentation & Compliance Support",
+    desc: "We support exporters with export-readiness guidance, documentation planning, COA, phytosanitary certificate, certificate of origin, NEPC-related requirements, logistics coordination and buyer communication.",
+    audience: "Exporters and agribusinesses preparing shipments for international buyers.",
+    next: "Tell us the commodity, destination market and shipment terms.",
+  },
+  {
+    title: "Business Advisory",
+    desc: "We provide strategic advisory for importers, exporters, agribusiness investors and companies entering international trade.",
+    audience: "Businesses evaluating a new sourcing corridor, export market or trade model.",
+    next: "Book a consultation to define the scope of the review.",
+  },
+] as const;
+
+/** Additional agro commodities coordinated on a buyer-specification basis. */
+export const ADDITIONAL_COMMODITIES = [
+  "Charcoal",
+  "Moringa",
+  "Baobab",
+  "Shea nuts",
+  "Other agro commodities based on buyer requirement",
+];
+
+/** Reasons clients engage ASMAN Prime Hub — used on /why-choose-us. */
+export const WHY_POINTS = [
+  { t: "Structured trade process", d: "Every engagement follows a documented sequence from requirement review to shipment handover." },
+  { t: "Supplier and buyer verification support", d: "Business legitimacy, capacity and communication checks before funds or goods move." },
+  { t: "Product specification before pricing", d: "We define exactly what is being bought before any quotation is compared or accepted." },
+  { t: "Landed cost and profitability assessment", d: "Product cost, freight, duties, clearing, logistics and exchange-rate impact assessed before commitment." },
+  { t: "Documentation and compliance awareness", d: "COA, phytosanitary, certificate of origin, NEPC and destination-market requirements coordinated in advance." },
+  { t: "Logistics coordination", d: "Forwarder selection, routing options and shipment follow-up against agreed milestones." },
+  { t: "Global sourcing reach", d: "Supplier networks across Asia, the Middle East, Europe and North America." },
+  { t: "Nigerian and African commodity access", d: "Direct origin sourcing for agro commodities across Nigerian and West African growing regions." },
+  { t: "Professional communication and execution follow-up", d: "Written updates, named contacts and defined response windows through the transaction." },
+];
+
+/** SEO FAQ shown on the homepage and emitted as FAQPage structured data. */
+export const FAQS = [
+  {
+    q: "What does ASMAN Prime Hub do?",
+    a: "ASMAN Prime Hub provides global sourcing, supplier verification, procurement coordination, import support, agro commodity sourcing, export documentation guidance and international trade advisory for businesses.",
+  },
+  {
+    q: "Is ASMAN Prime Hub only for Nigerian businesses?",
+    a: "No. ASMAN Prime Hub is based in Nigeria but supports businesses across global markets. The company works with importers, exporters, buyers, suppliers and business owners involved in international trade.",
+  },
+  {
+    q: "Can ASMAN Prime Hub help verify international suppliers?",
+    a: "Yes. We support supplier verification by reviewing supplier details, communication, quotations, business information, product capacity and risk indicators before clients proceed with payments or procurement.",
+  },
+  {
+    q: "Can ASMAN Prime Hub help with importing products?",
+    a: "Yes. We support import coordination for machinery, equipment, raw materials, packaging materials, private-label products and commercial goods.",
+  },
+  {
+    q: "Can ASMAN Prime Hub source Nigerian agro commodities?",
+    a: "Yes. We support agro commodity sourcing from Nigeria based on buyer specification, quantity, quality requirements, documentation needs and shipment terms.",
+  },
+  {
+    q: "Does ASMAN Prime Hub prepare landed cost analysis?",
+    a: "Yes. We help clients estimate product cost, freight, documentation, clearing, logistics, exchange rate impact and expected profitability before committing funds.",
+  },
+  {
+    q: "Can ASMAN Prime Hub support export documentation?",
+    a: "Yes. We guide exporters and buyers on relevant documentation such as COA, phytosanitary certificate, certificate of origin, NEPC-related requirements and other transaction-specific documents.",
+  },
+  {
+    q: "How can a client start?",
+    a: "Send the product or commodity required, quantity, specification, destination country, target budget and expected timeline. ASMAN Prime Hub will review the request and advise on the next professional step.",
+  },
+];
