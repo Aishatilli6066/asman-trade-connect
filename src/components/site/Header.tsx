@@ -69,6 +69,12 @@ export function Header() {
             >
               <MessageCircle size={14} /> WhatsApp
             </a>
+            <Link
+              to="/platform"
+              className="hidden 2xl:inline text-[10px] uppercase tracking-[0.16em] whitespace-nowrap text-white/70 hover:text-[var(--color-gold)] transition-colors"
+            >
+              Trade Connect
+            </Link>
             <button
               onClick={openConsultation}
               className="hidden 2xl:inline text-[10px] uppercase tracking-[0.16em] whitespace-nowrap text-white/70 hover:text-[var(--color-gold)] transition-colors"
@@ -115,6 +121,13 @@ export function Header() {
                   {n.label}
                 </Link>
               ))}
+              <Link
+                to="/platform"
+                onClick={() => setOpen(false)}
+                className="py-4 text-sm uppercase tracking-[0.2em] text-white/85 border-b border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
+              >
+                Trade Connect
+              </Link>
             </nav>
 
             <div className="mt-auto pt-10 flex flex-col gap-3">
