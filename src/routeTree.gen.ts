@@ -13,6 +13,7 @@ import { Route as WhyChooseUsRouteImport } from './routes/why-choose-us'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as RequestAQuoteRouteImport } from './routes/request-a-quote'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
@@ -28,6 +29,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PlatformIndexRouteImport } from './routes/platform/index'
 import { Route as InsightsIndexRouteImport } from './routes/insights.index'
 import { Route as PlatformSignUpRouteImport } from './routes/platform/sign-up'
+import { Route as PlatformSignInRouteImport } from './routes/platform/sign-in'
+import { Route as PlatformForgotPasswordRouteImport } from './routes/platform/forgot-password'
 import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as AuthenticatedAdminInsightsRouteImport } from './routes/_authenticated/admin.insights'
 import { Route as AuthenticatedAdminInsightsNewRouteImport } from './routes/_authenticated/admin.insights.new'
@@ -52,6 +55,11 @@ const TermsRoute = TermsRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RequestAQuoteRoute = RequestAQuoteRouteImport.update({
@@ -129,6 +137,16 @@ const PlatformSignUpRoute = PlatformSignUpRouteImport.update({
   path: '/platform/sign-up',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlatformSignInRoute = PlatformSignInRouteImport.update({
+  id: '/platform/sign-in',
+  path: '/platform/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformForgotPasswordRoute = PlatformForgotPasswordRouteImport.update({
+  id: '/platform/forgot-password',
+  path: '/platform/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InsightsSlugRoute = InsightsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -171,11 +189,14 @@ export interface FileRoutesByFullPath {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
   '/request-a-quote': typeof RequestAQuoteRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/platform/forgot-password': typeof PlatformForgotPasswordRoute
+  '/platform/sign-in': typeof PlatformSignInRoute
   '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights/': typeof InsightsIndexRoute
   '/platform/': typeof PlatformIndexRoute
@@ -195,11 +216,14 @@ export interface FileRoutesByTo {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
   '/request-a-quote': typeof RequestAQuoteRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/platform/forgot-password': typeof PlatformForgotPasswordRoute
+  '/platform/sign-in': typeof PlatformSignInRoute
   '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights': typeof InsightsIndexRoute
   '/platform': typeof PlatformIndexRoute
@@ -222,11 +246,14 @@ export interface FileRoutesById {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
   '/request-a-quote': typeof RequestAQuoteRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/platform/forgot-password': typeof PlatformForgotPasswordRoute
+  '/platform/sign-in': typeof PlatformSignInRoute
   '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights/': typeof InsightsIndexRoute
   '/platform/': typeof PlatformIndexRoute
@@ -249,11 +276,14 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/quote'
     | '/request-a-quote'
+    | '/reset-password'
     | '/services'
     | '/terms'
     | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
+    | '/platform/forgot-password'
+    | '/platform/sign-in'
     | '/platform/sign-up'
     | '/insights/'
     | '/platform/'
@@ -273,11 +303,14 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/quote'
     | '/request-a-quote'
+    | '/reset-password'
     | '/services'
     | '/terms'
     | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
+    | '/platform/forgot-password'
+    | '/platform/sign-in'
     | '/platform/sign-up'
     | '/insights'
     | '/platform'
@@ -299,11 +332,14 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/quote'
     | '/request-a-quote'
+    | '/reset-password'
     | '/services'
     | '/terms'
     | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
+    | '/platform/forgot-password'
+    | '/platform/sign-in'
     | '/platform/sign-up'
     | '/insights/'
     | '/platform/'
@@ -326,10 +362,13 @@ export interface RootRouteChildren {
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   QuoteRoute: typeof QuoteRoute
   RequestAQuoteRoute: typeof RequestAQuoteRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   WhyChooseUsRoute: typeof WhyChooseUsRoute
+  PlatformForgotPasswordRoute: typeof PlatformForgotPasswordRoute
+  PlatformSignInRoute: typeof PlatformSignInRoute
   PlatformSignUpRoute: typeof PlatformSignUpRoute
   PlatformIndexRoute: typeof PlatformIndexRoute
   ApiPublicInsightsMediaSplatRoute: typeof ApiPublicInsightsMediaSplatRoute
@@ -363,6 +402,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/request-a-quote': {
@@ -470,6 +516,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlatformSignUpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/platform/sign-in': {
+      id: '/platform/sign-in'
+      path: '/platform/sign-in'
+      fullPath: '/platform/sign-in'
+      preLoaderRoute: typeof PlatformSignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/forgot-password': {
+      id: '/platform/forgot-password'
+      path: '/platform/forgot-password'
+      fullPath: '/platform/forgot-password'
+      preLoaderRoute: typeof PlatformForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/insights/$slug': {
       id: '/insights/$slug'
       path: '/$slug'
@@ -563,10 +623,13 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   QuoteRoute: QuoteRoute,
   RequestAQuoteRoute: RequestAQuoteRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   WhyChooseUsRoute: WhyChooseUsRoute,
+  PlatformForgotPasswordRoute: PlatformForgotPasswordRoute,
+  PlatformSignInRoute: PlatformSignInRoute,
   PlatformSignUpRoute: PlatformSignUpRoute,
   PlatformIndexRoute: PlatformIndexRoute,
   ApiPublicInsightsMediaSplatRoute: ApiPublicInsightsMediaSplatRoute,
