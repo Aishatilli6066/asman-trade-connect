@@ -49,7 +49,7 @@ const PILLARS = [
   },
 ];
 
-export default function PlatformLanding() {
+function PlatformLanding() {
   return (
     <main className="bg-white">
       {/* Hero */}
