@@ -25,6 +25,7 @@ import { Route as AgriculturalExportRouteImport } from './routes/agricultural-ex
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PlatformIndexRouteImport } from './routes/platform/index'
 import { Route as InsightsIndexRouteImport } from './routes/insights.index'
 import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as AuthenticatedAdminInsightsRouteImport } from './routes/_authenticated/admin.insights'
@@ -112,6 +113,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlatformIndexRoute = PlatformIndexRouteImport.update({
+  id: '/platform/',
+  path: '/platform/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InsightsIndexRoute = InsightsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -165,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/insights/': typeof InsightsIndexRoute
+  '/platform/': typeof PlatformIndexRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -187,6 +194,7 @@ export interface FileRoutesByTo {
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/insights': typeof InsightsIndexRoute
+  '/platform': typeof PlatformIndexRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -212,6 +220,7 @@ export interface FileRoutesById {
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/insights/': typeof InsightsIndexRoute
+  '/platform/': typeof PlatformIndexRoute
   '/_authenticated/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/_authenticated/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/_authenticated/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -237,6 +246,7 @@ export interface FileRouteTypes {
     | '/why-choose-us'
     | '/insights/$slug'
     | '/insights/'
+    | '/platform/'
     | '/admin/insights'
     | '/admin/insights/new'
     | '/admin/insights/$id/edit'
@@ -259,6 +269,7 @@ export interface FileRouteTypes {
     | '/why-choose-us'
     | '/insights/$slug'
     | '/insights'
+    | '/platform'
     | '/admin/insights'
     | '/admin/insights/new'
     | '/admin/insights/$id/edit'
@@ -283,6 +294,7 @@ export interface FileRouteTypes {
     | '/why-choose-us'
     | '/insights/$slug'
     | '/insights/'
+    | '/platform/'
     | '/_authenticated/admin/insights'
     | '/_authenticated/admin/insights/new'
     | '/_authenticated/admin/insights/$id/edit'
@@ -306,6 +318,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   WhyChooseUsRoute: typeof WhyChooseUsRoute
+  PlatformIndexRoute: typeof PlatformIndexRoute
   ApiPublicInsightsMediaSplatRoute: typeof ApiPublicInsightsMediaSplatRoute
 }
 
@@ -423,6 +436,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/platform/': {
+      id: '/platform/'
+      path: '/platform'
+      fullPath: '/platform/'
+      preLoaderRoute: typeof PlatformIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/insights/': {
       id: '/insights/'
       path: '/'
@@ -527,6 +547,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   WhyChooseUsRoute: WhyChooseUsRoute,
+  PlatformIndexRoute: PlatformIndexRoute,
   ApiPublicInsightsMediaSplatRoute: ApiPublicInsightsMediaSplatRoute,
 }
 export const routeTree = rootRouteImport
