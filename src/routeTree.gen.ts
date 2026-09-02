@@ -25,6 +25,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AgriculturalExportRouteImport } from './routes/agricultural-export'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AppRouteRouteImport } from './routes/_app/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PlatformIndexRouteImport } from './routes/platform/index'
 import { Route as InsightsIndexRouteImport } from './routes/insights.index'
@@ -33,6 +34,7 @@ import { Route as PlatformSignInRouteImport } from './routes/platform/sign-in'
 import { Route as PlatformForgotPasswordRouteImport } from './routes/platform/forgot-password'
 import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as AuthenticatedAdminInsightsRouteImport } from './routes/_authenticated/admin.insights'
+import { Route as AppAppOnboardingRouteImport } from './routes/_app/app.onboarding'
 import { Route as AuthenticatedAdminInsightsNewRouteImport } from './routes/_authenticated/admin.insights.new'
 import { Route as ApiPublicInsightsMediaSplatRouteImport } from './routes/api/public/insights/media.$'
 import { Route as AuthenticatedAdminInsightsIdEditRouteImport } from './routes/_authenticated/admin.insights.$id.edit'
@@ -117,6 +119,10 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRouteRoute = AppRouteRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -158,6 +164,11 @@ const AuthenticatedAdminInsightsRoute =
     path: '/admin/insights',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AppAppOnboardingRoute = AppAppOnboardingRouteImport.update({
+  id: '/app/onboarding',
+  path: '/app/onboarding',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AuthenticatedAdminInsightsNewRoute =
   AuthenticatedAdminInsightsNewRouteImport.update({
     id: '/new',
@@ -200,6 +211,7 @@ export interface FileRoutesByFullPath {
   '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights/': typeof InsightsIndexRoute
   '/platform/': typeof PlatformIndexRoute
+  '/app/onboarding': typeof AppAppOnboardingRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -227,6 +239,7 @@ export interface FileRoutesByTo {
   '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights': typeof InsightsIndexRoute
   '/platform': typeof PlatformIndexRoute
+  '/app/onboarding': typeof AppAppOnboardingRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -235,6 +248,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_app': typeof AppRouteRouteWithChildren
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/agricultural-export': typeof AgriculturalExportRoute
@@ -257,6 +271,7 @@ export interface FileRoutesById {
   '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights/': typeof InsightsIndexRoute
   '/platform/': typeof PlatformIndexRoute
+  '/_app/app/onboarding': typeof AppAppOnboardingRoute
   '/_authenticated/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/_authenticated/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/_authenticated/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -287,6 +302,7 @@ export interface FileRouteTypes {
     | '/platform/sign-up'
     | '/insights/'
     | '/platform/'
+    | '/app/onboarding'
     | '/admin/insights'
     | '/admin/insights/new'
     | '/admin/insights/$id/edit'
@@ -314,6 +330,7 @@ export interface FileRouteTypes {
     | '/platform/sign-up'
     | '/insights'
     | '/platform'
+    | '/app/onboarding'
     | '/admin/insights'
     | '/admin/insights/new'
     | '/admin/insights/$id/edit'
@@ -321,6 +338,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_app'
     | '/_authenticated'
     | '/about'
     | '/agricultural-export'
@@ -343,6 +361,7 @@ export interface FileRouteTypes {
     | '/platform/sign-up'
     | '/insights/'
     | '/platform/'
+    | '/_app/app/onboarding'
     | '/_authenticated/admin/insights'
     | '/_authenticated/admin/insights/new'
     | '/_authenticated/admin/insights/$id/edit'
@@ -351,6 +370,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRouteRoute: typeof AppRouteRouteWithChildren
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   AgriculturalExportRoute: typeof AgriculturalExportRoute
@@ -488,6 +508,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -544,6 +571,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminInsightsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_app/app/onboarding': {
+      id: '/_app/app/onboarding'
+      path: '/app/onboarding'
+      fullPath: '/app/onboarding'
+      preLoaderRoute: typeof AppAppOnboardingRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/_authenticated/admin/insights/new': {
       id: '/_authenticated/admin/insights/new'
       path: '/new'
@@ -567,6 +601,18 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface AppRouteRouteChildren {
+  AppAppOnboardingRoute: typeof AppAppOnboardingRoute
+}
+
+const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppAppOnboardingRoute: AppAppOnboardingRoute,
+}
+
+const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
+  AppRouteRouteChildren,
+)
 
 interface AuthenticatedAdminInsightsRouteChildren {
   AuthenticatedAdminInsightsNewRoute: typeof AuthenticatedAdminInsightsNewRoute
@@ -612,6 +658,7 @@ const InsightsRouteWithChildren = InsightsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRouteRoute: AppRouteRouteWithChildren,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   AgriculturalExportRoute: AgriculturalExportRoute,
