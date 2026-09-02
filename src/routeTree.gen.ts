@@ -34,7 +34,10 @@ import { Route as PlatformSignInRouteImport } from './routes/platform/sign-in'
 import { Route as PlatformForgotPasswordRouteImport } from './routes/platform/forgot-password'
 import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as AuthenticatedAdminInsightsRouteImport } from './routes/_authenticated/admin.insights'
+import { Route as AppAppProfileRouteImport } from './routes/_app/app.profile'
 import { Route as AppAppOnboardingRouteImport } from './routes/_app/app.onboarding'
+import { Route as AppAppDashboardRouteImport } from './routes/_app/app.dashboard'
+import { Route as AppAppCompanyRouteImport } from './routes/_app/app.company'
 import { Route as AuthenticatedAdminInsightsNewRouteImport } from './routes/_authenticated/admin.insights.new'
 import { Route as ApiPublicInsightsMediaSplatRouteImport } from './routes/api/public/insights/media.$'
 import { Route as AuthenticatedAdminInsightsIdEditRouteImport } from './routes/_authenticated/admin.insights.$id.edit'
@@ -164,9 +167,24 @@ const AuthenticatedAdminInsightsRoute =
     path: '/admin/insights',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AppAppProfileRoute = AppAppProfileRouteImport.update({
+  id: '/app/profile',
+  path: '/app/profile',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppAppOnboardingRoute = AppAppOnboardingRouteImport.update({
   id: '/app/onboarding',
   path: '/app/onboarding',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppDashboardRoute = AppAppDashboardRouteImport.update({
+  id: '/app/dashboard',
+  path: '/app/dashboard',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppCompanyRoute = AppAppCompanyRouteImport.update({
+  id: '/app/company',
+  path: '/app/company',
   getParentRoute: () => AppRouteRoute,
 } as any)
 const AuthenticatedAdminInsightsNewRoute =
@@ -211,7 +229,10 @@ export interface FileRoutesByFullPath {
   '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights/': typeof InsightsIndexRoute
   '/platform/': typeof PlatformIndexRoute
+  '/app/company': typeof AppAppCompanyRoute
+  '/app/dashboard': typeof AppAppDashboardRoute
   '/app/onboarding': typeof AppAppOnboardingRoute
+  '/app/profile': typeof AppAppProfileRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -239,7 +260,10 @@ export interface FileRoutesByTo {
   '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights': typeof InsightsIndexRoute
   '/platform': typeof PlatformIndexRoute
+  '/app/company': typeof AppAppCompanyRoute
+  '/app/dashboard': typeof AppAppDashboardRoute
   '/app/onboarding': typeof AppAppOnboardingRoute
+  '/app/profile': typeof AppAppProfileRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -271,7 +295,10 @@ export interface FileRoutesById {
   '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights/': typeof InsightsIndexRoute
   '/platform/': typeof PlatformIndexRoute
+  '/_app/app/company': typeof AppAppCompanyRoute
+  '/_app/app/dashboard': typeof AppAppDashboardRoute
   '/_app/app/onboarding': typeof AppAppOnboardingRoute
+  '/_app/app/profile': typeof AppAppProfileRoute
   '/_authenticated/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/_authenticated/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/_authenticated/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -302,7 +329,10 @@ export interface FileRouteTypes {
     | '/platform/sign-up'
     | '/insights/'
     | '/platform/'
+    | '/app/company'
+    | '/app/dashboard'
     | '/app/onboarding'
+    | '/app/profile'
     | '/admin/insights'
     | '/admin/insights/new'
     | '/admin/insights/$id/edit'
@@ -330,7 +360,10 @@ export interface FileRouteTypes {
     | '/platform/sign-up'
     | '/insights'
     | '/platform'
+    | '/app/company'
+    | '/app/dashboard'
     | '/app/onboarding'
+    | '/app/profile'
     | '/admin/insights'
     | '/admin/insights/new'
     | '/admin/insights/$id/edit'
@@ -361,7 +394,10 @@ export interface FileRouteTypes {
     | '/platform/sign-up'
     | '/insights/'
     | '/platform/'
+    | '/_app/app/company'
+    | '/_app/app/dashboard'
     | '/_app/app/onboarding'
+    | '/_app/app/profile'
     | '/_authenticated/admin/insights'
     | '/_authenticated/admin/insights/new'
     | '/_authenticated/admin/insights/$id/edit'
@@ -571,11 +607,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminInsightsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_app/app/profile': {
+      id: '/_app/app/profile'
+      path: '/app/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AppAppProfileRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/_app/app/onboarding': {
       id: '/_app/app/onboarding'
       path: '/app/onboarding'
       fullPath: '/app/onboarding'
       preLoaderRoute: typeof AppAppOnboardingRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/dashboard': {
+      id: '/_app/app/dashboard'
+      path: '/app/dashboard'
+      fullPath: '/app/dashboard'
+      preLoaderRoute: typeof AppAppDashboardRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/company': {
+      id: '/_app/app/company'
+      path: '/app/company'
+      fullPath: '/app/company'
+      preLoaderRoute: typeof AppAppCompanyRouteImport
       parentRoute: typeof AppRouteRoute
     }
     '/_authenticated/admin/insights/new': {
@@ -603,11 +660,17 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteRouteChildren {
+  AppAppCompanyRoute: typeof AppAppCompanyRoute
+  AppAppDashboardRoute: typeof AppAppDashboardRoute
   AppAppOnboardingRoute: typeof AppAppOnboardingRoute
+  AppAppProfileRoute: typeof AppAppProfileRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppAppCompanyRoute: AppAppCompanyRoute,
+  AppAppDashboardRoute: AppAppDashboardRoute,
   AppAppOnboardingRoute: AppAppOnboardingRoute,
+  AppAppProfileRoute: AppAppProfileRoute,
 }
 
 const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
