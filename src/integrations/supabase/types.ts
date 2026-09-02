@@ -14,6 +14,92 @@ export type Database = {
   }
   public: {
     Tables: {
+      companies: {
+        Row: {
+          business_type: string
+          country: string
+          created_at: string
+          created_by: string
+          id: string
+          legal_name: string
+          primary_contact_email: string
+          primary_contact_name: string
+          primary_contact_phone: string | null
+          registration_number: string | null
+          trading_name: string | null
+          updated_at: string
+          verification_status: string
+          website: string | null
+        }
+        Insert: {
+          business_type: string
+          country: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          legal_name: string
+          primary_contact_email: string
+          primary_contact_name: string
+          primary_contact_phone?: string | null
+          registration_number?: string | null
+          trading_name?: string | null
+          updated_at?: string
+          verification_status?: string
+          website?: string | null
+        }
+        Update: {
+          business_type?: string
+          country?: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          legal_name?: string
+          primary_contact_email?: string
+          primary_contact_name?: string
+          primary_contact_phone?: string | null
+          registration_number?: string | null
+          trading_name?: string | null
+          updated_at?: string
+          verification_status?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      company_memberships: {
+        Row: {
+          company_id: string
+          created_at: string
+          id: string
+          membership_role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          id?: string
+          membership_role?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          id?: string
+          membership_role?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "company_memberships_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       consultation_requests: {
         Row: {
           budget_range: string | null
@@ -155,6 +241,90 @@ export type Database = {
         }
         Relationships: []
       }
+      onboarding_progress: {
+        Row: {
+          company_completed: boolean
+          created_at: string
+          current_step: string
+          profile_completed: boolean
+          role_selected: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company_completed?: boolean
+          created_at?: string
+          current_step?: string
+          profile_completed?: boolean
+          role_selected?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company_completed?: boolean
+          created_at?: string
+          current_step?: string
+          profile_completed?: boolean
+          role_selected?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      platform_roles: {
+        Row: {
+          created_at: string
+          granted_by: string | null
+          id: string
+          role: Database["public"]["Enums"]["platform_role"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          granted_by?: string | null
+          id?: string
+          role: Database["public"]["Enums"]["platform_role"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          granted_by?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["platform_role"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          country: string | null
+          created_at: string
+          full_name: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          country?: string | null
+          created_at?: string
+          full_name?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          country?: string | null
+          created_at?: string
+          full_name?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       trade_inquiries: {
         Row: {
           budget_range: string | null
@@ -252,6 +422,12 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      platform_role:
+        | "buyer_importer"
+        | "supplier_exporter"
+        | "logistics_provider"
+        | "asman_analyst"
+        | "administrator"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -380,6 +556,13 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      platform_role: [
+        "buyer_importer",
+        "supplier_exporter",
+        "logistics_provider",
+        "asman_analyst",
+        "administrator",
+      ],
     },
   },
 } as const
