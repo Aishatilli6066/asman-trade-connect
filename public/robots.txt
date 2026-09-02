@@ -3,6 +3,11 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 Disallow: /auth
+Disallow: /app/
+Disallow: /platform/sign-in
+Disallow: /platform/sign-up
+Disallow: /platform/forgot-password
+Disallow: /reset-password
 Crawl-delay: 1
 
 Sitemap: https://asmanprimehub.com/sitemap.xml

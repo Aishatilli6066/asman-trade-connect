@@ -13,6 +13,7 @@ import { Route as WhyChooseUsRouteImport } from './routes/why-choose-us'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as RequestAQuoteRouteImport } from './routes/request-a-quote'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
@@ -24,10 +25,26 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AgriculturalExportRouteImport } from './routes/agricultural-export'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AppRouteRouteImport } from './routes/_app/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PlatformIndexRouteImport } from './routes/platform/index'
 import { Route as InsightsIndexRouteImport } from './routes/insights.index'
+import { Route as PlatformSignUpRouteImport } from './routes/platform/sign-up'
+import { Route as PlatformSignInRouteImport } from './routes/platform/sign-in'
+import { Route as PlatformForgotPasswordRouteImport } from './routes/platform/forgot-password'
 import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as AuthenticatedAdminInsightsRouteImport } from './routes/_authenticated/admin.insights'
+import { Route as AppAppRfqsRouteImport } from './routes/_app/app.rfqs'
+import { Route as AppAppProfileRouteImport } from './routes/_app/app.profile'
+import { Route as AppAppProductsRouteImport } from './routes/_app/app.products'
+import { Route as AppAppOnboardingRouteImport } from './routes/_app/app.onboarding'
+import { Route as AppAppNotificationsRouteImport } from './routes/_app/app.notifications'
+import { Route as AppAppMatchesRouteImport } from './routes/_app/app.matches'
+import { Route as AppAppLogisticsRouteImport } from './routes/_app/app.logistics'
+import { Route as AppAppDocumentsRouteImport } from './routes/_app/app.documents'
+import { Route as AppAppDealRoomsRouteImport } from './routes/_app/app.deal-rooms'
+import { Route as AppAppDashboardRouteImport } from './routes/_app/app.dashboard'
+import { Route as AppAppCompanyRouteImport } from './routes/_app/app.company'
 import { Route as AuthenticatedAdminInsightsNewRouteImport } from './routes/_authenticated/admin.insights.new'
 import { Route as ApiPublicInsightsMediaSplatRouteImport } from './routes/api/public/insights/media.$'
 import { Route as AuthenticatedAdminInsightsIdEditRouteImport } from './routes/_authenticated/admin.insights.$id.edit'
@@ -50,6 +67,11 @@ const TermsRoute = TermsRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RequestAQuoteRoute = RequestAQuoteRouteImport.update({
@@ -107,15 +129,39 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRouteRoute = AppRouteRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformIndexRoute = PlatformIndexRouteImport.update({
+  id: '/platform/',
+  path: '/platform/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InsightsIndexRoute = InsightsIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => InsightsRoute,
+} as any)
+const PlatformSignUpRoute = PlatformSignUpRouteImport.update({
+  id: '/platform/sign-up',
+  path: '/platform/sign-up',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformSignInRoute = PlatformSignInRouteImport.update({
+  id: '/platform/sign-in',
+  path: '/platform/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformForgotPasswordRoute = PlatformForgotPasswordRouteImport.update({
+  id: '/platform/forgot-password',
+  path: '/platform/forgot-password',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const InsightsSlugRoute = InsightsSlugRouteImport.update({
   id: '/$slug',
@@ -128,6 +174,61 @@ const AuthenticatedAdminInsightsRoute =
     path: '/admin/insights',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AppAppRfqsRoute = AppAppRfqsRouteImport.update({
+  id: '/app/rfqs',
+  path: '/app/rfqs',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppProfileRoute = AppAppProfileRouteImport.update({
+  id: '/app/profile',
+  path: '/app/profile',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppProductsRoute = AppAppProductsRouteImport.update({
+  id: '/app/products',
+  path: '/app/products',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppOnboardingRoute = AppAppOnboardingRouteImport.update({
+  id: '/app/onboarding',
+  path: '/app/onboarding',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppNotificationsRoute = AppAppNotificationsRouteImport.update({
+  id: '/app/notifications',
+  path: '/app/notifications',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppMatchesRoute = AppAppMatchesRouteImport.update({
+  id: '/app/matches',
+  path: '/app/matches',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppLogisticsRoute = AppAppLogisticsRouteImport.update({
+  id: '/app/logistics',
+  path: '/app/logistics',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppDocumentsRoute = AppAppDocumentsRouteImport.update({
+  id: '/app/documents',
+  path: '/app/documents',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppDealRoomsRoute = AppAppDealRoomsRouteImport.update({
+  id: '/app/deal-rooms',
+  path: '/app/deal-rooms',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppDashboardRoute = AppAppDashboardRouteImport.update({
+  id: '/app/dashboard',
+  path: '/app/dashboard',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppCompanyRoute = AppAppCompanyRouteImport.update({
+  id: '/app/company',
+  path: '/app/company',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AuthenticatedAdminInsightsNewRoute =
   AuthenticatedAdminInsightsNewRouteImport.update({
     id: '/new',
@@ -159,12 +260,28 @@ export interface FileRoutesByFullPath {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
   '/request-a-quote': typeof RequestAQuoteRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/platform/forgot-password': typeof PlatformForgotPasswordRoute
+  '/platform/sign-in': typeof PlatformSignInRoute
+  '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights/': typeof InsightsIndexRoute
+  '/platform/': typeof PlatformIndexRoute
+  '/app/company': typeof AppAppCompanyRoute
+  '/app/dashboard': typeof AppAppDashboardRoute
+  '/app/deal-rooms': typeof AppAppDealRoomsRoute
+  '/app/documents': typeof AppAppDocumentsRoute
+  '/app/logistics': typeof AppAppLogisticsRoute
+  '/app/matches': typeof AppAppMatchesRoute
+  '/app/notifications': typeof AppAppNotificationsRoute
+  '/app/onboarding': typeof AppAppOnboardingRoute
+  '/app/products': typeof AppAppProductsRoute
+  '/app/profile': typeof AppAppProfileRoute
+  '/app/rfqs': typeof AppAppRfqsRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -181,12 +298,28 @@ export interface FileRoutesByTo {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
   '/request-a-quote': typeof RequestAQuoteRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/platform/forgot-password': typeof PlatformForgotPasswordRoute
+  '/platform/sign-in': typeof PlatformSignInRoute
+  '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights': typeof InsightsIndexRoute
+  '/platform': typeof PlatformIndexRoute
+  '/app/company': typeof AppAppCompanyRoute
+  '/app/dashboard': typeof AppAppDashboardRoute
+  '/app/deal-rooms': typeof AppAppDealRoomsRoute
+  '/app/documents': typeof AppAppDocumentsRoute
+  '/app/logistics': typeof AppAppLogisticsRoute
+  '/app/matches': typeof AppAppMatchesRoute
+  '/app/notifications': typeof AppAppNotificationsRoute
+  '/app/onboarding': typeof AppAppOnboardingRoute
+  '/app/products': typeof AppAppProductsRoute
+  '/app/profile': typeof AppAppProfileRoute
+  '/app/rfqs': typeof AppAppRfqsRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -195,6 +328,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_app': typeof AppRouteRouteWithChildren
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/agricultural-export': typeof AgriculturalExportRoute
@@ -206,12 +340,28 @@ export interface FileRoutesById {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
   '/request-a-quote': typeof RequestAQuoteRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/platform/forgot-password': typeof PlatformForgotPasswordRoute
+  '/platform/sign-in': typeof PlatformSignInRoute
+  '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights/': typeof InsightsIndexRoute
+  '/platform/': typeof PlatformIndexRoute
+  '/_app/app/company': typeof AppAppCompanyRoute
+  '/_app/app/dashboard': typeof AppAppDashboardRoute
+  '/_app/app/deal-rooms': typeof AppAppDealRoomsRoute
+  '/_app/app/documents': typeof AppAppDocumentsRoute
+  '/_app/app/logistics': typeof AppAppLogisticsRoute
+  '/_app/app/matches': typeof AppAppMatchesRoute
+  '/_app/app/notifications': typeof AppAppNotificationsRoute
+  '/_app/app/onboarding': typeof AppAppOnboardingRoute
+  '/_app/app/products': typeof AppAppProductsRoute
+  '/_app/app/profile': typeof AppAppProfileRoute
+  '/_app/app/rfqs': typeof AppAppRfqsRoute
   '/_authenticated/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/_authenticated/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/_authenticated/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -231,12 +381,28 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/quote'
     | '/request-a-quote'
+    | '/reset-password'
     | '/services'
     | '/terms'
     | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
+    | '/platform/forgot-password'
+    | '/platform/sign-in'
+    | '/platform/sign-up'
     | '/insights/'
+    | '/platform/'
+    | '/app/company'
+    | '/app/dashboard'
+    | '/app/deal-rooms'
+    | '/app/documents'
+    | '/app/logistics'
+    | '/app/matches'
+    | '/app/notifications'
+    | '/app/onboarding'
+    | '/app/products'
+    | '/app/profile'
+    | '/app/rfqs'
     | '/admin/insights'
     | '/admin/insights/new'
     | '/admin/insights/$id/edit'
@@ -253,12 +419,28 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/quote'
     | '/request-a-quote'
+    | '/reset-password'
     | '/services'
     | '/terms'
     | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
+    | '/platform/forgot-password'
+    | '/platform/sign-in'
+    | '/platform/sign-up'
     | '/insights'
+    | '/platform'
+    | '/app/company'
+    | '/app/dashboard'
+    | '/app/deal-rooms'
+    | '/app/documents'
+    | '/app/logistics'
+    | '/app/matches'
+    | '/app/notifications'
+    | '/app/onboarding'
+    | '/app/products'
+    | '/app/profile'
+    | '/app/rfqs'
     | '/admin/insights'
     | '/admin/insights/new'
     | '/admin/insights/$id/edit'
@@ -266,6 +448,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_app'
     | '/_authenticated'
     | '/about'
     | '/agricultural-export'
@@ -277,12 +460,28 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/quote'
     | '/request-a-quote'
+    | '/reset-password'
     | '/services'
     | '/terms'
     | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
+    | '/platform/forgot-password'
+    | '/platform/sign-in'
+    | '/platform/sign-up'
     | '/insights/'
+    | '/platform/'
+    | '/_app/app/company'
+    | '/_app/app/dashboard'
+    | '/_app/app/deal-rooms'
+    | '/_app/app/documents'
+    | '/_app/app/logistics'
+    | '/_app/app/matches'
+    | '/_app/app/notifications'
+    | '/_app/app/onboarding'
+    | '/_app/app/products'
+    | '/_app/app/profile'
+    | '/_app/app/rfqs'
     | '/_authenticated/admin/insights'
     | '/_authenticated/admin/insights/new'
     | '/_authenticated/admin/insights/$id/edit'
@@ -291,6 +490,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRouteRoute: typeof AppRouteRouteWithChildren
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   AgriculturalExportRoute: typeof AgriculturalExportRoute
@@ -302,10 +502,15 @@ export interface RootRouteChildren {
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   QuoteRoute: typeof QuoteRoute
   RequestAQuoteRoute: typeof RequestAQuoteRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   WhyChooseUsRoute: typeof WhyChooseUsRoute
+  PlatformForgotPasswordRoute: typeof PlatformForgotPasswordRoute
+  PlatformSignInRoute: typeof PlatformSignInRoute
+  PlatformSignUpRoute: typeof PlatformSignUpRoute
+  PlatformIndexRoute: typeof PlatformIndexRoute
   ApiPublicInsightsMediaSplatRoute: typeof ApiPublicInsightsMediaSplatRoute
 }
 
@@ -337,6 +542,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/request-a-quote': {
@@ -416,11 +628,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/': {
+      id: '/platform/'
+      path: '/platform'
+      fullPath: '/platform/'
+      preLoaderRoute: typeof PlatformIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/insights/': {
@@ -429,6 +655,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/insights/'
       preLoaderRoute: typeof InsightsIndexRouteImport
       parentRoute: typeof InsightsRoute
+    }
+    '/platform/sign-up': {
+      id: '/platform/sign-up'
+      path: '/platform/sign-up'
+      fullPath: '/platform/sign-up'
+      preLoaderRoute: typeof PlatformSignUpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/sign-in': {
+      id: '/platform/sign-in'
+      path: '/platform/sign-in'
+      fullPath: '/platform/sign-in'
+      preLoaderRoute: typeof PlatformSignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/forgot-password': {
+      id: '/platform/forgot-password'
+      path: '/platform/forgot-password'
+      fullPath: '/platform/forgot-password'
+      preLoaderRoute: typeof PlatformForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/insights/$slug': {
       id: '/insights/$slug'
@@ -443,6 +690,83 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/insights'
       preLoaderRoute: typeof AuthenticatedAdminInsightsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_app/app/rfqs': {
+      id: '/_app/app/rfqs'
+      path: '/app/rfqs'
+      fullPath: '/app/rfqs'
+      preLoaderRoute: typeof AppAppRfqsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/profile': {
+      id: '/_app/app/profile'
+      path: '/app/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AppAppProfileRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/products': {
+      id: '/_app/app/products'
+      path: '/app/products'
+      fullPath: '/app/products'
+      preLoaderRoute: typeof AppAppProductsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/onboarding': {
+      id: '/_app/app/onboarding'
+      path: '/app/onboarding'
+      fullPath: '/app/onboarding'
+      preLoaderRoute: typeof AppAppOnboardingRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/notifications': {
+      id: '/_app/app/notifications'
+      path: '/app/notifications'
+      fullPath: '/app/notifications'
+      preLoaderRoute: typeof AppAppNotificationsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/matches': {
+      id: '/_app/app/matches'
+      path: '/app/matches'
+      fullPath: '/app/matches'
+      preLoaderRoute: typeof AppAppMatchesRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/logistics': {
+      id: '/_app/app/logistics'
+      path: '/app/logistics'
+      fullPath: '/app/logistics'
+      preLoaderRoute: typeof AppAppLogisticsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/documents': {
+      id: '/_app/app/documents'
+      path: '/app/documents'
+      fullPath: '/app/documents'
+      preLoaderRoute: typeof AppAppDocumentsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/deal-rooms': {
+      id: '/_app/app/deal-rooms'
+      path: '/app/deal-rooms'
+      fullPath: '/app/deal-rooms'
+      preLoaderRoute: typeof AppAppDealRoomsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/dashboard': {
+      id: '/_app/app/dashboard'
+      path: '/app/dashboard'
+      fullPath: '/app/dashboard'
+      preLoaderRoute: typeof AppAppDashboardRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/company': {
+      id: '/_app/app/company'
+      path: '/app/company'
+      fullPath: '/app/company'
+      preLoaderRoute: typeof AppAppCompanyRouteImport
+      parentRoute: typeof AppRouteRoute
     }
     '/_authenticated/admin/insights/new': {
       id: '/_authenticated/admin/insights/new'
@@ -467,6 +791,38 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface AppRouteRouteChildren {
+  AppAppCompanyRoute: typeof AppAppCompanyRoute
+  AppAppDashboardRoute: typeof AppAppDashboardRoute
+  AppAppDealRoomsRoute: typeof AppAppDealRoomsRoute
+  AppAppDocumentsRoute: typeof AppAppDocumentsRoute
+  AppAppLogisticsRoute: typeof AppAppLogisticsRoute
+  AppAppMatchesRoute: typeof AppAppMatchesRoute
+  AppAppNotificationsRoute: typeof AppAppNotificationsRoute
+  AppAppOnboardingRoute: typeof AppAppOnboardingRoute
+  AppAppProductsRoute: typeof AppAppProductsRoute
+  AppAppProfileRoute: typeof AppAppProfileRoute
+  AppAppRfqsRoute: typeof AppAppRfqsRoute
+}
+
+const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppAppCompanyRoute: AppAppCompanyRoute,
+  AppAppDashboardRoute: AppAppDashboardRoute,
+  AppAppDealRoomsRoute: AppAppDealRoomsRoute,
+  AppAppDocumentsRoute: AppAppDocumentsRoute,
+  AppAppLogisticsRoute: AppAppLogisticsRoute,
+  AppAppMatchesRoute: AppAppMatchesRoute,
+  AppAppNotificationsRoute: AppAppNotificationsRoute,
+  AppAppOnboardingRoute: AppAppOnboardingRoute,
+  AppAppProductsRoute: AppAppProductsRoute,
+  AppAppProfileRoute: AppAppProfileRoute,
+  AppAppRfqsRoute: AppAppRfqsRoute,
+}
+
+const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
+  AppRouteRouteChildren,
+)
 
 interface AuthenticatedAdminInsightsRouteChildren {
   AuthenticatedAdminInsightsNewRoute: typeof AuthenticatedAdminInsightsNewRoute
@@ -512,6 +868,7 @@ const InsightsRouteWithChildren = InsightsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRouteRoute: AppRouteRouteWithChildren,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   AgriculturalExportRoute: AgriculturalExportRoute,
@@ -523,10 +880,15 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   QuoteRoute: QuoteRoute,
   RequestAQuoteRoute: RequestAQuoteRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   WhyChooseUsRoute: WhyChooseUsRoute,
+  PlatformForgotPasswordRoute: PlatformForgotPasswordRoute,
+  PlatformSignInRoute: PlatformSignInRoute,
+  PlatformSignUpRoute: PlatformSignUpRoute,
+  PlatformIndexRoute: PlatformIndexRoute,
   ApiPublicInsightsMediaSplatRoute: ApiPublicInsightsMediaSplatRoute,
 }
 export const routeTree = rootRouteImport

@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
+  useRouterState,
   Link,
   createRootRouteWithContext,
   useRouter,
@@ -196,6 +197,24 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  // The application area (Trade Connect) uses its own chrome.
+  const isAppArea =
+    pathname.startsWith("/app") ||
+    pathname.startsWith("/platform/") ||
+    pathname.startsWith("/admin") ||
+    pathname === "/auth" ||
+    pathname === "/reset-password";
+
+  if (isAppArea) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <Outlet />
+        <Toaster position="top-center" />
+      </QueryClientProvider>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -211,3 +230,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
