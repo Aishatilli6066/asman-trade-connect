@@ -27,6 +27,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PlatformIndexRouteImport } from './routes/platform/index'
 import { Route as InsightsIndexRouteImport } from './routes/insights.index'
+import { Route as PlatformSignUpRouteImport } from './routes/platform/sign-up'
 import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as AuthenticatedAdminInsightsRouteImport } from './routes/_authenticated/admin.insights'
 import { Route as AuthenticatedAdminInsightsNewRouteImport } from './routes/_authenticated/admin.insights.new'
@@ -123,6 +124,11 @@ const InsightsIndexRoute = InsightsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => InsightsRoute,
 } as any)
+const PlatformSignUpRoute = PlatformSignUpRouteImport.update({
+  id: '/platform/sign-up',
+  path: '/platform/sign-up',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InsightsSlugRoute = InsightsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -170,6 +176,7 @@ export interface FileRoutesByFullPath {
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights/': typeof InsightsIndexRoute
   '/platform/': typeof PlatformIndexRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
@@ -193,6 +200,7 @@ export interface FileRoutesByTo {
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights': typeof InsightsIndexRoute
   '/platform': typeof PlatformIndexRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
@@ -219,6 +227,7 @@ export interface FileRoutesById {
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/platform/sign-up': typeof PlatformSignUpRoute
   '/insights/': typeof InsightsIndexRoute
   '/platform/': typeof PlatformIndexRoute
   '/_authenticated/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
@@ -245,6 +254,7 @@ export interface FileRouteTypes {
     | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
+    | '/platform/sign-up'
     | '/insights/'
     | '/platform/'
     | '/admin/insights'
@@ -268,6 +278,7 @@ export interface FileRouteTypes {
     | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
+    | '/platform/sign-up'
     | '/insights'
     | '/platform'
     | '/admin/insights'
@@ -293,6 +304,7 @@ export interface FileRouteTypes {
     | '/terms-and-conditions'
     | '/why-choose-us'
     | '/insights/$slug'
+    | '/platform/sign-up'
     | '/insights/'
     | '/platform/'
     | '/_authenticated/admin/insights'
@@ -318,6 +330,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   WhyChooseUsRoute: typeof WhyChooseUsRoute
+  PlatformSignUpRoute: typeof PlatformSignUpRoute
   PlatformIndexRoute: typeof PlatformIndexRoute
   ApiPublicInsightsMediaSplatRoute: typeof ApiPublicInsightsMediaSplatRoute
 }
@@ -450,6 +463,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InsightsIndexRouteImport
       parentRoute: typeof InsightsRoute
     }
+    '/platform/sign-up': {
+      id: '/platform/sign-up'
+      path: '/platform/sign-up'
+      fullPath: '/platform/sign-up'
+      preLoaderRoute: typeof PlatformSignUpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/insights/$slug': {
       id: '/insights/$slug'
       path: '/$slug'
@@ -547,6 +567,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   WhyChooseUsRoute: WhyChooseUsRoute,
+  PlatformSignUpRoute: PlatformSignUpRoute,
   PlatformIndexRoute: PlatformIndexRoute,
   ApiPublicInsightsMediaSplatRoute: ApiPublicInsightsMediaSplatRoute,
 }
