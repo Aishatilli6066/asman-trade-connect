@@ -34,8 +34,15 @@ import { Route as PlatformSignInRouteImport } from './routes/platform/sign-in'
 import { Route as PlatformForgotPasswordRouteImport } from './routes/platform/forgot-password'
 import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as AuthenticatedAdminInsightsRouteImport } from './routes/_authenticated/admin.insights'
+import { Route as AppAppRfqsRouteImport } from './routes/_app/app.rfqs'
 import { Route as AppAppProfileRouteImport } from './routes/_app/app.profile'
+import { Route as AppAppProductsRouteImport } from './routes/_app/app.products'
 import { Route as AppAppOnboardingRouteImport } from './routes/_app/app.onboarding'
+import { Route as AppAppNotificationsRouteImport } from './routes/_app/app.notifications'
+import { Route as AppAppMatchesRouteImport } from './routes/_app/app.matches'
+import { Route as AppAppLogisticsRouteImport } from './routes/_app/app.logistics'
+import { Route as AppAppDocumentsRouteImport } from './routes/_app/app.documents'
+import { Route as AppAppDealRoomsRouteImport } from './routes/_app/app.deal-rooms'
 import { Route as AppAppDashboardRouteImport } from './routes/_app/app.dashboard'
 import { Route as AppAppCompanyRouteImport } from './routes/_app/app.company'
 import { Route as AuthenticatedAdminInsightsNewRouteImport } from './routes/_authenticated/admin.insights.new'
@@ -167,14 +174,49 @@ const AuthenticatedAdminInsightsRoute =
     path: '/admin/insights',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AppAppRfqsRoute = AppAppRfqsRouteImport.update({
+  id: '/app/rfqs',
+  path: '/app/rfqs',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppAppProfileRoute = AppAppProfileRouteImport.update({
   id: '/app/profile',
   path: '/app/profile',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppAppProductsRoute = AppAppProductsRouteImport.update({
+  id: '/app/products',
+  path: '/app/products',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppAppOnboardingRoute = AppAppOnboardingRouteImport.update({
   id: '/app/onboarding',
   path: '/app/onboarding',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppNotificationsRoute = AppAppNotificationsRouteImport.update({
+  id: '/app/notifications',
+  path: '/app/notifications',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppMatchesRoute = AppAppMatchesRouteImport.update({
+  id: '/app/matches',
+  path: '/app/matches',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppLogisticsRoute = AppAppLogisticsRouteImport.update({
+  id: '/app/logistics',
+  path: '/app/logistics',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppDocumentsRoute = AppAppDocumentsRouteImport.update({
+  id: '/app/documents',
+  path: '/app/documents',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAppDealRoomsRoute = AppAppDealRoomsRouteImport.update({
+  id: '/app/deal-rooms',
+  path: '/app/deal-rooms',
   getParentRoute: () => AppRouteRoute,
 } as any)
 const AppAppDashboardRoute = AppAppDashboardRouteImport.update({
@@ -231,8 +273,15 @@ export interface FileRoutesByFullPath {
   '/platform/': typeof PlatformIndexRoute
   '/app/company': typeof AppAppCompanyRoute
   '/app/dashboard': typeof AppAppDashboardRoute
+  '/app/deal-rooms': typeof AppAppDealRoomsRoute
+  '/app/documents': typeof AppAppDocumentsRoute
+  '/app/logistics': typeof AppAppLogisticsRoute
+  '/app/matches': typeof AppAppMatchesRoute
+  '/app/notifications': typeof AppAppNotificationsRoute
   '/app/onboarding': typeof AppAppOnboardingRoute
+  '/app/products': typeof AppAppProductsRoute
   '/app/profile': typeof AppAppProfileRoute
+  '/app/rfqs': typeof AppAppRfqsRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -262,8 +311,15 @@ export interface FileRoutesByTo {
   '/platform': typeof PlatformIndexRoute
   '/app/company': typeof AppAppCompanyRoute
   '/app/dashboard': typeof AppAppDashboardRoute
+  '/app/deal-rooms': typeof AppAppDealRoomsRoute
+  '/app/documents': typeof AppAppDocumentsRoute
+  '/app/logistics': typeof AppAppLogisticsRoute
+  '/app/matches': typeof AppAppMatchesRoute
+  '/app/notifications': typeof AppAppNotificationsRoute
   '/app/onboarding': typeof AppAppOnboardingRoute
+  '/app/products': typeof AppAppProductsRoute
   '/app/profile': typeof AppAppProfileRoute
+  '/app/rfqs': typeof AppAppRfqsRoute
   '/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -297,8 +353,15 @@ export interface FileRoutesById {
   '/platform/': typeof PlatformIndexRoute
   '/_app/app/company': typeof AppAppCompanyRoute
   '/_app/app/dashboard': typeof AppAppDashboardRoute
+  '/_app/app/deal-rooms': typeof AppAppDealRoomsRoute
+  '/_app/app/documents': typeof AppAppDocumentsRoute
+  '/_app/app/logistics': typeof AppAppLogisticsRoute
+  '/_app/app/matches': typeof AppAppMatchesRoute
+  '/_app/app/notifications': typeof AppAppNotificationsRoute
   '/_app/app/onboarding': typeof AppAppOnboardingRoute
+  '/_app/app/products': typeof AppAppProductsRoute
   '/_app/app/profile': typeof AppAppProfileRoute
+  '/_app/app/rfqs': typeof AppAppRfqsRoute
   '/_authenticated/admin/insights': typeof AuthenticatedAdminInsightsRouteWithChildren
   '/_authenticated/admin/insights/new': typeof AuthenticatedAdminInsightsNewRoute
   '/_authenticated/admin/insights/$id/edit': typeof AuthenticatedAdminInsightsIdEditRoute
@@ -331,8 +394,15 @@ export interface FileRouteTypes {
     | '/platform/'
     | '/app/company'
     | '/app/dashboard'
+    | '/app/deal-rooms'
+    | '/app/documents'
+    | '/app/logistics'
+    | '/app/matches'
+    | '/app/notifications'
     | '/app/onboarding'
+    | '/app/products'
     | '/app/profile'
+    | '/app/rfqs'
     | '/admin/insights'
     | '/admin/insights/new'
     | '/admin/insights/$id/edit'
@@ -362,8 +432,15 @@ export interface FileRouteTypes {
     | '/platform'
     | '/app/company'
     | '/app/dashboard'
+    | '/app/deal-rooms'
+    | '/app/documents'
+    | '/app/logistics'
+    | '/app/matches'
+    | '/app/notifications'
     | '/app/onboarding'
+    | '/app/products'
     | '/app/profile'
+    | '/app/rfqs'
     | '/admin/insights'
     | '/admin/insights/new'
     | '/admin/insights/$id/edit'
@@ -396,8 +473,15 @@ export interface FileRouteTypes {
     | '/platform/'
     | '/_app/app/company'
     | '/_app/app/dashboard'
+    | '/_app/app/deal-rooms'
+    | '/_app/app/documents'
+    | '/_app/app/logistics'
+    | '/_app/app/matches'
+    | '/_app/app/notifications'
     | '/_app/app/onboarding'
+    | '/_app/app/products'
     | '/_app/app/profile'
+    | '/_app/app/rfqs'
     | '/_authenticated/admin/insights'
     | '/_authenticated/admin/insights/new'
     | '/_authenticated/admin/insights/$id/edit'
@@ -607,6 +691,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminInsightsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_app/app/rfqs': {
+      id: '/_app/app/rfqs'
+      path: '/app/rfqs'
+      fullPath: '/app/rfqs'
+      preLoaderRoute: typeof AppAppRfqsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/_app/app/profile': {
       id: '/_app/app/profile'
       path: '/app/profile'
@@ -614,11 +705,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAppProfileRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/_app/app/products': {
+      id: '/_app/app/products'
+      path: '/app/products'
+      fullPath: '/app/products'
+      preLoaderRoute: typeof AppAppProductsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/_app/app/onboarding': {
       id: '/_app/app/onboarding'
       path: '/app/onboarding'
       fullPath: '/app/onboarding'
       preLoaderRoute: typeof AppAppOnboardingRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/notifications': {
+      id: '/_app/app/notifications'
+      path: '/app/notifications'
+      fullPath: '/app/notifications'
+      preLoaderRoute: typeof AppAppNotificationsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/matches': {
+      id: '/_app/app/matches'
+      path: '/app/matches'
+      fullPath: '/app/matches'
+      preLoaderRoute: typeof AppAppMatchesRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/logistics': {
+      id: '/_app/app/logistics'
+      path: '/app/logistics'
+      fullPath: '/app/logistics'
+      preLoaderRoute: typeof AppAppLogisticsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/documents': {
+      id: '/_app/app/documents'
+      path: '/app/documents'
+      fullPath: '/app/documents'
+      preLoaderRoute: typeof AppAppDocumentsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/app/deal-rooms': {
+      id: '/_app/app/deal-rooms'
+      path: '/app/deal-rooms'
+      fullPath: '/app/deal-rooms'
+      preLoaderRoute: typeof AppAppDealRoomsRouteImport
       parentRoute: typeof AppRouteRoute
     }
     '/_app/app/dashboard': {
@@ -662,15 +795,29 @@ declare module '@tanstack/react-router' {
 interface AppRouteRouteChildren {
   AppAppCompanyRoute: typeof AppAppCompanyRoute
   AppAppDashboardRoute: typeof AppAppDashboardRoute
+  AppAppDealRoomsRoute: typeof AppAppDealRoomsRoute
+  AppAppDocumentsRoute: typeof AppAppDocumentsRoute
+  AppAppLogisticsRoute: typeof AppAppLogisticsRoute
+  AppAppMatchesRoute: typeof AppAppMatchesRoute
+  AppAppNotificationsRoute: typeof AppAppNotificationsRoute
   AppAppOnboardingRoute: typeof AppAppOnboardingRoute
+  AppAppProductsRoute: typeof AppAppProductsRoute
   AppAppProfileRoute: typeof AppAppProfileRoute
+  AppAppRfqsRoute: typeof AppAppRfqsRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppAppCompanyRoute: AppAppCompanyRoute,
   AppAppDashboardRoute: AppAppDashboardRoute,
+  AppAppDealRoomsRoute: AppAppDealRoomsRoute,
+  AppAppDocumentsRoute: AppAppDocumentsRoute,
+  AppAppLogisticsRoute: AppAppLogisticsRoute,
+  AppAppMatchesRoute: AppAppMatchesRoute,
+  AppAppNotificationsRoute: AppAppNotificationsRoute,
   AppAppOnboardingRoute: AppAppOnboardingRoute,
+  AppAppProductsRoute: AppAppProductsRoute,
   AppAppProfileRoute: AppAppProfileRoute,
+  AppAppRfqsRoute: AppAppRfqsRoute,
 }
 
 const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
