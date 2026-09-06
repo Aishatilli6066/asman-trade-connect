@@ -56,15 +56,18 @@ function PageHero() {
   return (
     <section className="relative bg-[var(--color-burgundy)] text-white pt-40 pb-24">
       <div className="container-x">
-        <Eyebrow dark>About Us</Eyebrow>
-        <h1 className="mt-6 font-display text-4xl md:text-7xl leading-[1.02] max-w-4xl">
-          A Nigerian gateway to <span className="italic text-[var(--color-gold)] font-normal">global trade.</span>
-        </h1>
-        <p className="mt-8 text-white/70 max-w-2xl text-lg leading-relaxed">
-          {SITE.legalName}, trading as ASMAN Prime Hub, is a Nigeria-based international trade,
-          sourcing, procurement, agricultural export and freight-coordination company working
-          with businesses across global markets.
-        </p>
+          <Eyebrow dark>About Us</Eyebrow>
+          <h1 className="mt-6 font-display text-4xl md:text-7xl leading-[1.02] max-w-4xl">
+            A strategic trade partner for global sourcing, procurement and{" "}
+            <span className="italic text-[var(--color-gold)] font-normal">export execution.</span>
+          </h1>
+          <p className="mt-8 text-white/70 max-w-2xl text-lg leading-relaxed">
+            {SITE.legalName}, trading as ASMAN Prime Hub, is a global trade, sourcing and
+            procurement coordination company. Based in Nigeria, we work across international
+            trade routes, supporting importers, exporters, manufacturers, distributors,
+            agribusinesses and procurement teams in global markets.
+          </p>
+
       </div>
     </section>
   );
@@ -74,20 +77,21 @@ function Intro() {
   return (
     <section className="bg-white">
       <div className="container-x py-24 md:py-32 grid lg:grid-cols-2 gap-14 items-center">
-        <img src={aboutImg} alt="Professional reviewing trade documents" className="w-full h-[500px] object-cover" loading="lazy" />
+        <img src={aboutImg} alt="Trade consultant reviewing international sourcing and export documentation" className="w-full h-[500px] object-cover" loading="lazy" />
         <div>
           <Eyebrow>Who We Are</Eyebrow>
           <h2 className="mt-5 font-display text-3xl md:text-5xl leading-[1.05]">
-            Trade infrastructure with operational depth.
+            Global trade, sourcing and procurement coordination.
           </h2>
           <div className="mt-6 space-y-5 text-[var(--color-ink)]/75 leading-relaxed">
-            <p>We are a coordination company. Our work is defined by documented process, structured supplier assessment and accountable communication at each stage of an international transaction.</p>
-            <p>Whether your business is sourcing finished goods, importing raw materials, or buying Nigerian agricultural commodities, ASMAN Prime Hub provides a single professional point of coordination — not a marketplace listing and not a substitute for your own commercial decisions.</p>
+            <p>ASMAN Prime Hub helps businesses make better import, export and sourcing decisions. From supplier verification and product sourcing to agro commodity sourcing, landed cost analysis, documentation support and logistics coordination, we help clients approach international trade with structure, clarity and risk control.</p>
+            <p>Based in Nigeria and working across global trade routes, we connect businesses with verified suppliers, buyers, products, commodities and trade opportunities — a single professional point of coordination, not a marketplace listing and not a substitute for your own commercial decisions.</p>
             <p>The company is led by its founder, Aisha Usman, Trade &amp; Business Strategist, and operates through repeatable systems rather than individual relationships.</p>
           </div>
         </div>
       </div>
     </section>
+
   );
 }
 
