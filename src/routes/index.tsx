@@ -342,7 +342,7 @@ function FounderPreview() {
 
 function FinalCta() {
   return (
-    <section className="bg-[var(--color-ink)] text-white">
+    <section className="bg-[var(--color-burgundy)] text-white">
       <div className="container-x grid gap-8 py-16 md:grid-cols-[1fr_auto] md:items-center md:py-20">
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--color-gold)]">
