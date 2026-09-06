@@ -10,7 +10,7 @@ import badgeCac from "@/assets/badge-cac.jpg";
 import badgeNepc from "@/assets/badge-nepc.jpg";
 import globe from "@/assets/globe.jpg";
 import { Eyebrow, GoldButton, SectionHeader, FadeIn } from "@/components/site/primitives";
-import { COMMODITIES, REGIONS, SERVICE_BLOCKS, HOW_WE_WORK, COMMODITY_NOTE, SITE, PATHWAYS, FAQS, ADDITIONAL_COMMODITIES } from "@/lib/site-data";
+import { COMMODITIES, REGIONS, SERVICE_BLOCKS, HOW_WE_WORK, COMMODITY_NOTE, SITE, PATHWAYS, FAQS, ADDITIONAL_COMMODITIES, FOUNDER_DETAIL, ENGAGEMENTS } from "@/lib/site-data";
 import { openConsultation } from "@/components/site/consultation-store";
 
 const HOME_TITLE = "Global Sourcing, Import Coordination & Export Consultancy | ASMAN Prime Hub";
@@ -88,6 +88,7 @@ function Index() {
       <AgriHighlight />
       <WhyUs />
       <Standards />
+      <Engagements />
       <Faq />
       <ConsultationCTA />
       <ContactStrip />
