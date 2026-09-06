@@ -56,15 +56,18 @@ function PageHero() {
   return (
     <section className="relative bg-[var(--color-burgundy)] text-white pt-40 pb-24">
       <div className="container-x">
-        <Eyebrow dark>About Us</Eyebrow>
-        <h1 className="mt-6 font-display text-4xl md:text-7xl leading-[1.02] max-w-4xl">
-          A Nigerian gateway to <span className="italic text-[var(--color-gold)] font-normal">global trade.</span>
-        </h1>
-        <p className="mt-8 text-white/70 max-w-2xl text-lg leading-relaxed">
-          {SITE.legalName}, trading as ASMAN Prime Hub, is a Nigeria-based international trade,
-          sourcing, procurement, agricultural export and freight-coordination company working
-          with businesses across global markets.
-        </p>
+          <Eyebrow dark>About Us</Eyebrow>
+          <h1 className="mt-6 font-display text-4xl md:text-7xl leading-[1.02] max-w-4xl">
+            A strategic trade partner for global sourcing, procurement and{" "}
+            <span className="italic text-[var(--color-gold)] font-normal">export execution.</span>
+          </h1>
+          <p className="mt-8 text-white/70 max-w-2xl text-lg leading-relaxed">
+            {SITE.legalName}, trading as ASMAN Prime Hub, is a global trade, sourcing and
+            procurement coordination company. Based in Nigeria, we work across international
+            trade routes, supporting importers, exporters, manufacturers, distributors,
+            agribusinesses and procurement teams in global markets.
+          </p>
+
       </div>
     </section>
   );
