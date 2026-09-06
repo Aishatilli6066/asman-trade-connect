@@ -509,6 +509,46 @@ function Founder() {
             coordination process rather than on an ad-hoc basis.
           </p>
           <div className="mt-8 h-px w-16 bg-[var(--color-gold)]" />
+          <div className="mt-8 grid gap-px sm:grid-cols-3 bg-[var(--color-line)] border border-[var(--color-line)] max-w-3xl">
+            {FOUNDER_DETAIL.map((b) => (
+              <div key={b.t} className="bg-white p-6">
+                <h3 className="font-display text-lg leading-snug">{b.t}</h3>
+                <p className="mt-3 text-sm text-[var(--color-ink)]/70 leading-relaxed">{b.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Engagements() {
+  if (ENGAGEMENTS.length === 0) return null;
+  return (
+    <section className="bg-white border-t border-[var(--color-line)]">
+      <div className="container-x py-24 md:py-32">
+        <SectionHeader
+          eyebrow="Selected Engagements"
+          title={<>Trade work, <span className="italic font-normal text-[var(--color-burgundy)]">need to outcome.</span></>}
+        />
+        <div className="mt-14 grid gap-px md:grid-cols-2 bg-[var(--color-line)] border border-[var(--color-line)]">
+          {ENGAGEMENTS.map((e) => (
+            <article key={e.title} className="bg-white p-8">
+              {e.sector ? (
+                <div className="text-[11px] uppercase tracking-[0.25em] text-[var(--color-ink)]/50">{e.sector}</div>
+              ) : null}
+              <h3 className="mt-3 font-display text-xl leading-snug">{e.title}</h3>
+              <dl className="mt-6 space-y-4">
+                {([["Need", e.need], ["Action", e.action], ["Outcome", e.outcome]] as const).map(([k, v]) => (
+                  <div key={k}>
+                    <dt className="text-[11px] uppercase tracking-[0.25em] text-[var(--color-burgundy)]">{k}</dt>
+                    <dd className="mt-2 text-sm text-[var(--color-ink)]/70 leading-relaxed">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </article>
+          ))}
         </div>
       </div>
     </section>
