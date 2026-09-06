@@ -50,7 +50,7 @@ export function Header() {
               to={n.to}
               className="text-[10px] xl:text-[11px] uppercase tracking-[0.14em] xl:tracking-[0.16em] whitespace-nowrap text-white/80 hover:text-[var(--color-gold)] transition-colors"
               activeProps={{ className: "text-[var(--color-gold)]" }}
-              activeOptions={{ exact: n.to === "/" }}
+              activeOptions={{ exact: true }}
             >
               {n.label}
             </Link>
@@ -94,7 +94,7 @@ export function Header() {
                   onClick={() => setOpen(false)}
                   className="py-4 text-sm uppercase tracking-[0.2em] text-white/85 border-b border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
                   activeProps={{ className: "text-[var(--color-gold)]" }}
-                  activeOptions={{ exact: n.to === "/" }}
+                  activeOptions={{ exact: true }}
                 >
                   {n.label}
                 </Link>
