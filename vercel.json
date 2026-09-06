@@ -1,5 +1,18 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
   "buildCommand": "npm run build",
-  "framework": null
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.asmanprimehub.com"
+        }
+      ],
+      "destination": "https://asmanprimehub.com/$1",
+      "permanent": true
+    }
+  ]
 }
