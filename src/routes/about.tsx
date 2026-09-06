@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
-import aboutImg from "@/assets/about.jpg";
+import aboutImg from "@/assets/about-team.jpg.asset.json";
 import { Eyebrow, GoldButton, SectionHeader } from "@/components/site/primitives";
 import { openConsultation } from "@/components/site/consultation-store";
 import { SITE, HOW_WE_WORK, DISCLAIMER } from "@/lib/site-data";
@@ -77,7 +77,7 @@ function Intro() {
   return (
     <section className="bg-white">
       <div className="container-x py-24 md:py-32 grid lg:grid-cols-2 gap-14 items-center">
-        <img src={aboutImg} alt="Trade consultant reviewing international sourcing and export documentation" className="w-full h-[500px] object-cover" loading="lazy" />
+        <img src={aboutImg.url} alt="ASMAN Prime Hub team coordinating global sourcing, procurement and export requirements" className="w-full h-[500px] object-cover" loading="lazy" />
         <div>
           <Eyebrow>Who We Are</Eyebrow>
           <h2 className="mt-5 font-display text-3xl md:text-5xl leading-[1.05]">

@@ -332,7 +332,7 @@ function FounderPreview() {
             Aisha leads the company’s work across sourcing, supplier assessment, trade documentation and commercial coordination, with an emphasis on disciplined requirements, clear decisions and accountable execution.
           </p>
           <Link to="/about" className="mt-7 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-burgundy)] hover:text-[var(--color-ink)]">
-            Meet the Founder <ArrowRight size={14} />
+            About us <ArrowRight size={14} />
           </Link>
         </div>
       </div>
