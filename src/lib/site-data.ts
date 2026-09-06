@@ -398,3 +398,29 @@ export const FAQS = [
     a: "Send the product or commodity required, quantity, specification, destination country, target budget and expected timeline. ASMAN Prime Hub will review the request and advise on the next professional step.",
   },
 ];
+
+/**
+ * Founder detail blocks shown under the founder bio on the homepage.
+ * Replace the copy below with the supplied bio text when available.
+ */
+export const FOUNDER_DETAIL = [
+  {
+    t: "Background & experience",
+    d: "Practice built around export structuring, supplier assessment, trade documentation and landed-cost analysis for importers, exporters, manufacturers and agribusinesses trading between Africa and global markets.",
+  },
+  {
+    t: "Problems we solve",
+    d: "Unverified counterparties, vague product specifications, quotations that ignore true landed cost, incomplete export documentation and shipments that stall because no single party is coordinating them.",
+  },
+  {
+    t: "How we judge a deal",
+    d: "Specification before pricing, verification before commitment, documented decisions at every stage — so a transaction proceeds on evidence rather than on assurance.",
+  },
+];
+
+/**
+ * Selected engagements, structured as Need / Action / Outcome.
+ * Intentionally empty: the section renders only once real engagement
+ * summaries are supplied. Do not populate with illustrative examples.
+ */
+export const ENGAGEMENTS: { title: string; sector?: string; need: string; action: string; outcome: string }[] = [];
