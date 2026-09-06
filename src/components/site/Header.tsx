@@ -107,7 +107,7 @@ export function Header() {
                 onClick={() => { setOpen(false); trackQuoteClick("mobile-menu"); }}
                 className="px-5 py-4 text-center text-[11px] uppercase tracking-[0.22em] font-semibold bg-[var(--color-gold)] text-[var(--color-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                Request a Quote
+                Trade Inquiry
               </Link>
               <div className="mt-4 grid grid-cols-1 gap-3 border-t border-white/10 pt-6 text-sm">
                 <a

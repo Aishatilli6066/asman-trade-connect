@@ -14,7 +14,7 @@ import sesameImage from "@/assets/c-sesame.jpg";
 import hibiscusImage from "@/assets/c-hibiscus.jpg";
 import gingerImage from "@/assets/c-ginger.jpg";
 import cashewImage from "@/assets/c-cashew.jpg";
-import { Eyebrow, GoldButton, SectionHeader, FadeIn } from "@/components/site/primitives";
+import { Eyebrow, GoldButton, SectionHeader } from "@/components/site/primitives";
 import { openConsultation } from "@/components/site/consultation-store";
 import { COMMODITY_NOTE, SITE } from "@/lib/site-data";
 
@@ -136,7 +136,7 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative flex min-h-[640px] items-end overflow-hidden bg-[var(--color-burgundy)] sm:min-h-[680px] lg:min-h-[700px] lg:items-center">
+    <section className="relative flex min-h-[620px] items-end overflow-hidden bg-[var(--color-burgundy)] sm:min-h-[650px] lg:min-h-[680px] lg:items-center">
       <img
         src={heroPort}
         alt="Container port supporting international sourcing, import and export coordination"
@@ -151,41 +151,31 @@ function Hero() {
 
       <div className="container-x relative z-10 pb-14 pt-32 sm:pb-16 lg:py-36">
         <div className="max-w-[820px]">
-          <FadeIn>
-            <Eyebrow dark>Global sourcing · Procurement · Trade coordination</Eyebrow>
-          </FadeIn>
-          <FadeIn delay={100}>
-            <h1 className="mt-6 text-[40px] font-medium leading-[1.04] text-white sm:text-5xl md:text-6xl lg:text-[72px]">
-              Global sourcing and trade execution, structured for business.
-            </h1>
-          </FadeIn>
-          <FadeIn delay={200}>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
-              ASMAN Prime Hub helps businesses source products, assess suppliers, coordinate procurement and manage import and export requirements with commercial discipline.
-            </p>
-          </FadeIn>
-          <FadeIn delay={300}>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link
-                to="/request-a-quote"
-                className="inline-flex min-h-12 items-center justify-center gap-2 bg-[var(--color-gold)] px-7 py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-ink)] transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              >
-                Submit a Trade Inquiry <ArrowRight size={15} />
-              </Link>
-              <Link
-                to="/services"
-                className="inline-flex min-h-12 items-center justify-center border border-white/60 px-7 py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
-              >
-                Explore Services
-              </Link>
-            </div>
-          </FadeIn>
-          <FadeIn delay={400}>
-            <div className="mt-7 flex items-center gap-3 text-xs text-white/80">
-              <span className="h-px w-8 bg-[var(--color-gold)]" aria-hidden="true" />
-              NEPC-registered exporter
-            </div>
-          </FadeIn>
+          <Eyebrow dark>Global sourcing · Procurement · Trade coordination</Eyebrow>
+          <h1 className="mt-6 text-[40px] font-medium leading-[1.04] text-white sm:text-5xl md:text-6xl lg:text-[72px]">
+            Global sourcing and trade execution, structured for business.
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
+            ASMAN Prime Hub helps businesses source products, assess suppliers, coordinate procurement and manage import and export requirements with commercial discipline.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link
+              to="/request-a-quote"
+              className="inline-flex min-h-12 items-center justify-center gap-2 bg-[var(--color-gold)] px-7 py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-ink)] transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              Submit a Trade Inquiry <ArrowRight size={15} />
+            </Link>
+            <Link
+              to="/services"
+              className="inline-flex min-h-12 items-center justify-center border border-white/60 px-7 py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
+            >
+              Explore Services
+            </Link>
+          </div>
+          <div className="mt-7 flex items-center gap-3 text-xs text-white/80">
+            <span className="h-px w-8 bg-[var(--color-gold)]" aria-hidden="true" />
+            NEPC-registered exporter
+          </div>
         </div>
       </div>
     </section>
