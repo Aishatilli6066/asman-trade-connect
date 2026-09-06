@@ -1,14 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MessageCircle, Linkedin, Instagram, Facebook } from "lucide-react";
-import { NAV, SITE, COMMODITIES, DISCLAIMER, waLink } from "@/lib/site-data";
+import { NAV, SITE, DISCLAIMER, waLink } from "@/lib/site-data";
 import { trackContact } from "@/lib/analytics";
 import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
     <footer className="bg-[var(--color-burgundy)] text-white/70">
-      <div className="container-x py-20 grid gap-14 lg:grid-cols-12">
-        <div className="lg:col-span-4">
+      <div className="container-x py-14 md:py-16 grid gap-10 lg:grid-cols-[1.25fr_1fr_1fr]">
+        <div>
           <div className="flex items-center gap-3">
             <span className="grid place-items-center h-12 w-12 bg-white p-1.5">
               <img src={logo} alt="ASMAN Prime Hub" className="h-full w-full object-contain" />
@@ -17,18 +17,10 @@ export function Footer() {
               ASMAN <span className="text-[var(--color-gold)]">Prime Hub</span>
             </div>
           </div>
-          <p className="mt-5 text-sm leading-relaxed max-w-sm">
-            {SITE.legalName}
-            <span className="mt-2 block text-white/55">
-              Global Sourcing | Procurement | Nigerian Commodity Sourcing | Trade Coordination
-            </span>
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
+            Global sourcing, procurement, import coordination and export support for businesses.
           </p>
-          <div className="mt-4 text-sm">
-            <a href={`https://${SITE.domain}`} className="hover:text-[var(--color-gold)] transition-colors">
-              {SITE.domain}
-            </a>
-          </div>
-          <div className="mt-7 flex items-center gap-3">
+          <div className="mt-6 flex items-center gap-3">
             <a
               href="https://www.linkedin.com/company/asman-prime-hub/"
               target="_blank"
@@ -59,9 +51,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="lg:col-span-2">
+        <div>
           <div className="eyebrow text-[var(--color-gold)]">Navigate</div>
-          <ul className="mt-5 space-y-3 text-sm">
+          <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
             {NAV.map((n) => (
               <li key={n.to}>
                 <Link to={n.to} className="hover:text-[var(--color-gold)] transition-colors">
@@ -72,23 +64,7 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="lg:col-span-3">
-          <div className="eyebrow text-[var(--color-gold)]">Commodities</div>
-          <ul className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
-            {COMMODITIES.map((c) => (
-              <li key={c.slug}>
-                <Link
-                  to="/nigerian-commodity-sourcing"
-                  className="hover:text-[var(--color-gold)] transition-colors"
-                >
-                  {c.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="lg:col-span-3">
+        <div>
           <div className="eyebrow text-[var(--color-gold)]">Get In Touch</div>
           <ul className="mt-5 space-y-3 text-sm">
             <li>
@@ -111,13 +87,13 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-x py-6 text-[11px] leading-relaxed text-white/45 max-w-none">
+        <div className="container-x py-5 text-[11px] leading-relaxed text-white/45 max-w-none">
           {DISCLAIMER}
         </div>
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-x py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] uppercase tracking-[0.2em] text-white/40">
+        <div className="container-x py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] uppercase tracking-[0.16em] text-white/40">
           <div>© {new Date().getFullYear()} {SITE.legalName}. All rights reserved.</div>
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="hover:text-[var(--color-gold)]">Privacy</Link>

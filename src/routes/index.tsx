@@ -1,17 +1,22 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
-import { ArrowRight, Check, ShieldCheck, Truck, Globe2, Sprout, Boxes, FileCheck2, MessagesSquare, Network } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  ClipboardCheck,
+  FileCheck2,
+  ShieldCheck,
+  Truck,
+} from "lucide-react";
 import heroPort from "@/assets/hero-port.jpg";
-import agriHero from "@/assets/agri-hero.jpg";
-import logisticsShip from "@/assets/logistics-ship.jpg";
 import founderAisha from "@/assets/founder-aisha.jpg";
-import warehouseBags from "@/assets/warehouse-bags.jpg";
 import badgeCac from "@/assets/badge-cac.jpg";
 import badgeNepc from "@/assets/badge-nepc.jpg";
-import globe from "@/assets/globe.jpg";
-import { Eyebrow, GoldButton, SectionHeader, FadeIn } from "@/components/site/primitives";
-import { COMMODITIES, REGIONS, SERVICE_BLOCKS, HOW_WE_WORK, COMMODITY_NOTE, SITE, PATHWAYS, FAQS, ADDITIONAL_COMMODITIES, FOUNDER_DETAIL, ENGAGEMENTS } from "@/lib/site-data";
+import sesameImage from "@/assets/c-sesame.jpg";
+import hibiscusImage from "@/assets/c-hibiscus.jpg";
+import gingerImage from "@/assets/c-ginger.jpg";
+import cashewImage from "@/assets/c-cashew.jpg";
+import { Eyebrow, GoldButton, SectionHeader } from "@/components/site/primitives";
 import { openConsultation } from "@/components/site/consultation-store";
+import { COMMODITY_NOTE, SITE } from "@/lib/site-data";
 
 const HOME_TITLE = "Global Sourcing, Import Coordination & Export Consultancy | ASMAN Prime Hub";
 const HOME_DESC =
@@ -55,77 +60,123 @@ export const Route = createFileRoute("/")({
           },
         }),
       },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "@id": "https://asmanprimehub.com/#faq",
-          mainEntity: FAQS.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
-        }),
-      },
     ],
   }),
-  component: Index,
+  component: HomePage,
 });
 
-function Index() {
+const pathways = [
+  {
+    number: "01",
+    title: "Global Product & Machinery Sourcing",
+    description:
+      "Structured sourcing and supplier assessment for products, machinery, equipment and raw materials across international markets.",
+    to: "/global-sourcing" as const,
+    link: "Explore global sourcing",
+  },
+  {
+    number: "02",
+    title: "Nigerian Commodity Sourcing",
+    description:
+      "Inquiry-led sourcing and export coordination for Nigerian agricultural commodities against buyer specifications.",
+    to: "/nigerian-commodity-sourcing" as const,
+    link: "Explore commodity sourcing",
+  },
+];
+
+const capabilities = [
+  {
+    icon: ShieldCheck,
+    title: "Sourcing & Supplier Assessment",
+    description:
+      "We identify suitable supply options and assess supplier credentials, capacity, quotations and product fit before commitment.",
+  },
+  {
+    icon: FileCheck2,
+    title: "Commercial & Documentation Control",
+    description:
+      "We clarify specifications, commercial terms, landed-cost considerations and the documentation required for the transaction.",
+  },
+  {
+    icon: Truck,
+    title: "Logistics & Transaction Coordination",
+    description:
+      "We coordinate forwarders, inspections, shipment milestones and communication from agreed scope through documented handover.",
+  },
+];
+
+const process = [
+  { number: "01", title: "Requirement review", description: "We define the product, specification, quantity, destination and timeline." },
+  { number: "02", title: "Feasibility and assessment", description: "We assess supply options, risks, documentation and commercial viability." },
+  { number: "03", title: "Agreed commercial scope", description: "Responsibilities, professional fees and execution terms are confirmed in writing." },
+  { number: "04", title: "Verification, documentation and execution", description: "We coordinate the approved work and report progress against agreed milestones." },
+];
+
+const commodities = [
+  { name: "Sesame", image: sesameImage, alt: "Sesame seeds available through inquiry-led Nigerian commodity sourcing" },
+  { name: "Hibiscus", image: hibiscusImage, alt: "Dried hibiscus available through inquiry-led Nigerian commodity sourcing" },
+  { name: "Ginger", image: gingerImage, alt: "Dried ginger available through inquiry-led Nigerian commodity sourcing" },
+  { name: "Cashew", image: cashewImage, alt: "Raw cashew nuts available through inquiry-led Nigerian commodity sourcing" },
+];
+
+function HomePage() {
   return (
     <>
       <Hero />
       <Pathways />
-      <CoverageStrip />
-      <ProofStrip />
-      <AboutPreview />
-      <Founder />
-      <TrustBadges />
+      <Capabilities />
       <Process />
-      <Services />
-      <AgriHighlight />
-      <WhyUs />
-      <Standards />
-      <Engagements />
-      <Faq />
-      <ConsultationCTA />
-      <ContactStrip />
+      <CommodityFeature />
+      <TrustEvidence />
+      <FounderPreview />
+      <FinalCta />
     </>
   );
 }
 
-
-function TrustBadges() {
-  const regs = [
-    { img: badgeNepc, alt: "Nigerian Export Promotion Council (NEPC) logo", label: "Nigerian Export Promotion Council", sub: "Registered Exporter" },
-    { img: badgeCac, alt: "Corporate Affairs Commission (CAC) logo", label: "Corporate Affairs Commission", sub: "ASMAN Prime Hub Global Services Ltd." },
-  ];
+function Hero() {
   return (
-    <section className="bg-white border-y border-[var(--color-line)]">
-      <div className="container-x py-16 md:py-20">
-        <div className="text-center">
-          <Eyebrow>Registered & Trusted</Eyebrow>
-          <h3 className="mt-4 font-display text-2xl md:text-4xl leading-tight max-w-2xl mx-auto">
-            Officially registered. <span className="italic text-[var(--color-burgundy)] font-normal">Globally connected.</span>
-          </h3>
-        </div>
+    <section className="relative flex min-h-[620px] items-end overflow-hidden bg-[var(--color-burgundy)] sm:min-h-[650px] lg:min-h-[680px] lg:items-center">
+      <img
+        src={heroPort}
+        alt="Container port supporting international sourcing, import and export coordination"
+        className="absolute inset-0 h-full w-full object-cover object-center"
+        width={1920}
+        height={1080}
+        fetchPriority="high"
+      />
+      <div className="absolute inset-0 bg-[var(--color-ink)]/45" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-burgundy)]/95 via-[var(--color-burgundy)]/70 to-[var(--color-ink)]/10" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--color-ink)]/55 to-transparent" />
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 max-w-3xl mx-auto">
-          {regs.map((r) => (
-            <div key={r.label} className="flex items-center gap-5 border border-[var(--color-line)] p-5 bg-white">
-              <div className="shrink-0 grid place-items-center h-20 w-20 bg-white">
-                <img src={r.img} alt={r.alt} className="max-h-16 max-w-16 object-contain" loading="lazy" />
-              </div>
-              <div>
-                <div className="font-display text-base text-[var(--color-ink)] leading-tight">{r.label}</div>
-                <div className="mt-1 text-xs text-[var(--color-ink)]/60">{r.sub}</div>
-              </div>
-            </div>
-          ))}
+      <div className="container-x relative z-10 pb-14 pt-32 sm:pb-16 lg:py-36">
+        <div className="max-w-[820px]">
+          <Eyebrow dark>Global sourcing · Procurement · Trade coordination</Eyebrow>
+          <h1 className="mt-6 text-[40px] font-medium leading-[1.04] text-white sm:text-5xl md:text-6xl lg:text-[72px]">
+            Global sourcing and trade execution, structured for business.
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
+            ASMAN Prime Hub helps businesses source products, assess suppliers, coordinate procurement and manage import and export requirements with commercial discipline.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link
+              to="/request-a-quote"
+              className="inline-flex min-h-12 items-center justify-center gap-2 bg-[var(--color-gold)] px-7 py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-ink)] transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              Submit a Trade Inquiry <ArrowRight size={15} />
+            </Link>
+            <Link
+              to="/services"
+              className="inline-flex min-h-12 items-center justify-center border border-white/60 px-7 py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
+            >
+              Explore Services
+            </Link>
+          </div>
+          <div className="mt-7 flex items-center gap-3 text-xs text-white/80">
+            <span className="h-px w-8 bg-[var(--color-gold)]" aria-hidden="true" />
+            NEPC-registered exporter
+          </div>
         </div>
-
       </div>
     </section>
   );
@@ -133,389 +184,27 @@ function TrustBadges() {
 
 function Pathways() {
   return (
-    <section className="bg-white border-b border-[var(--color-line)]">
-      <div className="container-x py-20 md:py-28">
-        <SectionHeader
-          eyebrow="Where do you start?"
-          title={<>Two ways we work <span className="italic text-[var(--color-burgundy)] font-normal">with businesses.</span></>}
-        />
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          {PATHWAYS.map((p) => (
-            <Link
-              key={p.to}
-              to={p.to}
-              className="group flex flex-col justify-between border border-[var(--color-line)] p-8 md:p-10 transition-colors hover:border-[var(--color-burgundy)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
-            >
-              <div>
-                <div className="h-px w-10 bg-[var(--color-gold)]" />
-                <h3 className="mt-6 font-display text-2xl md:text-[28px] leading-snug text-[var(--color-ink)]">
-                  {p.title}
-                </h3>
-                <p className="mt-4 text-sm md:text-base leading-relaxed text-[var(--color-ink)]/70">{p.desc}</p>
-              </div>
-              <span className="mt-8 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-semibold text-[var(--color-burgundy)]">
-                {p.cta} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Hero() {
-  return (
-    <section className="relative min-h-[100svh] flex items-end overflow-hidden bg-[var(--color-burgundy)]">
-      <img
-        src={heroPort}
-        alt="International shipping port used for global sourcing and import coordination"
-        className="absolute inset-0 h-full w-full object-cover opacity-60 md:opacity-80"
-        width={1920}
-        height={1080}
-      />
-      <div className="absolute inset-0 bg-[var(--color-burgundy)]/35 md:bg-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-burgundy)] via-[var(--color-burgundy)]/70 to-[var(--color-burgundy)]/30" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-burgundy)]/75 to-transparent" />
-
-      <div className="container-x relative z-10 pb-20 pt-40 sm:pt-36 md:pb-28 md:pt-32">
-        <FadeIn>
-          <Eyebrow dark>Global Sourcing · Procurement · Import &amp; Export</Eyebrow>
-        </FadeIn>
-        <FadeIn delay={120}>
-          <h1 className="mt-7 font-display text-[36px] sm:text-5xl md:text-[68px] leading-[1.05] text-white max-w-4xl">
-            Global Sourcing, Import Coordination &amp; Export Support{" "}
-            <span className="text-[var(--color-gold)] italic font-normal">for Businesses</span>
-          </h1>
-        </FadeIn>
-        <FadeIn delay={240}>
-          <p className="mt-8 text-white/75 max-w-xl text-base md:text-lg leading-relaxed">
-            ASMAN Prime Hub helps businesses source products, verify suppliers, coordinate
-            procurement, manage import and export processes, and access international trade
-            opportunities with structure, transparency and commercial discipline.
-          </p>
-        </FadeIn>
-        <FadeIn delay={360}>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <GoldButton onClick={openConsultation}>Book Consultation <ArrowRight size={14} /></GoldButton>
-            <Link to="/services">
-              <GoldButton variant="outline-light">Explore Services</GoldButton>
-            </Link>
+    <section className="border-b border-[var(--color-line)] bg-white">
+      <div className="container-x py-16 md:py-20">
+        <div className="grid gap-8 lg:grid-cols-[0.72fr_2fr] lg:gap-14">
+          <div>
+            <Eyebrow>Start here</Eyebrow>
+            <h2 className="mt-4 text-3xl leading-tight text-[var(--color-ink)] md:text-4xl">Two clear sourcing pathways.</h2>
           </div>
-        </FadeIn>
-        <FadeIn delay={480}>
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] uppercase tracking-[0.28em] text-white/70">
-            <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-[var(--color-gold)]" /> NEPC Registered</span>
-            <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-[var(--color-gold)]" /> ASMAN Prime Hub Global Services Ltd.</span>
-          </div>
-        </FadeIn>
-      </div>
-
-      <div className="absolute bottom-6 right-6 z-10 hidden md:flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-white/40">
-        <span className="h-px w-10 bg-white/30" />
-        Kano · Nigeria
-      </div>
-    </section>
-  );
-}
-
-function CoverageStrip() {
-  return (
-    <section className="relative bg-[var(--color-bone)] text-[var(--color-ink)] border-y border-[var(--color-line)]">
-      <div className="container-x py-10 md:py-14 grid gap-8 md:grid-cols-[auto_1fr] items-center">
-        <div className="font-display text-xl md:text-2xl max-w-md leading-snug">
-          Connecting Nigerian Trade <span className="text-[var(--color-burgundy)] italic">to Global Markets</span>
-        </div>
-        <div className="flex flex-wrap gap-x-10 gap-y-4 md:justify-end text-[12px] uppercase tracking-[0.25em] text-[var(--color-ink)]/70">
-          {REGIONS.map((r) => (
-            <div key={r} className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 bg-[var(--color-gold)]" />
-              {r}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ProofStrip() {
-  const items = [
-    { v: "Structured supplier assessment", k: "Company checks, capacity review and sample coordination before any introduction." },
-    { v: "Specification & quotation review", k: "Requirements documented and quotations compared line by line before commitment." },
-    { v: "Transaction documentation support", k: "Coordination of export, shipping and compliance paperwork across the transaction." },
-    { v: "Quality & shipment coordination", k: "Inspection arrangements and freight follow-up against agreed milestones." },
-  ];
-  return (
-    <section className="bg-[var(--color-burgundy)] text-white">
-      <div className="container-x py-20 md:py-28 grid gap-px md:grid-cols-4 border-y border-white/10">
-        {items.map((m) => (
-          <div key={m.v} className="p-8 md:p-10 bg-[var(--color-burgundy)] md:border-r last:md:border-r-0 border-white/10">
-            <div className="h-px w-10 bg-[var(--color-gold)]" />
-            <div className="mt-6 font-display text-xl md:text-2xl text-white leading-snug">{m.v}</div>
-            <p className="mt-4 text-sm text-white/55">{m.k}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function AboutPreview() {
-  return (
-    <section className="bg-white">
-      <div className="container-x py-24 md:py-32 grid gap-14 lg:grid-cols-2 items-center">
-        <div className="relative">
-          <img src={logisticsShip} alt="Global trade logistics coordination — container ship, air freight and port operations" className="w-full h-[420px] md:h-[560px] object-cover" loading="lazy" />
-          <div className="absolute -bottom-6 -right-6 hidden md:block bg-[var(--color-burgundy)] text-white px-8 py-6 max-w-xs">
-            <div className="font-display text-2xl leading-tight">Premium African gateway to global trade.</div>
-          </div>
-        </div>
-        <div>
-          <Eyebrow>About ASMAN Prime Hub</Eyebrow>
-          <h2 className="mt-5 font-display text-3xl md:text-5xl leading-[1.05]">
-            A Strategic Trade Partner for Global Sourcing, Procurement and Export Execution
-          </h2>
-          <p className="mt-6 text-[var(--color-ink)]/70 text-base md:text-lg leading-relaxed">
-            ASMAN Prime Hub is a global trade, sourcing and procurement coordination company
-            helping businesses make better import, export and sourcing decisions. From supplier
-            verification and product sourcing to agro commodity sourcing, landed cost analysis,
-            documentation support and logistics coordination, we help clients approach
-            international trade with structure, clarity and risk control.
-          </p>
-          <p className="mt-4 text-[var(--color-ink)]/65 leading-relaxed">
-            The company is based in Nigeria and works across global trade routes, connecting
-            importers, exporters, manufacturers, distributors, agribusinesses, procurement teams
-            and SMEs with verified suppliers, buyers, products and commodities.
-          </p>
-          <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
-            {[
-              "Supplier verification",
-              "Procurement coordination",
-              "Import / export operations",
-              "Freight management",
-              "Agricultural export expertise",
-              "Compliance & documentation",
-            ].map((i) => (
-              <li key={i} className="flex items-start gap-2 text-[var(--color-ink)]/80">
-                <Check size={16} className="mt-0.5 text-[var(--color-burgundy)] shrink-0" /> {i}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-10">
-            <Link to="/about">
-              <GoldButton variant="burgundy">Learn More <ArrowRight size={14} /></GoldButton>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Process() {
-  const steps = HOW_WE_WORK;
-  return (
-    <section className="bg-[var(--color-bone)]">
-      <div className="container-x py-24 md:py-32">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <SectionHeader eyebrow="How We Work" title={<>Five stages. <span className="italic font-normal text-[var(--color-burgundy)]">One accountable partner.</span></>} />
-        </div>
-        <div className="mt-16 grid gap-px sm:grid-cols-2 lg:grid-cols-5 border border-[var(--color-line)] bg-[var(--color-line)]">
-          {steps.map((s, i) => (
-            <div key={s.t} className="bg-white p-8 group hover:bg-[var(--color-burgundy)] hover:text-white transition-colors duration-500">
-              <div className="font-display text-5xl text-[var(--color-gold)]">0{i + 1}</div>
-              <div className="mt-6 font-display text-lg leading-snug">{s.t}</div>
-              <p className="mt-3 text-sm text-[var(--color-ink)]/70 group-hover:text-white/60">{s.d}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Services() {
-  const icons = [Boxes, ShieldCheck, Truck, Network, Sprout, FileCheck2, Globe2];
-  return (
-    <section className="bg-white text-[var(--color-ink)]">
-      <div className="container-x py-24 md:py-32">
-        <SectionHeader eyebrow="Services" title={<>Seven service areas, <span className="italic text-[var(--color-burgundy)] font-normal">clearly defined.</span></>} subtitle="Global sourcing, supplier verification, import coordination, procurement, agro commodity sourcing, export documentation and trade advisory — each scoped in writing before work begins." />
-        <div className="mt-16 grid gap-px sm:grid-cols-2 lg:grid-cols-3 border border-[var(--color-line)] bg-[var(--color-line)]">
-          {SERVICE_BLOCKS.map((s, i) => {
-            const Icon = icons[i] ?? Boxes;
-            return (
-              <div key={s.title} className="bg-white p-8 group hover:bg-[var(--color-bone)] transition-colors">
-                <Icon size={26} strokeWidth={1.4} className="text-[var(--color-burgundy)]" />
-                <h3 className="mt-6 font-display text-xl leading-snug">{s.title}</h3>
-                <p className="mt-3 text-sm text-[var(--color-ink)]/65 leading-relaxed">{s.desc}</p>
-                <div className="mt-6 h-px w-8 bg-[var(--color-gold)] group-hover:w-16 transition-all" />
-              </div>
-            );
-          })}
-        </div>
-        <div className="mt-12 flex justify-center">
-          <Link to="/services">
-            <GoldButton variant="burgundy">View All Services <ArrowRight size={14} /></GoldButton>
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const commodityImages = import.meta.glob<{ default: string }>("/src/assets/c-*.jpg", { eager: true });
-function commodityImg(img: string) {
-  const entry = Object.entries(commodityImages).find(([k]) => k.endsWith(`${img}.jpg`));
-  return entry?.[1].default ?? "";
-}
-
-function AgriHighlight() {
-  return (
-    <section className="relative bg-[var(--color-burgundy-deep)] text-white overflow-hidden">
-      <img src={warehouseBags} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" loading="lazy" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-burgundy-deep)]/80 via-[var(--color-burgundy-deep)]/95 to-[var(--color-burgundy)]" />
-      <div className="container-x relative z-10 py-24 md:py-32">
-        <SectionHeader
-          eyebrow="Agricultural Export"
-          dark
-          title={<>Nigerian agricultural commodities <span className="italic text-[var(--color-gold)] font-normal">for global markets.</span></>}
-          subtitle="Nigerian agricultural commodities coordinated for international buyers — from origin sourcing to shipment documentation."
-        />
-        <div className="mt-16 grid gap-px sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border border-white/10 bg-white/10">
-          {COMMODITIES.map((c) => (
-            <div key={c.slug} className="bg-[var(--color-burgundy)] group overflow-hidden">
-              <div className="relative aspect-square overflow-hidden">
-                <img src={commodityImg(c.img)} alt={c.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              </div>
-              <div className="p-6">
-                <h3 className="font-display text-xl">{c.name}</h3>
-                <p className="mt-2 text-sm text-white/65 leading-relaxed">{c.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <Link to="/request-a-quote"><GoldButton>Submit a Trade Inquiry <ArrowRight size={14} /></GoldButton></Link>
-          <Link to="/agricultural-export"><GoldButton variant="outline-gold">View Commodities</GoldButton></Link>
-        </div>
-        <p className="mt-10 text-center text-sm text-white/70 max-w-3xl mx-auto leading-relaxed">
-          Also coordinated on request: {ADDITIONAL_COMMODITIES.join(" · ")}.
-        </p>
-        <p className="mt-4 text-center text-xs md:text-sm text-white/60 max-w-3xl mx-auto leading-relaxed">{COMMODITY_NOTE}</p>
-      </div>
-    </section>
-  );
-}
-
-function WhyUs() {
-  const items = [
-    { i: ShieldCheck, t: "Structured supplier assessment", d: "Suppliers are reviewed for credentials, capacity and sample quality before introduction." },
-    { i: Network, t: "Single coordination point", d: "One documented workflow across sourcing, procurement, freight and paperwork." },
-    { i: MessagesSquare, t: "Documented communication", d: "Written updates, recorded decisions and defined response windows." },
-    { i: Globe2, t: "International working practice", d: "Trade conducted in standard Incoterms, documentation and payment structures." },
-    { i: FileCheck2, t: "Documentation support", d: "Coordination of export, shipping and compliance documents with your counterparties." },
-    { i: Truck, t: "Freight coordination", d: "Forwarder selection, routing options and shipment follow-up against agreed milestones." },
-  ];
-  return (
-    <section className="bg-white">
-      <div className="container-x py-24 md:py-32">
-        <SectionHeader eyebrow="Why Choose Us" title={<>Operational depth your trade <span className="italic font-normal text-[var(--color-burgundy)]">can rely on.</span></>} />
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--color-line)] border border-[var(--color-line)]">
-          {items.map((it) => (
-            <div key={it.t} className="bg-white p-8 md:p-10">
-              <it.i size={24} strokeWidth={1.4} className="text-[var(--color-burgundy)]" />
-              <h3 className="mt-5 font-display text-xl">{it.t}</h3>
-              <p className="mt-3 text-sm text-[var(--color-ink)]/65 leading-relaxed">{it.d}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Standards() {
-  const cols = [
-    { t: "Supplier verification processes", d: "Multi-point checks across credentials, capacity, sample quality, and commercial standing." },
-    { t: "Quality control coordination", d: "Pre-shipment inspection arrangements and sample-based verification workflows." },
-    { t: "Export readiness support", d: "Packaging guidance, labelling, and shipment preparation aligned to buyer specifications." },
-    { t: "Documentation guidance", d: "Coordination of CoOs, phytosanitary, commercial invoices, packing lists and shipping docs." },
-    { t: "Communication standards", d: "Defined response windows, documented updates, and named coordination contacts." },
-  ];
-  return (
-    <section className="bg-[var(--color-bone)]">
-      <div className="container-x py-24 md:py-32 grid lg:grid-cols-[1fr_2fr] gap-14">
-        <SectionHeader eyebrow="Operational Standards" title={<>The credibility of how <span className="italic font-normal text-[var(--color-burgundy)]">we operate.</span></>} subtitle="Process-based standards applied to every engagement." />
-        <div className="grid sm:grid-cols-2 gap-px bg-[var(--color-line)] border border-[var(--color-line)]">
-          {cols.map((c) => (
-            <div key={c.t} className="bg-white p-7">
-              <h3 className="font-display text-lg">{c.t}</h3>
-              <p className="mt-2 text-sm text-[var(--color-ink)]/65 leading-relaxed">{c.d}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ConsultationCTA() {
-  return (
-    <section className="relative bg-white text-[var(--color-ink)] overflow-hidden border-y border-[var(--color-line)]">
-      <img src={globe} alt="" className="absolute inset-0 h-full w-full object-cover opacity-[0.06]" loading="lazy" />
-      <div className="container-x relative z-10 py-24 md:py-32 grid lg:grid-cols-[2fr_1fr] gap-10 items-end">
-        <h2 className="font-display text-4xl md:text-6xl leading-[1.02] max-w-3xl">
-          Ready to move your trade <span className="italic text-[var(--color-burgundy)] font-normal">forward?</span>
-        </h2>
-        <div className="flex flex-wrap gap-3">
-          <Link to="/request-a-quote"><GoldButton variant="burgundy">Submit a Trade Inquiry</GoldButton></Link>
-          <GoldButton onClick={openConsultation}>Book a Consultation</GoldButton>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Founder() {
-  return (
-    <section className="bg-[var(--color-bone)]">
-      <div className="container-x py-24 md:py-32 grid gap-14 lg:grid-cols-[auto_1fr] items-center">
-        <div className="relative mx-auto lg:mx-0">
-          <div className="absolute -inset-3 border border-[var(--color-gold)] hidden md:block" />
-          <img
-            src={founderAisha}
-            alt="Aisha Usman, Founder and Trade & Business Strategist at ASMAN Prime Hub"
-            className="relative w-[280px] h-[340px] md:w-[360px] md:h-[440px] object-cover"
-            loading="lazy"
-          />
-        </div>
-        <div>
-          <Eyebrow>Meet the Founder</Eyebrow>
-          <h2 className="mt-5 font-display text-3xl md:text-5xl leading-[1.05]">
-            Aisha Usman <span className="italic font-normal text-[var(--color-burgundy)]">— Founder.</span>
-          </h2>
-          <div className="mt-4 text-[11px] uppercase tracking-[0.25em] text-[var(--color-ink)]/60">
-            Trade &amp; Business Strategist
-          </div>
-          <p className="mt-7 text-[var(--color-ink)]/75 text-base md:text-lg leading-relaxed max-w-2xl">
-            Aisha Usman is the Founder and Trade &amp; Business Strategist behind ASMAN Prime Hub,
-            a Nigeria-based international trade and export coordination company headquartered in
-            Kano, Nigeria. Her focus is the systems the company runs on: how requirements are
-            qualified, how suppliers are assessed, and how transactions are documented.
-          </p>
-          <p className="mt-4 text-[var(--color-ink)]/70 leading-relaxed max-w-2xl">
-            Her areas of practice include export structuring, supplier assessment, trade
-            documentation and landed-cost analysis — applied through the company&rsquo;s
-            coordination process rather than on an ad-hoc basis.
-          </p>
-          <div className="mt-8 h-px w-16 bg-[var(--color-gold)]" />
-          <div className="mt-8 grid gap-px sm:grid-cols-3 bg-[var(--color-line)] border border-[var(--color-line)] max-w-3xl">
-            {FOUNDER_DETAIL.map((b) => (
-              <div key={b.t} className="bg-white p-6">
-                <h3 className="font-display text-lg leading-snug">{b.t}</h3>
-                <p className="mt-3 text-sm text-[var(--color-ink)]/70 leading-relaxed">{b.d}</p>
-              </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {pathways.map((pathway) => (
+              <Link
+                key={pathway.title}
+                to={pathway.to}
+                className="group border border-[var(--color-line)] bg-white p-7 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[var(--color-burgundy)] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] md:p-8"
+              >
+                <div className="text-xs font-semibold tracking-[0.16em] text-[var(--color-burgundy)]">{pathway.number}</div>
+                <h3 className="mt-5 text-2xl leading-snug text-[var(--color-ink)]">{pathway.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--color-ink)]/70">{pathway.description}</p>
+                <span className="mt-7 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-burgundy)]">
+                  {pathway.link} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>
@@ -524,30 +213,21 @@ function Founder() {
   );
 }
 
-function Engagements() {
-  if (ENGAGEMENTS.length === 0) return null;
+function Capabilities() {
   return (
-    <section className="bg-white border-t border-[var(--color-line)]">
-      <div className="container-x py-24 md:py-32">
+    <section className="bg-[var(--color-bone)]">
+      <div className="container-x py-18 md:py-24">
         <SectionHeader
-          eyebrow="Selected Engagements"
-          title={<>Trade work, <span className="italic font-normal text-[var(--color-burgundy)]">need to outcome.</span></>}
+          eyebrow="Core capabilities"
+          title={<>Commercial discipline across the <span className="font-normal italic text-[var(--color-burgundy)]">trade process.</span></>}
+          subtitle="Focused coordination where supplier decisions, documentation and execution need clear control."
         />
-        <div className="mt-14 grid gap-px md:grid-cols-2 bg-[var(--color-line)] border border-[var(--color-line)]">
-          {ENGAGEMENTS.map((e) => (
-            <article key={e.title} className="bg-white p-8">
-              {e.sector ? (
-                <div className="text-[11px] uppercase tracking-[0.25em] text-[var(--color-ink)]/50">{e.sector}</div>
-              ) : null}
-              <h3 className="mt-3 font-display text-xl leading-snug">{e.title}</h3>
-              <dl className="mt-6 space-y-4">
-                {([["Need", e.need], ["Action", e.action], ["Outcome", e.outcome]] as const).map(([k, v]) => (
-                  <div key={k}>
-                    <dt className="text-[11px] uppercase tracking-[0.25em] text-[var(--color-burgundy)]">{k}</dt>
-                    <dd className="mt-2 text-sm text-[var(--color-ink)]/70 leading-relaxed">{v}</dd>
-                  </div>
-                ))}
-              </dl>
+        <div className="mt-10 grid gap-px border border-[var(--color-line)] bg-[var(--color-line)] md:grid-cols-3">
+          {capabilities.map(({ icon: Icon, title, description }) => (
+            <article key={title} className="bg-white p-7 md:p-8">
+              <Icon size={25} strokeWidth={1.5} className="text-[var(--color-burgundy)]" aria-hidden="true" />
+              <h3 className="mt-5 text-xl leading-snug text-[var(--color-ink)]">{title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[var(--color-ink)]/70">{description}</p>
             </article>
           ))}
         </div>
@@ -556,45 +236,126 @@ function Engagements() {
   );
 }
 
-function ContactStrip() {
+function Process() {
   return (
-    <section className="bg-white border-t border-[var(--color-line)]">
-      <div className="container-x py-12 grid md:grid-cols-[1fr_auto] gap-6 items-center">
-        <div>
-          <div className="font-display text-xl md:text-2xl">We aim to respond to trade inquiries within one business day.</div>
-          <div className="mt-2 text-sm text-[var(--color-ink)]/60">
-            <a className="hover:text-[var(--color-burgundy)]" href={`mailto:${SITE.email}`}>{SITE.email}</a>
-            <span className="mx-3">·</span>
-            <a className="hover:text-[var(--color-burgundy)]" href={`https://wa.me/${SITE.whatsappRaw}`}>{SITE.whatsapp}</a>
-          </div>
+    <section className="bg-white">
+      <div className="container-x py-18 md:py-24">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <SectionHeader eyebrow="How we work" title="Four defined stages from inquiry to execution." />
+          <Link to="/services" className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-burgundy)] hover:text-[var(--color-ink)]">
+            View the detailed process <ArrowRight size={14} />
+          </Link>
         </div>
-        <Link to="/contact"><GoldButton variant="burgundy">Contact Us <ArrowRight size={14} /></GoldButton></Link>
+        <ol className="mt-10 grid gap-0 border-y border-[var(--color-line)] sm:grid-cols-2 lg:grid-cols-4">
+          {process.map((step) => (
+            <li key={step.title} className="border-b border-[var(--color-line)] py-7 pr-6 sm:border-r sm:px-6 sm:first:pl-0 lg:border-b-0 lg:last:border-r-0">
+              <div className="font-display text-3xl text-[var(--color-gold)]">{step.number}</div>
+              <h3 className="mt-4 text-lg leading-snug text-[var(--color-ink)]">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--color-ink)]/65">{step.description}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
 }
 
-function Faq() {
+function CommodityFeature() {
   return (
-    <section className="bg-white border-t border-[var(--color-line)]">
-      <div className="container-x py-24 md:py-32">
-        <SectionHeader
-          eyebrow="Frequently Asked Questions"
-          title={<>Global sourcing and export support, <span className="italic font-normal text-[var(--color-burgundy)]">answered.</span></>}
-        />
-        <div className="mt-14 grid gap-px md:grid-cols-2 bg-[var(--color-line)] border border-[var(--color-line)]">
-          {FAQS.map((f) => (
-            <div key={f.q} className="bg-white p-8">
-              <h3 className="font-display text-xl leading-snug">{f.q}</h3>
-              <p className="mt-3 text-sm text-[var(--color-ink)]/70 leading-relaxed">{f.a}</p>
-            </div>
-          ))}
+    <section className="bg-[var(--color-burgundy)] text-white">
+      <div className="container-x py-18 md:py-24">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.3fr] lg:items-end">
+          <div>
+            <Eyebrow dark>Commodity sourcing</Eyebrow>
+            <h2 className="mt-5 text-3xl leading-tight text-white md:text-5xl">Nigerian origin, coordinated to buyer requirements.</h2>
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/75 md:text-base">
+              We support inquiry-led sourcing, specification confirmation and export coordination for selected Nigerian agricultural commodities.
+            </p>
+            <Link to="/nigerian-commodity-sourcing" className="mt-7 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-gold)] hover:text-white">
+              View all commodities <ArrowRight size={14} />
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {commodities.map((commodity) => (
+              <figure key={commodity.name} className="group relative aspect-[4/5] overflow-hidden bg-[var(--color-ink)]">
+                <img src={commodity.image} alt={commodity.alt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/80 via-transparent to-transparent" />
+                <figcaption className="absolute inset-x-0 bottom-0 p-4 font-display text-lg text-white">{commodity.name}</figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
-        <div className="mt-12 flex flex-wrap gap-3">
-          <Link to="/services"><GoldButton variant="burgundy">Explore Services <ArrowRight size={14} /></GoldButton></Link>
-          <Link to="/agricultural-export"><GoldButton variant="outline-gold">Agro Commodity Sourcing</GoldButton></Link>
-          <Link to="/why-choose-us"><GoldButton variant="outline-gold">Why Choose Us</GoldButton></Link>
-          <Link to="/contact"><GoldButton variant="outline-gold">Contact</GoldButton></Link>
+        <p className="mt-8 border-t border-white/15 pt-5 text-xs leading-relaxed text-white/65">{COMMODITY_NOTE}</p>
+      </div>
+    </section>
+  );
+}
+
+function TrustEvidence() {
+  return (
+    <section className="border-b border-[var(--color-line)] bg-white">
+      <div className="container-x grid gap-8 py-14 md:grid-cols-[1fr_auto] md:items-center md:py-16">
+        <div>
+          <Eyebrow>Registration & trust</Eyebrow>
+          <h2 className="mt-4 max-w-2xl text-2xl leading-tight text-[var(--color-ink)] md:text-4xl">
+            Registered Nigerian company and NEPC-registered exporter.
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--color-ink)]/65">
+            ASMAN Prime Hub Global Services Limited maintains corporate registration with the CAC and exporter registration with the NEPC. Registration does not imply government endorsement.
+          </p>
+        </div>
+        <div className="flex items-center gap-5 sm:gap-8">
+          <img src={badgeCac} alt="Corporate Affairs Commission registration logo" className="h-16 w-16 object-contain sm:h-20 sm:w-20" loading="lazy" />
+          <span className="h-12 w-px bg-[var(--color-line)]" aria-hidden="true" />
+          <img src={badgeNepc} alt="Nigerian Export Promotion Council registered exporter logo" className="h-16 w-28 object-contain sm:h-20 sm:w-36" loading="lazy" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FounderPreview() {
+  return (
+    <section className="bg-[var(--color-bone)]">
+      <div className="container-x grid gap-9 py-18 md:grid-cols-[280px_1fr] md:items-center md:py-24 lg:gap-16">
+        <img
+          src={founderAisha}
+          alt="Aisha Usman, Founder and Trade & Business Strategist at ASMAN Prime Hub"
+          className="aspect-[4/5] w-full max-w-[280px] object-cover object-top shadow-md"
+          loading="lazy"
+        />
+        <div className="max-w-2xl">
+          <Eyebrow>Leadership</Eyebrow>
+          <h2 className="mt-5 text-3xl leading-tight text-[var(--color-ink)] md:text-5xl">Aisha Usman</h2>
+          <p className="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-burgundy)]">Founder · Trade &amp; Business Strategist</p>
+          <p className="mt-5 text-base leading-relaxed text-[var(--color-ink)]/72">
+            Aisha leads the company’s work across sourcing, supplier assessment, trade documentation and commercial coordination, with an emphasis on disciplined requirements, clear decisions and accountable execution.
+          </p>
+          <Link to="/about" className="mt-7 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-burgundy)] hover:text-[var(--color-ink)]">
+            Meet the Founder <ArrowRight size={14} />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FinalCta() {
+  return (
+    <section className="bg-[var(--color-ink)] text-white">
+      <div className="container-x grid gap-8 py-16 md:grid-cols-[1fr_auto] md:items-center md:py-20">
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--color-gold)]">
+            <ClipboardCheck size={16} aria-hidden="true" /> Define your requirement
+          </div>
+          <h2 className="mt-5 text-3xl leading-tight text-white md:text-5xl">Bring structure to your next sourcing or trade requirement.</h2>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/65 md:text-base">Share the product, specification, quantity and destination. We will review the requirement and confirm the appropriate next step.</p>
+        </div>
+        <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
+          <Link to="/request-a-quote" className="inline-flex min-h-12 items-center justify-center gap-2 bg-[var(--color-gold)] px-7 py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-ink)] transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+            Submit a Trade Inquiry <ArrowRight size={14} />
+          </Link>
+          <GoldButton variant="outline-light" onClick={openConsultation}>Book a Consultation</GoldButton>
         </div>
       </div>
     </section>
