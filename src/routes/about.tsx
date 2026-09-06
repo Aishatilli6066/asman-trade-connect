@@ -77,16 +77,18 @@ function Intro() {
   return (
     <section className="bg-white">
       <div className="container-x py-24 md:py-32 grid lg:grid-cols-2 gap-14 items-center">
-        <img src={aboutImg} alt="Professional reviewing trade documents" className="w-full h-[500px] object-cover" loading="lazy" />
+        <img src={aboutImg} alt="Trade consultant reviewing international sourcing and export documentation" className="w-full h-[500px] object-cover" loading="lazy" />
         <div>
           <Eyebrow>Who We Are</Eyebrow>
           <h2 className="mt-5 font-display text-3xl md:text-5xl leading-[1.05]">
-            Trade infrastructure with operational depth.
+            Global trade, sourcing and procurement coordination.
           </h2>
           <div className="mt-6 space-y-5 text-[var(--color-ink)]/75 leading-relaxed">
-            <p>We are a coordination company. Our work is defined by documented process, structured supplier assessment and accountable communication at each stage of an international transaction.</p>
-            <p>Whether your business is sourcing finished goods, importing raw materials, or buying Nigerian agricultural commodities, ASMAN Prime Hub provides a single professional point of coordination — not a marketplace listing and not a substitute for your own commercial decisions.</p>
+            <p>ASMAN Prime Hub helps businesses make better import, export and sourcing decisions. From supplier verification and product sourcing to agro commodity sourcing, landed cost analysis, documentation support and logistics coordination, we help clients approach international trade with structure, clarity and risk control.</p>
+            <p>Based in Nigeria and working across global trade routes, we connect businesses with verified suppliers, buyers, products, commodities and trade opportunities — a single professional point of coordination, not a marketplace listing and not a substitute for your own commercial decisions.</p>
             <p>The company is led by its founder, Aisha Usman, Trade &amp; Business Strategist, and operates through repeatable systems rather than individual relationships.</p>
+          </div>
+
           </div>
         </div>
       </div>
