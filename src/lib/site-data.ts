@@ -82,12 +82,10 @@ export const HOW_WE_WORK = [
 ];
 
 export const NAV = [
-  { label: "Home", to: "/" },
-  { label: "About Us", to: "/about" },
+  { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
   { label: "Global Sourcing", to: "/global-sourcing" },
   { label: "Commodity Sourcing", to: "/nigerian-commodity-sourcing" },
-  { label: "Trade Advisory", to: "/why-choose-us" },
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
 ] as const;
