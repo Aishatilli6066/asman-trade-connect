@@ -88,11 +88,10 @@ function Intro() {
             <p>Based in Nigeria and working across global trade routes, we connect businesses with verified suppliers, buyers, products, commodities and trade opportunities — a single professional point of coordination, not a marketplace listing and not a substitute for your own commercial decisions.</p>
             <p>The company is led by its founder, Aisha Usman, Trade &amp; Business Strategist, and operates through repeatable systems rather than individual relationships.</p>
           </div>
-
-          </div>
         </div>
       </div>
     </section>
+
   );
 }
 
