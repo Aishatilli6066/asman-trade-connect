@@ -170,13 +170,13 @@ function Hero() {
       <img
         src={heroPort}
         alt="International shipping port used for global sourcing and import coordination"
-        className="absolute inset-0 h-full w-full object-cover opacity-40 md:opacity-55"
+        className="absolute inset-0 h-full w-full object-cover opacity-60 md:opacity-80"
         width={1920}
         height={1080}
       />
-      <div className="absolute inset-0 bg-[var(--color-burgundy)]/50 md:bg-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-burgundy)] via-[var(--color-burgundy)]/85 to-[var(--color-burgundy)]/50" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-burgundy)]/90 to-transparent" />
+      <div className="absolute inset-0 bg-[var(--color-burgundy)]/35 md:bg-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-burgundy)] via-[var(--color-burgundy)]/70 to-[var(--color-burgundy)]/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-burgundy)]/75 to-transparent" />
 
       <div className="container-x relative z-10 pb-20 pt-40 sm:pt-36 md:pb-28 md:pt-32">
         <FadeIn>
